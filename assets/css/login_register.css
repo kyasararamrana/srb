@@ -1,0 +1,224 @@
+body {
+    margin: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
+    margin: 0;
+}
+
+a,
+a:hover{
+    color: #16225a;
+}
+
+img {
+    max-width: 100%;
+}
+
+.wrapper {
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+}
+
+.wrapper .inner {
+    padding: 20px;
+    background: #fff;
+    max-width: 850px;
+    margin: auto;
+    display: flex;
+}
+
+.wrapper .inner .image-holder {
+    width: 50%;
+}
+
+.wrapper .inner form {
+    width: 50%;
+    padding: 20px 30px;
+}
+
+.wrapper .inner h3 {
+    text-transform: uppercase;
+    font-size: 25px;
+    font-family: "Poppins-SemiBold";
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.wrapper .input {
+    width: 100%;
+    height: 40px;
+    padding: 0px 15px;
+    border: none;
+    color: #000;
+    font-size: 14px;
+    background-color: transparent;
+    -webkit-box-shadow: 0px 0px 0px 1px #DADADA inset, 0px 0px 0px 5px transparent;
+    box-shadow: 0px 0px 0px 1px #DADADA inset, 0px 0px 0px 5px transparent;
+    -webkit-transition: 0.3s all;
+    transition: 0.3s all;
+    border-radius: 0px;
+}
+
+.wrapper .input:focus {
+    -webkit-box-shadow: 0px 0px 0px 1px #16225a inset, 0px 0px 0px 0px #16225a;
+    box-shadow: 0px 0px 0px 1px #16225a inset, 0px 0px 0px 0px #16225a;
+    outline: 0px;
+}
+
+.wrapper span, .wrapper label, .wrapper p {
+    font-size: 14px;
+}
+
+.wrapper p a{
+    color: #4caf50;
+    font-weight: 500;
+}
+
+.wrapper p a:hover{
+    text-decoration: none;
+}
+    
+.wrapper .primary-btn {
+    color: #FFF;
+    background-color: #4caf50;
+    display: inline-block;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: none;
+    -webkit-transition: 0.3s all;
+    transition: 0.3s all;
+    cursor: pointer;
+}
+
+.wrapper .primary-btn:hover, .wrapper .primary-btn:focus {
+    color: #FFF;
+    background-color: #30323A;
+}
+    
+.wrapper button i {
+    margin-left: 10px;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.wrapper button:hover i,
+.wrapper button:focus i,
+.wrapper button:active i {
+    -webkit-animation-name: hvr-icon-wobble-horizontal;
+    animation-name: hvr-icon-wobble-horizontal;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+}
+
+.help-block {
+    color: #ff0000;
+}
+
+@-webkit-keyframes hvr-icon-wobble-horizontal {
+    16.65% {
+        -webkit-transform: translateX(6px);
+        transform: translateX(6px);
+    }
+
+    33.3% {
+        -webkit-transform: translateX(-5px);
+        transform: translateX(-5px);
+    }
+
+    49.95% {
+        -webkit-transform: translateX(4px);
+        transform: translateX(4px);
+    }
+
+    66.6% {
+        -webkit-transform: translateX(-2px);
+        transform: translateX(-2px);
+    }
+
+    83.25% {
+        -webkit-transform: translateX(1px);
+        transform: translateX(1px);
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+@keyframes hvr-icon-wobble-horizontal {
+    16.65% {
+        -webkit-transform: translateX(6px);
+        transform: translateX(6px);
+    }
+
+    33.3% {
+        -webkit-transform: translateX(-5px);
+        transform: translateX(-5px);
+    }
+
+    49.95% {
+        -webkit-transform: translateX(4px);
+        transform: translateX(4px);
+    }
+
+    66.6% {
+        -webkit-transform: translateX(-2px);
+        transform: translateX(-2px);
+    }
+
+    83.25% {
+        -webkit-transform: translateX(1px);
+        transform: translateX(1px);
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 1199px) {
+    .wrapper {
+        background-position: right center;
+    }
+}
+
+@media (max-width: 991px) {
+    .wrapper .inner form {
+        padding-top: 10px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    .wrapper .inner {
+        display: block;
+    }
+
+    .wrapper .inner .image-holder {
+        width: 100%;
+    }
+
+    .wrapper .inner form {
+        width: 100%;
+        padding: 40px 0 30px;
+    }
+}
