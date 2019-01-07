@@ -1,108 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
-  <title>SRB | <?php echo $pageTitle; ?></title>
-  <link rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrap.min.css'; ?>">
-  <link rel="stylesheet" href="<?php echo base_url().'assets/css/bootstrapValidator.min.css';?>">
-  <link rel="stylesheet" href="<?php echo base_url().'assets/css/style.css'?>">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SRB | <?php echo $pageTitle; ?></title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrapValidator.min.css'); ?>">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/ionicons.min.css'); ?>">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/AdminLTE.min.css'); ?>">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body style="background-image: url(<?php echo base_url().'assets/img/login.jpg';?>);background-size: cover;">
-  <?php if($this->session->flashdata('success')): ?>
-    <div class="alert_msg1 animated slideInUp bg-succ">
-      <?php echo $this->session->flashdata('success');?> &nbsp; <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i>
-    </div>
-  <?php endif; ?>
-  <?php if($this->session->flashdata('error')): ?>
-    <div class="alert_msg1 animated slideInUp bg-warn">
-      <?php echo $this->session->flashdata('error');?> &nbsp; <i class="fa fa-exclamation-triangle text-success ico_bac" aria-hidden="true"></i>
-    </div>
-  <?php endif; ?>
-  <div id="app">
-    <section class="section">
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
-            <div class="login-brand text-white">
-              <h1>SRB</h1>
-            </div>
-            <div class="card card-primary">
-              <div class="card-header">
-                <h4>Login</h4>
-              </div>
-              <div class="card-body">
-                <form id="loginForm" method="post" action="<?php echo base_url('admin/get_access');?>">
-                  <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" id="email" name="email" class="form-control"
-                    value="<?php if($this->input->cookie('remember')){
-                      echo $this->input->cookie('username');
-                    } ?>">
-                  </div>
-                  <div class="form-group">
-                    <label class="d-block">Password</label>
-                    <input type="password" id="password" name="password" class="form-control"
-                    value="<?php if($this->input->cookie('remember')){
-                      echo $this->input->cookie('password');
-                    } ?>">
-                  </div>
-                  <div class="form-group mb-5">
-                    <label>
-                      <input type="checkbox"  name='remember_me'> Remember Me
-                    </label>
-                    <div class="float-right">
-                      <a href="<?php echo base_url('login/forgot_password'); ?>">
-                        Forgot Password?
-                      </a>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block">
-                      Login
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
+
+<body class="hold-transition login-page" style="background:url(<?php echo base_url('assets/img/admin/banner-2-1920x1280.jpg'); ?>);background-size:cover;">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="<?php echo base_url('admin/login'); ?>"><b style="color: white;">Login</b></a>
         </div>
-      </div>
-    </section>
-  </div>
-  <script src="<?php echo base_url().'assets/js/jquery.min.js';?>"></script>
-  <script src="<?php echo base_url().'assets/js/popper.js';?>"></script>
-  <script src="<?php echo base_url().'assets/js/bootstrap.min.js';?>"></script>
-  <script src="<?php echo base_url().'assets/js/bootstrapValidator.min.js'?>"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('#loginForm').bootstrapValidator({
-        fields: {
-          email: {
-            validators: {
-              notEmpty: {
-                message: 'Email is required'
-              },
-              regexp: {
-                regexp: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-                message: 'Please enter a valid email address. For example johndoe@domain.com.'
+        <!-- /.login-logo -->
+        <div class="login-box-body">
+            <p class="login-box-msg">Sign in to start your session</p>
+
+            <form id="loginForm" method="post" action="<?php echo base_url('admin/get_access');?>">
+                <div class="form-group has-feedback">
+                  <input type="text" id="email" name="email" class="form-control" placeholder="Email"
+                  value="">
+                    <span class="fa fa-envelope form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                  <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                  value="">
+                    <span class="fa fa-lock form-control-feedback"></span>
+                </div>
+                <div class="row pull-right">
+                    <div class="col-md-12">
+                        <a href="forgot_password.php">I forgot my password</a>
+                    </div>
+                </div>
+                <div class="clearfix">&nbsp;</div>
+                <br>
+                <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            </form>
+
+        </div>
+        <!-- /.login-box-body -->
+    </div>
+    <!-- /.login-box -->
+
+    <!-- jQuery 3 -->
+    <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/bootstrapValidator.min.js'); ?>"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#loginForm').bootstrapValidator({
+          fields: {
+            email: {
+              validators: {
+                notEmpty: {
+                  message: 'Email is required'
+                },
+                regexp: {
+                  regexp: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                  message: 'Please enter a valid email address. For example johndoe@domain.com.'
+                }
               }
-            }
-          },
-          password: {
-            validators: {
-              notEmpty: {
-                message: 'Password is required'
-              },
-              regexp: {
-                regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
-                  message:'Password wont allow <> [] = % '
+            },
+            password: {
+              validators: {
+                notEmpty: {
+                  message: 'Password is required'
+                },
+                regexp: {
+                  regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
+                    message:'Password wont allow <> [] = % '
+                  }
                 }
               }
             }
-          }
+          });
         });
-      });
-  </script>
+    </script>
+
 </body>
+
 </html>
