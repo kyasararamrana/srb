@@ -26,20 +26,20 @@
                         <!-- The user image in the navbar-->
                         <img src="<?php echo base_url('assets/img/admin/user2-160x160.jpg'); ?>" class="user-image" alt="User Image">
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs"><?php echo $this->session->userdata('first_name').$this->session->userdata('last_name'); ?></span>
+                        <span class="hidden-xs"><?php echo $this->session->userdata('name'); ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
                             <img src="<?php echo base_url('assets/img/admin/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
                             <p>
-                                <?php echo $this->session->userdata('first_name').$this->session->userdata('last_name'); ?>
+                                <?php echo $this->session->userdata('name'); ?>
                             </p>
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="profile.php" class="btn btn-default btn-flat">Profile</a>
+                                <a href="<?php echo base_url('admin/profile'); ?>" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
                                 <a href="<?php echo base_url('admin/logout');?>" class="btn btn-default btn-flat">Sign out</a>

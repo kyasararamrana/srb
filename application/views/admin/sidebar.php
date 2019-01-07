@@ -10,7 +10,7 @@
                 <img src="<?php echo base_url('assets/img/admin/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p><?php echo $this->session->userdata('first_name').$this->session->userdata('last_name'); ?></p>
+                <p><?php echo $this->session->userdata('name'); ?></p>
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -52,7 +52,7 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="add_product.php">Add Product</a></li>
+                    <li><a href="<?php echo base_url('products/create'); ?>">Add Product</a></li>
                     <li><a href="product_list.php">Products List</a></li>
                 </ul>
             </li>

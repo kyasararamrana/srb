@@ -15,32 +15,67 @@ class Products extends CI_Controller
   //admin product list
   public function index($value='')
   {
-    // code...
+    if ($this->session->userdata('logged_in') == TRUE) {
+
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
   }
   //admin create product - view
-  public function create($value='')
+  public function create()
   {
-    // code...
+    if ($this->session->userdata('logged_in') == TRUE) {
+      $arg['pageTitle'] = 'Product';
+      $data = components($arg);
+      $data['categories'] = $this->category_model->get_active_categories();
+      $this->load->view('admin/product',$data);
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
+
   }
   //admin edit product - view
   public function edit($value='')
   {
-    // code...
+    if ($this->session->userdata('logged_in') == TRUE) {
+
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
+
   }
   //admin update product
   public function update($value='')
   {
-    // code...
+    if ($this->session->userdata('logged_in') == TRUE) {
+
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
   }
   //admin delete product
   public function delete($value='')
   {
-    // code...
+    if ($this->session->userdata('logged_in') == TRUE) {
+
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
   }
   //admin change product status
   public function status($value='')
   {
-    // code...
+    if ($this->session->userdata('logged_in') == TRUE) {
+
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
   }
   //home products by id
   public function products($id='')
