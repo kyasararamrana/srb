@@ -20,26 +20,26 @@
             <div class="image-holder">
                 <img src="<?php echo base_url('assets/img/rg-form-1.jpg'); ?>" alt="">
             </div>
-            <form id="reisterForm" name="reisterForm" action="<?php echo base_url('home/insert'); ?>" method="post">
+            <form id="registerForm" name="reisterForm" action="<?php echo base_url('home/insert'); ?>" method="post">
                 <h3>Registration Form</h3>
                 <div class="form-group">
-                    <input type="text" name="firstname" placeholder="First Name" class="form-control input">
+                    <input type="text" name="firstname" placeholder="First Name" class="form-control input" value="<?php echo set_value('firstname'); ?>">
                     <?php echo form_error('firstname'); ?>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="lastname" placeholder="Last Name" class="form-control input">
+                    <input type="text" name="lastname" placeholder="Last Name" class="form-control input" value="<?php echo set_value('lastname'); ?>">
                     <?php echo form_error('lastname'); ?>
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" placeholder="Email Address" class="form-control input">
+                    <input type="email" name="email" placeholder="Email Address" class="form-control input" value="<?php echo set_value('email'); ?>">
                     <?php echo form_error('email'); ?>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="mobile" placeholder="Mobile Number" class="form-control input">
+                    <input type="text" name="mobile" placeholder="Mobile Number" class="form-control input" value="<?php echo set_value('mobile'); ?>">
                     <?php echo form_error('mobile'); ?>
                 </div>
                 <div class="form-group">
-                    <input type="password" name="password" placeholder="Password" class="form-control input">
+                    <input type="password" name="password" placeholder="Password" class="form-control input" value="<?php echo set_value('forename'); ?>">
                     <?php echo form_error('password'); ?>
                 </div>
                 <div class="form-group">
@@ -63,6 +63,7 @@
     <script src="<?php echo base_url('assets/js/bootstrapValidator.min.js'); ?>"></script>
     <script type="text/javascript">
     $(document).ready(function() {
+      $('#registerForm').bootstrapValidator({
             fields: {
                 firstname: {
                     validators: {

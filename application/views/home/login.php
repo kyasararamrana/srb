@@ -23,10 +23,12 @@
             <form id="loginForm" name="loginForm" action="<?php echo base_url('home/get_access'); ?>" method="post">
                 <h3>Login Form</h3>
                 <div class="form-group">
-                    <input type="email" name="email" placeholder="Email Address" class="form-control input">
+                    <input type="email" name="email" placeholder="Email Address" class="form-control input" <?php echo set_value('email'); ?>>
+                    <?php echo form_error('email'); ?>
                 </div>
                 <div class="form-group">
-                    <input type="password" name="password" placeholder="Password" class="form-control input">
+                    <input type="password" name="password" placeholder="Password" class="form-control input" <?php echo set_value('password'); ?>>
+                    <?php echo form_error('password'); ?>
                 </div>
                 <div class="form-group">
                     <label class="float-left"><input type="checkbox"> Remember Password</label>
@@ -51,35 +53,35 @@
     <script src="<?php echo base_url('assets/js/bootstrap.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrapValidator.min.js'); ?>"></script>
     <script type="text/javascript">
-    $(document).ready(function() {
+      $(document).ready(function() {
 
-        $('#loginForm').bootstrapValidator({
-            fields: {
-                email: {
-                   validators: {
-                        notEmpty: {
-                            message: 'Email is required'
-                        },
-                        regexp: {
-                        regexp: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-                        message: 'Please enter a valid email address. For example johndoe@domain.com.'
-                        }
-                    }
-                },
-                password: {
-                   validators: {
-                        notEmpty: {
-                            message: 'Password is required'
-                        },
-                        regexp: {
-                        regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
-                        message:'Password wont allow <> [] = % '
-                        }
-                    }
-                }
-            }
-        });
-    });
+          $('#loginForm').bootstrapValidator({
+              fields: {
+                  email: {
+                     validators: {
+                          notEmpty: {
+                              message: 'Email is required'
+                          },
+                          regexp: {
+                          regexp: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                          message: 'Please enter a valid email address. For example johndoe@domain.com.'
+                          }
+                      }
+                  },
+                  password: {
+                     validators: {
+                          notEmpty: {
+                              message: 'Password is required'
+                          },
+                          regexp: {
+                          regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
+                          message:'Password wont allow <> [] = % '
+                          }
+                      }
+                  }
+              }
+          });
+      });
     </script>
 </body>
 

@@ -31,16 +31,26 @@ class Home extends CI_Controller
   {
     $post_data = $this->input->post();
     if ($post_data) {
-      $email = $this->input->post('email');
-      $password = $this->input->post('password');
-      $password = md5($password);
-      $result = $this->home_model->get_access($email,$password);
-      if ($result) {
-        $user_data = array('firstname' => $result->firstname, 'lastname' => $result->lastname, 'email' => $result->email, 'mobile' => $result->mobile, 'logged_in' => TRUE);
-        $this->session->set_userdata($user_data);
-        redirect('home');
+      //validations
+      $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
+      $this->form_validation->set_rules('email', 'Email Address ', 'required');
+      $this->form_validation->set_rules('password', 'Password ', 'required');
+      if ($this->form_validation->run() == FALSE) {
+        $data['pageTitle'] = 'Login';
+        $this->load->view('home/login',$data);
       } else {
-        redirect('home/login');
+        //getting user data from database
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+        $password = md5($password);
+        $result = $this->home_model->get_access($email,$password);
+        if ($result) {
+          $user_data = array('firstname' => $result->firstname, 'lastname' => $result->lastname, 'email' => $result->email, 'mobile' => $result->mobile, 'logged_in' => TRUE);
+          $this->session->set_userdata($user_data);
+          redirect('home');
+        } else {
+          redirect('home/login');
+        }
       }
     } else {
       redirect('home/login');
@@ -57,6 +67,7 @@ class Home extends CI_Controller
   {
     $post_data = $this->input->post();
     if ($post_data) {
+      //validations
       $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
       $this->form_validation->set_rules('firstname', 'First Name', 'required');
       $this->form_validation->set_rules('lastname', 'Last Name ', 'required');
@@ -68,6 +79,7 @@ class Home extends CI_Controller
         $data['pageTitle'] = 'Register';
         $this->load->view('home/register',$data);
       } else {
+        //inserting data into database
         unset($post_data['confirmpassword']);
         $addl_data = array('created_on' => date('Y-m-d H:i:s'),'status' => '1','password' => md5($post_data['password']));
         $post_data = array_merge($post_data,$addl_data);
