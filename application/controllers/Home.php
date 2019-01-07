@@ -11,6 +11,7 @@ class Home extends CI_Controller
   {
     parent::__construct();
     $this->load->model('home_model');
+    $this->load->library('form_validation');
   }
   //home page
   public function index()
@@ -56,26 +57,38 @@ class Home extends CI_Controller
   {
     $post_data = $this->input->post();
     if ($post_data) {
-      unset($post_data['confirmpassword']);
-      $addl_data = array('created_on' => date('Y-m-d H:i:s'),'status' => '1','password' => md5($post_data['password']));
-      $post_data = array_merge($post_data,$addl_data);
-      if ($this->home_model->insert($post_data)) {
-        $this->session->set_flashdata('success','Registered successfully');
-        $email = $this->input->post('email');
-        $password = $this->input->post('password');
-        $password = md5($password);
-        $result = $this->home_model->get_access($email,$password);
-        //sending email
-        email('rana@prachatech.com',$result->email,$subject='Registation successfully',$message='Registation successfully for "$result->firstname"');
-        //-->
-        if ($result) {
-          $user_data = array('firstname' => $result->firstname, 'lastname' => $result->lastname, 'email' => $result->email, 'mobile' => $result->mobile, 'logged_in' => TRUE);
-          $this->session->set_userdata($user_data);
-          redirect('home');
-        }
+      $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
+      $this->form_validation->set_rules('firstname', 'First Name', 'required');
+      $this->form_validation->set_rules('lastname', 'Last Name ', 'required');
+      $this->form_validation->set_rules('email', 'Email Address ', 'required');
+      $this->form_validation->set_rules('mobile', 'Mobile Number ', 'required');
+      $this->form_validation->set_rules('password', 'Password ', 'required');
+      $this->form_validation->set_rules('confirmpassword', 'confirm Password ', 'required');
+      if ($this->form_validation->run() == FALSE) {
+        $data['pageTitle'] = 'Register';
+        $this->load->view('home/register',$data);
       } else {
-        $this->session->set_flashdata('error','Please try again');
-        redirect('home/register');
+        unset($post_data['confirmpassword']);
+        $addl_data = array('created_on' => date('Y-m-d H:i:s'),'status' => '1','password' => md5($post_data['password']));
+        $post_data = array_merge($post_data,$addl_data);
+        if ($this->home_model->insert($post_data)) {
+          $this->session->set_flashdata('success','Registered successfully');
+          $email = $this->input->post('email');
+          $password = $this->input->post('password');
+          $password = md5($password);
+          $result = $this->home_model->get_access($email,$password);
+          //sending email
+          email('rana@prachatech.com',$result->email,$subject='Registation successfully',$message='Registation successfully for "$result->firstname"');
+          //-->
+          if ($result) {
+            $user_data = array('firstname' => $result->firstname, 'lastname' => $result->lastname, 'email' => $result->email, 'mobile' => $result->mobile, 'logged_in' => TRUE);
+            $this->session->set_userdata($user_data);
+            redirect('home');
+          }
+        } else {
+          $this->session->set_flashdata('error','Please try again');
+          redirect('home/register');
+        }
       }
     } else {
       $this->session->set_flashdata('error','Please try again');

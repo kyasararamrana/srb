@@ -24,21 +24,27 @@
                 <h3>Registration Form</h3>
                 <div class="form-group">
                     <input type="text" name="firstname" placeholder="First Name" class="form-control input">
+                    <?php echo form_error('firstname'); ?>
                 </div>
                 <div class="form-group">
                     <input type="text" name="lastname" placeholder="Last Name" class="form-control input">
+                    <?php echo form_error('lastname'); ?>
                 </div>
                 <div class="form-group">
                     <input type="email" name="email" placeholder="Email Address" class="form-control input">
+                    <?php echo form_error('email'); ?>
                 </div>
                 <div class="form-group">
                     <input type="text" name="mobile" placeholder="Mobile Number" class="form-control input">
+                    <?php echo form_error('mobile'); ?>
                 </div>
                 <div class="form-group">
                     <input type="password" name="password" placeholder="Password" class="form-control input">
+                    <?php echo form_error('password'); ?>
                 </div>
                 <div class="form-group">
                     <input type="password" name="confirmpassword" placeholder="Confirm Password" class="form-control input">
+                    <?php echo form_error('confirmpassword'); ?>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="primary-btn">Register<i class="fas fa-arrow-right"></i></button>
@@ -57,7 +63,6 @@
     <script src="<?php echo base_url('assets/js/bootstrapValidator.min.js'); ?>"></script>
     <script type="text/javascript">
     $(document).ready(function() {
-        $('#reisterForm').bootstrapValidator({
             fields: {
                 firstname: {
                     validators: {
