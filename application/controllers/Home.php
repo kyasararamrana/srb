@@ -85,7 +85,7 @@ class Home extends CI_Controller
   //check email exists
   public function check_exists()
   {
-    $email = $this->input->get('email');
+    $email = $this->input->post('email');
     if ($this->home_model->check_exists($email)) {
       $isAvailable = false;
     } else {

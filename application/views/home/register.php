@@ -87,11 +87,9 @@
                             message: 'Email is required'
                         },
                         remote: {
-                          message: 'Email already exists',
+                          type: 'POST',
                           url: '<?php echo base_url('home/check_exists'); ?>',
-                          data: {
-                            type: 'email'
-                          }
+                          message: 'Email already exists',
                         },
                         regexp: {
                           regexp: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
