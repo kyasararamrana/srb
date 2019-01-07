@@ -99,7 +99,7 @@ class Admin extends CI_Controller
         $config['max_height']    = 128;
         $this->load->library('upload', $config);
         if ( ! $this->upload->do_upload('image')) {
-          $error = array('error' => $this->upload->display_errors());
+          $error = $this->upload->display_errors();
           $this->session->set_flashdata('error',$error);
           redirect('admin/edit_profile');
         } else {
