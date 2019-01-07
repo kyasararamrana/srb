@@ -1,87 +1,87 @@
-  <div class="main-sidebar">
-    <aside id="sidebar-wrapper">
-      <div class="sidebar-brand">
-        <a href="<?php echo base_url('admin');?>">SRB</a>
-      </div>
-      <div class="sidebar-user">
-        <div class="sidebar-user-picture">
-          <img alt="image" src="<?php echo base_url().'assets/uploads/profile_pics/profilepic.png'; ?>">
-        </div>
-        <div class="sidebar-user-details">
-          <div class="user-name"><?php echo $this->session->userdata('email'); ?>
-        </div>
-        <div class="user-role">
-          Administrator
-        </div>
-      </div>
-    </div>
-    <ul class="sidebar-menu">
-      <li class="active">
-        <a href="<?php echo base_url('admin');?>"><i class="ion ion-speedometer"></i><span>Dashboard</span></a>
-      </li>
-      <!-- <li>
-        <a href="#" class="has-dropdown"><i class="ion ion-pricetags"></i><span>Main Sliders</span></a>
-        <ul class="menu-dropdown">
-          <li><a href="<?php  echo base_url('slider/addslider'); ?>"><i class="ion ion-ios-circle-outline"></i>Add Slider</a></li>
-          <li><a href="<?php  echo base_url('slider/slider_list'); ?>"><i class="ion ion-ios-circle-outline"></i>Slider List</a></li>
-        </ul>
-      </li> -->
-      <li>
-        <a href="#" class="has-dropdown"><i class="ion ion-pricetags"></i><span>Categories</span></a>
-        <ul class="menu-dropdown">
-          <li><a href="<?php echo base_url('category/create');?>"><i class="ion ion-ios-circle-outline"></i>Add Category</a></li>
-          <li><a href="<?php echo base_url('category');?>"><i class="ion ion-ios-circle-outline"></i>Categories List</a></li>
-          <!-- <li><a href="<?php echo base_url('category/add_discount_image');?>"><i class="ion ion-ios-circle-outline"></i> Add Discount Image</a></li>
-          <li><a href="<?php echo base_url('category/add_sub_category');?>"><i class="ion ion-ios-circle-outline"></i>Add Sub Category</a></li>
-          <li><a href="<?php echo base_url('category/add_subcategory_slider');?>"><i class="ion ion-ios-circle-outline"></i>Add Sub Category Slider</a></li>
-          <li><a href="<?php echo base_url('category/subcat_slider_list');?>"><i class="ion ion-ios-circle-outline"></i> Sub Category Slider List</a></li>
-          <li><a href="<?php echo base_url('category/sub_category_list');?>"><i class="ion ion-ios-circle-outline"></i>Sub Categories List</a></li> -->
-        </ul>
-      </li>
-      <li>
-        <a href="#" class="has-dropdown"><i class="ion ion-ios-albums-outline"></i><span>Products</span></a>
-        <ul class="menu-dropdown">
-          <li><a href="<?php echo base_url('product/add_product');?>"><i class="ion ion-ios-circle-outline"></i>Add Product</a></li>
-          <li><a href="<?php echo base_url('product/product_list');?>"><i class="ion ion-ios-circle-outline"></i>Products List</a></li>
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
 
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="<?php echo base_url('assets/img/admin/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p>Alexander Pierce</p>
+                <!-- Status -->
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+
+        <!-- search form (Optional) -->
+        <!--<form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>
+        <!-- /.search form -->
+
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">HEADER</li>
+            <li class="active"><a href="index.php"><i class="fa fa-link"></i> <span>Logo</span></a></li>
+            <li class="header">SHOP PAGE</li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-tags"></i> <span>Category</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?php echo base_url('category/create'); ?>">Add Category</a></li>
+                    <li><a href="category_list.php">Categories List</a></li>
+                </ul>
+            </li>
+            <li class="header">PRODUCT PAGE</li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-cube"></i> <span>Product</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="add_product.php">Add Product</a></li>
+                    <li><a href="product_list.php">Products List</a></li>
+                </ul>
+            </li>
+            <li><a href="addons.php"><i class="fa fa-puzzle-piece"></i> <span>Addons</span></a></li>
+            <li class="header">HOME PAGE</li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-image"></i> <span>Home Banner</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="add_banner.php">Add Banner</a></li>
+                    <li><a href="banner_list.php">Banners List</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-sliders"></i> <span>Sliders</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="add_slider.php">Add Sliders</a></li>
+                    <li><a href="slider_list.php">Sliders List</a></li>
+                </ul>
+            </li>
         </ul>
-      </li>
-      <!-- <li>
-        <a href="#" class="has-dropdown"><i class="ion ion-ios-cart"></i><span>Orders</span></a>
-        <ul class="menu-dropdown">
-          <li><a href="<?php echo base_url('orders/total_order_list');?>"><i class="ion ion-ios-circle-outline"></i>Total Orders List</a></li>
-          <li><a href="<?php echo base_url('orders/pending_order_list');?>"><i class="ion ion-ios-circle-outline"></i>Pending Order List</a></li>
-          <li><a href="<?php echo base_url('orders/delivered_order_list');?>"><i class="ion ion-ios-circle-outline"></i>Delivered Order List</a></li>
-          <li><a href="<?php echo base_url('orders/cancel_order_list');?>"><i class="ion ion-ios-circle-outline"></i>Cancel Order List</a></li>
-        </ul>
-      </li> -->
-      <!-- <li>
-        <a href="#" class="has-dropdown"><i class="ion ion-ios-cart"></i><span>Milk Orders</span></a>
-        <ul class="menu-dropdown">
-          <li><a href="<?php echo base_url('milkorder/total_order_list');?>"><i class="ion ion-ios-circle-outline"></i>Total Orders List</a></li>
-          <li><a href="<?php echo base_url('milkorder/pending_order_list');?>"><i class="ion ion-ios-circle-outline"></i>Pending Order List</a></li>
-          <li><a href="<?php echo base_url('milkorder/delivered_order_list');?>"><i class="ion ion-ios-circle-outline"></i>Delivered Order List</a></li>
-          <li><a href="<?php echo base_url('milkorder/cancel_order_list');?>"><i class="ion ion-ios-circle-outline"></i>Cancel Order List</a></li>
-        </ul>
-      </li> -->
-      <!-- <li>
-        <a href="#" class="has-dropdown"><i class="ion ion-pricetags"></i><span>Apartments</span></a>
-        <ul class="menu-dropdown">
-          <li><a href="<?php  echo base_url('apartment/add_apartment'); ?>"><i class="ion ion-ios-circle-outline"></i>Add Apartment</a></li>
-          <li><a href="<?php  echo base_url('apartment/apartment_list'); ?>"><i class="ion ion-ios-circle-outline"></i>Apartment List</a></li>
-          <li><a href="<?php  echo base_url('apartment/add_block'); ?>"><i class="ion ion-ios-circle-outline"></i>Add Block</a></li>
-          <li><a href="<?php  echo base_url('apartment/block_list'); ?>"><i class="ion ion-ios-circle-outline"></i>Block List</a></li>
-        </ul>
-      </li> -->
-      <!-- <li>
-        <a href="#" class="has-dropdown"><i class="ion ion-pricetags"></i><span>Users</span></a>
-        <ul class="menu-dropdown">
-          <li><a href="<?php  echo base_url('user/add_user'); ?>"><i class="ion ion-ios-circle-outline"></i>Add User</a></li>
-          <li><a href="<?php  echo base_url('user/user_list'); ?>"><i class="ion ion-ios-circle-outline"></i>User List</a></li>
-          <li><a href="<?php  echo base_url('user/add_address'); ?>"><i class="ion ion-ios-circle-outline"></i>Add Address</a></li>
-          <li><a href="<?php  echo base_url('user/address_list'); ?>"><i class="ion ion-ios-circle-outline"></i>Address List</a></li>
-        </ul>
-      </li> -->
-    </ul>
-  </aside>
-  </div>
+        <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+</aside>
