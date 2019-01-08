@@ -23,6 +23,7 @@ class Category extends CI_Controller
       $data['categories'] = $this->category_model->get_categories();
       $this->load->view('admin/categories',$data);
     } else {
+      $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
@@ -34,6 +35,7 @@ class Category extends CI_Controller
       $data = components($arg);
       $this->load->view('admin/category',$data);
     } else {
+      $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
@@ -46,14 +48,18 @@ class Category extends CI_Controller
         $addl_data = array('created_by' => $this->session->userdata('id'), 'created_on' => date('Y-m-d H:i:s'), 'status' => '1');
         $post_data = array_merge($post_data,$addl_data);
         if ($this->category_model->insert($post_data)) {
+          $this->session->set_flashdata('success','category created successfully');
           redirect('category');
         } else {
+          $this->session->set_flashdata('error','Please try again');
           redirect('category/create');
         }
       } else {
+        $this->session->set_flashdata('error','Please try again');
         redirect('category/create');
       }
     } else {
+      $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
@@ -66,6 +72,7 @@ class Category extends CI_Controller
       $data['category'] = $this->category_model->get_category_by_id($id);
       $this->load->view('admin/category',$data);
     } else {
+      $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
@@ -79,14 +86,18 @@ class Category extends CI_Controller
         $addl_data = array('updated_by' => $this->session->userdata('id'), 'updated_on' => date('Y-m-d H:i:s'), 'status' => '1');
         $post_data = array_merge($post_data,$addl_data);
         if ($this->category_model->update($post_data,$post_id)) {
+          $this->session->set_flashdata('success','Category updated successfully');
           redirect('category');
         } else {
+          $this->session->set_flashdata('error','Please try again');
           redirect($this->agent->referrer());
         }
       } else {
+        $this->session->set_flashdata('error','Please try again');
         redirect($this->agent->referrer());
       }
     } else {
+      $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
@@ -96,30 +107,40 @@ class Category extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $post_data = array('status' => '0');
       if ($this->category_model->update($post_data,$id)) {
+        $this->session->set_flashdata('success','Category deleted successfully');
         redirect('category');
       } else {
+        $this->session->set_flashdata('error','Please try again');
         redirect('category');
       }
     } else {
+      $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
   //change category status
   public function status()
   {
-    $status = $this->uri->segment(3);
-    $id = $this->uri->segment(4);
-    $sts = '';
-    if ($status == '1') {
-      $sts .= '2';
+    if ($this->session->userdata('logged_in') == TRUE) {
+      $status = $this->uri->segment(3);
+      $id = $this->uri->segment(4);
+      $sts = '';
+      if ($status == '1') {
+        $sts .= '2';
+      } else {
+        $sts .= '1';
+      }
+      $post_data = array('status' => $sts);
+      if ($this->category_model->update($post_data,$id)) {
+        $this->session->set_flashdata('success','Status changed successfully');
+        redirect('category');
+      } else {
+        $this->session->set_flashdata('error','Please try again');
+        redirect('category');
+      }
     } else {
-      $sts .= '1';
-    }
-    $post_data = array('status' => $sts);
-    if ($this->category_model->update($post_data,$id)) {
-      redirect('category');
-    } else {
-      redirect('category');
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
     }
   }
   //check category exists

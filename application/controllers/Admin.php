@@ -21,6 +21,7 @@ class Admin extends CI_Controller
       $data['category'] = $this->admin_model->get_categories_count();
       $this->load->view('admin/index',$data);
     } else {
+      $this->session->set_flashdata('error','Please login and try again');
       redirect('admin/login');
     }
   }
@@ -31,6 +32,7 @@ class Admin extends CI_Controller
       $data['pageTitle'] = 'Login';
       $this->load->view('admin/login',$data);
     } else {
+      $this->session->set_flashdata('error','Please login and try again');
       redirect('admin');
     }
   }
@@ -48,9 +50,11 @@ class Admin extends CI_Controller
         $this->session->set_userdata($user_data);
         redirect('/admin');
       } else {
+        $this->session->set_flashdata('error','Please try again');
         redirect('admin/login');
       }
     } else {
+      $this->session->set_flashdata('error','Please login and try again');
       redirect('admin/login');
     }
   }
@@ -59,6 +63,7 @@ class Admin extends CI_Controller
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $this->session->sess_destroy();
+      $this->session->set_flashdata('success','Loggedout successfully');
       redirect('admin/login');
     }
   }
@@ -71,6 +76,7 @@ class Admin extends CI_Controller
       $data['profile'] = $this->admin_model->get_user_data();
       $this->load->view('admin/profile',$data);
     } else {
+      $this->session->set_flashdata('error','Please login and try again');
       redirect('admin/login');
     }
   }
@@ -83,6 +89,7 @@ class Admin extends CI_Controller
       $data['profile'] = $this->admin_model->get_user_data();
       $this->load->view('admin/edit_profile',$data);
     } else {
+      $this->session->set_flashdata('error','Please login and try again');
       redirect('admin/login');
     }
 
@@ -94,7 +101,7 @@ class Admin extends CI_Controller
       $post_data = $this->input->post();
       if ($post_data) {
         $config['upload_path']   = './assets/uploads/admin/';
-        $config['allowed_types'] = 'png|jpeg|jpg|gif)';
+        $config['allowed_types'] = 'png|jpeg|jpg|gif';
         $config['max_width']     = 128;
         $config['max_height']    = 128;
         $this->load->library('upload', $config);
@@ -107,15 +114,19 @@ class Admin extends CI_Controller
           $image_data = array('image' => $this->upload->data('file_name'));
           $post_data = array_merge($post_data,$image_data);
           if ($this->admin_model->update_profile($post_data,$post_id)) {
+            $this->session->set_flashdata('success','Profile updated successfully');
             redirect('admin/profile');
           } else {
+            $this->session->set_flashdata('error','Please try again');
             redirect('admin/edit_profile');
           }
         }
       } else {
+        $this->session->set_flashdata('error','Please try again');
         redirect('admin/edit_profile');
       }
     } else {
+      $this->session->set_flashdata('error','Please login and try again');
       redirect('admin/login');
     }
   }

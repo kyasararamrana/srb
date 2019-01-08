@@ -146,9 +146,6 @@
                 },
                 image: {
                     validators: {
-                        notEmpty: {
-                            message: 'Image is required'
-                        },
                         regexp: {
                             regexp: "(.*?)\.(png|jpeg|jpg|gif)$",
                             message: 'Uploaded file is not a valid. Only png,jpg,jpeg,gif files are allowed'
@@ -158,7 +155,7 @@
             }
         })
       });
-
+      //image preview
       function preview(input){
 			if(input.files && input.files[0]){
 				var reader = new FileReader();
