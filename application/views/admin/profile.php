@@ -41,7 +41,7 @@
                                     <a href="<?php echo base_url('admin/edit_profile'); ?>" class="btn btn-sm btn-info">
                                         <i class="fa fa-edit"></i> Edit Profile
                                     </a>
-                                    <a href="change_password.php" class="btn btn-sm btn-warning">
+                                    <a href="<?php echo base_url('admin/change_password'); ?>" class="btn btn-sm btn-warning">
                                         <i class="fa fa-wrench"></i> Change Password
                                     </a>
                                 </div>

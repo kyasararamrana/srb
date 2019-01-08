@@ -65,8 +65,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="add_banner.php">Add Banner</a></li>
-                    <li><a href="banner_list.php">Banners List</a></li>
+                    <li><a href="<?php echo base_url('banner/create'); ?>">Add Banner</a></li>
+                    <li><a href="<?php echo base_url('banner'); ?>">Banners List</a></li>
                 </ul>
             </li>
             <li class="treeview">

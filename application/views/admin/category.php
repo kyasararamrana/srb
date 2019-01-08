@@ -46,7 +46,7 @@
                                         </div>
                                     </div>
                                     <?php if (isset($category->id)) { ?>
-                                      <input type="hidden" name="id" value="<?php echo $category->id; ?>">
+                                      <input type="hidden" name="id" id="id" value="<?php echo $category->id; ?>">
                                     <?php } ?>
                                     <div class="clearfix">&nbsp;</div>
                                     <div class="col-md-6">
@@ -80,10 +80,13 @@
                   message: 'Category Name is required'
                 },
                 remote: {
+                  type : 'post',
                   message: 'Category Name already exists',
                   url: '<?php echo base_url('category/check_exists'); ?>',
-                  data: {
-                    type: 'name'
+                  data: function(validator, $field, value) {
+                    return {
+                      id: validator.getFieldElements('id').val()
+                    };
                   }
                 }
               }

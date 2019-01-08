@@ -130,6 +130,51 @@ class Admin extends CI_Controller
       redirect('admin/login');
     }
   }
+  //change password
+  public function change_password()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      $arg['pageTitle'] = 'Change Password';
+      $data = components($arg);
+      $this->load->view('admin/change_password',$data);
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
+  }
+  //update Password
+  public function update_password()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      $password = $this->input->post('newpassword');
+      $post_data = array('password' => md5($password), 'org_password' => $password);
+      if ($this->admin_model->change_password($post_data)) {
+        $this->session->set_flashdata('success','Password changed successfully');
+        redirect('admin/change_password');
+      } else {
+        $this->session->set_flashdata('error','Please try again');
+        redirect('admin/change_password');
+      }
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
+
+  }
+  //check old Password
+  public function check_password()
+  {
+    $old_password = $this->input->post('oldpassword');
+    $old_password = md5($old_password);
+    if($this->admin_model->check_password($old_password)){
+      $isAvailable = true;
+    } else {
+      $isAvailable = false;
+    }
+    echo json_encode(array(
+      'valid' => $isAvailable,
+    ));
+  }
 
 }
 

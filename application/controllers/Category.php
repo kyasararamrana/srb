@@ -146,8 +146,9 @@ class Category extends CI_Controller
   //check category exists
   public function check_exists()
   {
-    $name = $this->input->get('name');
-    if($this->category_model->check_exists($name)){
+    $name = $this->input->post('name');
+    $id = $this->input->post('id');
+    if($this->category_model->check_exists($name,$id)){
       $isAvailable = false;
     } else {
       $isAvailable = true;
