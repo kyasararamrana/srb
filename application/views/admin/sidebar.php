@@ -76,8 +76,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="add_slider.php">Add Sliders</a></li>
-                    <li><a href="slider_list.php">Sliders List</a></li>
+                    <li><a href="<?php echo base_url('slider/create'); ?>">Add Sliders</a></li>
+                    <li><a href="<?php echo base_url('slider'); ?>">Sliders List</a></li>
                 </ul>
             </li>
         </ul>

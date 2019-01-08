@@ -36,6 +36,22 @@ class Products extends CI_Controller
     }
 
   }
+  //admin insert product
+  public function insert()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      if ($this->product_model->insert($post_data)) {
+        $this->session->set_flashdata('success','Product inserted successfully');
+        redirect('products');
+      } else {
+        $this->session->set_flashdata('error','Please try again');
+        redirect('products/create');
+      }
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
+  }
   //admin edit product - view
   public function edit($value='')
   {
