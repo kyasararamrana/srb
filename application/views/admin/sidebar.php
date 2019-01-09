@@ -67,7 +67,7 @@
                 </ul>
             </li>
             <li class="header">HEADER</li>
-            <li class="active"><a href="index.php"><i class="fa fa-link"></i> <span>Logo</span></a></li>
+            <li class="active"><a href="<?php echo base_url('/logo'); ?>"><i class="fa fa-link"></i> <span>Logo</span></a></li>
         </ul>
         <!-- /.sidebar-menu -->
     </section>
