@@ -41,7 +41,7 @@
                                 <div class="box-body">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Category Name</label>
+                                            <label>Category Name <span class="text-danger">*</span></label>
                                             <input id="name" type="text" class="form-control" name="name" placeholder="Enter Category Name" value="<?php echo isset($category->name) ? $category->name : ''; ?>">
                                         </div>
                                     </div>

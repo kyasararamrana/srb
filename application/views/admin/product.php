@@ -37,17 +37,17 @@
                     <div class="col-md-12">
                         <div class="box box-success">
                             <!-- form start -->
-                            <form id="addProductForm" name="addProductForm" action="" method="">
+                            <form id="addProductForm" name="addProductForm" action="<?php if (isset($product->id)) { echo base_url('product/update'); } else { echo base_url('product/insert'); } ?>" method="post" enctype="multipart/form-data">
                                 <div class="box-body">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Category</label>
+                                                <label>Category <span class="text-danger">*</span></label>
                                                 <select class="form-control" name="category" id="category">
                                                     <option value=""><?php echo (count($categories) > 0) ? 'Select' : 'No categories found' ;  ?></option>
                                                     <?php if (count($categories) > 0) { ?>
                                                       <?php foreach ($categories as $c) { ?>
-                                                        <option value="<?php echo $c->id; ?>"><?php echo $c->name; ?></option>
+                                                        <option value="<?php echo $c->id; ?>" <?php echo (isset($product->category) && ($product->category == $c->id) ) ? 'selected' : '' ; ?>><?php echo $c->name; ?></option>
                                                       <?php } ?>
                                                     <?php } ?>
                                                 </select>
@@ -55,278 +55,51 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Product Name</label>
-                                                <input type="text" class="form-control" name="name" id="name">
+                                                <label>Product Name <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="name" id="name" value="<?php echo (isset($product->name)) ? $product->name : '' ; ?>">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Upload Product Images</label>
-                                                <input type="file" class="form-control" name="images" id="images" multiple>
+                                                <label>Product Image <span class="text-danger">*</span></label>
+                                                <input type="file" class="form-control" name="image" id="image">
                                             </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <?php if((isset($product->image) && !empty($product->image)) && file_exists('assets/uploads/product/'.$product->image)){ ?>
+                                              <img src="<?php echo base_url('assets/uploads/product/'.$product->image); ?>" alt="" class="img-thumbnail" id="upload_preview">
+                                            <?php } else { ?>
+                                              <img src="" alt="" class="img-thumbnail" id="upload_preview" style="display:none;">
+                                            <?php }?>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Description</label>
-                                                <textarea class="form-control" rows="4"></textarea>
+                                                <textarea class="form-control" name="description" id="description" rows="4"><?php echo (isset($product->description)) ? $product->description : '' ; ?></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Actual Price</label>
-                                                <input type="text" class="form-control" name="aprice" id="aprice">
+                                                <label>Actual Price <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="actual_price" id="actual_price" value="<?php echo (isset($product->actual_price)) ? (int)$product->actual_price : '' ; ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Discount Price</label>
-                                                <input type="text" class="form-control" name="dprice" id="dprice">
+                                                <label>Discount Percentage</label>
+                                                <input type="text" class="form-control" name="discount_percentage" id="discount_percentage" value="<?php echo (isset($product->discount_percentage)) ? $product->discount_percentage : '' ; ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Net Price</label>
-                                                <input type="text" class="form-control" name="nprice" id="nprice">
+                                                <label>Net Price <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="net_price" id="net_price" value="<?php echo (isset($product->net_price)) ? (int)$product->net_price : '' ; ?>">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-
-                                        <!-- col -->
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Material Type</label>
-                                                <select class="form-control" name="mtype" id="mtype">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">Nonwoven</option>
-                                                    <option value="2">Plastic</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Quality</label>
-                                                <select class="form-control" name="quality" id="quality">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">Dotted</option>
-                                                    <option value="2">Small dots</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Layout</label>
-                                                <select class="form-control" name="layout" id="layout">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">Horizontal</option>
-                                                    <option value="2">Vertical</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Stitching Type</label>
-                                                <select class="form-control" name="stitchtype" id="stitchtype">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">Single Side</option>
-                                                    <option value="2">Double Side</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Stitching Thread Color</label>
-                                                <select class="form-control" name="stitchcolor" id="stitchcolor">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">White</option>
-                                                    <option value="2">Red</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Suggested Printing color</label>
-                                                <select class="form-control" name="sugprintcolor" id="sugprintcolor">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">Red</option>
-                                                    <option value="2">Green</option>
-                                                    <option value="3">Black Blue</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Model Numbers</label>
-                                                <select class="form-control" name="modelnumbers" id="modelnumbers">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">D11</option>
-                                                    <option value="2">B12</option>
-                                                    <option value="3">C18</option>
-                                                    <option value="3">110</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Others</label>
-                                                <select class="form-control" name="others" id="others">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">Lays</option>
-                                                    <option value="2">Bits</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Priority</label>
-                                                <input type="text" class="form-control" name="priority" id="priority">
-                                            </div>
-                                        </div>
-
-                                        <!-- col -->
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Bag Size</label>
-                                                <select class="form-control" name="bsize" id="bsize">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">9x11</option>
-                                                    <option value="2">10x14</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Bag Color</label>
-                                                <select class="form-control" name="bcolor" id="bcolor">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">Ivory</option>
-                                                    <option value="2">White</option>
-                                                    <option value="3">R.Green</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Bag GSM</label>
-                                                <select class="form-control" name="bgsm" id="bgsm">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">70</option>
-                                                    <option value="2">90</option>
-                                                    <option value="3">110</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Zip Color</label>
-                                                <select class="form-control" name="zipcolor" id="zipcolor">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">Red</option>
-                                                    <option value="2">Green</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Zip Size</label>
-                                                <select class="form-control" name="zipsize" id="zipsize">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">50</option>
-                                                    <option value="2">60</option>
-                                                    <option value="3">70</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Zip Quality</label>
-                                                <select class="form-control" name="zipquality" id="zipquality">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">First</option>
-                                                    <option value="2">Second</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Printing Method</label>
-                                                <select class="form-control" name="printmethod" id="printmethod">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">Offset</option>
-                                                    <option value="2">Screen</option>
-                                                    <option value="3">Roll</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Printing Color Type</label>
-                                                <select class="form-control" name="printcolor" id="printcolor">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">Single</option>
-                                                    <option value="2">Double</option>
-                                                    <option value="3">Four</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Printing Style</label>
-                                                <select class="form-control" name="printstyle" id="printstyle">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">Half and Half</option>
-                                                    <option value="2">Same Image & Different Printing</option>
-                                                    <option value="3">One Side Printing</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <!-- col -->
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Handle Type</label>
-                                                <select class="form-control" name="handletype" id="handletype">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">Cloth</option>
-                                                    <option value="2">Plastic</option>
-                                                    <option value="3">Woolen</option>
-                                                    <option value="4">Stick</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Handle Size</label>
-                                                <select class="form-control" name="handlesize" id="handlesize">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">10x30</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Handle Color</label>
-                                                <select class="form-control" name="handlecolor" id="handlecolor">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">Ivory</option>
-                                                    <option value="2">White</option>
-                                                    <option value="3">R.Green</option>
-                                                    <option value="4">Printed Red</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Handle GSM</label>
-                                                <select class="form-control" name="handlegsm" id="handlegsm">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">70</option>
-                                                    <option value="2">90</option>
-                                                    <option value="3">110</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Sidepatty Type</label>
-                                                <select class="form-control" name="sidepattytype" id="sidepattytype">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">Piping</option>
-                                                    <option value="2">Common</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Sidepatty Size</label>
-                                                <select class="form-control" name="sidepattysize" id="sidepattysize">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">4</option>
-                                                    <option value="2">6</option>
-                                                    <option value="3">8</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Sidepatty Color</label>
-                                                <select class="form-control" name="sidepattycolor" id="sidepattycolor">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">Ivory</option>
-                                                    <option value="2">White</option>
-                                                    <option value="3">R.Green</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Sidepatty GSM</label>
-                                                <select class="form-control" name="sidepattygsm" id="sidepattygsm">
-                                                    <option value="0">Select</option>
-                                                    <option value="1">70</option>
-                                                    <option value="2">90</option>
-                                                    <option value="3">110</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
+                                    <!-- <div class="row">
                                         <div class="col-md-2">&nbsp;</div>
                                         <div class="col-md-2">
                                             <div class="form-group">
@@ -365,9 +138,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="clearfix">&nbsp;</div>
-
+                                    <?php if (isset($product->id)): ?>
+                                      <input type="hidden" name="id" id="id" value="<?php echo $product->id; ?>">
+                                      <input type="hidden" name="uploaded_image" value="<?php echo (isset($product->image)) ? $product->image : '' ; ?>">
+                                    <?php endif; ?>
                                     <div class="col-md-12 text-center">
                                         <button type="submit" class="btn btn-primary">Add</button>
                                     </div>
@@ -391,25 +167,87 @@
 
     <script type="text/javascript">
       $(document).ready(function(){
-        $('#categoryForm').bootstrapValidator({
+        //validations
+        $('#addProductForm').bootstrapValidator({
           fields: {
             name: {
               validators: {
                 notEmpty: {
-                  message: 'Category Name is required'
+                  message: 'Product Name is required'
                 },
                 remote: {
-                  message: 'Category Name already exists',
-                  url: '<?php echo base_url('category/check_exists'); ?>',
-                  data: {
-                    type: 'name'
+                  type:'POST',
+                  message: 'Product Name already exists',
+                  url: '<?php echo base_url('product/check_exists'); ?>',
+                  data: function(validator, $field, value) {
+                    return {
+                      id: validator.getFieldElements('id').val()
+                    };
                   }
+                }
+              }
+            },
+            category: {
+              validators: {
+                notEmpty: {
+                  message: 'Category is required'
+                }
+              }
+            },
+            image: {
+              validators: {
+                <?php if (!isset($product->id)){ ?>
+                notEmpty: {
+                  message: 'Product image is required'
+                },
+                <?php } ?>
+                regexp: {
+                    regexp: "(.*?)\.(png|jpeg|jpg|gif)$",
+                    message: 'Uploaded file is not a valid. Only png,jpg,jpeg,gif files are allowed'
+                }
+              }
+            },
+            actual_price:{
+              validators: {
+                notEmpty: {
+                  message: 'Actual price is required'
+                }
+              }
+            },
+            net_price:{
+              validators: {
+                notEmpty: {
+                  message: 'Net price is required'
                 }
               }
             }
           }
         });
+        //calculating Price
+        $('#actual_price').keyup(function(){
+            $('#net_price').val($('#actual_price').val());
+        });
+        $('#discount_percentage').keyup(function(){
+          var discount = $(this).val();
+          var price = $('#actual_price').val();
+          var calcPrice  = (price - ( price * discount / 100 ));
+          $('#net_price').val(calcPrice);
+        });
       });
+      //image preview
+      function preview(input){
+  			if(input.files && input.files[0]){
+  				var reader = new FileReader();
+  				reader.onload = function(e){
+  					$("#upload_preview").attr('src',e.target.result);
+  				}
+  				reader.readAsDataURL(input.files[0]);
+  			}
+  		}
+  		$("#image").on('change',function(){
+  			preview(this);
+  			$("#upload_preview").css('display','block');
+  		});
     </script>
 
 </body>

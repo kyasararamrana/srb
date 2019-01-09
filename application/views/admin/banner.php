@@ -41,7 +41,7 @@
                                 <div class="box-body">
                                   <div class="col-md-6">
                                       <div class="form-group">
-                                          <label>Banner Name</label>
+                                          <label>Banner Name <span class="text-danger">*</span></label>
                                           <input type="text" class="form-control" name="name" id="name" placeholder="Enter Banner Name" value="<?php echo (isset($banner->name)) ? $banner->name : '' ; ?>">
                                       </div>
                                   </div>
@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Upload Banner Image <span class="text-danger">(Dimension must be 780 x 438)</span></label>
+                                            <label>Banner Image <span class="text-danger">(Dimension must be 780 x 438) *</span></label>
                                             <input type="file" class="form-control" name="image" id="image">
                                         </div>
                                     </div>
