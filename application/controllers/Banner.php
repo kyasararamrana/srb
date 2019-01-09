@@ -46,6 +46,7 @@ class Banner extends CI_Controller
         $config['allowed_types'] = 'png|jpeg|jpg|gif';
         $config['max_width']     = 780;
         $config['max_height']    = 438;
+        $config['encrypt_name']  = TRUE;
         $this->load->library('upload', $config);
         if ( ! $this->upload->do_upload('image')) {
           $error = $this->upload->display_errors();
