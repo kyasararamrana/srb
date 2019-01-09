@@ -46,9 +46,9 @@
                                     </div>
                                     <div class="col-md-2">
                                       <?php if ((isset($logo->favicon) && !empty($logo->favicon)) && file_exists('assets/uploads/logo/'.$logo->favicon)) { ?>
-                                        <img src="<?php echo base_url('assets/uploads/logo/'.$logo->logo); ?>" alt="" class="img-thumbnail">
+                                        <img src="<?php echo base_url('assets/uploads/logo/'.$logo->logo); ?>" alt="" class="img-thumbnail upload_preview" id="">
                                       <?php } else { ?>
-                                        <img src="" alt="" class="img-thumbnail">
+                                        <img src="" alt="" class="img-thumbnail upload_preview" id="" style="display:none;">
                                       <?php } ?>
                                     </div>
                                     <div class="col-md-4">
@@ -59,9 +59,9 @@
                                     </div>
                                     <div class="col-md-2">
                                         <?php if ((isset($logo->favicon) && !empty($logo->favicon)) && file_exists('assets/uploads/logo/'.$logo->favicon)) { ?>
-                                          <img src="<?php echo base_url('assets/uploads/logo/'.$logo->favicon); ?>" alt="" class="img-thumbnail">
+                                          <img src="<?php echo base_url('assets/uploads/logo/'.$logo->favicon); ?>" alt="" class="img-thumbnail upload_preview" id="">
                                         <?php } else { ?>
-                                          <img src="" alt="" class="img-thumbnail">
+                                          <img src="" alt="" class="img-thumbnail upload_preview" id="" style="display:none;">
                                         <?php } ?>
                                     </div>
                                     <div class="col-md-6">
@@ -166,6 +166,20 @@
             })
 
         });
+        //image preview
+        function preview(input){
+    			if(input.files && input.files[0]){
+    				var reader = new FileReader();
+    				reader.onload = function(e){
+    					$(input).closest(".upload_preview").attr('src',e.target.result);
+    				}
+    				reader.readAsDataURL(input.files[0]);
+    			}
+    		}
+    		$("#logo,#favicon").on('change',function(){
+    			preview(this);
+    			$(this).closest(".upload_preview").css('display','block');
+    		});
     </script>
 
 </body>
