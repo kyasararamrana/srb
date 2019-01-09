@@ -94,15 +94,24 @@ class Banner extends CI_Controller
         $config['allowed_types'] = 'png|jpeg|jpg|gif';
         $config['max_width']     = 780;
         $config['max_height']    = 438;
+        $config['encrypt_name']  = TRUE;
         $this->load->library('upload', $config);
-        if (!$this->upload->do_upload('image')) {
+        if (!empty($_FILES['image']['name']) && (!$this->upload->do_upload('image'))) {
           $error = $this->upload->display_errors();
           $this->session->set_flashdata('error',$error);
           redirect($this->agent->referrer());
         } else {
           $post_id = $this->input->post('id');
-          $addl_data = array('image' => $this->upload->data('file_name'), 'updated_by' => $this->session->userdata('id'), 'updated_on' => date('Y-m-d H:i:s'), 'status' => '1');
+          $post_uploaded_image = $this->input->post('uploaded_image');
+          if (empty($_FILES['image']['name']) && isset($post_uploaded_image)) {
+            $image = $post_uploaded_image;
+          } else {
+            @unlink('./assets/uploads/banner/'.$post_uploaded_image);
+            $image = $this->upload->data('file_name');
+          }
+          $addl_data = array('image' => $image, 'updated_by' => $this->session->userdata('id'), 'updated_on' => date('Y-m-d H:i:s'), 'status' => '1');
           $post_data = array_merge($post_data,$addl_data);
+          unset($post_data['uploaded_image']);
           if ($this->banner_model->update($post_data,$post_id)) {
             $this->session->set_flashdata('success','Banner updated successfully');
             redirect('banner');

@@ -47,6 +47,7 @@ class Slider extends CI_Controller
         $config['allowed_types'] = 'png|jpeg|jpg|gif';
         $config['max_width']     = 420;
         $config['max_height']    = 420;
+        $config['encrypt_name']  = TRUE;
         $this->load->library('upload', $config);
         foreach ($post_data['heading'] as $key => $value) {
           $_FILES['image']['name'] = $_FILES['image']['name'][$key];
@@ -54,7 +55,7 @@ class Slider extends CI_Controller
           $_FILES['image']['tmp_name'] = $_FILES['image']['tmp_name'][$key];
           $_FILES['image']['error'] = $_FILES['image']['error'][$key];
           $_FILES['image']['size'] = $_FILES['image']['size'][$key];
-          $this->upload->do_upload('image');
+          $this->upload->do_upload();
           $image = $this->upload->data('file_name');
           if (!empty($post_data['heading'][$key]) && !empty($post_data['content'][$key]) && !empty($image)) {
             $this->slider_model->insert(array('heading' => $post_data['heading'][$key] , 'content' => $post_data['content'][$key] , 'image' => $image, 'created_on' => date('Y-m-d H:i:s') , 'created_by' => $this->session->userdata('id'), 'status' => '1'));

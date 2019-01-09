@@ -104,15 +104,24 @@ class Admin extends CI_Controller
         $config['allowed_types'] = 'png|jpeg|jpg|gif';
         $config['max_width']     = 128;
         $config['max_height']    = 128;
+        $config['encrypt_name']  = TRUE;
         $this->load->library('upload', $config);
-        if ( ! $this->upload->do_upload('image')) {
+        if (!empty($_FILES['image']['name']) && (!$this->upload->do_upload('image'))) {
           $error = $this->upload->display_errors();
           $this->session->set_flashdata('error',$error);
           redirect('admin/edit_profile');
         } else {
           $post_id = $this->input->post('id');
-          $image_data = array('image' => $this->upload->data('file_name'));
+          $post_uploaded_image = $this->input->post('uploaded_image');
+          if (empty($_FILES['image']['name']) && isset($post_uploaded_image)) {
+            $image = $post_uploaded_image;
+          } else {
+            @unlink('./assets/uploads/admin/'.$post_uploaded_image);
+            $image = $this->upload->data('file_name');
+          }
+          $image_data = array('image' => $image);
           $post_data = array_merge($post_data,$image_data);
+          unset($post_data['uploaded_image']);
           if ($this->admin_model->update_profile($post_data,$post_id)) {
             $this->session->set_flashdata('success','Profile updated successfully');
             redirect('admin/profile');

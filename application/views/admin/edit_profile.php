@@ -42,25 +42,25 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Name</label>
-                                            <input type="text" class="form-control" name="name" id="name" value="<?php echo ($profile->name) ? $profile->name : ''; ?>">
+                                            <input type="text" class="form-control" name="name" id="name" value="<?php echo (isset($profile->name)) ? $profile->name : ''; ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Email Id</label>
-                                            <input type="text" class="form-control" name="email" id="email" value="<?php echo ($profile->email) ? $profile->email : ''; ?>">
+                                            <input type="text" class="form-control" name="email" id="email" value="<?php echo (isset($profile->email)) ? $profile->email : ''; ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Phone Number</label>
-                                            <input type="text" class="form-control" name="phone" id="phone" value="<?php echo ($profile->phone) ? $profile->phone : ''; ?>">
+                                            <input type="text" class="form-control" name="phone" id="phone" value="<?php echo (isset($profile->phone)) ? $profile->phone : ''; ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Location</label>
-                                            <input type="text" class="form-control" name="location" id="location" value="<?php echo ($profile->location) ? $profile->location : ''; ?>">
+                                            <input type="text" class="form-control" name="location" id="location" value="<?php echo (isset($profile->location)) ? $profile->location : ''; ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -70,13 +70,14 @@
                                         </div>
                                     </div>
                                     <div class="col-md-2">
-                                      <?php if (isset($profile->image) && file_exists('assets/uploads/admin/'.$profile->image)) { ?>
+                                      <?php if ((isset($profile->image) && !empty($profile->image)) && file_exists('assets/uploads/admin/'.$profile->image)) { ?>
                                         <img class="profile-user-img img-responsive img-circle" id="upload_preview"  src="<?php echo base_url('assets/uploads/admin/'.$profile->image); ?>" alt="User profile picture">
                                       <?php } else { ?>
                                         <img class="profile-user-img img-responsive img-circle" id="upload_preview"  src="<?php echo base_url('assets/img/admin/user1-128x128.jpg'); ?>" alt="User profile picture">
                                       <?php } ?>
                                     </div>
-                                    <input type="hidden" name="id" value="<?php echo $profile->id; ?>">
+                                    <input type="hidden" name="id" value="<?php echo (isset($profile->id)) ? $profile->id : ''; ?>">
+                                    <input type="hidden" name="uploaded_image" value="<?php echo (isset($profile->image)) ? $profile->image : ''; ?>">
                                     <div class="clearfix">&nbsp;</div>
                                     <div class="col-md-6">
                                         <button type="submit" class="btn btn-primary">Save Changes</button>

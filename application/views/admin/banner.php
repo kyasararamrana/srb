@@ -65,6 +65,7 @@
                                       <?php } ?>
                                     </div>
                                     <?php if (isset($banner->id)) { ?>
+                                      <input type="hidden" name="uploaded_image" value="<?php echo (isset($banner->image)) ? $banner->image : '' ; ?>">
                                       <input type="hidden" name="id" id="id" value="<?php echo $banner->id; ?>">
                                     <?php } ?>
                                     <div class="clearfix">&nbsp;</div>
