@@ -45,10 +45,10 @@
                                         </div>
                                     </div>
                                     <div class="col-md-2">
-                                      <?php if ((isset($logo->favicon) && !empty($logo->favicon)) && file_exists('assets/uploads/logo/'.$logo->favicon)) { ?>
-                                        <img src="<?php echo base_url('assets/uploads/logo/'.$logo->logo); ?>" alt="" class="img-thumbnail upload_preview" id="">
+                                      <?php if ((isset($logo->logo) && !empty($logo->logo)) && file_exists('assets/uploads/logo/'.$logo->logo)) { ?>
+                                        <img src="<?php echo base_url('assets/uploads/logo/'.$logo->logo); ?>" alt="" class="img-thumbnail" id="upload_preview_logo">
                                       <?php } else { ?>
-                                        <img src="" alt="" class="img-thumbnail upload_preview" id="" style="display:none;">
+                                        <img src="" alt="" class="img-thumbnail" id="upload_preview_logo" style="display:none;">
                                       <?php } ?>
                                     </div>
                                     <div class="col-md-4">
@@ -59,9 +59,9 @@
                                     </div>
                                     <div class="col-md-2">
                                         <?php if ((isset($logo->favicon) && !empty($logo->favicon)) && file_exists('assets/uploads/logo/'.$logo->favicon)) { ?>
-                                          <img src="<?php echo base_url('assets/uploads/logo/'.$logo->favicon); ?>" alt="" class="img-thumbnail upload_preview" id="">
+                                          <img src="<?php echo base_url('assets/uploads/logo/'.$logo->favicon); ?>" alt="" class="img-thumbnail" id="upload_preview_favicon">
                                         <?php } else { ?>
-                                          <img src="" alt="" class="img-thumbnail upload_preview" id="" style="display:none;">
+                                          <img src="" alt="" class="img-thumbnail" id="upload_preview_favicon" style="display:none;">
                                         <?php } ?>
                                     </div>
                                     <div class="col-md-6">
@@ -167,18 +167,31 @@
 
         });
         //image preview
-        function preview(input){
+        function preview_logo(input){
     			if(input.files && input.files[0]){
     				var reader = new FileReader();
     				reader.onload = function(e){
-    					$(input).closest(".upload_preview").attr('src',e.target.result);
+    					$("#upload_preview_logo").attr('src',e.target.result);
     				}
     				reader.readAsDataURL(input.files[0]);
     			}
     		}
-    		$("#logo,#favicon").on('change',function(){
-    			preview(this);
-    			$(this).closest(".upload_preview").css('display','block');
+        function preview_favicon(input){
+    			if(input.files && input.files[0]){
+    				var reader = new FileReader();
+    				reader.onload = function(e){
+    					$("#upload_preview_favicon").attr('src',e.target.result);
+    				}
+    				reader.readAsDataURL(input.files[0]);
+    			}
+    		}
+    		$("#logo").on('change',function(){
+    			preview_logo(this);
+    			$("#upload_preview_logo").css('display','block');
+    		});
+        $("#favicon").on('change',function(){
+    			preview_favicon(this);
+    			$("#upload_preview_favicon").css('display','block');
     		});
     </script>
 
