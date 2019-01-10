@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="footer_contact_text">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+                        <p><?php echo (isset($logo->description) && !empty($logo->description)) ? $logo->description : ''; ?></p>
                     </div>
                     <div class="footer_social">
                         <ul>
@@ -59,13 +59,13 @@
             <div class="col-lg-2 offset-lg-1 col-md-4">
                 <div class="footer_column">
                     <div class="footer_title">Categories</div>
-                    <ul class="footer_list">
-                        <li><a href="#">D-Cut Bags</a></li>
-                        <li><a href="#">Handle Bags</a></li>
-                        <li><a href="#">U-Cut Bags</a></li>
-                        <li><a href="#">Gazetted Bags</a></li>
-                        <li><a href="#">Plain Sheets</a></li>
-                    </ul>
+                    <?php if(count($categories) > 0){ ?>
+                      <?php foreach ($categories as $c) { ?>
+                        <ul class="footer_list">
+                            <li><a href="<?php echo base_url('products/'.$c->id); ?>"><?php echo $c->name; ?></a></li>
+                        </ul>
+                      <?php } ?>
+                    <?php } ?>
                 </div>
             </div>
 
@@ -86,8 +86,7 @@
                     <div class="footer_title">Quick Links</div>
                     <ul class="footer_list">
                         <li><a href="#">About Us</a></li>
-                        <li><a href="shop.php">Products</a></li>
-                        <li><a href="product.php">Single Product</a></li>
+                        <li><a href="<?php echo base_url('products'); ?>">Products</a></li>
                         <li><a href="#">Blog</a></li>
                         <li><a href="contact.php">Contact</a></li>
                     </ul>
@@ -104,12 +103,11 @@
     <div class="container">
         <div class="row">
             <div class="col">
-
                 <div class="copyright_container">
                     <div class="copyright_content">
                         Copyright &copy;<script>
                             document.write(new Date().getFullYear());
-                        </script> All rights reserved | Developed by <strong><a href="#" target="_blank"> http://prachatech.com/</a></strong>
+                        </script> All rights reserved | Developed by <strong><a href="#" target="_blank"> http://prachatech.com</a></strong>
                     </div>
                 </div>
             </div>

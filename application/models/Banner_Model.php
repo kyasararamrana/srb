@@ -39,6 +39,7 @@ class Banner_Model extends CI_Model
   {
     return $this->db->get_where($this->table,array('name' => $name,'id !=' => $id, 'status !=' => '0'))->row('id');
   }
+  //active records
   public function get_active_banner()
   {
     return $this->db->get_where($this->table,array('status' => '1'))->row();

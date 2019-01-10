@@ -12,6 +12,7 @@ class Home extends CI_Controller
     parent::__construct();
     $this->load->model('home_model');
     $this->load->model('banner_model');
+    $this->load->model('slider_model');
     $this->load->library('form_validation');
   }
   //home page
@@ -20,6 +21,7 @@ class Home extends CI_Controller
     $arg['pageTitle'] = 'Home';
     $data = layouts($arg);
     $data['banner'] = $this->banner_model->get_active_banner();
+    $data['slider'] = $this->slider_model->get_active_slider();
     $this->load->view('home/index',$data);
   }
   //user login

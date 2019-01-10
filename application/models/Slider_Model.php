@@ -38,6 +38,11 @@ class Slider_Model extends CI_Model
   {
     return $this->db->get_where($this->table,array('heading' => $heading,'id !=' => $id, 'status !=' => '0'))->row('id');
   }
+  //active records
+  public function get_active_slider()
+  {
+    return $this->db->get_where($this->table,array('status' => '1'))->result();
+  }
 }
 
 ?>
