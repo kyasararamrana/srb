@@ -19,6 +19,7 @@ class Admin extends CI_Controller
       $arg['pageTitle'] = 'Dashboard';
   	  $data = components($arg);
       $data['category'] = $this->admin_model->get_categories_count();
+      $data['product'] = $this->admin_model->get_products_count();
       $this->load->view('admin/index',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');

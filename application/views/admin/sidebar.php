@@ -18,7 +18,9 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">SHOP PAGE</li>
+            <li class="header">DASHBOARD</li>
+            <li class="active"><a href="<?php echo base_url('/admin'); ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+            <li class="header">CATEGORY PAGE</li>
             <li class="treeview">
                 <a href="#"><i class="fa fa-tags"></i> <span>Category</span>
                     <span class="pull-right-container">
@@ -67,7 +69,7 @@
                 </ul>
             </li>
             <li class="header">HEADER</li>
-            <li class="active"><a href="<?php echo base_url('/logo'); ?>"><i class="fa fa-link"></i> <span>Logo</span></a></li>
+            <li><a href="<?php echo base_url('/logo'); ?>"><i class="fa fa-link"></i> <span>Logo</span></a></li>
         </ul>
         <!-- /.sidebar-menu -->
     </section>
