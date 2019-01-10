@@ -37,45 +37,42 @@
                     <div class="col-md-12">
                         <div class="box box-success">
                             <!-- form start -->
-                            <form id="addBannerForm" name="addBannerForm" action="<?php echo base_url('slider/insert'); ?>" method="post" enctype="multipart/form-data">
-                                <div class="box-body">
-                                    <div class="col-md-12">
-
-                                        <div class="table-responsive">
-                                            <table id="myTable" class=" table order-list">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Heading</th>
-                                                        <th>Content</th>
-                                                        <th>Image</th>
-                                                        <th>&nbsp;</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <input type="text" name="heading[]" placeholder="Heaading Name" class="form-control" />
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" name="content[]" placeholder="Content" class="form-control" />
-                                                        </td>
-                                                        <td>
-                                                            <input type="file" name="image[]" placeholder="Image" class="form-control" />
-                                                        </td>
-                                                        <td>
-                                                            <a class="deleteRow"></a>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <button type="button" class="btn btn-md" id="addrow">Add Row</button>
-                                        </div>
-                                        <hr>
-                                        <div class="text-center">
-                                            <button type="submit" class="btn btn-md btn-primary">Add</button>
-                                        </div>
+                            <form id="addSliderForm" name="addSliderForm" action="<?php if (isset($slider->id)) { echo base_url('slider/update'); } else { echo base_url('slider/insert'); } ?>" method="post" enctype="multipart/form-data">
+                              <div class="box-body">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Slider Heading <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="heading" id="heading" placeholder="Enter Slider Heading" value="<?php echo (isset($slider->heading)) ? $slider->heading : '' ; ?>">
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Slider Content <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" name="content" id="content" placeholder="Enter Slider Content" value="<?php echo (isset($slider->content)) ? $slider->content : '' ; ?>">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <div class="form-group">
+                                          <label>Slider Image <span class="text-danger">(Dimension must be 420 x 420) *</span></label>
+                                          <input type="file" class="form-control" name="image" id="image">
+                                      </div>
+                                  </div>
+                                  <div class="col-md-2">
+                                    <?php if (!empty($slider->image) && file_exists('assets/uploads/slider/'.$slider->image)) { ?>
+                                      <img src="<?php echo base_url('assets/uploads/slider/'.$slider->image); ?>" alt="" class="img-thumbnail" id="upload_preview">
+                                    <?php } else { ?>
+                                      <img src="#" alt="" class="img-thumbnail" id="upload_preview" style="display:none;">
+                                    <?php } ?>
+                                  </div>
+                                  <?php if (isset($slider->id)) { ?>
+                                    <input type="hidden" name="uploaded_image" value="<?php echo (isset($slider->image)) ? $slider->image : '' ; ?>">
+                                    <input type="hidden" name="id" id="id" value="<?php echo $slider->id; ?>">
+                                  <?php } ?>
+                                  <div class="clearfix">&nbsp;</div>
+                                  <div class="col-md-6">
+                                      <button type="submit" class="btn btn-primary">Add</button>
+                                  </div>
+                              </div>
                             </form>
                         </div>
                     </div>
@@ -95,26 +92,47 @@
 
     <script>
         $(document).ready(function() {
-            var counter = 1;
-
-            $("#addrow").on("click", function() {
-                var newRow = $("<tr>");
-                var cols = "";
-
-                cols += '<td><input type="text" class="form-control" placeholder="Heading Name" name="heading[]"/></td>';
-                cols += '<td><input type="text" class="form-control" placeholder="Content" name="content[]"/></td>';
-                cols += '<td><input type="file" class="form-control" placeholder="Image" name="image[]"/></td>';
-
-                cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger"><i class="fa fa-trash"></i></button></td>';
-                newRow.append(cols);
-                $("table.order-list").append(newRow);
-                counter++;
-            });
-
-            $("table.order-list").on("click", ".ibtnDel", function(event) {
-                $(this).closest("tr").remove();
-                counter -= 1
-            });
+          $('#addSliderForm').bootstrapValidator({
+            fields: {
+              heading: {
+                validators: {
+                  notEmpty: {
+                    message: 'Slider Heading is required'
+                  },
+                  remote: {
+                    type: 'POST',
+                    message: 'Slider Heading already exists',
+                    url: '<?php echo base_url('slider/check_exists'); ?>',
+                    data: function(validator, $field, value) {
+                      return {
+                        id: validator.getFieldElements('id').val()
+                      };
+                    }
+                  }
+                }
+              },
+              content: {
+                validators: {
+                  notEmpty: {
+                    message: 'Slider Content is required'
+                  }
+                }
+              },
+              image: {
+                  validators: {
+                      <?php if(!isset($slider->id)){ ?>
+                        notEmpty: {
+                          message: 'Slider Image is required'
+                        },
+                      <?php } ?>
+                      regexp: {
+                          regexp: "(.*?)\.(png|jpeg|jpg|gif)$",
+                          message: 'Uploaded file is not a valid. Only png,jpg,jpeg,gif files are allowed'
+                      }
+                  }
+              }
+            }
+          });
         });
     </script>
 

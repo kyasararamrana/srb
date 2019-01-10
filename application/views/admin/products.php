@@ -53,8 +53,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                          <?php if (count($products) > 0): ?>
-                                            <?php $count = 1; foreach ($products as $p): ?>
+                                          <?php if (count($products) > 0){ ?>
+                                            <?php $count = 1; foreach ($products as $p){ ?>
                                               <tr>
                                                   <td><?php echo $count; ?></td>
                                                   <td><?php echo $p->category; ?></td>
@@ -83,8 +83,12 @@
                                                       </a>
                                                   </td>
                                               </tr>
-                                            <?php $count++; endforeach; ?>
-                                          <?php endif; ?>
+                                            <?php $count++; } ?>
+                                          <?php } else { ?>
+                                            <tr>
+                                              <td colspan="9" class="text-center">No record found</td>
+                                            </tr>
+                                          <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>

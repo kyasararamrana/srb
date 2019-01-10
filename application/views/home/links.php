@@ -1,3 +1,6 @@
+<?php if ((isset($logo->favicon) && !empty($logo->favicon)) && file_exists('assets/uploads/logo/'.$logo->favicon)) { ?>
+  <link rel="icon" href="<?php echo base_url('assets/uploads/logo/'.$logo->favicon); ?>" >
+<?php } ?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap4/bootstrap.min.css'); ?>">
 <link href="<?php echo base_url('assets/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css'); ?>" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/plugins/OwlCarousel2-2.2.1/owl.carousel.css'); ?>">

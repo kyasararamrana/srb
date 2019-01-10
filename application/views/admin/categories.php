@@ -40,7 +40,7 @@
                                   <tr>
                                     <th>S.No</th>
                                     <th>Name</th>
-                                    <th>Created On</th>
+                                    <!-- <th>Created On</th> -->
                                     <th>Status</th>
                                     <th>Action</th>
                                   </tr>
@@ -52,7 +52,7 @@
                                       <tr>
                                         <td><?php echo $count; ?></td>
                                         <td><?php echo $c->name; ?></td>
-                                        <td><?php echo date('d-m-Y H:i:s',strtotime($c->created_on)); ?></td>
+                                        <!-- <td><?php echo date('d-m-Y H:i:s',strtotime($c->created_on)); ?></td> -->
                                         <td>
                                           <?php if ($c->status &&  ($c->status == '1' && $c->status != '0')) { ?>
                                             <a href="<?php echo base_url('category/status/'.$c->status.'/'.$c->id); ?>">Active</a>
@@ -69,7 +69,7 @@
                                     <?php endforeach; ?>
                                   <?php } else { ?>
                                     <tr>
-                                      <td>No records found</td>
+                                      <td colspan="4" class="text-center">No records found</td>
                                     </tr>
                                   <?php } ?>
                                   </tbody>

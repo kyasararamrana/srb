@@ -41,7 +41,7 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Name</th>
+                                            <th>Heading</th>
                                             <th>Content</th>
                                             <th>Image</th>
                                             <th>Status</th>
@@ -64,15 +64,15 @@
                                                 <?php } ?>
                                               </td>
                                               <td>
-                                                  <!-- <a href="#" type="button" class="btn btn-info mr-10" data-toggle="tooltip" title="Active">
-                                                      <i class="fa fa-edit"></i>
-                                                  </a> -->
-                                                  <a href="#" type="button" class="btn btn-danger mr-10" data-toggle="tooltip" title="Delete">
-                                                      <i class="fa fa-trash-o"></i>
-                                                  </a>
+                                                <a href="<?php echo base_url('slider/edit/'.$s->id); ?>" type="button" class="btn btn-info mr-10"><i class="fa fa-edit"></i></a>
+                                                <a href="<?php echo base_url('slider/delete/'.$s->id); ?>" type="button" class="btn btn-danger mr-10 confirmation"><i class="fa fa-trash-o"></i></a>
                                               </td>
                                           </tr>
                                         <?php $count++; } ?>
+                                      <?php } else { ?>
+                                        <tr>
+                                          <td colspan="6" class="text-center">No records found</td>
+                                        </tr>
                                       <?php } ?>
                                     </tbody>
                                 </table>
@@ -92,8 +92,18 @@
     <!-- ./wrapper -->
 
     <?php echo $scripts; ?>
-
-
+    <script type="text/javascript">
+      //confirm message
+      $(document).ready(function(){
+          $('.confirmation').on('click', function () {
+              return confirm('Are you sure of deleting category?');
+          });
+      });
+      //datatables
+      $(document).ready(function() {
+          $('#example1').DataTable();
+      });
+    </script>
 
 </body>
 

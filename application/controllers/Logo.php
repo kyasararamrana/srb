@@ -35,7 +35,7 @@ class Logo extends CI_Controller
         if (isset($post_data['id']) && !empty($post_data['id'])) {
           //updating
           $config['upload_path']   = './assets/uploads/logo/';
-          $config['allowed_types'] = 'png|jpeg|jpg|gif';
+          $config['allowed_types'] = 'png|jpeg|jpg|gif|ico';
           $config['encrypt_name']  = TRUE;
           $this->load->library('upload', $config);
           if (!empty($_FILES['logo']['name']) && (!$this->upload->do_upload('logo'))) {
@@ -77,7 +77,7 @@ class Logo extends CI_Controller
       } else {
         //creating
         $config['upload_path']   = './assets/uploads/logo/';
-        $config['allowed_types'] = 'png|jpeg|jpg|gif';
+        $config['allowed_types'] = 'png|jpeg|jpg|gif|ico';
         $config['encrypt_name']  = TRUE;
         $this->load->library('upload', $config);
         if (!$this->upload->do_upload('logo')) {

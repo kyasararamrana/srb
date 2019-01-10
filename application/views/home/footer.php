@@ -31,8 +31,15 @@
             <div class="col-lg-3 footer_col">
                 <div class="footer_column footer_contact">
                     <div class="logo_container">
-                        <div style="background:#fff;
-                        padding:10px;"><a href="index.php"><img src="<?php echo base_url('assets/img/logo.png'); ?>" style="width:100px;height:auto;"></a></div>
+                        <div style="background:#fff;padding:10px;">
+                          <a href="<?php echo base_url(); ?>">
+                            <?php if((isset($logo->logo) && !empty($logo->logo)) && file_exists('assets/uploads/logo/'.$logo->logo)){ ?>
+                              <img style="width:100px;height:auto;" src="<?php echo base_url('assets/uploads/logo/'.$logo->logo); ?>" class="img-responsive">
+                            <?php } else{ ?>
+                              <img style="width:100px;height:auto;" src="<?php echo base_url('assets/img/logo.png'); ?>" class="img-responsive">
+                            <?php } ?>
+                          </a>
+                        </div>
                     </div>
                     <div class="footer_contact_text">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>

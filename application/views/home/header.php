@@ -43,7 +43,15 @@
                 <!-- Logo -->
                 <div class="col-lg-2 col-sm-3 col-3 order-1">
                     <div class="logo_container">
-                        <div class="logo"><a href="<?php echo base_url(); ?>"><img style="width:100px;height:auto;" src="<?php echo base_url('assets/img/logo.png'); ?>" class="img-responsive"></a></div>
+                      <div class="logo">
+                        <a href="<?php echo base_url(); ?>">
+                          <?php if((isset($logo->logo) && !empty($logo->logo)) && file_exists('assets/uploads/logo/'.$logo->logo)){ ?>
+                            <img style="width:100px;height:auto;" src="<?php echo base_url('assets/uploads/logo/'.$logo->logo); ?>" class="img-responsive">
+                          <?php } else{ ?>
+                            <img style="width:100px;height:auto;" src="<?php echo base_url('assets/img/logo.png'); ?>" class="img-responsive">
+                          <?php } ?>
+                        </a>
+                      </div>
                     </div>
                 </div>
 

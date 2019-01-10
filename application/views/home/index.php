@@ -12,24 +12,28 @@
     <div class="super_container">
       <?php echo $header; ?>
       <!-- Banner -->
-
+      <?php if(isset($banner) && !empty($banner)){ ?>
       <div class="banner">
+        <?php if ((isset($banner->image) && !empty($banner->image)) && file_exists('assets/uploads/banner/'.$banner->image)) { ?>
+          <div class="banner_background" style="background-image:url(<?php echo base_url('assets/uploads/banner/'.$banner->image); ?>)"></div>
+        <?php } else { ?>
           <div class="banner_background" style="background-image:url(<?php echo base_url('assets/img/banner12.jpg'); ?>)"></div>
+        <?php  } ?>
           <div class="container fill_height">
               <div class="row fill_height">
                   <!--<div class="banner_product_image"><img src="img/banner_product.png" alt=""></div>-->
                   <div class="col-lg-5 offset-lg-4 fill_height">
                       <div class="banner_content">
-                          <h1 class="banner_text">new product collections</h1>
-                          <div class="banner_price">Upto <span>50%</span> Discount</div>
+                          <h1 class="banner_text"><?php echo (isset($banner->name) && !empty($banner->name)) ? $banner->name : '' ; ?></h1>
+                          <div class="banner_price"><?php echo (isset($banner->tag_line) && !empty($banner->tag_line)) ? $banner->tag_line : '' ; ?></div>
                           <div class="banner_product_name">&nbsp;</div>
-                          <div class="button banner_button"><a href="#">Shop Now</a></div>
+                          <div class="button banner_button"><a href="<?php echo base_url('products'); ?>">Shop Now</a></div>
                       </div>
                   </div>
               </div>
           </div>
       </div>
-
+    <?php } ?>
       <!-- Characteristics -->
 
       <div class="characteristics">
