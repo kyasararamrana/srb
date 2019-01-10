@@ -42,19 +42,19 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Old Password</label>
-                                            <input type="text" class="form-control" name="oldpassword" id="oldpassword">
+                                            <input type="password" class="form-control" name="oldpassword" id="oldpassword">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>New Password</label>
-                                            <input type="text" class="form-control" name="newpassword" id="newpassword">
+                                            <input type="password" class="form-control" name="newpassword" id="newpassword">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Confirm Password</label>
-                                            <input type="text" class="form-control" name="confirmnewpassword" id="confirmnewpassword">
+                                            <input type="password" class="form-control" name="confirmnewpassword" id="confirmnewpassword">
                                         </div>
                                     </div>
                                     <div class="clearfix">&nbsp;</div>
@@ -118,7 +118,7 @@
                             message: 'Confirm Password is required'
                         },
                         identical: {
-                            field: 'password',
+                            field: 'newpassword',
                             message: 'Password and Confirm Password do not match'
                         }
                     }
