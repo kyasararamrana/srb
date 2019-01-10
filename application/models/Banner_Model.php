@@ -42,6 +42,8 @@ class Banner_Model extends CI_Model
   //active records
   public function get_active_banner()
   {
+    $this->db->order_by('updated_on','desc');
+    $this->db->order_by('created_on','desc');
     return $this->db->get_where($this->table,array('status' => '1'))->row();
   }
 
