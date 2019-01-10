@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="footer_contact_text">
-                        <p><?php echo (isset($logo->description) && !empty($logo->description)) ? $logo->description : ''; ?></p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
                     </div>
                     <div class="footer_social">
                         <ul>
