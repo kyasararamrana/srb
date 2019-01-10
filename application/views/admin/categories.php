@@ -66,7 +66,12 @@
                                         </td>
                                       </tr>
                                       <?php $count++; ?>
-                                    <?php endforeach;} ?>
+                                    <?php endforeach; ?>
+                                  <?php } else { ?>
+                                    <tr>
+                                      <td>No records found</td>
+                                    </tr>
+                                  <?php } ?>
                                   </tbody>
                                 </table>
                             </div>
