@@ -60,16 +60,20 @@
                 <div class="footer_column">
                     <div class="footer_title">Categories</div>
                     <?php if(count($categories) > 0){ ?>
-                      <?php foreach ($categories as $c) { ?>
-                        <ul class="footer_list">
-                            <li><a href="<?php echo base_url('products/'.$c->id); ?>"><?php echo $c->name; ?></a></li>
-                        </ul>
-                      <?php } ?>
+                      <ul class="footer_list">
+                        <?php foreach ($categories as $c) { ?>
+                          <li><a href="<?php echo base_url('products/'.$c->id); ?>"><?php echo $c->name; ?></a></li>
+                        <?php } ?>
+                      </ul>
+                    <?php } else { ?>
+                      <ul class="footer_list">
+                        <li class="text-white">No Categories found</li>
+                      <ul class="footer_list">
                     <?php } ?>
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-4">
+            <!-- <div class="col-lg-2 col-md-4">
                 <div class="footer_column">
                     <ul class="footer_list footer_list_2">
                         <li><a href="#">Model Number Sheets</a></li>
@@ -79,7 +83,7 @@
                         <li><a href="#">Printed Bags</a></li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
 
             <div class="col-lg-2 col-md-4 quick-links">
                 <div class="footer_column">
