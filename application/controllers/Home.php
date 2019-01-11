@@ -51,12 +51,15 @@ class Home extends CI_Controller
         if ($result) {
           $user_data = array('firstname' => $result->firstname, 'lastname' => $result->lastname, 'email' => $result->email, 'mobile' => $result->mobile, 'logged_in' => TRUE);
           $this->session->set_userdata($user_data);
+          $this->session->set_flashdata('success','Logged in successfully');
           redirect('home');
         } else {
+          $this->session->set_flashdata('error','Email or password is incorrect');
           redirect('home/login');
         }
       }
     } else {
+      $this->session->set_flashdata('error','Please login and try again');
       redirect('home/login');
     }
   }
@@ -99,6 +102,7 @@ class Home extends CI_Controller
           if ($result) {
             $user_data = array('firstname' => $result->firstname, 'lastname' => $result->lastname, 'email' => $result->email, 'mobile' => $result->mobile, 'logged_in' => TRUE);
             $this->session->set_userdata($user_data);
+            $this->session->set_flashdata('success','logged in successfully');
             redirect('home');
           }
         } else {
@@ -129,8 +133,10 @@ class Home extends CI_Controller
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $this->session->sess_destroy();
+      $this->session->set_flashdata('success','logged out successfully');
       redirect('home/login');
     } else {
+      $this->session->set_flashdata('error','Please login and try again');
       redirect('home/login');
     }
   }

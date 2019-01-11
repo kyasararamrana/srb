@@ -12,9 +12,22 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/bootstrap4/bootstrapValidator.min.css'); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css'); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/login_register.css'); ?>" >
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/custom.css'); ?>" >
 
 </head>
 <body>
+  <!--notification messages-->
+  <?php if($this->session->flashdata('success')): ?>
+    <div class="alert_msg1 animated slideInUp bg-succ">
+      <?php echo $this->session->flashdata('success');?> &nbsp; <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i>
+    </div>
+  <?php endif; ?>
+  <?php if($this->session->flashdata('error')): ?>
+    <div class="alert_msg1 animated slideInUp bg-warn">
+      <?php echo $this->session->flashdata('error');?> &nbsp; <i class="fa fa-exclamation-triangle text-success ico_bac" aria-hidden="true"></i>
+    </div>
+  <?php endif; ?>
+
 	<div class="wrapper" style="background-image: url('<?php echo base_url('assets/img/banner02.jpg'); ?>');">
         <div class="inner">
             <div class="image-holder">

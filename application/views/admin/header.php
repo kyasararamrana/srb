@@ -48,19 +48,6 @@
                     </ul>
                 </li>
 
-                <!-- Settings -->
-                <!--<li class="dropdown messages-menu">
-                    <!-- Menu toggle button -->
-                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-gears"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="header"><a href="#">My Profile</a></li>
-                        <li class="header"><a href="#">Change Password</a></li>
-                        <li class="header"><a href="#">Sign Out</a></li>
-                    </ul>
-                </li>-->
-
             </ul>
         </div>
     </nav>

@@ -139,33 +139,6 @@
                                 <?php } else { ?>
                                   <li>No Categories found</li>
                                 <?php } ?>
-                                <!-- <li><a href="shop.php">D-Cut Bags <i class="fas fa-chevron-right ml-auto"></i></a></li>
-                                <li><a href="shop.php">Handle Bags <i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="shop.php">U-Cut Bags <i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="shop.php">Gazetted Bags<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="shop.php">Plain Sheets<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="shop.php">Model Number Sheets<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="shop.php">Missprint Bags<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="shop.php">Printed Rolls<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="shop.php">Printed Sheets<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="shop.php">Printed Bags<i class="fas fa-chevron-right"></i></a></li> -->
-                                <!--<li class="hassubs">
-                                    <a href="#">Hardware<i class="fas fa-chevron-right"></i></a>
-                                    <ul>
-                                        <li class="hassubs">
-                                            <a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
-                                            <ul>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                                    </ul>
-                                </li>-->
                             </ul>
                         </div>
 
@@ -176,53 +149,8 @@
                                 <li><a href="<?php echo base_url(); ?>">Home<i class="fas fa-chevron-down"></i></a></li>
                                 <li><a href="<?php echo base_url(); ?>">About Us<i class="fas fa-chevron-down"></i></a></li>
                                 <li><a href="<?php echo base_url('products'); ?>">Products<i class="fas fa-chevron-down"></i></a></li>
-                                <!-- <li><a href="product.php">Single Product<i class="fas fa-chevron-down"></i></a></li> -->
                                 <li><a href="<?php echo base_url(); ?>">Blog<i class="fas fa-chevron-down"></i></a></li>
                                 <li><a href="<?php echo base_url(); ?>">Contact<i class="fas fa-chevron-down"></i></a></li>
-                                <!--<li class="hassubs">
-                                    <a href="#">Super Deals<i class="fas fa-chevron-down"></i></a>
-                                    <ul>
-                                        <li>
-                                            <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                            <ul>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li class="hassubs">
-                                    <a href="#">Featured Brands<i class="fas fa-chevron-down"></i></a>
-                                    <ul>
-                                        <li>
-                                            <a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-                                            <ul>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                                <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-                                    </ul>
-                                </li>
-                                <li class="hassubs">
-                                    <a href="#">Pages<i class="fas fa-chevron-down"></i></a>
-                                    <ul>
-                                        <li><a href="shop.php">Shop<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="product.php">Product<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="blog_single.html">Blog Post<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="regular.html">Regular Post<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="cart.html">Cart<i class="fas fa-chevron-down"></i></a></li>
-                                        <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
-                                    </ul>
-                                </li>-->
                             </ul>
                         </div>
 
@@ -258,24 +186,6 @@
                             </form>
                         </div>
                         <ul class="page_menu_nav">
-                            <!--<li class="page_menu_item has-children">
-                                <a href="#">Language<i class="fa fa-angle-down"></i></a>
-                                <ul class="page_menu_selection">
-                                    <li><a href="#">English<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Italian<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Spanish<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Japanese<i class="fa fa-angle-down"></i></a></li>
-                                </ul>
-                            </li>
-                            <li class="page_menu_item has-children">
-                                <a href="#">Currency<i class="fa fa-angle-down"></i></a>
-                                <ul class="page_menu_selection">
-                                    <li><a href="#">US Dollar<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">EUR Euro<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">GBP British Pound<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">JPY Japanese Yen<i class="fa fa-angle-down"></i></a></li>
-                                </ul>
-                            </li>-->
                             <li class="page_menu_item">
                                 <a href="index.php">Home<i class="fa fa-angle-down"></i></a>
                             </li>
@@ -284,42 +194,6 @@
                             <li class="page_menu_item"><a href="product.php">Single Product<i class="fas fa-chevron-down"></i></a></li>
                             <li class="page_menu_item"><a href="#">blog<i class="fa fa-angle-down"></i></a></li>
                             <li class="page_menu_item"><a href="contact.php">contact<i class="fa fa-angle-down"></i></a></li>
-                            <!--<li class="page_menu_item has-children">
-                                <a href="#">Super Deals<i class="fa fa-angle-down"></i></a>
-                                <ul class="page_menu_selection">
-                                    <li><a href="#">Super Deals<i class="fa fa-angle-down"></i></a></li>
-                                    <li class="page_menu_item has-children">
-                                        <a href="#">Menu Item<i class="fa fa-angle-down"></i></a>
-                                        <ul class="page_menu_selection">
-                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                            <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                </ul>
-                            </li>
-                            <li class="page_menu_item has-children">
-                                <a href="#">Featured Brands<i class="fa fa-angle-down"></i></a>
-                                <ul class="page_menu_selection">
-                                    <li><a href="#">Featured Brands<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                </ul>
-                            </li>
-                            <li class="page_menu_item has-children">
-                                <a href="#">Trending Styles<i class="fa fa-angle-down"></i></a>
-                                <ul class="page_menu_selection">
-                                    <li><a href="#">Trending Styles<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                    <li><a href="#">Menu Item<i class="fa fa-angle-down"></i></a></li>
-                                </ul>
-                            </li>-->
                         </ul>
 
                         <div class="menu_contact">
@@ -337,3 +211,14 @@
     </div>
 
 </header>
+<!--notification messages-->
+<?php if($this->session->flashdata('success')): ?>
+  <div class="alert_msg1 animated slideInUp bg-succ">
+    <?php echo $this->session->flashdata('success');?> &nbsp; <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i>
+  </div>
+<?php endif; ?>
+<?php if($this->session->flashdata('error')): ?>
+  <div class="alert_msg1 animated slideInUp bg-warn">
+    <?php echo $this->session->flashdata('error');?> &nbsp; <i class="fa fa-exclamation-triangle text-success ico_bac" aria-hidden="true"></i>
+  </div>
+<?php endif; ?>
