@@ -95,22 +95,22 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Net Price <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="net_price" id="net_price" value="<?php echo (isset($product->net_price)) ? (int)$product->net_price : '' ; ?>">
+                                                <input type="text" class="form-control" name="net_price" id="net_price" readonly value="<?php echo (isset($product->net_price)) ? (int)$product->net_price : '' ; ?>">
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="row">
+                                    <div class="row">
                                         <div class="col-md-2">&nbsp;</div>
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" name="featured" id="featured"> Featured
+                                                        <input type="checkbox" name="featured" id="featured" value="1" <?php echo (isset($product->featured) && ($product->featured == '1')) ? 'checked' : '' ; ?>> Featured
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
+                                        <!-- <div class="col-md-2">
                                             <div class="form-group">
                                                 <div class="checkbox">
                                                     <label>
@@ -137,8 +137,8 @@
                                                     </label>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div> -->
+                                        </div> -->
+                                    </div>
                                     <div class="clearfix">&nbsp;</div>
                                     <?php if (isset($product->id)): ?>
                                       <input type="hidden" name="id" id="id" value="<?php echo $product->id; ?>">
@@ -211,6 +211,16 @@
               validators: {
                 notEmpty: {
                   message: 'Actual price is required'
+                },
+                integer: {
+                    message: 'The value is not a number'
+                }
+              }
+            },
+            discount_percentage:{
+              validators: {
+                integer: {
+                    message: 'The value is not a number'
                 }
               }
             },
@@ -218,22 +228,33 @@
               validators: {
                 notEmpty: {
                   message: 'Net price is required'
+                },
+                integer: {
+                    message: 'The value is not a number'
                 }
               }
             }
           }
         });
         //calculating Price
-        $('#actual_price').keyup(function(){
+        $('#discount_percentage,#actual_price').keyup(function(){
+          var discount = $('#discount_percentage').val();
+          if (discount) {
+            var calcPrice = calculate_price();
+            $('#net_price').val(calcPrice);
+          } else {
             $('#net_price').val($('#actual_price').val());
+          }
         });
-        $('#discount_percentage').keyup(function(){
-          var discount = $(this).val();
-          var price = $('#actual_price').val();
-          var calcPrice  = (price - ( price * discount / 100 ));
-          $('#net_price').val(calcPrice);
-        });
+
       });
+      //calculating discount from acutal price
+      function calculate_price(){
+        var discount = $('#discount_percentage').val();
+        var price = $('#actual_price').val();
+        var calcPrice  = (price - ( price * discount / 100 ));
+        return calcPrice;
+      }
       //image preview
       function preview(input){
   			if(input.files && input.files[0]){

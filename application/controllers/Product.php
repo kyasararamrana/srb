@@ -15,7 +15,7 @@ class Product extends CI_Controller
     $this->load->library('user_agent');
   }
   //admin product list
-  public function index($value='')
+  public function index()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Products';
@@ -56,7 +56,7 @@ class Product extends CI_Controller
           $this->session->set_flashdata('error',$error);
           redirect('product/create');
         } else {
-          $addl_data = array('image' => $this->upload->data('file_name'),'created_on' => date('Y-m-d H:i:s'),'created_by' => $this->session->userdata('id'), 'status' => '1' );
+          $addl_data = array('image' => $this->upload->data('file_name'),'featured' => (int)$this->input->post('featured'),'created_on' => date('Y-m-d H:i:s'),'created_by' => $this->session->userdata('id'), 'status' => '1' );
           $post_data = array_merge($post_data,$addl_data);
           if ($this->product_model->insert($post_data)) {
             $this->session->set_flashdata('success','Product inserted successfully');
@@ -91,7 +91,7 @@ class Product extends CI_Controller
 
   }
   //admin update product
-  public function update($value='')
+  public function update()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $post_data = $this->input->post();
@@ -113,7 +113,7 @@ class Product extends CI_Controller
             @unlink('./assets/uploads/product/'.$post_uploaded_image);
             $image = $this->upload->data('file_name');
           }
-          $addl_data = array('image' => $image, 'updated_by' => $this->session->userdata('id'), 'updated_on' => date('Y-m-d H:i:s'), 'status' => '1');
+          $addl_data = array('image' => $image, 'featured' => (int)$this->input->post('featured'),'updated_by' => $this->session->userdata('id'), 'updated_on' => date('Y-m-d H:i:s'), 'status' => '1');
           $post_data = array_merge($post_data,$addl_data);
           unset($post_data['uploaded_image']);
           if ($this->product_model->update($post_data,$post_id)) {
