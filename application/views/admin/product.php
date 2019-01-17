@@ -82,6 +82,60 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
+                                                <label>Size <span class="text-danger">*</span></label>
+                                                <select class="form-control" name="size">
+                                                  <option value=""><?php echo (isset($sizes) && count($sizes) > 0) ? 'Select' : 'No sizes found'; ?></option>
+                                                  <?php if (count($sizes) > 0) { ?>
+                                                    <?php foreach($sizes as $s){ ?>
+                                                      <option value="<?php echo $s->id; ?>" <?php echo (isset($product->size) && $product->size == $s->id) ? 'selected' : ''; ?>><?php echo $s->name; ?></option>
+                                                    <?php } ?>
+                                                  <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Color <span class="text-danger">*</span></label>
+                                                <select class="form-control" name="color">
+                                                  <option value=""><?php echo (isset($colors) && count($colors) > 0) ? 'Select' : 'No colors found'; ?></option>
+                                                  <?php if (count($colors) > 0) { ?>
+                                                    <?php foreach($colors as $cs){ ?>
+                                                      <option value="<?php echo $cs->id; ?>" <?php echo (isset($product->color) && $product->color == $cs->id) ? 'selected' : ''; ?>><?php echo $cs->name; ?></option>
+                                                    <?php } ?>
+                                                  <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>GSM <span class="text-danger">*</span></label>
+                                                <select class="form-control" name="gsm">
+                                                  <option value=""><?php echo (isset($gsm) && count($gsm) > 0) ? 'Select' : 'No GSM found'; ?></option>
+                                                  <?php if (count($gsm) > 0) { ?>
+                                                    <?php foreach($gsm as $g){ ?>
+                                                      <option value="<?php echo $g->id; ?>" <?php echo (isset($product->gsm) && $product->gsm == $g->id) ? 'selected' : ''; ?>><?php echo $g->name; ?></option>
+                                                    <?php } ?>
+                                                  <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Quality <span class="text-danger">*</span></label>
+                                                <select class="form-control" name="quality">
+                                                  <option value=""><?php echo (isset($quality) && count($quality) > 0) ? 'Select' : 'No Quality found'; ?></option>
+                                                  <?php if (count($quality) > 0) { ?>
+                                                    <?php foreach($quality as $q){ ?>
+                                                      <option value="<?php echo $q->id; ?>" <?php echo (isset($product->quality) && $product->quality == $q->id) ? 'selected' : ''; ?>><?php echo $q->name; ?></option>
+                                                    <?php } ?>
+                                                  <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
                                                 <label>Actual Price <span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="actual_price" id="actual_price" value="<?php echo (isset($product->actual_price)) ? (int)$product->actual_price : '' ; ?>">
                                             </div>
@@ -98,9 +152,6 @@
                                                 <input type="text" class="form-control" name="net_price" id="net_price" readonly value="<?php echo (isset($product->net_price)) ? (int)$product->net_price : '' ; ?>">
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2">&nbsp;</div>
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <div class="checkbox">
@@ -110,34 +161,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <div class="col-md-2">
-                                            <div class="form-group">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" name="onsale" id="onsale"> On Sale
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" name="mostviewed" id="mostviewed"> Most Viewed
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" name="dealsoftheweek" id="dealsoftheweek">
-                                                        Deal of the week
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div> -->
                                     </div>
                                     <div class="clearfix">&nbsp;</div>
                                     <?php if (isset($product->id)): ?>

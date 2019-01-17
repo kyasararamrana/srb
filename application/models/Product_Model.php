@@ -43,6 +43,11 @@ class Product_Model extends CI_Model
   {
     return $this->db->get_where($this->table,array('name' => $name,'id !=' => $id, 'status !=' => '0'))->row('id');
   }
+  //active Products
+  public function get_active_products($id='')
+  {
+    return $this->db->get_where($this->table,array('category' => $id,'status' => '1'))->result();
+  }
 
 }
 

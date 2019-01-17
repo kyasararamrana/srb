@@ -11,6 +11,10 @@ class Product extends CI_Controller
   {
     parent::__construct();
     $this->load->model('category_model');
+    $this->load->model('size_model');
+    $this->load->model('color_model');
+    $this->load->model('gsm_model');
+    $this->load->model('quality_model');
     $this->load->model('product_model');
     $this->load->library('user_agent');
   }
@@ -34,6 +38,10 @@ class Product extends CI_Controller
       $arg['pageTitle'] = 'Product';
       $data = components($arg);
       $data['categories'] = $this->category_model->get_active_categories();
+      $data['sizes'] = $this->size_model->get_active_sizes();
+      $data['colors'] = $this->color_model->get_active_colors();
+      $data['gsm'] = $this->gsm_model->get_active_gsm();
+      $data['quality'] = $this->quality_model->get_active_quality();
       $this->load->view('admin/product',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -82,6 +90,10 @@ class Product extends CI_Controller
       $arg['pageTitle'] = 'Product';
       $data = components($arg);
       $data['categories'] = $this->category_model->get_active_categories();
+      $data['sizes'] = $this->size_model->get_active_sizes();
+      $data['colors'] = $this->color_model->get_active_colors();
+      $data['gsm'] = $this->gsm_model->get_active_gsm();
+      $data['quality'] = $this->quality_model->get_active_quality();
       $data['product'] = $this->product_model->get_product_by_id($id);
       $this->load->view('admin/product',$data);
     } else {
@@ -194,6 +206,7 @@ class Product extends CI_Controller
   {
     $arg['pageTitle'] = 'Products';
     $data = layouts($arg);
+    $data['products'] = $this->product_model->get_active_products($id);
     $this->load->view('home/products',$data);
   }
   //home single product details

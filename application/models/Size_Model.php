@@ -43,7 +43,7 @@ class Size_Model extends CI_Model
     return $this->db->get_where($this->table,array('name' => $name, 'id !=' => $id, 'status !=' => '0'))->row('id');
   }
   //active records list
-  public function get_active_categories()
+  public function get_active_sizes()
   {
     return $this->db->get_where($this->table,array('status' => '1'))->result();
   }

@@ -166,7 +166,7 @@
 
               <div class="shop_content">
                 <div class="shop_bar clearfix">
-                  <div class="shop_product_count"><span>186</span> products found</div>
+                  <div class="shop_product_count"><span><?php echo (isset($products) && count($products) > 0) ? count($products) : 0 ; ?></span> PRODUCTS FOUND</div>
                   <div class="shop_sorting">
                     <span>Sort by:</span>
                     <ul>
@@ -186,304 +186,27 @@
                   <div class="product_grid_border"></div>
 
                   <!-- Product Item -->
-                  <div class="product_item is_new">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_1.jpg" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 225</div>
-                      <div class="product_name"><div><a href="product.html" tabindex="0">Product 1</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
-
-                  <!-- Product Item -->
-                  <div class="product_item discount">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_10.jpg" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 225<span>₹ 300</span></div>
-                      <div class="product_name"><div><a href="product.html" tabindex="0">Product 10</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
-
-                  <!-- Product Item -->
-                  <div class="product_item">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_11.jpg" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 379</div>
-                      <div class="product_name"><div><a href="product.html" tabindex="0">Product 11</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
-
-                  <!-- Product Item -->
-                  <div class="product_item">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_12.jpg" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 225</div>
-                      <div class="product_name"><div><a href="product.html" tabindex="0">Product 12</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
-
-                  <!-- Product Item -->
-                  <div class="product_item is_new">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="<?php echo base_url('assets/img/featured_13.jpg'); ?>" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 379</div>
-                      <div class="product_name"><div><a href="<?php echo base_url('product'); ?>" tabindex="0">Product 13</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
-
-                  <!-- Product Item -->
-                  <div class="product_item is_new">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_14.jpg" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 379</div>
-                      <div class="product_name"><div><a href="product.html" tabindex="0">Product 14</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
-
-                  <!-- Product Item -->
-                  <div class="product_item">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_2.jpg" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 379<span>₹ 300</span></div>
-                      <div class="product_name"><div><a href="product.html" tabindex="0">Product 2</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
-
-                  <!-- Product Item -->
-                  <div class="product_item">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_3.jpg" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 225<span>₹ 300</span></div>
-                      <div class="product_name"><div><a href="product.html" tabindex="0">Product 3</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
-
-                  <!-- Product Item -->
-                  <div class="product_item">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_4.jpg" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 225</div>
-                      <div class="product_name"><div><a href="product.html" tabindex="0">Product 4</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
-
-                  <!-- Product Item -->
-                  <div class="product_item">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_5.jpg" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 379</div>
-                      <div class="product_name"><div><a href="product.html" tabindex="0">Product 5</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
-
-                  <!-- Product Item -->
-                  <div class="product_item is_new">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_6.jpg" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 225</div>
-                      <div class="product_name"><div><a href="product.html" tabindex="0">Product 6</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
-
-                  <!-- Product Item -->
-                  <div class="product_item is_new">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_4.jpg" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 225</div>
-                      <div class="product_name"><div><a href="product.html" tabindex="0">Product 6</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
-
-                  <!-- Product Item -->
-                  <div class="product_item is_new">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_7.jpg" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 225</div>
-                      <div class="product_name"><div><a href="product.html" tabindex="0">Product 7</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
-
-                  <!-- Product Item -->
-                  <div class="product_item is_new">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_8.jpg" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 379</div>
-                      <div class="product_name"><div><a href="product.html" tabindex="0">Product 8</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
-
-                  <!-- Product Item -->
-                  <div class="product_item discount">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_9.jpg" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 225<span>₹ 300</span></div>
-                      <div class="product_name"><div><a href="product.html" tabindex="0">Product 9</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
-
-                  <!-- Product Item -->
-                  <div class="product_item is_new">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_1.jpg" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 379</div>
-                      <div class="product_name"><div><a href="product.html" tabindex="0">Product 1</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
-
-                  <!-- Product Item -->
-                  <div class="product_item is_new">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_10.jpg" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 225</div>
-                      <div class="product_name"><div><a href="product.html" tabindex="0">Product 10</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
-
-                  <!-- Product Item -->
-                  <div class="product_item is_new">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_13.jpg" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 379</div>
-                      <div class="product_name"><div><a href="product.html" tabindex="0">Product 13</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
-
-                  <!-- Product Item -->
-                  <div class="product_item is_new">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_14.jpg" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 225</div>
-                      <div class="product_name"><div><a href="product.html" tabindex="0">Product 14</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
-
-                  <!-- Product Item -->
-                  <div class="product_item is_new">
-                    <div class="product_border"></div>
-                    <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_2.jpg" alt=""></div>
-                    <div class="product_content">
-                      <div class="product_price">₹ 379</div>
-                      <div class="product_name"><div><a href="product.html" tabindex="0">Product 2</a></div></div>
-                    </div>
-                    <div class="product_fav"><i class="fas fa-heart"></i></div>
-                    <ul class="product_marks">
-                      <li class="product_mark product_discount">-25%</li>
-                      <li class="product_mark product_new">new</li>
-                    </ul>
-                  </div>
+                  <?php if (isset($products) && count($products) > 0) { ?>
+                    <?php foreach ($products as $p) { ?>
+                      <div class="product_item is_new">
+                        <div class="product_border"></div>
+                        <div class="product_image d-flex flex-column align-items-center justify-content-center">
+                          <img src="<?php echo base_url('assets/uploads/product/'.$p->image); ?>" alt="">
+                        </div>
+                        <div class="product_content">
+                          <div class="product_price">₹ <?php echo $p->net_price; ?></div>
+                          <div class="product_name"><div><a href="<?php echo base_url('product/'.$p->id); ?>" tabindex="0"><?php echo $p->name; ?></a></div></div>
+                        </div>
+                        <div class="product_fav"><i class="fas fa-heart"></i></div>
+                        <ul class="product_marks">
+                          <li class="product_mark product_discount">-25%</li>
+                          <li class="product_mark product_new">new</li>
+                        </ul>
+                      </div>
+                    <?php } ?>
+                  <?php } else { ?>
+                    <div class="">No Products found</div>
+                  <?php } ?>
 
                 </div>
 
