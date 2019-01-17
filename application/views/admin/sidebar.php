@@ -20,6 +20,51 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">DASHBOARD</li>
             <li class="active"><a href="<?php echo base_url('/admin'); ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+            <li class="header">PARAMETERS</li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-balance-scale"></i> <span>Sizes</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?php echo base_url('size/create'); ?>">Add Size</a></li>
+                    <li><a href="<?php echo base_url('size'); ?>">Sizes List</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-paint-brush"></i> <span>Colors</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?php echo base_url('color/create'); ?>">Add Color</a></li>
+                    <li><a href="<?php echo base_url('color'); ?>">Colors List</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-newspaper-o"></i> <span>Gsm</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?php echo base_url('gsm/create'); ?>">Add Gsm</a></li>
+                    <li><a href="<?php echo base_url('gsm'); ?>">Gsm List</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-thumbs-up"></i> <span>Quality</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?php echo base_url('quality/create'); ?>">Add Quality</a></li>
+                    <li><a href="<?php echo base_url('quality'); ?>">Quality List</a></li>
+                </ul>
+            </li>
             <li class="header">CATEGORY PAGE</li>
             <li class="treeview">
                 <a href="#"><i class="fa fa-tags"></i> <span>Category</span>
