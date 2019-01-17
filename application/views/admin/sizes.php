@@ -39,8 +39,8 @@
                                 <thead>
                                   <tr>
                                     <th>S.No</th>
-                                    <th>Width</th>
-                                    <th>Height</th>
+                                    <th>Size</th>
+                                    <!-- <th>Height</th> -->
                                     <th>Status</th>
                                     <th>Action</th>
                                   </tr>
@@ -51,9 +51,8 @@
                                     <?php foreach($sizes as $s): ?>
                                       <tr>
                                         <td><?php echo $count; ?></td>
-                                        <td><?php echo $s->width; ?></td>
-                                        <td><?php echo $s->height; ?></td>
-                                        <!-- <td><?php echo date('d-m-Y H:i:s',strtotime($s->created_on)); ?></td> -->
+                                        <td><?php echo $s->name; ?></td>
+                                        <!-- <td><?php echo $s->height; ?></td> -->
                                         <td>
                                           <?php if ($s->status &&  ($s->status == '1' && $s->status != '0')) { ?>
                                             <a href="<?php echo base_url('size/status/'.$s->status.'/'.$s->id); ?>">Active</a>

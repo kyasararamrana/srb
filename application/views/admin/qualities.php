@@ -20,12 +20,12 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Category List
+                    Quality List
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-                    <li><a href="#">Category</a></li>
-                    <li class="active">Category List</li>
+                    <li><a href="#">Quality</a></li>
+                    <li class="active">Quality List</li>
                 </ol>
             </section>
 

@@ -41,14 +41,8 @@
                                 <div class="box-body">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Width <span class="text-danger">*</span></label>
-                                            <input id="name" type="text" class="form-control" name="width" placeholder="Enter Width" value="<?php echo isset($size->width) ? $size->width : ''; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Height <span class="text-danger">*</span></label>
-                                            <input id="name" type="text" class="form-control" name="height" placeholder="Enter Height" value="<?php echo isset($size->height) ? $size->height : ''; ?>">
+                                            <label>Size <span class="text-danger">*</span></label>
+                                            <input id="name" type="text" class="form-control" name="name" placeholder="Enter Size" value="<?php echo isset($size->name) ? $size->name : ''; ?>">
                                         </div>
                                     </div>
                                     <?php if (isset($size->id)) { ?>
@@ -80,17 +74,20 @@
       $(document).ready(function(){
         $('#sizeForm').bootstrapValidator({
           fields: {
-            width: {
+            name: {
               validators: {
                 notEmpty: {
-                  message: 'Width is required'
-                }
-              }
-            },
-            height: {
-              validators: {
-                notEmpty: {
-                  message: 'Height is required'
+                  message: 'Size is required'
+                },
+                remote: {
+                  type : 'post',
+                  message: 'Size already exists',
+                  url: '<?php echo base_url('size/check_exists'); ?>',
+                  data: function(validator, $field, value) {
+                    return {
+                      id: validator.getFieldElements('id').val()
+                    };
+                  }
                 }
               }
             }

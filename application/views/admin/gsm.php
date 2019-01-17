@@ -78,17 +78,17 @@
               validators: {
                 notEmpty: {
                   message: 'GSM Name is required'
+                },
+                remote: {
+                  type : 'post',
+                  message: 'GSM Name already exists',
+                  url: '<?php echo base_url('gsm/check_exists'); ?>',
+                  data: function(validator, $field, value) {
+                    return {
+                      id: validator.getFieldElements('id').val()
+                    };
+                  }
                 }
-                // remote: {
-                //   type : 'post',
-                //   message: 'GSM Name already exists',
-                //   url: '<?php echo base_url('color/check_exists'); ?>',
-                //   data: function(validator, $field, value) {
-                //     return {
-                //       id: validator.getFieldElements('id').val()
-                //     };
-                //   }
-                // }
               }
             }
           }
