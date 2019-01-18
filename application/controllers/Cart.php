@@ -18,8 +18,13 @@ class Cart extends CI_Controller
       $arg['pageTitle'] = 'Cart';
       $data = layouts($arg);
       $id = $this->session->userdata('id');
-      $data['cart'] = $this->cart_model->get_cart_by_user_id($id);
-      $this->load->view('home/cart',$data);
+      if($id){
+        $data['cart'] = $this->cart_model->get_cart_by_user_id($id);
+        $this->load->view('home/cart',$data);
+      } else {
+        $this->session->set_flashdata('error','Please login and try again');
+        redirect('home/login');
+      }
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('home/login');
@@ -56,11 +61,11 @@ class Cart extends CI_Controller
           $this->session->set_flashdata('success','Item removed from cart');
           redirect('cart');
         } else {
-          $this->session->set_flashdata('error','Please try again,something went wrong');
+          $this->session->set_flashdata('error','Please try again');
           redirect($this->agent->referrer());
         }
       } else {
-        $this->session->set_flashdata('error','Please try again');
+        $this->session->set_flashdata('error','Please try again,something went wrong');
         redirect($this->agent->referrer());
       }
     } else {

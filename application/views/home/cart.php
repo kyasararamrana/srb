@@ -50,9 +50,13 @@
                         <?php if (count($cart) > 0) { ?>
                           <?php foreach($cart as $c) { ?>
                             <tr>
-                              <td class="thumb"><img src="<?php echo base_url('assets/uploads/product/'.$c->product_image); ?>" alt=""></td>
+                              <td class="thumb">
+                                <?php if((isset($c->product_image) && !empty($c->product_image)) && file_exists('assets/uploads/product/'.$c->product_image)){ ?>
+                                  <img src="<?php echo base_url('assets/uploads/product/'.$c->product_image); ?>" alt="">
+                                <?php } ?>
+                              </td>
                               <td class="details">
-                                <a href="<?php echo base_url('product/'.$c->id); ?>"><?php echo $c->product_name; ?></a>
+                                <a href="<?php echo base_url('product/'.$c->product_id); ?>"><?php echo $c->product_name; ?></a>
                                 <ul>
                                   <li><span>Size: <?php echo $c->product_size; ?></span></li>
                                   <li><span>Color: <?php echo $c->product_color; ?></span></li>
@@ -77,7 +81,7 @@
                     </table>
                   </div>
                   <div class="float-right mb-5">
-                    <a href="checkout.php" class="primary-btn">Buy Now</a>
+                    <a href="<?php echo base_url('checkout'); ?>" class="primary-btn">Buy Now</a>
                   </div>
                 </div>
               </form>
