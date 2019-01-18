@@ -212,9 +212,15 @@ class Product extends CI_Controller
   //home single product details
   public function product($id='')
   {
-    $arg['pageTitle'] = 'Products';
-    $data = layouts($arg);
-    $this->load->view('home/product',$data);
+    if ($id) {
+      $arg['pageTitle'] = 'Products';
+      $data = layouts($arg);
+      $data['product'] = $this->product_model->get_single_active_product($id);
+      $this->load->view('home/product',$data);
+    } else {
+      $this->session->set_flashdata('error','Something went wrong, please try again');
+      redirect('/products');
+    }
   }
 
 }

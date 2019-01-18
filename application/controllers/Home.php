@@ -13,6 +13,7 @@ class Home extends CI_Controller
     $this->load->model('home_model');
     $this->load->model('banner_model');
     $this->load->model('slider_model');
+    $this->load->model('product_model');
     $this->load->library('form_validation');
   }
   //home page
@@ -22,6 +23,7 @@ class Home extends CI_Controller
     $data = layouts($arg);
     $data['banner'] = $this->banner_model->get_active_banner();
     $data['slider'] = $this->slider_model->get_active_slider();
+    $data['featured'] = $this->product_model->get_active_featured_products();
     $this->load->view('home/index',$data);
   }
   //user login

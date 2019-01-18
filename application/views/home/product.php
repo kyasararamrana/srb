@@ -28,16 +28,22 @@
 
             <!-- Selected Image -->
             <div class="col-lg-5 order-lg-2 order-1">
-              <div class="image_selected"><img src="<?php echo base_url('assets/img/featured_2.jpg'); ?>" alt=""></div>
+
+              <div class="image_selected">
+                <?php if ((isset($product->image) && !empty($product->image)) && file_exists('assets/uploads/product/'.$product->image)) { ?>
+                  <img src="<?php echo base_url('assets/uploads/product/'.$product->image); ?>" alt="">
+                <?php } ?>
+              </div>
+
             </div>
 
             <!-- Description -->
             <div class="col-lg-5 order-3">
               <div class="product_description">
                 <div class="product_category">Bags</div>
-                <div class="product_name">D-Cut, U-Cut Bags</div>
-                <!-- <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div> -->
-                <div class="product_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum. laoreet turpis, nec sollicitudin dolor cursus at. Maecenas aliquet, dolor a faucibus efficitur, nisi tellus cursus urna, eget dictum lacus turpis.</p></div>
+                <div class="product_name"><?php if ((isset($product->name) && !empty($product->name))) { echo $product->name; } ?></div>
+                <?php if ((isset($product->description) && !empty($product->description))) { ?>
+                <div class="product_text"><p> <?php echo $product->description; ?></p></div> <?php } ?>
                 <div class="order_info d-flex flex-row">
                   <form action="#">
                     <div class="clearfix" style="z-index: 1000;">
@@ -68,8 +74,9 @@
                       </ul>
 
                     </div>
-
-                    <div class="product_price">₹ 2000.00</div>
+                    <?php if (isset($product->net_price) && !empty($product->net_price)) { ?>
+                      <div class="product_price">₹ <?php echo $product->net_price; ?></div>
+                    <?php } ?>
                     <div class="button_container">
                       <button type="button" class="button cart_button">Add to Cart</button>
                       <div class="product_fav"><i class="fas fa-heart"></i></div>

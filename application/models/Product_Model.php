@@ -46,9 +46,19 @@ class Product_Model extends CI_Model
   //active Products
   public function get_active_products($id='')
   {
-    return $this->db->get_where($this->table,array('category' => $id,'status' => '1'))->result();
+    if ($id) { $this->db->where('category',$id); }
+    return $this->db->get_where($this->table,array('status' => '1'))->result();
   }
-
+  //single active product
+  public function get_single_active_product($id='')
+  {
+    return $this->db->get_where($this->table,array('id' => $id, 'status' => '1'))->row();
+  }
+  //active and featured Products
+  public function get_active_featured_products()
+  {
+    return $this->db->get_where($this->table, array('featured' => '1', 'status' => '1' ))->result();
+  }
 }
 
 ?>

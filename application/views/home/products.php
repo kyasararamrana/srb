@@ -191,7 +191,9 @@
                       <div class="product_item is_new">
                         <div class="product_border"></div>
                         <div class="product_image d-flex flex-column align-items-center justify-content-center">
-                          <img src="<?php echo base_url('assets/uploads/product/'.$p->image); ?>" alt="">
+                          <?php if (isset($p->image) && !empty($p->image) && file_exists('assets/uploads/product/'.$p->image)) { ?>
+                            <img src="<?php echo base_url('assets/uploads/product/'.$p->image); ?>" alt="">
+                          <?php } ?>
                         </div>
                         <div class="product_content">
                           <div class="product_price">₹ <?php echo $p->net_price; ?></div>
@@ -204,9 +206,7 @@
                         </ul>
                       </div>
                     <?php } ?>
-                  <?php } else { ?>
-                    <div class="">No Products found</div>
-                  <?php } ?>
+
 
                 </div>
 
@@ -223,6 +223,10 @@
                   </ul>
                   <div class="page_next d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-right"></i></div>
                 </div>
+
+              <?php } else { ?>
+                <div class="product_item">No Products found</div>
+              <?php } ?>
 
               </div>
 
