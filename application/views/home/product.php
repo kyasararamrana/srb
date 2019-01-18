@@ -20,9 +20,15 @@
             <!-- Images -->
             <div class="col-lg-2 order-lg-1 order-2">
               <ul class="image_list">
-                <li data-image="<?php echo base_url('assets/img/featured_2.jpg'); ?>"><img src="<?php echo base_url('assets/img/featured_2.jpg'); ?>" alt=""></li>
-                <li data-image="<?php echo base_url('assets/img/featured_3.jpg'); ?>"><img src="<?php echo base_url('assets/img/featured_3.jpg'); ?>" alt=""></li>
-                <li data-image="<?php echo base_url('assets/img/featured_4.jpg'); ?>"><img src="<?php echo base_url('assets/img/featured_4.jpg'); ?>" alt=""></li>
+                <?php if((isset($product->thumbnail1) && !empty($product->thumbnail1)) && file_exists('assets/uploads/product/'.$product->thumbnail1)){ ?>
+                  <li data-image="<?php echo base_url('assets/uploads/product/'.$product->thumbnail1); ?>"><img src="<?php echo base_url('assets/uploads/product/'.$product->thumbnail1); ?>" alt=""></li>
+                <?php } ?>
+                <?php if((isset($product->thumbnail2) && !empty($product->thumbnail2)) && file_exists('assets/uploads/product/'.$product->thumbnail2)){ ?>
+                  <li data-image="<?php echo base_url('assets/uploads/product/'.$product->thumbnail2); ?>"><img src="<?php echo base_url('assets/uploads/product/'.$product->thumbnail2); ?>" alt=""></li>
+                <?php } ?>
+                <?php if((isset($product->thumbnail3) && !empty($product->thumbnail3)) && file_exists('assets/uploads/product/'.$product->thumbnail3)){ ?>
+                  <li data-image="<?php echo base_url('assets/uploads/product/'.$product->thumbnail3); ?>"><img src="<?php echo base_url('assets/uploads/product/'.$product->thumbnail3); ?>" alt=""></li>
+                <?php } ?>
               </ul>
             </div>
 

@@ -72,6 +72,47 @@
                                               <img src="" alt="" class="img-thumbnail" id="upload_preview" style="display:none;">
                                             <?php }?>
                                         </div>
+                                        <!--Thumbnail-->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Product Thumbnail</label>
+                                                <input type="file" class="form-control" name="thumbnail1" id="thumbnail1">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <?php if((isset($product->thumbnail1) && !empty($product->thumbnail1)) && file_exists('assets/uploads/product/'.$product->thumbnail1)){ ?>
+                                              <img src="<?php echo base_url('assets/uploads/product/'.$product->thumbnail1); ?>" alt="" class="img-thumbnail" id="upload_preview">
+                                            <?php } else { ?>
+                                              <img src="" alt="" class="img-thumbnail" id="upload_preview" style="display:none;">
+                                            <?php }?>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Product Thumbnail</label>
+                                                <input type="file" class="form-control" name="thumbnail2" id="thumbnail2">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <?php if((isset($product->thumbnail2) && !empty($product->thumbnail2)) && file_exists('assets/uploads/product/'.$product->thumbnail2)){ ?>
+                                              <img src="<?php echo base_url('assets/uploads/product/'.$product->thumbnail2); ?>" alt="" class="img-thumbnail" id="upload_preview">
+                                            <?php } else { ?>
+                                              <img src="" alt="" class="img-thumbnail" id="upload_preview" style="display:none;">
+                                            <?php }?>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Product Thumbnail</label>
+                                                <input type="file" class="form-control" name="thumbnail3" id="thumbnail3">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <?php if((isset($product->thumbnail3) && !empty($product->thumbnail3)) && file_exists('assets/uploads/product/'.$product->thumbnail3)){ ?>
+                                              <img src="<?php echo base_url('assets/uploads/product/'.$product->thumbnail3); ?>" alt="" class="img-thumbnail" id="upload_preview">
+                                            <?php } else { ?>
+                                              <img src="" alt="" class="img-thumbnail" id="upload_preview" style="display:none;">
+                                            <?php }?>
+                                        </div>
+                                        <!--Thumbnail ends-->
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Description</label>
@@ -166,6 +207,9 @@
                                     <?php if (isset($product->id)): ?>
                                       <input type="hidden" name="id" id="id" value="<?php echo $product->id; ?>">
                                       <input type="hidden" name="uploaded_image" value="<?php echo (isset($product->image)) ? $product->image : '' ; ?>">
+                                      <input type="hidden" name="uploaded_thumbnail1" value="<?php echo (isset($product->thumbnail1)) ? $product->thumbnail1 : '' ; ?>">
+                                      <input type="hidden" name="uploaded_thumbnail2" value="<?php echo (isset($product->thumbnail2)) ? $product->thumbnail2 : '' ; ?>">
+                                      <input type="hidden" name="uploaded_thumbnail3" value="<?php echo (isset($product->thumbnail3)) ? $product->thumbnail3 : '' ; ?>">
                                     <?php endif; ?>
                                     <div class="col-md-12 text-center">
                                         <button type="submit" class="btn btn-primary">Add</button>
@@ -264,24 +308,16 @@
                   message: 'Actual price is required'
                 },
                 integer: {
-                    message: 'The value is not a number'
+                    message: 'The value is not an number',
+                    thousandsSeparator: '',
+                    decimalSeparator: '.'
                 }
               }
             },
             discount_percentage:{
               validators: {
                 integer: {
-                    message: 'The value is not a number'
-                }
-              }
-            },
-            net_price:{
-              validators: {
-                notEmpty: {
-                  message: 'Net price is required'
-                },
-                integer: {
-                    message: 'The value is not a number'
+                  message: 'The value is not a number'
                 }
               }
             }
