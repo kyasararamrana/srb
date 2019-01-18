@@ -230,6 +230,7 @@
                 'product_name':'<?php echo (isset($product->name) && !empty($product->name)) ? $product->name : ''; ?>',
                 'product_image':'<?php echo (isset($product->image) && !empty($product->image)) ? $product->image : ''; ?>',
                 'actual_price':'<?php echo (isset($product->actual_price) && !empty($product->actual_price)) ? $product->actual_price : ''; ?>',
+                'discount_percentage':'<?php echo (isset($product->discount_percentage) && !empty($product->discount_percentage)) ? $product->discount_percentage : ''; ?>',
                 'net_price':'<?php echo (isset($product->net_price) && !empty($product->net_price)) ? $product->net_price : ''; ?>'
               },
               dataType:'JSON',

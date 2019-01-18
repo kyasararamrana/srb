@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/datatables.min.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/head_foot.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/head_foot_responsive.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/add-cart.css'); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/add_cart.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/product_styles.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/product_responsive.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/shop_styles.css'); ?>">

@@ -103,7 +103,7 @@
                                     <div class="cart_count"><span>10</span></div>
                                 </div>
                                 <div class="cart_content">
-                                    <div class="cart_text"><a href="cart.php">Cart</a></div>
+                                    <div class="cart_text"><a href="<?php echo base_url('cart'); ?>">Cart</a></div>
                                     <div class="cart_price">₹ 8500</div>
                                 </div>
                             </div>

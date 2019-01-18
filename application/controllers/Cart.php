@@ -14,9 +14,18 @@ class Cart extends CI_Controller
   //cart - view
   public function index()
   {
-    // code...
+    if ($this->session->userdata('logged_in') == TRUE) {
+      $arg['pageTitle'] = 'Cart';
+      $data = layouts($arg);
+      $id = $this->session->userdata('id');
+      $data['cart'] = $this->cart_model->get_cart_by_user_id($id);
+      $this->load->view('home/cart',$data);
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('home/login');
+    }
   }
-  //insert
+  //insert cart
   public function insert()
   {
     if($this->session->userdata('logged_in') == TRUE){
@@ -37,7 +46,27 @@ class Cart extends CI_Controller
       $this->session->set_flashdata('error','Please login and try again');
       redirect('home/login');
     }
-
+  }
+  //delete cart
+  public function delete($id='')
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      if ($id) {
+        if ($this->cart_model->delete($id)) {
+          $this->session->set_flashdata('success','Item removed from cart');
+          redirect('cart');
+        } else {
+          $this->session->set_flashdata('error','Please try again,something went wrong');
+          redirect($this->agent->referrer());
+        }
+      } else {
+        $this->session->set_flashdata('error','Please try again');
+        redirect($this->agent->referrer());
+      }
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('home/login');
+    }
 
   }
 
