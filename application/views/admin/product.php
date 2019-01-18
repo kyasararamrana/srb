@@ -230,6 +230,34 @@
                 }
               }
             },
+            size:{
+              validators: {
+                notEmpty: {
+                  message: 'Size is required'
+                }
+              }
+            },
+            color:{
+              validators: {
+                notEmpty: {
+                  message: 'Color is required'
+                }
+              }
+            },
+            gsm:{
+              validators: {
+                notEmpty: {
+                  message: 'GSM is required'
+                }
+              }
+            },
+            quality:{
+              validators: {
+                notEmpty: {
+                  message: 'Quality is required'
+                }
+              }
+            },
             actual_price:{
               validators: {
                 notEmpty: {
