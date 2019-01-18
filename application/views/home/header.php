@@ -212,6 +212,7 @@
 
 </header>
 <!--notification messages-->
+<div id="message" style=""></div>
 <?php if($this->session->flashdata('success')): ?>
   <div class="alert_msg1 animated slideInUp bg-succ">
     <?php echo $this->session->flashdata('success');?> &nbsp; <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i>

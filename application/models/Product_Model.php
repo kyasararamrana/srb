@@ -52,7 +52,9 @@ class Product_Model extends CI_Model
   //single active product
   public function get_single_active_product($id='')
   {
-    return $this->db->get_where($this->table,array('id' => $id, 'status' => '1'))->row();
+    $this->db->select('p.*,c.name as category');
+    $this->db->join('ecom_category c','c.id = p.category','left');
+    return $this->db->get_where($this->table.' p',array('p.id' => $id, 'p.status' => '1'))->row();
   }
   //active and featured Products
   public function get_active_featured_products()

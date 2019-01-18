@@ -46,7 +46,7 @@
             <!-- Description -->
             <div class="col-lg-5 order-3">
               <div class="product_description">
-                <div class="product_category">Bags</div>
+                <div class="product_category"><?php if ((isset($product->category) && !empty($product->category))) { echo $product->category; } ?></div>
                 <div class="product_name"><?php if ((isset($product->name) && !empty($product->name))) { echo $product->name; } ?></div>
                 <?php if ((isset($product->description) && !empty($product->description))) { ?>
                 <div class="product_text"><p> <?php echo $product->description; ?></p></div> <?php } ?>
@@ -84,7 +84,7 @@
                       <div class="product_price">₹ <?php echo $product->net_price; ?></div>
                     <?php } ?>
                     <div class="button_container">
-                      <button type="button" class="button cart_button">Add to Cart</button>
+                      <button type="button" class="button cart_button" id="addtocart">Add to Cart</button>
                       <div class="product_fav"><i class="fas fa-heart"></i></div>
                     </div>
 
@@ -215,5 +215,35 @@
       <?php echo $footer; ?>
     </div>
     <?php echo $scripts ?>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#addtocart').on('click',function(){
+          <?php if($this->session->userdata('logged_in') != TRUE){ ?>
+            <?php echo 'window.location = "'.base_url('home/login').'";' ?>
+          <?php } else { ?>
+            $.ajax({
+              url:'<?php echo base_url('cart/insert'); ?>',
+              type:'post',
+              data:{
+                'user_id':'<?php echo ($this->session->userdata('id')) ? $this->session->userdata('id') : ''; ?>',
+                'product_id':'<?php echo (isset($product->id) && !empty($product->id)) ? $product->id : ''; ?>',
+                'product_name':'<?php echo (isset($product->name) && !empty($product->name)) ? $product->name : ''; ?>',
+                'product_image':'<?php echo (isset($product->image) && !empty($product->image)) ? $product->image : ''; ?>',
+                'actual_price':'<?php echo (isset($product->actual_price) && !empty($product->actual_price)) ? $product->actual_price : ''; ?>',
+                'net_price':'<?php echo (isset($product->net_price) && !empty($product->net_price)) ? $product->net_price : ''; ?>'
+              },
+              dataType:'JSON',
+              success:function(data){
+                if(data.success){
+                  $('#message').html('<div class="alert_msg1 animated slideInUp bg-succ">'+data.success+' <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
+                } else {
+                  $('#message').html('<div class="alert_msg1 animated slideInUp bg-warn">'+data.error+' <i class="fa fa-exclamation-triangle text-success ico_bac" aria-hidden="true"></i></div>');
+                }
+              }
+            });
+          <?php } ?>
+        });
+      });
+    </script>
   </body>
 </html>

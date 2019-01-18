@@ -51,7 +51,7 @@ class Home extends CI_Controller
         $password = md5($password);
         $result = $this->home_model->get_access($email,$password);
         if ($result) {
-          $user_data = array('firstname' => $result->firstname, 'lastname' => $result->lastname, 'email' => $result->email, 'mobile' => $result->mobile, 'logged_in' => TRUE);
+          $user_data = array('id' => $result->id, 'firstname' => $result->firstname, 'lastname' => $result->lastname, 'email' => $result->email, 'mobile' => $result->mobile, 'logged_in' => TRUE);
           $this->session->set_userdata($user_data);
           $this->session->set_flashdata('success','Logged in successfully');
           redirect('home');
