@@ -270,7 +270,7 @@
                                       <?php foreach ($featured as $f) { ?>
                                         <div class="featured_slider_item">
                                             <div class="border_active"></div>
-                                            <div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                                            <div class="product_item <?php  if (isset($f->discount_percentage) && !empty($f->discount_percentage)) { echo 'discount'; } ?> is_new d-flex flex-column align-items-center justify-content-center text-center">
                                                 <div class="product_image d-flex flex-column align-items-center justify-content-center">
                                                   <?php if ((isset($f->image) && !empty($f->image)) && file_exists('assets/uploads/product/'.$f->image)) { ?>
                                                     <img src="<?php echo base_url('assets/uploads/product/'.$f->image); ?>" alt="">

@@ -40,19 +40,7 @@
                     <?php } else { ?>
                       <li>No Categories found</li>
                     <?php } ?>
-                    <!-- <li><a href="shop.html">D-Cut Bags</a></li>
-                    <li><a href="shop.html">Handle Bags</a></li>
-                    <li><a href="shop.html">U- Cut Bags</a></li>
-                    <li><a href="shop.html">Gazetted Bags</a></li>
-                    <li><a href="shop.html">Plain Sheets</a></li> -->
                   </ul>
-                  <!-- <ul class="sidebar_categories2">
-                    <li><a href="shop.html">Model Number Sheets</a></li>
-                    <li><a href="shop.html">Missprint Bags</a></li>
-                    <li><a href="shop.html">Printed Rolls</a></li>
-                    <li><a href="shop.html">Printed sheets</a></li>
-                    <li><a href="shop.html">Printed Bags</a></li>
-                  </ul> -->
                 </div>
                 <div class="clearfix">&nbsp;</div>
                 <div class="sidebar_section filter_by_section">
@@ -188,7 +176,7 @@
                   <!-- Product Item -->
                   <?php if (isset($products) && count($products) > 0) { ?>
                     <?php foreach ($products as $p) { ?>
-                      <div class="product_item is_new">
+                      <div class="product_item <?php if ((isset($p->discount_percentage) && !empty($p->discount_percentage))) { echo 'discount'; } ?> is_new">
                         <div class="product_border"></div>
                         <div class="product_image d-flex flex-column align-items-center justify-content-center">
                           <?php if (isset($p->image) && !empty($p->image) && file_exists('assets/uploads/product/'.$p->image)) { ?>
@@ -196,12 +184,18 @@
                           <?php } ?>
                         </div>
                         <div class="product_content">
-                          <div class="product_price">₹ <?php echo $p->net_price; ?></div>
+                          <?php if ((isset($p->discount_percentage) && !empty($p->discount_percentage))) { ?>
+                            <div class="product_price">₹ <?php echo $p->net_price; ?><span>₹ <?php echo $p->actual_price; ?></span></div>
+                          <?php  } else { ?>
+                            <div class="product_price">₹ <?php echo $p->net_price; ?></div>
+                          <?php } ?>
                           <div class="product_name"><div><a href="<?php echo base_url('product/'.$p->id); ?>" tabindex="0"><?php echo $p->name; ?></a></div></div>
                         </div>
                         <div class="product_fav"><i class="fas fa-heart"></i></div>
                         <ul class="product_marks">
-                          <li class="product_mark product_discount">-25%</li>
+                          <?php if ((isset($p->discount_percentage) && !empty($p->discount_percentage))) { ?>
+                            <li class="product_mark product_discount"><?php echo '-'.$p->discount_percentage.'%'; ?></li>
+                          <?php } ?>
                           <li class="product_mark product_new">new</li>
                         </ul>
                       </div>
