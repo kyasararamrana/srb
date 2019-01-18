@@ -83,7 +83,7 @@ class Gsm extends CI_Controller
       $post_data = $this->input->post();
       if ($post_data) {
         $post_id = $this->input->post('id');
-        $addl_data = array('updated_by' => $this->session->userdata('id'), 'updated_on' => date('Y-m-d H:i:s'), 'status' => '1');
+        $addl_data = array('updated_by' => $this->session->userdata('id'), 'updated_on' => date('Y-m-d H:i:s'));
         $post_data = array_merge($post_data,$addl_data);
         if ($this->gsm_model->update($post_data,$post_id)) {
           $this->session->set_flashdata('success','Gsm updated successfully');

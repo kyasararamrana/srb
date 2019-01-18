@@ -111,7 +111,7 @@ class Slider extends CI_Controller
             @unlink('./assets/uploads/slider/'.$post_uploaded_image);
             $image = $this->upload->data('file_name');
           }
-          $addl_data = array('image' => $image, 'updated_by' => $this->session->userdata('id'), 'updated_on' => date('Y-m-d H:i:s'), 'status' => '1');
+          $addl_data = array('image' => $image, 'updated_by' => $this->session->userdata('id'), 'updated_on' => date('Y-m-d H:i:s'));
           $post_data = array_merge($post_data,$addl_data);
           unset($post_data['uploaded_image']);
           if ($this->slider_model->update($post_data,$post_id)) {
