@@ -29,7 +29,57 @@
           <!-- row -->
           <div class="row">
             <div class="col-md-12">
-              <!-- <form id="checkout-form"> -->
+              <form  action="<?php echo base_url('billing/insert') ?>" method="post" id="billingForm">
+              <div class="row mt-5">
+                <div class="col-md-6">
+                  <div class="billing-details">
+                    <div class="section-title">
+                      <h3 class="title">Billing Details</h3>
+                    </div>
+                    <form  action="<?php echo base_url('billing/insert') ?>" method="post" id="billingForm">
+                      <div class="form-group">
+                        <input class="input" type="text" name="first_name" id="first_name" placeholder="First Name">
+                      </div>
+                      <div class="form-group">
+                        <input class="input" type="text" name="last_name" placeholder="Last Name">
+                      </div>
+                      <div class="form-group">
+                        <input class="input" type="email" name="email" placeholder="Email">
+                      </div>
+                      <div class="form-group">
+                        <input class="input" type="text" name="address" placeholder="Address">
+                      </div>
+                      <div class="form-group">
+                        <select class="form-control input" name="city">
+                          <option value="">Select City</option>
+                          <option value="Hyderabad">Hyderabad</option>
+                          <option value="Vijayawada">Vijayawada</option>
+                          <option value="Vishakapatnam">Vishakapatnam</option>
+                        </select>
+                        <div class="caret"></div>
+                      </div>
+                      <div class="form-group">
+                        <select class="form-control input" name="state">
+                          <option value="">Select State</option>
+                          <option value="Telangana">Telangana</option>
+                          <option value="Andhra Pradesh">Andhra Pradesh</option>
+                          <option value="Tamil Nadu">Tamil Nadu</option>
+                        </select>
+                        <div class="caret"></div>
+                      </div>
+                      <div class="form-group">
+                        <input class="input" type="text" name="zip_code" placeholder="ZIP Code">
+                      </div>
+                      <div class="form-group">
+                        <input class="input" type="text" name="mobile_number" placeholder="Mobile Number">
+                      </div>
+                      <input type="hidden" name="user_id" value="<?php echo $this->session->userdata('id'); ?>">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                </div>
+              </div>
                 <div class="order-summary mt-5 mb-4">
                   <div class="section-title mb-4">
                     <h3 class="title">Order Review</h3>
@@ -99,58 +149,12 @@
                     </table>
                   </div>
                   <div class="float-right mb-5">
-                    <a href="checkout.php" class="primary-btn">Place Order</a>
+                    <!-- <a href="checkout.php" class="primary-btn">Place Order</a> -->
+                    <button type="submit" class="primary-btn">Place Order</button>
                   </div>
                 </div>
-                <div class="row mt-5">
-                  <div class="col-md-6">
-                    <div class="billing-details">
-                      <div class="section-title">
-                        <h3 class="title">Billing Details</h3>
-                      </div>
-                      <div class="form-group">
-                        <input class="input" type="text" name="first-name" placeholder="First Name">
-                      </div>
-                      <div class="form-group">
-                        <input class="input" type="text" name="last-name" placeholder="Last Name">
-                      </div>
-                      <div class="form-group">
-                        <input class="input" type="email" name="email" placeholder="Email">
-                      </div>
-                      <div class="form-group">
-                        <input class="input" type="text" name="address" placeholder="Address">
-                      </div>
-                      <div class="form-group">
-                        <select class="form-control input" name="city">
-                          <option value="">Select City</option>
-                          <option value="">Option</option>
-                          <option value="">Option</option>
-                          <option value="">Option</option>
-                        </select>
-                        <div class="caret"></div>
-                      </div>
-                      <div class="form-group">
-                        <select class="form-control input" name="state">
-                          <option value="">Select State</option>
-                          <option value="">Option</option>
-                          <option value="">Option</option>
-                          <option value="">Option</option>
-                        </select>
-                        <div class="caret"></div>
-                      </div>
-                      <div class="form-group">
-                        <input class="input" type="text" name="zip-code" placeholder="ZIP Code">
-                      </div>
-                      <div class="form-group">
-                        <input class="input" type="mobilenumber" name="mobilenumber" placeholder="Mobile Number">
-                      </div>
-                    </div>
-                  </div>
 
-                  <div class="col-md-6">
-                  </div>
-                </div>
-              <!-- </form> -->
+              </form>
             </div>
           </div>
           <!-- /row -->
@@ -160,5 +164,92 @@
       <?php echo $footer; ?>
     </div>
     <?php echo $scripts ?>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("#billingForm").bootstrapValidator({
+              fields: {
+                  first_name: {
+                      validators: {
+                          notEmpty: {
+                              message: 'First Name is required'
+                          },
+                          regexp: {
+                          regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
+                          message:'Name wont allow <> [] = % '
+                          }
+                      }
+                  },
+                  last_name: {
+                      validators: {
+                          notEmpty: {
+                              message: 'Last Name is required'
+                          },
+                          regexp: {
+                          regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
+                          message:'Name wont allow <> [] = % '
+                          }
+                      }
+                  },
+                  email: {
+                     validators: {
+                          notEmpty: {
+                              message: 'Email is required'
+                          },
+                          regexp: {
+                            regexp: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                            message: 'Please enter a valid email address. For example johndoe@domain.com.'
+                          }
+                      }
+                  },
+                  mobile_number: {
+                      validators: {
+                          notEmpty: {
+                              message: 'Mobile Number is required'
+                          },
+                          regexp: {
+                          regexp:  /^[0-9]{10,12}$/,
+                          message:'Mobile Number must be 10 to 12 digits'
+                          }
+
+                      }
+                  },
+                  address: {
+                      validators: {
+                          notEmpty: {
+                              message: 'Address is required'
+                          }
+                      }
+                  },
+                  city: {
+                      validators: {
+                          notEmpty: {
+                              message: 'City is required'
+                          }
+                      }
+                  },
+                  state: {
+                      validators: {
+                          notEmpty: {
+                              message: 'State is required'
+                          }
+                      }
+                  },
+                  zip_code: {
+                      validators: {
+                          notEmpty: {
+                              message: 'Zip code is required'
+                          },
+                          regexp: {
+                          regexp:  /^[0-9]{1,6}$/,
+                          message:'Zip code must be 1 to 6 digits'
+                          }
+
+                      }
+                  },
+
+              }
+          });
+      });
+    </script>
   </body>
 </html>

@@ -25,7 +25,7 @@ $(document).ready(function()
 {
 	"use strict";
 
-	/* 
+	/*
 
 	1. Vars and Inits
 
@@ -55,7 +55,7 @@ $(document).ready(function()
 		initTabLines();
 	});
 
-	/* 
+	/*
 
 	2. Set Header
 
@@ -86,7 +86,7 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
+	/*
 
 	3. Init Custom Dropdown
 
@@ -151,7 +151,7 @@ $(document).ready(function()
 		});
 	}
 
-	/* 
+	/*
 
 	4. Init Page Menu
 
@@ -227,7 +227,7 @@ $(document).ready(function()
 		menuActive = false;
 	}
 
-	/* 
+	/*
 
 	5. Init Deals Slider
 
@@ -257,7 +257,7 @@ $(document).ready(function()
 				prev.on('click', function()
 				{
 					dealsSlider.trigger('prev.owl.carousel');
-				});	
+				});
 			}
 
 			if($('.deals_slider_next').length)
@@ -266,12 +266,12 @@ $(document).ready(function()
 				next.on('click', function()
 				{
 					dealsSlider.trigger('next.owl.carousel');
-				});	
+				});
 			}
 		}
 	}
 
-	/* 
+	/*
 
 	6. Init Tab Lines
 
@@ -310,7 +310,7 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
+	/*
 
 	7. Init Tabs
 
@@ -356,13 +356,13 @@ $(document).ready(function()
 								initASlider(slider);
 							}
 						});
-					});	
+					});
 				});
 			});
 		}
 	}
 
-	/* 
+	/*
 
 	8. Init Featured Slider
 
@@ -378,7 +378,7 @@ $(document).ready(function()
 				var featuredSlider = $(this);
 				initFSlider(featuredSlider);
 			});
-				
+
 		}
 	}
 
@@ -455,7 +455,7 @@ $(document).ready(function()
 		});
 	}
 
-	/* 
+	/*
 
 	9. Init Favorites
 
@@ -475,7 +475,7 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
+	/*
 
 	10. Init ZIndex
 
@@ -485,7 +485,7 @@ $(document).ready(function()
 	{
 		// Hide slider dots on item hover
 		var items = document.getElementsByClassName('featured_slider_item');
-		
+
 		for(var x = 0; x < items.length; x++)
 		{
 			var item = items[x];
@@ -501,7 +501,7 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
+	/*
 
 	11. Init Banner 2 Slider
 
@@ -524,7 +524,7 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
+	/*
 
 	12. Init Recently Viewed Slider
 
@@ -573,8 +573,8 @@ $(document).ready(function()
 			}
 		}
 	}
-    
-	/* 
+
+	/*
 
 	13. Init Timer
 
@@ -618,17 +618,17 @@ $(document).ready(function()
 				    // find the amount of "seconds" between now and target
 				    var current_date = new Date().getTime();
 				    var seconds_left = (target_date - current_date) / 1000;
-				    console.log(seconds_left);
-				 
+				    //console.log(seconds_left);
+
 				    // do some time calculations
 				    days = parseInt(seconds_left / 86400);
 				    seconds_left = seconds_left % 86400;
-				    
+
 				    hours = parseInt(seconds_left / 3600);
 				    hours = hours + days * 24;
 				    seconds_left = seconds_left % 3600;
-				    
-				     
+
+
 				    minutes = parseInt(seconds_left / 60);
 				    seconds = parseInt(seconds_left % 60);
 
@@ -648,10 +648,10 @@ $(document).ready(function()
 				    // display results
 				    h.text(hours);
 				    m.text(minutes);
-				    s.text(seconds); 
-				 
+				    s.text(seconds);
+
 				}, 1000);
-    		});	
-    	}	
+    		});
+    	}
     }
 });

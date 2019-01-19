@@ -14,3 +14,4 @@
 <script src="<?php echo base_url('assets/js/product_custom.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/shop_custom.js') ?>"></script>
 <script src="<?php echo base_url('assets/js/custom.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/bootstrapValidator.min.js') ?>"></script>
