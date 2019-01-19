@@ -67,9 +67,9 @@
                                         </div>
                                         <div class="col-md-1">
                                             <?php if((isset($product->image) && !empty($product->image)) && file_exists('assets/uploads/product/'.$product->image)){ ?>
-                                              <img src="<?php echo base_url('assets/uploads/product/'.$product->image); ?>" alt="" class="img-thumbnail" id="upload_preview">
+                                              <img src="<?php echo base_url('assets/uploads/product/'.$product->image); ?>" alt="" class="img-thumbnail">
                                             <?php } else { ?>
-                                              <img src="" alt="" class="img-thumbnail" id="upload_preview" style="display:none;">
+                                              <img src="" alt="" class="img-thumbnail" style="display:none;">
                                             <?php }?>
                                         </div>
                                         <!--Thumbnail-->
@@ -81,9 +81,9 @@
                                         </div>
                                         <div class="col-md-1">
                                             <?php if((isset($product->thumbnail1) && !empty($product->thumbnail1)) && file_exists('assets/uploads/product/'.$product->thumbnail1)){ ?>
-                                              <img src="<?php echo base_url('assets/uploads/product/'.$product->thumbnail1); ?>" alt="" class="img-thumbnail" id="upload_preview">
+                                              <img src="<?php echo base_url('assets/uploads/product/'.$product->thumbnail1); ?>" alt="" class="img-thumbnail">
                                             <?php } else { ?>
-                                              <img src="" alt="" class="img-thumbnail" id="upload_preview" style="display:none;">
+                                              <img src="" alt="" class="img-thumbnail" style="display:none;">
                                             <?php }?>
                                         </div>
                                         <div class="col-md-3">
@@ -94,9 +94,9 @@
                                         </div>
                                         <div class="col-md-1">
                                             <?php if((isset($product->thumbnail2) && !empty($product->thumbnail2)) && file_exists('assets/uploads/product/'.$product->thumbnail2)){ ?>
-                                              <img src="<?php echo base_url('assets/uploads/product/'.$product->thumbnail2); ?>" alt="" class="img-thumbnail" id="upload_preview">
+                                              <img src="<?php echo base_url('assets/uploads/product/'.$product->thumbnail2); ?>" alt="" class="img-thumbnail">
                                             <?php } else { ?>
-                                              <img src="" alt="" class="img-thumbnail" id="upload_preview" style="display:none;">
+                                              <img src="" alt="" class="img-thumbnail" style="display:none;">
                                             <?php }?>
                                         </div>
                                         <div class="col-md-3">
@@ -107,9 +107,9 @@
                                         </div>
                                         <div class="col-md-1">
                                             <?php if((isset($product->thumbnail3) && !empty($product->thumbnail3)) && file_exists('assets/uploads/product/'.$product->thumbnail3)){ ?>
-                                              <img src="<?php echo base_url('assets/uploads/product/'.$product->thumbnail3); ?>" alt="" class="img-thumbnail" id="upload_preview">
+                                              <img src="<?php echo base_url('assets/uploads/product/'.$product->thumbnail3); ?>" alt="" class="img-thumbnail" >
                                             <?php } else { ?>
-                                              <img src="" alt="" class="img-thumbnail" id="upload_preview" style="display:none;">
+                                              <img src="" alt="" class="img-thumbnail" style="display:none;">
                                             <?php }?>
                                         </div>
                                         <!--Thumbnail ends-->
@@ -347,14 +347,14 @@
   			if(input.files && input.files[0]){
   				var reader = new FileReader();
   				reader.onload = function(e){
-  					$("#upload_preview").attr('src',e.target.result);
+  					$(input).parent().parent().next('div').find('img').attr('src',e.target.result);
   				}
   				reader.readAsDataURL(input.files[0]);
   			}
   		}
-  		$("#image").on('change',function(){
+  		$("input:file").on('change',function(){
   			preview(this);
-  			$("#upload_preview").css('display','block');
+  			$(this).parent().parent().next('div').find('img').css('display','block');
   		});
     </script>
 

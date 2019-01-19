@@ -167,18 +167,18 @@
 
         });
         //image preview
-        function preview_logo(input){
+        function preview(input){
     			if(input.files && input.files[0]){
     				var reader = new FileReader();
     				reader.onload = function(e){
-    					$(".upload_preview").attr('src',e.target.result);
+    					$(input).parent().parent().next('div').find('img').attr('src',e.target.result);
     				}
     				reader.readAsDataURL(input.files[0]);
     			}
     		}
     		$("#logo,#favicon").on('change',function(){
-    			preview_logo(this);
-    			$(".upload_preview").css('display','block');
+    			preview(this);
+          $(this).parent().parent().next('div').find('img').css('display','block');
     		});
     </script>
 
