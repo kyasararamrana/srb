@@ -307,11 +307,9 @@
                 notEmpty: {
                   message: 'Actual price is required'
                 }
-                // integer: {
-                //     message: 'The value is not an number',
-                //     thousandsSeparator: '',
-                //     decimalSeparator: '.'
-                // }
+                integer: {
+                    message: 'The value is not an number'
+                }
               }
             },
             discount_percentage:{
