@@ -232,6 +232,7 @@
           var net_price = '<?php echo $product->net_price; ?>';
           var product_quantity = $("#quantity_input").val();
           <?php if($this->session->userdata('logged_in') != TRUE){ ?>
+            <?php $this->session->set_userdata('previous_url', current_url()); ?>
             <?php echo 'window.location = "'.base_url('home/login').'";' ?>
           <?php } else { ?>
             $.ajax({

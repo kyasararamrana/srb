@@ -26,14 +26,13 @@
           <!-- row -->
           <div class="row">
             <div class="col-md-12">
-              <form  action="<?php echo base_url('billing/insert') ?>" method="post" id="billingForm">
+              <form  action="<?php echo base_url('checkout/insert') ?>" method="post" id="billingForm">
                 <div class="row mt-5">
                   <div class="col-md-6">
                     <div class="billing-details">
                       <div class="section-title">
                         <h3 class="title">Billing Details</h3>
                       </div>
-                      <form  action="<?php echo base_url('billing/insert') ?>" method="post" id="billingForm">
                         <div class="form-group">
                           <input class="input" type="text" name="first_name" id="first_name" placeholder="First Name">
                         </div>
@@ -72,89 +71,88 @@
                         </div>
                         <input type="hidden" name="user_id" value="<?php echo $this->session->userdata('id'); ?>">
                     </div>
-                  </div>
+                </div>
+                </div>
                   <div class="col-md-6">
                   </div>
-                </div>
-                <div class="order-summary mt-5 mb-4">
-                  <div class="section-title mb-4">
-                    <h3 class="title">Order Review</h3>
-                  </div>
-                  <div class="table-responsive p-1">
-                    <table class="shopping-cart-table table">
-                      <thead>
-                        <tr>
-                          <th>Product</th>
-                          <th></th>
-                          <th class="text-center">Price</th>
-                          <th class="text-center">Quantity</th>
-                          <th class="text-center">Total</th>
-                          <th class="text-right">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php if(count($cart) > 0){ ?>
-                          <?php foreach ($cart as $c) { ?>
-                            <tr>
-                              <?php if ((isset($c->product_image) && !empty($c->product_image)) && file_exists('assets/uploads/product/'.$c->product_image)) { ?>
-                                <td class="thumb"><img src="<?php echo base_url('assets/uploads/product/'.$c->product_image); ?>" alt=""></td>
-                              <?php } ?>
-                              <td class="details">
-                                <a href="#"><?php echo $c->product_name; ?></a>
-                                <ul>
-                                  <li><span>Size: <?php echo $c->product_size; ?></span></li>
-                                  <li><span>Color: <?php echo $c->product_color; ?></span></li>
-                                </ul>
-                              </td>
-                              <?php if ($c->discount_percentage) { ?>
-                                <td class="price text-center"><strong>₹ <?php echo number_format($c->net_price,2, '.', ','); ?></strong><br><del class="font-weak"><small>₹ <?php echo number_format($c->actual_price,2, '.', ','); ?></small></del></td>
-                              <?php } else { ?>
-                                <td class="price text-center"><strong>₹ <?php echo number_format($c->net_price,2, '.', ','); ?></strong></td>
-                              <?php } ?>
-                              <td class="qty text-center">
-                                <span><?php echo $c->product_quantity; ?></span>
-                              </td>
-                              <td class="total text-center"><strong class="primary-color">₹ <?php echo number_format($c->product_quantity*$c->net_price,2, '.', ','); ?></strong></td>
-                              <td class="text-right"><a href="<?php echo base_url('checkout/delete/'.$c->id); ?>" class="main-btn icon-btn"><i class="fa fa-trash"></i></a></td>
-                            </tr>
-                          <?php  } ?>
-                        <?php } else { ?>
+                  <div class="order-summary mt-5 mb-4">
+                    <div class="section-title mb-4">
+                      <h3 class="title">Order Review</h3>
+                    </div>
+                    <div class="table-responsive p-1">
+                      <table class="shopping-cart-table table">
+                        <thead>
                           <tr>
-                            <td colspan="6" class="text-center">Your cart is empty. <a href="<?php echo base_url('products'); ?>">Browse products</a></td>
+                            <th>Product</th>
+                            <th></th>
+                            <th class="text-center">Price</th>
+                            <th class="text-center">Quantity</th>
+                            <th class="text-center">Total</th>
+                            <th class="text-right">Action</th>
                           </tr>
-                        <?php } ?>
+                        </thead>
+                        <tbody>
+                          <?php if(count($cart) > 0){ ?>
+                            <?php foreach ($cart as $c) { ?>
+                              <tr>
+                                <?php if ((isset($c->product_image) && !empty($c->product_image)) && file_exists('assets/uploads/product/'.$c->product_image)) { ?>
+                                  <td class="thumb"><img src="<?php echo base_url('assets/uploads/product/'.$c->product_image); ?>" alt=""></td>
+                                <?php } ?>
+                                <td class="details">
+                                  <a href="#"><?php echo $c->product_name; ?></a>
+                                  <ul>
+                                    <li><span>Size: <?php echo $c->product_size; ?></span></li>
+                                    <li><span>Color: <?php echo $c->product_color; ?></span></li>
+                                  </ul>
+                                </td>
+                                <?php if ($c->discount_percentage) { ?>
+                                  <td class="price text-center"><strong>₹ <?php echo number_format($c->net_price,2, '.', ','); ?></strong><br><del class="font-weak"><small>₹ <?php echo number_format($c->actual_price,2, '.', ','); ?></small></del></td>
+                                <?php } else { ?>
+                                  <td class="price text-center"><strong>₹ <?php echo number_format($c->net_price,2, '.', ','); ?></strong></td>
+                                <?php } ?>
+                                <td class="qty text-center">
+                                  <span><?php echo $c->product_quantity; ?></span>
+                                </td>
+                                <td class="total text-center"><strong class="primary-color">₹ <?php echo number_format($c->product_quantity*$c->net_price,2, '.', ','); ?></strong></td>
+                                <td class="text-right"><a href="<?php echo base_url('checkout/delete/'.$c->id); ?>" class="main-btn icon-btn"><i class="fa fa-trash"></i></a></td>
+                              </tr>
+                            <?php  } ?>
+                          <?php } else { ?>
+                            <tr>
+                              <td colspan="6" class="text-center">Your cart is empty. <a href="<?php echo base_url('products'); ?>">Browse products</a></td>
+                            </tr>
+                          <?php } ?>
+                        </tbody>
+                        <tfoot>
+                          <tr>
+                            <th class="empty" colspan="3"></th>
+                            <th>SUBTOTAL</th>
+                            <th colspan="2" class="sub-total">₹ <?php echo number_format($total->total_cart,2, '.', ','); ?></th>
+                          </tr>
+                          <tr>
+                            <th class="empty" colspan="3"></th>
+                            <th>SHIPPING</th>
+                            <td colspan="2">Free Shipping</td>
+                          </tr>
+                          <tr>
+                            <th class="empty" colspan="3"></th>
+                            <th>TOTAL</th>
+                            <th colspan="2" class="total">₹ <?php echo number_format($total->total_cart,2, '.', ','); ?></th>
+                          </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                    <div class="float-right mb-5">
+                      <button type="submit" class="primary-btn">Place Order</button>
+                    </div>
+                  </div>
 
-                      </tbody>
-                      <tfoot>
-                        <tr>
-                          <th class="empty" colspan="3"></th>
-                          <th>SUBTOTAL</th>
-                          <th colspan="2" class="sub-total">₹ <?php echo number_format($total->total_cart,2, '.', ','); ?></th>
-                        </tr>
-                        <tr>
-                          <th class="empty" colspan="3"></th>
-                          <th>SHIPPING</th>
-                          <td colspan="2">Free Shipping</td>
-                        </tr>
-                        <tr>
-                          <th class="empty" colspan="3"></th>
-                          <th>TOTAL</th>
-                          <th colspan="2" class="total">₹ <?php echo number_format($total->total_cart,2, '.', ','); ?></th>
-                        </tr>
-                      </tfoot>
-                    </table>
-                  </div>
-                  <div class="float-right mb-5">
-                    <button type="submit" class="primary-btn">Place Order</button>
-                  </div>
-                </div>
               </form>
             </div>
-          </div>
           <!-- /row -->
-        </div>
+          </div>
         <!-- /container -->
-      </div>
+        </div>
       <?php echo $footer; ?>
     </div>
     <?php echo $scripts ?>

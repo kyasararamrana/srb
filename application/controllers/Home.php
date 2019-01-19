@@ -54,7 +54,12 @@ class Home extends CI_Controller
           $user_data = array('id' => $result->id, 'firstname' => $result->firstname, 'lastname' => $result->lastname, 'email' => $result->email, 'mobile' => $result->mobile, 'logged_in' => TRUE);
           $this->session->set_userdata($user_data);
           $this->session->set_flashdata('success','Logged in successfully');
-          redirect('home');
+          if ($this->session->userdata('previous_url')) {
+            redirect($this->session->userdata('previous_url'));
+          } else {
+            redirect('home');
+          }
+
         } else {
           $this->session->set_flashdata('error','Email or password is incorrect');
           redirect('home/login');
