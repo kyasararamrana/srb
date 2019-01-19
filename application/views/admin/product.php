@@ -178,7 +178,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Actual Price <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="actual_price" id="actual_price" value="<?php echo (isset($product->actual_price)) ? (int)$product->actual_price : '' ; ?>">
+                                                <input type="text" class="form-control" name="actual_price" id="actual_price" value="<?php echo (isset($product->actual_price)) ? $product->actual_price : '' ; ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -190,7 +190,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Net Price <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="net_price" id="net_price" readonly value="<?php echo (isset($product->net_price)) ? (int)$product->net_price : '' ; ?>">
+                                                <input type="text" class="form-control" name="net_price" id="net_price" readonly value="<?php echo (isset($product->net_price)) ? $product->net_price : '' ; ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-2">
@@ -306,12 +306,12 @@
               validators: {
                 notEmpty: {
                   message: 'Actual price is required'
-                },
-                integer: {
-                    message: 'The value is not an number',
-                    thousandsSeparator: '',
-                    decimalSeparator: '.'
                 }
+                // integer: {
+                //     message: 'The value is not an number',
+                //     thousandsSeparator: '',
+                //     decimalSeparator: '.'
+                // }
               }
             },
             discount_percentage:{
