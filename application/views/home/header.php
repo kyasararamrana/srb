@@ -100,11 +100,26 @@
                             <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                 <div class="cart_icon">
                                     <i class="fas fa-shopping-bag"></i>
-                                    <div class="cart_count"><span>10</span></div>
+                                    <div class="cart_count">
+                                      <span>
+                                        <?php if ($cart->cart_count) { ?>
+                                          <?php echo $cart->cart_count; ?>
+                                        <?php } else { ?>
+                                          <?php echo 0; ?>
+                                        <?php } ?>
+                                      </span>
+                                    </div>
                                 </div>
                                 <div class="cart_content">
                                     <div class="cart_text"><a href="<?php echo base_url('cart'); ?>">Cart</a></div>
-                                    <div class="cart_price">₹ 8500</div>
+                                    <div class="cart_price">
+                                      <?php if ($total->total_cart) { ?>
+                                        ₹ <?php echo number_format($total->total_cart,2, '.', ','); ?>
+                                      <?php } else { ?>
+                                        ₹ <?php echo number_format(0,2, '.', ','); ?>
+                                      <?php } ?>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>

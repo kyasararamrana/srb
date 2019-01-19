@@ -185,9 +185,9 @@
                         </div>
                         <div class="product_content">
                           <?php if ((isset($p->discount_percentage) && !empty($p->discount_percentage))) { ?>
-                            <div class="product_price">₹ <?php echo $p->net_price; ?><span>₹ <?php echo $p->actual_price; ?></span></div>
+                            <div class="product_price">₹ <?php echo number_format($p->net_price,2, '.', ','); ?><span>₹ <?php echo number_format($p->actual_price,2, '.', ','); ?></span></div>
                           <?php  } else { ?>
-                            <div class="product_price">₹ <?php echo $p->net_price; ?></div>
+                            <div class="product_price">₹ <?php echo number_format($p->net_price,2, '.', ','); ?></div>
                           <?php } ?>
                           <div class="product_name"><div><a href="<?php echo base_url('product/'.$p->id); ?>" tabindex="0"><?php echo $p->name; ?></a></div></div>
                         </div>

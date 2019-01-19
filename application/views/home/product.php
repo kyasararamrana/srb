@@ -81,7 +81,7 @@
 
                     </div>
                     <?php if (isset($product->net_price) && !empty($product->net_price)) { ?>
-                      <div class="product_price">₹ <?php echo $product->net_price; ?></div>
+                      <div class="product_price">₹ <?php echo number_format($product->net_price,2, '.', ','); ?></div>
                     <?php } ?>
                     <div class="button_container">
                       <button type="button" class="button cart_button" id="addtocart">Add to Cart</button>

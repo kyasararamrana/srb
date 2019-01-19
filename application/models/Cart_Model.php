@@ -31,6 +31,12 @@ class Cart_Model extends CI_Model
     $this->db->select('SUM(product_quantity * net_price) AS total_cart');
     return $this->db->get_where($this->table,array('user_id' => $user_id))->row();
   }
+  //records count by user
+  public function get_cart_count_by_user_id($user_id='')
+  {
+    $this->db->select('COUNT(*) AS cart_count');
+    return $this->db->get_where($this->table,array('user_id' => $user_id))->row();
+  }
 }
 
 ?>
