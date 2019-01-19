@@ -12,7 +12,6 @@
     <div class="super_container">
       <?php echo $header; ?>
       <!-- Home -->
-
       <div class="home">
         <div class="home_background parallax-window" data-parallax="scroll" data-image-src="<?php echo base_url('assets/img/shop_background.jpg'); ?>"></div>
         <div class="home_overlay"></div>
@@ -20,9 +19,7 @@
           <h1 class="home_title">Checkout</h1>
         </div>
       </div>
-
-        <!-- Cart section -->
-
+      <!-- Cart section -->
       <div class="section">
         <!-- container -->
         <div class="container">
@@ -30,56 +27,55 @@
           <div class="row">
             <div class="col-md-12">
               <form  action="<?php echo base_url('billing/insert') ?>" method="post" id="billingForm">
-              <div class="row mt-5">
-                <div class="col-md-6">
-                  <div class="billing-details">
-                    <div class="section-title">
-                      <h3 class="title">Billing Details</h3>
+                <div class="row mt-5">
+                  <div class="col-md-6">
+                    <div class="billing-details">
+                      <div class="section-title">
+                        <h3 class="title">Billing Details</h3>
+                      </div>
+                      <form  action="<?php echo base_url('billing/insert') ?>" method="post" id="billingForm">
+                        <div class="form-group">
+                          <input class="input" type="text" name="first_name" id="first_name" placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                          <input class="input" type="text" name="last_name" placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                          <input class="input" type="email" name="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                          <input class="input" type="text" name="address" placeholder="Address">
+                        </div>
+                        <div class="form-group">
+                          <select class="form-control input" name="city">
+                            <option value="">Select City</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Vijayawada">Vijayawada</option>
+                            <option value="Vishakapatnam">Vishakapatnam</option>
+                          </select>
+                          <div class="caret"></div>
+                        </div>
+                        <div class="form-group">
+                          <select class="form-control input" name="state">
+                            <option value="">Select State</option>
+                            <option value="Telangana">Telangana</option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                          </select>
+                          <div class="caret"></div>
+                        </div>
+                        <div class="form-group">
+                          <input class="input" type="text" name="zip_code" placeholder="ZIP Code">
+                        </div>
+                        <div class="form-group">
+                          <input class="input" type="text" name="mobile_number" placeholder="Mobile Number">
+                        </div>
+                        <input type="hidden" name="user_id" value="<?php echo $this->session->userdata('id'); ?>">
                     </div>
-                    <form  action="<?php echo base_url('billing/insert') ?>" method="post" id="billingForm">
-                      <div class="form-group">
-                        <input class="input" type="text" name="first_name" id="first_name" placeholder="First Name">
-                      </div>
-                      <div class="form-group">
-                        <input class="input" type="text" name="last_name" placeholder="Last Name">
-                      </div>
-                      <div class="form-group">
-                        <input class="input" type="email" name="email" placeholder="Email">
-                      </div>
-                      <div class="form-group">
-                        <input class="input" type="text" name="address" placeholder="Address">
-                      </div>
-                      <div class="form-group">
-                        <select class="form-control input" name="city">
-                          <option value="">Select City</option>
-                          <option value="Hyderabad">Hyderabad</option>
-                          <option value="Vijayawada">Vijayawada</option>
-                          <option value="Vishakapatnam">Vishakapatnam</option>
-                        </select>
-                        <div class="caret"></div>
-                      </div>
-                      <div class="form-group">
-                        <select class="form-control input" name="state">
-                          <option value="">Select State</option>
-                          <option value="Telangana">Telangana</option>
-                          <option value="Andhra Pradesh">Andhra Pradesh</option>
-                          <option value="Tamil Nadu">Tamil Nadu</option>
-                        </select>
-                        <div class="caret"></div>
-                      </div>
-                      <div class="form-group">
-                        <input class="input" type="text" name="zip_code" placeholder="ZIP Code">
-                      </div>
-                      <div class="form-group">
-                        <input class="input" type="text" name="mobile_number" placeholder="Mobile Number">
-                      </div>
-                      <input type="hidden" name="user_id" value="<?php echo $this->session->userdata('id'); ?>">
+                  </div>
+                  <div class="col-md-6">
                   </div>
                 </div>
-
-                <div class="col-md-6">
-                </div>
-              </div>
                 <div class="order-summary mt-5 mb-4">
                   <div class="section-title mb-4">
                     <h3 class="title">Order Review</h3>
@@ -149,11 +145,9 @@
                     </table>
                   </div>
                   <div class="float-right mb-5">
-                    <!-- <a href="checkout.php" class="primary-btn">Place Order</a> -->
                     <button type="submit" class="primary-btn">Place Order</button>
                   </div>
                 </div>
-
               </form>
             </div>
           </div>
