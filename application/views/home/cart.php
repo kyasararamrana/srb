@@ -35,7 +35,7 @@
                     <h3 class="title">Cart List</h3>
                   </div>
                   <div class="table-responsive p-1">
-                    <table class="shopping-cart-table table">
+                    <table class="shopping-cart-table table" id="cart_table">
                       <thead>
                         <tr>
                           <th>Product</th>
@@ -67,7 +67,7 @@
                               <?php } else { ?>
                                 <td class="price text-center"><strong>₹ <?php echo number_format($c->net_price,2, '.', ','); ?></strong></td>
                               <?php } ?>
-                              <td class="qty text-center"><input class="input" type="number" min="1" max="100" value="<?php echo $c->product_quantity; ?>"></td>
+                              <td class="qty text-center"><input class="input quantity" type="number" min="1" max="100" data-id= "<?php echo $c->id; ?> "value="<?php echo $c->product_quantity; ?>"></td>
                               <td class="total text-center"><strong class="primary-color">₹ <?php echo number_format(($c->net_price*$c->product_quantity),2, '.', ','); ?></strong></td>
                               <td class="text-right"><a href="<?php echo base_url('cart/delete/'.$c->id); ?>" class="main-btn icon-btn"><i class="fa fa-trash"></i></a></td>
                             </tr>
@@ -94,5 +94,30 @@
       <?php echo $footer; ?>
     </div>
     <?php echo $scripts ?>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.quantity').on('keyup change',function(){
+          var obj = $(this);
+          var quantity = obj.val();
+          if (quantity) {
+            var id = obj.data('id');
+            $.ajax({
+              url:'<?php echo base_url('cart/update'); ?>',
+              type:'post',
+              data:{'product_quantity':quantity,'id':id},
+              dataType:'JSON',
+              success:function(data){
+                if (data.success) {
+                  $('#message').html('<div class="alert_msg1 animated slideInUp bg-succ">'+data.success+' <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
+                  window.location.reload();
+                } else {
+                  $('#message').html('<div class="alert_msg1 animated slideInUp bg-warn">'+data.error+' <i class="fa fa-exclamation-triangle text-success ico_bac" aria-hidden="true"></i></div>');
+                }
+              }
+            });
+          }
+        });
+      });
+    </script>
   </body>
 </html>

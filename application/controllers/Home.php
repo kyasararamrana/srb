@@ -102,7 +102,7 @@ class Home extends CI_Controller
           email('rana@prachatech.com',$result->email,$subject='Registation successfully',$message='Registation successfully for "$result->firstname"');
           //-->
           if ($result) {
-            $user_data = array('firstname' => $result->firstname, 'lastname' => $result->lastname, 'email' => $result->email, 'mobile' => $result->mobile, 'logged_in' => TRUE);
+            $user_data = array('id' => $result->id, 'firstname' => $result->firstname, 'lastname' => $result->lastname, 'email' => $result->email, 'mobile' => $result->mobile, 'logged_in' => TRUE);
             $this->session->set_userdata($user_data);
             $this->session->set_flashdata('success','logged in successfully');
             redirect('home');

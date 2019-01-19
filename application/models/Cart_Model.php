@@ -20,6 +20,12 @@ class Cart_Model extends CI_Model
   {
     return $this->db->insert($this->table,$post_data);
   }
+  //update
+  public function update($post_data='',$post_id='')
+  {
+    $this->db->where('id',$post_id);
+    return $this->db->update($this->table,$post_data);
+  }
   //delete
   public function delete($id='')
   {

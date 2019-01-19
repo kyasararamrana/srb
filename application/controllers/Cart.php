@@ -58,6 +58,27 @@ class Cart extends CI_Controller
       redirect('home/login');
     }
   }
+  //update cart
+  public function update()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      $post_data = $this->input->post();
+      $post_id = $this->input->post('id');
+      if ($post_data) {
+        if ($this->cart_model->update($post_data,$post_id)) {
+          $return['success'] = 'Item quantity updated';
+        } else {
+          $return['error'] = 'Please try again';
+        }
+      } else {
+        $return['error'] = 'Please try again';
+      }
+      echo json_encode($return);
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('home/login');
+    }
+  }
   //delete cart
   public function delete($id='')
   {
