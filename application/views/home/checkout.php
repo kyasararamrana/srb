@@ -50,29 +50,31 @@
                         <?php if(count($cart) > 0){ ?>
                           <?php foreach ($cart as $c) { ?>
                             <tr>
-                              <?php if ((isset($c->product_image) && !empty($c->product_image)) && file_exists()) { ?>
-
-                              <?php } else { ?>
+                              <?php if ((isset($c->product_image) && !empty($c->product_image)) && file_exists('assets/uploads/product/'.$c->product_image)) { ?>
+                                <td class="thumb"><img src="<?php echo base_url('assets/uploads/product/'.$c->product_image); ?>" alt=""></td>
                               <?php } ?>
-                              <td class="thumb"><img src="<?php echo base_url('assets/img/featured_1.jpg'); ?>" alt=""></td>
                               <td class="details">
-                                <a href="#">Product Name Goes Here</a>
+                                <a href="#"><?php echo $c->product_name; ?></a>
                                 <ul>
-                                  <li><span>Size: XL</span></li>
-                                  <li><span>Color: Camelot</span></li>
+                                  <li><span>Size: <?php echo $c->product_size; ?></span></li>
+                                  <li><span>Color: <?php echo $c->product_color; ?></span></li>
                                 </ul>
                               </td>
-                              <td class="price text-center"><strong>₹ 32.50</strong><br><del class="font-weak"><small>₹ 40.00</small></del></td>
+                              <?php if ($c->discount_percentage) { ?>
+                                <td class="price text-center"><strong>₹ <?php echo number_format($c->net_price,2, '.', ','); ?></strong><br><del class="font-weak"><small>₹ <?php echo number_format($c->actual_price,2, '.', ','); ?></small></del></td>
+                              <?php } else { ?>
+                                <td class="price text-center"><strong>₹ <?php echo number_format($c->net_price,2, '.', ','); ?></strong></td>
+                              <?php } ?>
                               <td class="qty text-center">
-                                <span>1</span>
+                                <span><?php echo $c->product_quantity; ?></span>
                               </td>
-                              <td class="total text-center"><strong class="primary-color">₹ 32.50</strong></td>
-                              <td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-trash"></i></button></td>
+                              <td class="total text-center"><strong class="primary-color">₹ <?php echo number_format($c->product_quantity*$c->net_price,2, '.', ','); ?></strong></td>
+                              <td class="text-right"><a href="<?php echo base_url('checkout/delete/'.$c->id); ?>" class="main-btn icon-btn"><i class="fa fa-trash"></i></a></td>
                             </tr>
                           <?php  } ?>
                         <?php } else { ?>
                           <tr>
-                            <td></td>
+                            <td colspan="6" class="text-center">Your cart is empty. <a href="<?php echo base_url('products'); ?>">Browse products</a></td>
                           </tr>
                         <?php } ?>
 
@@ -81,7 +83,7 @@
                         <tr>
                           <th class="empty" colspan="3"></th>
                           <th>SUBTOTAL</th>
-                          <th colspan="2" class="sub-total">₹ 97.50</th>
+                          <th colspan="2" class="sub-total">₹ <?php echo number_format($total->total_cart,2, '.', ','); ?></th>
                         </tr>
                         <tr>
                           <th class="empty" colspan="3"></th>
@@ -91,7 +93,7 @@
                         <tr>
                           <th class="empty" colspan="3"></th>
                           <th>TOTAL</th>
-                          <th colspan="2" class="total">₹ 97.50</th>
+                          <th colspan="2" class="total">₹ <?php echo number_format($total->total_cart,2, '.', ','); ?></th>
                         </tr>
                       </tfoot>
                     </table>

@@ -63,12 +63,12 @@
                                 </ul>
                               </td>
                               <?php if ($c->discount_percentage) { ?>
-                                <td class="price text-center"><strong>₹ <?php echo $c->net_price; ?></strong><br><del class="font-weak"><small>₹ <?php echo $c->actual_price; ?></small></del></td>
+                                <td class="price text-center"><strong>₹ <?php echo number_format($c->net_price,2, '.', ','); ?></strong><br><del class="font-weak"><small>₹ <?php echo number_format($c->actual_price,2, '.', ','); ?></small></del></td>
                               <?php } else { ?>
-                                <td class="price text-center"><strong>₹ <?php echo $c->net_price; ?></strong></td>
+                                <td class="price text-center"><strong>₹ <?php echo number_format($c->net_price,2, '.', ','); ?></strong></td>
                               <?php } ?>
-                              <td class="qty text-center"><input class="input" type="number" min="1" max="100" value="1"></td>
-                              <td class="total text-center"><strong class="primary-color">₹ <?php echo $c->net_price; ?></strong></td>
+                              <td class="qty text-center"><input class="input" type="number" min="1" max="100" value="<?php echo $c->product_quantity; ?>"></td>
+                              <td class="total text-center"><strong class="primary-color">₹ <?php echo number_format(($c->net_price*$c->product_quantity),2, '.', ','); ?></strong></td>
                               <td class="text-right"><a href="<?php echo base_url('cart/delete/'.$c->id); ?>" class="main-btn icon-btn"><i class="fa fa-trash"></i></a></td>
                             </tr>
                           <?php } ?>

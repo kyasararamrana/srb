@@ -218,21 +218,21 @@
     <script type="text/javascript">
       $(document).ready(function(){
         $('#addtocart').on('click',function(){
+          var user_id       = '<?php echo $this->session->userdata('id'); ?>';
+          var product_id    = '<?php echo $product->id; ?>';
+          var product_name  = '<?php echo $product->name; ?>';
+          var product_image = '<?php echo $product->image; ?>';
+          var actual_price  = '<?php echo $product->actual_price; ?>';
+          var discount_percentage = '<?php echo $product->discount_percentage; ?>';
+          var net_price = '<?php echo $product->net_price; ?>';
+          var product_quantity = $("#quantity_input").val();
           <?php if($this->session->userdata('logged_in') != TRUE){ ?>
             <?php echo 'window.location = "'.base_url('home/login').'";' ?>
           <?php } else { ?>
             $.ajax({
               url:'<?php echo base_url('cart/insert'); ?>',
               type:'post',
-              data:{
-                'user_id':'<?php echo ($this->session->userdata('id')) ? $this->session->userdata('id') : ''; ?>',
-                'product_id':'<?php echo (isset($product->id) && !empty($product->id)) ? $product->id : ''; ?>',
-                'product_name':'<?php echo (isset($product->name) && !empty($product->name)) ? $product->name : ''; ?>',
-                'product_image':'<?php echo (isset($product->image) && !empty($product->image)) ? $product->image : ''; ?>',
-                'actual_price':'<?php echo (isset($product->actual_price) && !empty($product->actual_price)) ? $product->actual_price : ''; ?>',
-                'discount_percentage':'<?php echo (isset($product->discount_percentage) && !empty($product->discount_percentage)) ? $product->discount_percentage : ''; ?>',
-                'net_price':'<?php echo (isset($product->net_price) && !empty($product->net_price)) ? $product->net_price : ''; ?>'
-              },
+              data:{'user_id':user_id,'product_id':product_id,'product_name':product_name,'product_image':product_image,'actual_price':actual_price,'discount_percentage':discount_percentage,'net_price':net_price,'product_quantity':product_quantity},
               dataType:'JSON',
               success:function(data){
                 if(data.success){

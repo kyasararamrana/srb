@@ -10,7 +10,7 @@ class Cart_Model extends CI_Model
     parent::__construct();
   }
   public $table = 'ecom_cart';
-  //cart records by user
+  //records by user
   public function get_cart_by_user_id($user_id='')
   {
     return $this->db->get_where($this->table,array('user_id' => $user_id))->result();
@@ -24,6 +24,12 @@ class Cart_Model extends CI_Model
   public function delete($id='')
   {
     return $this->db->delete($this->table,array('id' => $id));
+  }
+  //records total by user
+  public function get_cart_total_by_user_id($user_id='')
+  {
+    $this->db->select('SUM(product_quantity * net_price) AS total_cart');
+    return $this->db->get_where($this->table,array('user_id' => $user_id))->row();
   }
 }
 
