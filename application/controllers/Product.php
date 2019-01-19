@@ -16,6 +16,7 @@ class Product extends CI_Controller
     $this->load->model('gsm_model');
     $this->load->model('quality_model');
     $this->load->model('product_model');
+    $this->load->model('cart_model');
     $this->load->library('user_agent');
   }
   //admin product list
@@ -230,13 +231,17 @@ class Product extends CI_Controller
       $arg['pageTitle'] = 'Products';
       $data = layouts($arg);
       $data['product'] = $this->product_model->get_single_active_product($id);
+      $user_id = $this->session->userdata('id');
+      if($user_id){
+        $data['cart'] = $this->cart_model->get_product_id_by_user_id($user_id);
+      }
       $this->load->view('home/product',$data);
     } else {
       $this->session->set_flashdata('error','Something went wrong, please try again');
       redirect('/products');
     }
   }
-  ////uploading files
+  //uploading files
   private function _do_upload($filename){
     $config['upload_path']   = './assets/uploads/product/';
     $config['allowed_types'] = 'png|jpeg|jpg|gif';

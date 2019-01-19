@@ -38,6 +38,12 @@ class Cart extends CI_Controller
       if ($post_data) {
         if ($this->cart_model->insert($post_data)) {
           $return['success'] = 'Item added to cart';
+          $id = $this->session->userdata('id');
+          if($id){
+            $return['count'] = $this->cart_model->get_cart_count_by_user_id($id)->cart_count;
+            $total_cart = $this->cart_model->get_cart_total_by_user_id($id)->total_cart;
+            $return['total'] = number_format($total_cart,2, '.', ',');
+          }
           echo json_encode($return);
         } else {
           $return['error'] = 'Please try again';

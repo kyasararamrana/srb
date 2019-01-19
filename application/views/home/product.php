@@ -84,7 +84,11 @@
                       <div class="product_price">₹ <?php echo number_format($product->net_price,2, '.', ','); ?></div>
                     <?php } ?>
                     <div class="button_container">
-                      <button type="button" class="button cart_button" id="addtocart">Add to Cart</button>
+                      <?php if (in_array($product->id,$cart)) { ?>
+                        <button type="button" class="button cart_button btn-warning" disabled id="addtocart">Added to Cart</button>
+                      <?php } else { ?>
+                        <button type="button" class="button cart_button" id="addtocart">Add to Cart</button>
+                      <?php } ?>
                       <div class="product_fav"><i class="fas fa-heart"></i></div>
                     </div>
 
@@ -218,6 +222,7 @@
     <script type="text/javascript">
       $(document).ready(function(){
         $('#addtocart').on('click',function(){
+          var obj = $(this);
           var user_id       = '<?php echo $this->session->userdata('id'); ?>';
           var product_id    = '<?php echo $product->id; ?>';
           var product_name  = '<?php echo $product->name; ?>';
@@ -236,6 +241,11 @@
               dataType:'JSON',
               success:function(data){
                 if(data.success){
+                  $('.cart_count').find('span').html(data.count);
+                  $('.cart_price').html('₹ '+data.total);
+                  obj.attr("disabled",true);
+                  obj.addClass("btn-warning");
+                  obj.html("Added to cart");
                   $('#message').html('<div class="alert_msg1 animated slideInUp bg-succ">'+data.success+' <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
                 } else {
                   $('#message').html('<div class="alert_msg1 animated slideInUp bg-warn">'+data.error+' <i class="fa fa-exclamation-triangle text-success ico_bac" aria-hidden="true"></i></div>');
