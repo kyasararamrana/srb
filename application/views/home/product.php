@@ -84,7 +84,7 @@
                       <div class="product_price">₹ <?php echo number_format($product->net_price,2, '.', ','); ?></div>
                     <?php } ?>
                     <div class="button_container">
-                      <?php if (in_array($product->id,$cart)) { ?>
+                      <?php if ((isset($cart) && !empty($cart)) && in_array($product->id,$cart)) { ?>
                         <button type="button" class="button cart_button btn-warning" disabled id="addtocart">Added to Cart</button>
                       <?php } else { ?>
                         <button type="button" class="button cart_button" id="addtocart">Add to Cart</button>
