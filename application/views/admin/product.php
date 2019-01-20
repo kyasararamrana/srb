@@ -306,7 +306,7 @@
               validators: {
                 notEmpty: {
                   message: 'Actual price is required'
-                }
+                },
                 integer: {
                     message: 'The value is not an number'
                 }
