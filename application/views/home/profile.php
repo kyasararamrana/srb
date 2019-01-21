@@ -14,7 +14,6 @@
       <!-- My-Profile -->
       <div class="my-profile">
           <div class="container">
-
               <div class="row">
                   <div class="col-md-3">
                       <div class="col-md-12 profile-sidebar">
@@ -26,7 +25,6 @@
                               <h4><?php if(isset($profile->firstname) && isset($profile->lastname)){ echo $profile->firstname.' '.$profile->lastname; } ?></h4>
                           </div>
                       </div>
-
                       <div class="col-md-12 profile-sidebar-2">
                           <a href="edit-profile.php">Edit Profile</a>
                           <a href="my-orders.php">My Orders</a>
@@ -45,27 +43,22 @@
                               <div class="p-name">
                                   <?php if(isset($profile->firstname) && isset($profile->lastname)){ echo $profile->firstname.' '.$profile->lastname; } else { echo '-'; } ?>
                               </div>
-
                               <h4>Gender</h4>
                               <div class="p-gender">
-                                  <?php if(isset($profile->gender)){ echo $profile->gender; } else { echo '--'; } ?>
+                                  <?php if(isset($profile->gender)){ echo $profile->gender; } else { echo '-'; } ?>
                               </div>
-
                               <h4>Email Address</h4>
                               <div class="p-email">
                                   <?php if (isset($profile->email)) { echo $profile->email; } else { echo '-'; } ?>
                               </div>
-
                               <h4>Mobile Number</h4>
                               <div class="p-number">
                                   <?php if (isset($profile->mobile)) { echo $profile->mobile; } else { echo '-'; } ?>
                               </div>
-
                           </div>
                       </div>
                   </div>
               </div>
-
           </div>
       </div>
       <?php echo $footer; ?>
