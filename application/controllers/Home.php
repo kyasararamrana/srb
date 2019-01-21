@@ -147,6 +147,19 @@ class Home extends CI_Controller
       redirect('home/login');
     }
   }
+  //profile
+  public function profile()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      $arg['pageTitle'] = 'Profile';
+      $data = layouts($arg);
+      $data['profile'] = $this->home_model->get_user_data();
+      $this->load->view('home/profile',$data);
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
+  }
 
 }
 

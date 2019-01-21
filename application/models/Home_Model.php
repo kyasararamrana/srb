@@ -28,6 +28,11 @@ class Home_Model extends CI_Model
   {
     return $this->db->get_where($this->table,array('email' => $email,'status !=' => '0'))->row('id');
   }
+  //user data
+  public function get_user_data()
+  {
+    return $this->db->get_where($this->table,array('id' => $this->session->userdata('id')))->row();
+  }
 
 }
 

@@ -18,7 +18,7 @@
                         <div class="top_bar_user">
                             <?php if ($this->session->userdata('logged_in') == TRUE) { ?>
                               <div class="user_icon"><i class="far fa-user"></i></div>
-                              <div><?php echo $this->session->userdata('firstname').' '.$this->session->userdata('lastname'); ?></div>
+                              <div><a href="<?php echo base_url('home/profile'); ?>" class="text-white"><?php echo $this->session->userdata('firstname').' '.$this->session->userdata('lastname'); ?></a></div>
                               <div class="user_icon"><i class="fas fa-sign-out-alt"></i></div>
                               <div><a class="text-white" href="<?php echo base_url('home/logout') ?>">logout</a></div>
                             <?php } else { ?>

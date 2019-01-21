@@ -1,0 +1,127 @@
+@charset "utf-8";
+/* CSS Document */
+
+/******************************
+
+[Table of Contents]
+
+1. My Profile
+2. Change Password
+3. My Wishlist
+
+
+******************************/
+
+
+
+/*********************************
+1. My Profile
+*********************************/
+
+.my-profile{
+    background: #ececec;
+    padding: 50px 0px;
+}
+
+.profile-sidebar{
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
+    display: flex;
+    padding: 10px 15px;
+}
+
+.p-user-img{
+    vertical-align: middle;
+}
+
+.p-user-img > img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin: 5px 0px;
+}
+
+.p-welcome-msg{
+    padding: 5px 0 0 16px;
+    width: calc(100% - 50px);
+}
+
+.p-welcome-msg small{
+    font-size: 13px;
+}
+
+.p-welcome-msg h5{
+    word-wrap: break-word;
+}
+
+.profile-sidebar-2{
+    margin-top: 14px;
+    padding: 0px;
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
+}
+
+.profile-sidebar-2 ul{
+    width: 100%;
+}
+
+.profile-sidebar-2 a{
+    padding: 15px 15px 15px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #878787;
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+}
+
+.profile-sidebar-2 a:after {
+    content:"\f105";
+    font: normal normal normal 22px/1 FontAwesome;
+    left: calc(100% - 20px);
+	position:absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.profile-body{
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
+    padding: 25px 30px;   
+}
+
+.p-info h4{
+    margin-bottom: 15px;
+}
+
+.p-name, .p-gender, .p-email, .p-number{
+    margin-bottom: 20px;
+}
+
+.p-info input{
+    padding: 10px 15px;
+    cursor: not-allowed;
+    border: 1px solid #e0e0e0;
+    background-color: #fafafa;
+}
+
+.p-name input, .p-gender-type{
+    margin-right: 20px;
+}
+
+.p-gender-type input{
+    margin-right: 10px;
+}
+
+.cp-info label{
+    font-weight: 500;
+    color: #000;
+}
+
+textarea.input{
+    height: 100px;
+}
