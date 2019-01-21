@@ -39,6 +39,17 @@ class Home_Model extends CI_Model
     $this->db->where('id',$post_id);
     return $this->db->update($this->table,$post_data);
   }
+  //check old password
+  public function check_password($password='')
+  {
+    return $this->db->get_where($this->table,array('password' => $password,'status !=' => '0','id' => $this->session->userdata('id')))->row('id');
+  }
+  //change Password
+  public function change_password($post_data='')
+  {
+    $this->db->where('id',$this->session->userdata('id'));
+    return $this->db->update($this->table,$post_data);
+  }
 
 }
 

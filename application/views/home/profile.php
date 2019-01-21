@@ -26,11 +26,11 @@
                           </div>
                       </div>
                       <div class="col-md-12 profile-sidebar-2">
-                          <a href="<?php echo base_url('home/edit_profile'); ?>">Edit Profile</a>
                           <a href="my-orders.php">My Orders</a>
                           <a href="my-wishlist.php">My Wishlist</a>
-                          <a href="change-password.php">Change Password</a>
-                          <a href="login.php">Logout</a>
+                          <a href="<?php echo base_url('home/edit_profile'); ?>">Edit Profile</a>
+                          <a href="<?php echo base_url('home/change_password'); ?>">Change Password</a>
+                          <a href="<?php echo base_url('home/login'); ?>">Logout</a>
                       </div>
                   </div>
                   <div class="col-md-9">
