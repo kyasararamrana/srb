@@ -24,14 +24,20 @@ class Home_Model extends CI_Model
     return $this->db->get_where($this->table,array('email' => $email, 'password' => $password, 'status' => '1'))->row();
   }
   //check record exists
-  public function check_exists($email='')
+  public function check_exists($email='',$id='')
   {
-    return $this->db->get_where($this->table,array('email' => $email,'status !=' => '0'))->row('id');
+    return $this->db->get_where($this->table,array('email' => $email, 'id!=' =>$id, 'status !=' => '0'))->row('id');
   }
   //user data
   public function get_user_data()
   {
     return $this->db->get_where($this->table,array('id' => $this->session->userdata('id')))->row();
+  }
+  //update Profile
+  public function update_profile($post_data='',$post_id='')
+  {
+    $this->db->where('id',$post_id);
+    return $this->db->update($this->table,$post_data);
   }
 
 }

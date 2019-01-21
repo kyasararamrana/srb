@@ -126,7 +126,8 @@ class Home extends CI_Controller
   public function check_exists()
   {
     $email = $this->input->post('email');
-    if ($this->home_model->check_exists($email)) {
+    $id = $this->input->post('id');
+    if ($this->home_model->check_exists($email,$id)) {
       $isAvailable = false;
     } else {
       $isAvailable = true;
@@ -157,7 +158,43 @@ class Home extends CI_Controller
       $this->load->view('home/profile',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
-      redirect('admin/login');
+      redirect('home/login');
+    }
+  }
+  //profile (edit - view)
+  public function edit_profile()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      $arg['pageTitle'] = 'Edit Profile';
+      $data = layouts($arg);
+      $data['profile'] = $this->home_model->get_user_data();
+      $this->load->view('home/edit_profile',$data);
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('home/login');
+    }
+  }
+  //profile (edit)
+  public function update_profile()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      $post_data = $this->input->post();
+      if ($post_data) {
+          $post_id = $this->input->post('id');
+          if ($this->home_model->update_profile($post_data,$post_id)) {
+            $this->session->set_flashdata('success','Profile updated successfully');
+            redirect('home/profile');
+          } else {
+            $this->session->set_flashdata('error','Please try again');
+            redirect('home/edit_profile');
+          }
+      } else {
+        $this->session->set_flashdata('error','Please try again');
+        redirect('home/edit_profile');
+      }
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('home/login');
     }
   }
 
