@@ -179,7 +179,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Actual Price <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="actual_price" id="actual_price" value="<?php echo (isset($product->actual_price)) ? $product->actual_price : '' ; ?>">
+                                                <input type="text" class="form-control allow_decimal" name="actual_price" id="actual_price" value="<?php echo (isset($product->actual_price)) ? $product->actual_price : '' ; ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -307,9 +307,6 @@
               validators: {
                 notEmpty: {
                   message: 'Actual price is required'
-                },
-                integer: {
-                    message: 'The value is not an number'
                 }
               }
             },
@@ -320,6 +317,16 @@
                 }
               }
             }
+          }
+        });
+        //decimal and number validations
+        $(".allow_decimal").on("input", function(evt) {
+          var self = $(this);
+          self.attr('placeholder','Allow numeric values with decimal');
+          self.val(self.val().replace(/[^0-9\.]/g, ''));
+          if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57))
+          {
+            evt.preventDefault();
           }
         });
         //calculating Price
