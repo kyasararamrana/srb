@@ -103,6 +103,8 @@
                                   <ul>
                                     <li><span>Size: <?php echo $c->product_size; ?></span></li>
                                     <li><span>Color: <?php echo $c->product_color; ?></span></li>
+                                    <li><span>GSM: <?php echo $c->product_gsm; ?></span></li>
+                                    <li><span>Quality: <?php echo $c->product_quality; ?></span></li>
                                   </ul>
                                 </td>
                                 <?php if ($c->discount_percentage) { ?>

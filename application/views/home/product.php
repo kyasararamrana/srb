@@ -65,7 +65,7 @@
                       </div>
 
                       <!-- Product Color -->
-                      <ul class="product_color">
+                      <!-- <ul class="product_color">
                         <li>
                           <span>Color: </span>
                           <div class="color_mark_container"><div id="selected_color" class="color_mark"></div></div>
@@ -77,7 +77,40 @@
                             <li><div class="color_mark" style="background: #000000;"></div></li>
                           </ul>
                         </li>
-                      </ul>
+                      </ul> -->
+
+                      <span>Color: </span>
+                      <select class="form-control" id="color">
+                        <?php if (isset($product->color)) { ?>
+                          <?php foreach (explode(',',$product->color) as $color) { ?>
+                            <option value="<?php echo $color; ?>"><?php echo $color; ?></option>
+                          <?php } ?>
+                        <?php } ?>
+                      </select>
+                      <span>Size: </span>
+                      <select class="form-control" id="size">
+                        <?php if (isset($product->size)) { ?>
+                          <?php foreach (explode(',',$product->size) as $size) { ?>
+                            <option value="<?php echo $size; ?>"><?php echo $size; ?></option>
+                          <?php } ?>
+                        <?php } ?>
+                      </select>
+                      <span>GSM: </span>
+                      <select class="form-control" id="gsm">
+                        <?php if (isset($product->gsm)) { ?>
+                          <?php foreach (explode(',',$product->gsm) as $gsm) { ?>
+                            <option value="<?php echo $gsm; ?>"><?php echo $gsm; ?></option>
+                          <?php } ?>
+                        <?php } ?>
+                      </select>
+                      <span>quality: </span>
+                      <select class="form-control" id="quality">
+                        <?php if (isset($product->quality)) { ?>
+                          <?php foreach (explode(',',$product->quality) as $quality) { ?>
+                            <option value="<?php echo $quality; ?>"><?php echo $quality; ?></option>
+                          <?php } ?>
+                        <?php } ?>
+                      </select>
 
                     </div>
                     <?php if (isset($product->net_price) && !empty($product->net_price)) { ?>
@@ -231,6 +264,10 @@
           var discount_percentage = '<?php echo $product->discount_percentage; ?>';
           var net_price = '<?php echo $product->net_price; ?>';
           var product_quantity = $("#quantity_input").val();
+          var size = $("#size").val();
+          var color = $("#color").val();
+          var gsm = $("#gsm").val();
+          var quality = $("#quality").val();
           <?php if($this->session->userdata('logged_in') != TRUE){ ?>
             <?php $this->session->set_userdata('previous_url', current_url()); ?>
             <?php echo 'window.location = "'.base_url('home/login').'";' ?>
@@ -238,7 +275,7 @@
             $.ajax({
               url:'<?php echo base_url('cart/insert'); ?>',
               type:'post',
-              data:{'user_id':user_id,'product_id':product_id,'product_name':product_name,'product_image':product_image,'actual_price':actual_price,'discount_percentage':discount_percentage,'net_price':net_price,'product_quantity':product_quantity},
+              data:{'user_id':user_id,'product_id':product_id,'product_name':product_name,'product_image':product_image,'actual_price':actual_price,'discount_percentage':discount_percentage,'net_price':net_price,'product_quantity':product_quantity,'product_size':size,'product_color':color,'product_gsm':gsm,'product_quality':quality},
               dataType:'JSON',
               success:function(data){
                 if(data.success){

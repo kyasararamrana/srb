@@ -52,8 +52,13 @@ class Product_Model extends CI_Model
   //single active product
   public function get_single_active_product($id='')
   {
-    $this->db->select('p.*,c.name as category');
+    $this->db->select('p.*,c.name as category,GROUP_CONCAT(DISTINCT s.name ORDER BY s.id ASC) as size,GROUP_CONCAT(DISTINCT cs.name ORDER BY cs.id ASC) as color,GROUP_CONCAT(DISTINCT g.name ORDER BY g.id ASC) as gsm,GROUP_CONCAT(DISTINCT q.name ORDER BY q.id ASC) as quality');
     $this->db->join('ecom_category c','c.id = p.category','left');
+    $this->db->join('ecom_size s','FIND_IN_SET(s.id,p.size) > 0','left');
+    $this->db->join('ecom_color cs','FIND_IN_SET(cs.id,p.color) > 0','left');
+    $this->db->join('ecom_gsm g','FIND_IN_SET(g.id,p.gsm) > 0','left');
+    $this->db->join('ecom_quality q','FIND_IN_SET(q.id,p.quality) > 0','left');
+    $this->db->group_by('p.id');
     return $this->db->get_where($this->table.' p',array('p.id' => $id, 'p.status' => '1'))->row();
   }
   //active and featured Products
