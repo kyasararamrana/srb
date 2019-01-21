@@ -8,6 +8,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <?php echo $links; ?>
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/chosen.min.css'); ?>">
 </head>
 
 <body class="hold-transition skin-green sidebar-mini">
@@ -124,11 +125,11 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Size <span class="text-danger">*</span></label>
-                                                <select class="form-control" name="size">
+                                                <select class="form-control chosen" name="size[]" multiple>
                                                   <option value=""><?php echo (isset($sizes) && count($sizes) > 0) ? 'Select' : 'No sizes found'; ?></option>
                                                   <?php if (count($sizes) > 0) { ?>
                                                     <?php foreach($sizes as $s){ ?>
-                                                      <option value="<?php echo $s->id; ?>" <?php echo (isset($product->size) && $product->size == $s->id) ? 'selected' : ''; ?>><?php echo $s->name; ?></option>
+                                                      <option value="<?php echo $s->id; ?>" <?php echo (isset($product->size) && in_array($s->id,explode(',',$product->size))) ? 'selected' : ''; ?>><?php echo $s->name; ?></option>
                                                     <?php } ?>
                                                   <?php } ?>
                                                 </select>
@@ -137,11 +138,11 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Color <span class="text-danger">*</span></label>
-                                                <select class="form-control" name="color">
+                                                <select class="form-control chosen" name="color[]" multiple>
                                                   <option value=""><?php echo (isset($colors) && count($colors) > 0) ? 'Select' : 'No colors found'; ?></option>
                                                   <?php if (count($colors) > 0) { ?>
                                                     <?php foreach($colors as $cs){ ?>
-                                                      <option value="<?php echo $cs->id; ?>" <?php echo (isset($product->color) && $product->color == $cs->id) ? 'selected' : ''; ?>><?php echo $cs->name; ?></option>
+                                                      <option value="<?php echo $cs->id; ?>" <?php echo (isset($product->color) && in_array($cs->id,explode(',',$product->color))) ? 'selected' : ''; ?>><?php echo $cs->name; ?></option>
                                                     <?php } ?>
                                                   <?php } ?>
                                                 </select>
@@ -150,11 +151,11 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>GSM <span class="text-danger">*</span></label>
-                                                <select class="form-control" name="gsm">
+                                                <select class="form-control chosen" name="gsm[]" multiple>
                                                   <option value=""><?php echo (isset($gsm) && count($gsm) > 0) ? 'Select' : 'No GSM found'; ?></option>
                                                   <?php if (count($gsm) > 0) { ?>
                                                     <?php foreach($gsm as $g){ ?>
-                                                      <option value="<?php echo $g->id; ?>" <?php echo (isset($product->gsm) && $product->gsm == $g->id) ? 'selected' : ''; ?>><?php echo $g->name; ?></option>
+                                                      <option value="<?php echo $g->id; ?>" <?php echo (isset($product->gsm) && in_array($g->id,explode(',',$product->gsm))) ? 'selected' : ''; ?>><?php echo $g->name; ?></option>
                                                     <?php } ?>
                                                   <?php } ?>
                                                 </select>
@@ -165,11 +166,11 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Quality <span class="text-danger">*</span></label>
-                                                <select class="form-control" name="quality">
+                                                <select class="form-control chosen" name="quality[]" multiple>
                                                   <option value=""><?php echo (isset($quality) && count($quality) > 0) ? 'Select' : 'No Quality found'; ?></option>
                                                   <?php if (count($quality) > 0) { ?>
                                                     <?php foreach($quality as $q){ ?>
-                                                      <option value="<?php echo $q->id; ?>" <?php echo (isset($product->quality) && $product->quality == $q->id) ? 'selected' : ''; ?>><?php echo $q->name; ?></option>
+                                                      <option value="<?php echo $q->id; ?>" <?php echo (isset($product->quality) && in_array($q->id,explode(',',$product->quality))) ? 'selected' : ''; ?>><?php echo $q->name; ?></option>
                                                     <?php } ?>
                                                   <?php } ?>
                                                 </select>
@@ -231,7 +232,7 @@
     <!-- ./wrapper -->
 
     <?php echo $scripts; ?>
-
+    <script src="<?php echo base_url('assets/js/chosen.jquery.min.js'); ?>"></script>
     <script type="text/javascript">
       $(document).ready(function(){
         //validations
@@ -331,7 +332,8 @@
             $('#net_price').val($('#actual_price').val());
           }
         });
-
+        //chosen selectbox
+        $(".chosen").chosen();
       });
       //calculating discount from acutal price
       function calculate_price(){

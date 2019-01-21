@@ -36,6 +36,8 @@ class Cart extends CI_Controller
     if($this->session->userdata('logged_in') == TRUE){
       $post_data = $this->input->post();
       if ($post_data) {
+        $addl_data = array('created_on' => date('Y-m-d H:i:s'), 'created_by' => $this->session->userdata('id'));
+        $post_data = array_merge($post_data,$addl_data);
         if ($this->cart_model->insert($post_data)) {
           $return['success'] = 'Item added to cart';
           $id = $this->session->userdata('id');
