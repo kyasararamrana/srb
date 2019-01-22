@@ -125,8 +125,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Size <span class="text-danger">*</span></label>
-                                                <select class="form-control chosen" name="size[]" multiple>
-                                                  <option value=""><?php echo (isset($sizes) && count($sizes) > 0) ? 'Select' : 'No sizes found'; ?></option>
+                                                <select class="form-control chosen" name="size[]" multiple data-placeholder="Select size">
                                                   <?php if (count($sizes) > 0) { ?>
                                                     <?php foreach($sizes as $s){ ?>
                                                       <option value="<?php echo $s->id; ?>" <?php echo (isset($product->size) && in_array($s->id,explode(',',$product->size))) ? 'selected' : ''; ?>><?php echo $s->name; ?></option>
@@ -138,8 +137,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Color <span class="text-danger">*</span></label>
-                                                <select class="form-control chosen" name="color[]" multiple>
-                                                  <option value=""><?php echo (isset($colors) && count($colors) > 0) ? 'Select' : 'No colors found'; ?></option>
+                                                <select class="form-control chosen" name="color[]" multiple data-placeholder="Select color">
                                                   <?php if (count($colors) > 0) { ?>
                                                     <?php foreach($colors as $cs){ ?>
                                                       <option value="<?php echo $cs->id; ?>" <?php echo (isset($product->color) && in_array($cs->id,explode(',',$product->color))) ? 'selected' : ''; ?>><?php echo $cs->name; ?></option>
@@ -151,8 +149,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>GSM <span class="text-danger">*</span></label>
-                                                <select class="form-control chosen" name="gsm[]" multiple>
-                                                  <option value=""><?php echo (isset($gsm) && count($gsm) > 0) ? 'Select' : 'No GSM found'; ?></option>
+                                                <select class="form-control chosen" name="gsm[]" multiple data-placeholder="Select GSM">
                                                   <?php if (count($gsm) > 0) { ?>
                                                     <?php foreach($gsm as $g){ ?>
                                                       <option value="<?php echo $g->id; ?>" <?php echo (isset($product->gsm) && in_array($g->id,explode(',',$product->gsm))) ? 'selected' : ''; ?>><?php echo $g->name; ?></option>
@@ -166,8 +163,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Quality <span class="text-danger">*</span></label>
-                                                <select class="form-control chosen" name="quality[]" multiple>
-                                                  <option value=""><?php echo (isset($quality) && count($quality) > 0) ? 'Select' : 'No Quality found'; ?></option>
+                                                <select class="form-control chosen" name="quality[]" multiple data-placeholder="Select size">
                                                   <?php if (count($quality) > 0) { ?>
                                                     <?php foreach($quality as $q){ ?>
                                                       <option value="<?php echo $q->id; ?>" <?php echo (isset($product->quality) && in_array($q->id,explode(',',$product->quality))) ? 'selected' : ''; ?>><?php echo $q->name; ?></option>

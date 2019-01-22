@@ -66,7 +66,7 @@ class Product extends CI_Controller
         if (isset($_FILES['thumbnail3']) && !empty($_FILES['thumbnail3']['name'])) {
           $thumbnail3 = $this->_do_upload('thumbnail3');
         }
-        $addl_data = array('image' => $image,'thumbnail1' => $thumbnail1, 'thumbnail2' => $thumbnail2, 'thumbnail3' => $thumbnail3, 'featured' => (int)$this->input->post('featured'),'created_on' => date('Y-m-d H:i:s'),'created_by' => $this->session->userdata('id'), 'status' => '1' );
+        $addl_data = array('image' => $image,'thumbnail1' => $thumbnail1, 'thumbnail2' => $thumbnail2, 'thumbnail3' => $thumbnail3,'size' => implode(',',$this->input->post('size')), 'color' => implode(',',$this->input->post('color')), 'gsm' => implode(',',$this->input->post('gsm')), 'quality' => implode(',',$this->input->post('quality')) ,'featured' => (int)$this->input->post('featured'),'created_on' => date('Y-m-d H:i:s'),'created_by' => $this->session->userdata('id'), 'status' => '1' );
         $post_data = array_merge($post_data,$addl_data);
         if ($this->product_model->insert($post_data)) {
           $this->session->set_flashdata('success','Product inserted successfully');
