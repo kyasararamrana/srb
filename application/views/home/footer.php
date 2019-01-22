@@ -92,7 +92,7 @@
                         <li><a href="#">About Us</a></li>
                         <li><a href="<?php echo base_url('products'); ?>">Products</a></li>
                         <li><a href="#">Blog</a></li>
-                        <li><a href="contact.php">Contact</a></li>
+                        <li><a href="<?php echo base_url('/contact'); ?>">Contact</a></li>
                     </ul>
                 </div>
             </div>

@@ -222,9 +222,9 @@
                                       <?php } ?>
                                     </div>
                                     <div class="featured_slider_dots_cover"></div>
-                                    <?php } else { ?>
-                                      <div class="mt-3 text-center">No featured products found</div>
-                                    <?php } ?>
+                                  <?php } else { ?>
+                                    <div class="mt-3 text-center">No featured products found</div>
+                                  <?php } ?>
                               </div>
 
                               <!-- Product Panel -->
