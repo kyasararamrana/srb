@@ -21,6 +21,7 @@
   			$pages['header'] = $CI->load->view('home/header',$pageData,TRUE);
   			$pages['scripts'] = $CI->load->view('home/scripts',$pageData,TRUE);
   			$pages['footer'] = $CI->load->view('home/footer',$pageData,TRUE);
+        $pages['sidebar'] = $CI->load->view('home/profile_sidebar',$pageData,TRUE);
   			return $pages;
   		}
     }

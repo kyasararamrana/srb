@@ -16,25 +16,7 @@
           <div class="container">
 
               <div class="row">
-                  <div class="col-md-3">
-                      <div class="col-md-12 profile-sidebar">
-                          <div class="p-user-img">
-                              <img src="img/user.jpg">
-                          </div>
-                          <div class="p-welcome-msg">
-                              <small>Hello</small>
-                              <h4>Rana Prathap</h4>
-                          </div>
-                      </div>
-
-                      <div class="col-md-12 profile-sidebar-2">
-                          <a href="my-orders.php">My Orders</a>
-                          <a href="my-wishlist.php">My Wishlist</a>
-                          <a href="edit-profile.php">Edit Profile</a>
-                          <a href="change-password.php">Change Password</a>
-                          <a href="login.php">Logout</a>
-                      </div>
-                  </div>
+                  <?php echo $sidebar; ?>
                   <div class="col-md-9">
                       <div class="col-md-12 profile-body">
                           <div class="cp-info">
