@@ -176,9 +176,8 @@
 
                               <!-- Product Panel -->
                               <div class="product_panel panel active">
+                                <?php if (count($featured) > 0) { ?>
                                   <div class="featured_slider slider">
-
-                                    <?php if (count($featured) > 0) { ?>
                                       <!-- Slider Item -->
                                       <?php foreach ($featured as $f) { ?>
                                         <div class="featured_slider_item">
@@ -221,19 +220,17 @@
                                             </div>
                                         </div>
                                       <?php } ?>
+                                    </div>
+                                    <div class="featured_slider_dots_cover"></div>
                                     <?php } else { ?>
+                                      <div class="mt-3 text-center">No featured products found</div>
                                     <?php } ?>
-
-
-
-                                  </div>
-                                  <div class="featured_slider_dots_cover"></div>
                               </div>
 
                               <!-- Product Panel -->
                               <div class="product_panel panel">
-                                  <div class="featured_slider slider">
                                     <?php if(count($discount) > 0){ ?>
+                                      <div class="featured_slider slider">
                                       <?php foreach($discount as $d){ ?>
                                         <!-- Slider Item -->
                                         <div class="featured_slider_item">
@@ -266,9 +263,11 @@
                                             </div>
                                         </div>
                                       <?php } ?>
-                                    <?php } ?>
-                                  </div>
-                                  <div class="featured_slider_dots_cover"></div>
+                                    </div>
+                                    <div class="featured_slider_dots_cover"></div>
+                                  <?php } else { ?>
+                                    <div class="mt-3 text-center">No On Sale product found</div>
+                                  <?php } ?>
                               </div>
 
                               <!-- Product Panel -->
