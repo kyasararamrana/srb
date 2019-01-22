@@ -207,6 +207,15 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="deals" id="deals" value="1" <?php echo (isset($product->deals) && ($product->deals == '1')) ? 'checked' : '' ; ?>> Deal of the week
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="clearfix">&nbsp;</div>
                                     <?php if (isset($product->id)): ?>
@@ -241,6 +250,7 @@
       $(document).ready(function(){
         //validations
         $('#addProductForm').bootstrapValidator({
+          excluded: ':disabled',
           fields: {
             name: {
               validators: {
@@ -279,28 +289,28 @@
                 }
               }
             },
-            size:{
+            'size[]':{
               validators: {
                 notEmpty: {
                   message: 'Size is required'
                 }
               }
             },
-            color:{
+            'color[]':{
               validators: {
                 notEmpty: {
                   message: 'Color is required'
                 }
               }
             },
-            gsm:{
+            'gsm[]':{
               validators: {
                 notEmpty: {
                   message: 'GSM is required'
                 }
               }
             },
-            quality:{
+            'quality[]':{
               validators: {
                 notEmpty: {
                   message: 'Quality is required'

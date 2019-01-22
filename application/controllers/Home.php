@@ -24,6 +24,8 @@ class Home extends CI_Controller
     $data['banner'] = $this->banner_model->get_active_banner();
     $data['slider'] = $this->slider_model->get_active_slider();
     $data['featured'] = $this->product_model->get_active_featured_products();
+    $data['discount'] = $this->product_model->get_active_discount_products();
+    $data['deals'] = $this->product_model->get_active_deals_products();
     $this->load->view('home/index',$data);
   }
   //user login

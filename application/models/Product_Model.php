@@ -66,6 +66,16 @@ class Product_Model extends CI_Model
   {
     return $this->db->get_where($this->table, array('featured' => '1', 'status' => '1' ))->result();
   }
+  //active and deals Products
+  public function get_active_deals_products()
+  {
+    return $this->db->get_where($this->table, array('deals' => '1', 'status' => '1' ))->result();
+  }
+  //active and having discount
+  public function get_active_discount_products()
+  {
+    return $this->db->get_where($this->table,array('discount_percentage !=' => 0))->result();
+  }
 }
 
 ?>

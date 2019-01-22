@@ -165,7 +165,7 @@
                                 <li><a href="<?php echo base_url(); ?>">About Us<i class="fas fa-chevron-down"></i></a></li>
                                 <li><a href="<?php echo base_url('products'); ?>">Products<i class="fas fa-chevron-down"></i></a></li>
                                 <li><a href="<?php echo base_url(); ?>">Blog<i class="fas fa-chevron-down"></i></a></li>
-                                <li><a href="<?php echo base_url(); ?>">Contact<i class="fas fa-chevron-down"></i></a></li>
+                                <li><a href="<?php echo base_url('contact'); ?>">Contact<i class="fas fa-chevron-down"></i></a></li>
                             </ul>
                         </div>
 
