@@ -130,6 +130,8 @@
                                                     <?php foreach($sizes as $s){ ?>
                                                       <option value="<?php echo $s->id; ?>" <?php echo (isset($product->size) && in_array($s->id,explode(',',$product->size))) ? 'selected' : ''; ?>><?php echo $s->name; ?></option>
                                                     <?php } ?>
+                                                  <?php } else { ?>
+                                                    <option value="">No size found</option>
                                                   <?php } ?>
                                                 </select>
                                             </div>
@@ -142,6 +144,8 @@
                                                     <?php foreach($colors as $cs){ ?>
                                                       <option value="<?php echo $cs->id; ?>" <?php echo (isset($product->color) && in_array($cs->id,explode(',',$product->color))) ? 'selected' : ''; ?>><?php echo $cs->name; ?></option>
                                                     <?php } ?>
+                                                  <?php } else { ?>
+                                                    <option value="">No color found</option>
                                                   <?php } ?>
                                                 </select>
                                             </div>
@@ -154,6 +158,8 @@
                                                     <?php foreach($gsm as $g){ ?>
                                                       <option value="<?php echo $g->id; ?>" <?php echo (isset($product->gsm) && in_array($g->id,explode(',',$product->gsm))) ? 'selected' : ''; ?>><?php echo $g->name; ?></option>
                                                     <?php } ?>
+                                                  <?php } else { ?>
+                                                    <option value="">No GSM found</option>
                                                   <?php } ?>
                                                 </select>
                                             </div>
@@ -168,6 +174,8 @@
                                                     <?php foreach($quality as $q){ ?>
                                                       <option value="<?php echo $q->id; ?>" <?php echo (isset($product->quality) && in_array($q->id,explode(',',$product->quality))) ? 'selected' : ''; ?>><?php echo $q->name; ?></option>
                                                     <?php } ?>
+                                                  <?php } else { ?>
+                                                    <option value="">No quality found</option>
                                                   <?php } ?>
                                                 </select>
                                             </div>
