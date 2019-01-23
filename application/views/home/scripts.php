@@ -38,7 +38,6 @@
           dataType:'json',
           success:function(data){
             if (data.success) {
-              //alert(data.count);
               $('.wishlist_count').html(data.count);
               $('#message').html('<div class="alert_msg1 animated slideInUp bg-succ">'+data.success+' <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
               obj.addClass('active');
@@ -48,6 +47,10 @@
           }
         });
       <?php } ?>
+    });
+    //add to Cart
+    $('.addtocart').click(function(){
+      alert('hai');
     });
   });
 </script>
