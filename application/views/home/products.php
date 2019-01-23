@@ -191,7 +191,11 @@
                           <?php } ?>
                           <div class="product_name"><div><a href="<?php echo base_url('product/'.$p->id); ?>" tabindex="0"><?php echo $p->name; ?></a></div></div>
                         </div>
-                        <div class="product_fav wish" data-product_id="<?php echo $p->id; ?>" data-product_name="<?php echo $p->name; ?>" data-product_image="<?php echo $p->image; ?>" data-actual_price="<?php echo $p->actual_price; ?>" data-net_price="<?php echo $p->net_price; ?>" data-discount_percentage="<?php echo $p->discount_percentage; ?>"><i class="fas fa-heart"></i></div>
+                        <?php if ((isset($wishlist) && !empty($wishlist)) && in_array($p->id,$wishlist)) { ?>
+                          <div class="product_fav wish active" data-product_id="<?php echo $p->id; ?>" data-product_name="<?php echo $p->name; ?>" data-product_image="<?php echo $p->image; ?>" data-actual_price="<?php echo $p->actual_price; ?>" data-net_price="<?php echo $p->net_price; ?>" data-discount_percentage="<?php echo $p->discount_percentage; ?>"><i class="fas fa-heart"></i></div>
+                        <?php } else { ?>
+                          <div class="product_fav wish" data-product_id="<?php echo $p->id; ?>" data-product_name="<?php echo $p->name; ?>" data-product_image="<?php echo $p->image; ?>" data-actual_price="<?php echo $p->actual_price; ?>" data-net_price="<?php echo $p->net_price; ?>" data-discount_percentage="<?php echo $p->discount_percentage; ?>"><i class="fas fa-heart"></i></div>
+                        <?php } ?>
                         <ul class="product_marks">
                           <?php if ((isset($p->discount_percentage) && !empty($p->discount_percentage))) { ?>
                             <li class="product_mark product_discount"><?php echo '-'.$p->discount_percentage.'%'; ?></li>

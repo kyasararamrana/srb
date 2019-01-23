@@ -17,6 +17,7 @@ class Product extends CI_Controller
     $this->load->model('quality_model');
     $this->load->model('product_model');
     $this->load->model('cart_model');
+    $this->load->model('wishlist_model');
     $this->load->library('user_agent');
   }
   //admin product list
@@ -222,6 +223,10 @@ class Product extends CI_Controller
     $arg['pageTitle'] = 'Products';
     $data = layouts($arg);
     $data['products'] = $this->product_model->get_active_products($id);
+    $user_id = $this->session->userdata('id');
+    if($user_id){
+      $data['wishlist'] = $this->wishlist_model->get_product_id_by_user_id($user_id);
+    }
     $this->load->view('home/products',$data);
   }
   //home single product details
