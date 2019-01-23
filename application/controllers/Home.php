@@ -14,6 +14,7 @@ class Home extends CI_Controller
     $this->load->model('banner_model');
     $this->load->model('slider_model');
     $this->load->model('product_model');
+    $this->load->model('wishlist_model');
     $this->load->library('form_validation');
   }
   //home page
@@ -26,6 +27,10 @@ class Home extends CI_Controller
     $data['featured'] = $this->product_model->get_active_featured_products();
     $data['discount'] = $this->product_model->get_active_discount_products();
     $data['deals'] = $this->product_model->get_active_deals_products();
+    $user_id = $this->session->userdata('id');
+    if($user_id){
+      $data['wishlist'] = $this->wishlist_model->get_product_id_by_user_id($user_id);
+    }
     $this->load->view('home/index',$data);
   }
   //user login
