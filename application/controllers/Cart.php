@@ -8,7 +8,7 @@ class Cart extends CI_Controller
   function __construct()
   {
     parent::__construct();
-    $this->load->model('cart_model');
+    $this->load->model('Cart_Model');
     $this->load->library('user_agent');
   }
   //cart - view
@@ -19,7 +19,7 @@ class Cart extends CI_Controller
       $data = layouts($arg);
       $id = $this->session->userdata('id');
       if($id){
-        $data['cart'] = $this->cart_model->get_cart_by_user_id($id);
+        $data['cart'] = $this->Cart_Model->get_cart_by_user_id($id);
         $this->load->view('home/cart',$data);
       } else {
         $this->session->set_flashdata('error','Please login and try again');
@@ -38,12 +38,12 @@ class Cart extends CI_Controller
       if ($post_data) {
         $addl_data = array('created_on' => date('Y-m-d H:i:s'), 'created_by' => $this->session->userdata('id'));
         $post_data = array_merge($post_data,$addl_data);
-        if ($this->cart_model->insert($post_data)) {
+        if ($this->Cart_Model->insert($post_data)) {
           $return['success'] = 'Item added to cart';
           $id = $this->session->userdata('id');
           if($id){
-            $return['count'] = $this->cart_model->get_cart_count_by_user_id($id)->cart_count;
-            $total_cart = $this->cart_model->get_cart_total_by_user_id($id)->total_cart;
+            $return['count'] = $this->Cart_Model->get_cart_count_by_user_id($id)->cart_count;
+            $total_cart = $this->Cart_Model->get_cart_total_by_user_id($id)->total_cart;
             $return['total'] = number_format($total_cart,2, '.', ',');
           }
           echo json_encode($return);
@@ -67,7 +67,7 @@ class Cart extends CI_Controller
       $post_data = $this->input->post();
       $post_id = $this->input->post('id');
       if ($post_data) {
-        if ($this->cart_model->update($post_data,$post_id)) {
+        if ($this->Cart_Model->update($post_data,$post_id)) {
           $return['success'] = 'Item quantity updated';
         } else {
           $return['error'] = 'Please try again';
@@ -86,7 +86,7 @@ class Cart extends CI_Controller
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       if ($id) {
-        if ($this->cart_model->delete($id)) {
+        if ($this->Cart_Model->delete($id)) {
           $this->session->set_flashdata('success','Item removed from cart');
           redirect('cart');
         } else {

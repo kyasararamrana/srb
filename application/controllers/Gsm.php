@@ -12,7 +12,7 @@ class Gsm extends CI_Controller
     parent::__construct();
     $this->load->library('form_validation');
     $this->load->library('user_agent');
-    $this->load->model('gsm_model');
+    $this->load->model('Gsm_Model');
   }
   //gsms list
   public function index()
@@ -20,7 +20,7 @@ class Gsm extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Gsm';
       $data = components($arg);
-      $data['gsms'] = $this->gsm_model->get_gsms();
+      $data['gsms'] = $this->Gsm_Model->get_gsms();
       $this->load->view('admin/gsms',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -47,7 +47,7 @@ class Gsm extends CI_Controller
       if ($post_data) {
         $addl_data = array('created_by' => $this->session->userdata('id'), 'created_on' => date('Y-m-d H:i:s'), 'status' => '1');
         $post_data = array_merge($post_data,$addl_data);
-        if ($this->gsm_model->insert($post_data)) {
+        if ($this->Gsm_Model->insert($post_data)) {
           $this->session->set_flashdata('success','Gsm created successfully');
           redirect('gsm');
         } else {
@@ -69,7 +69,7 @@ class Gsm extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Gsm';
       $data = components($arg);
-      $data['gsm'] = $this->gsm_model->get_gsm_by_id($id);
+      $data['gsm'] = $this->Gsm_Model->get_gsm_by_id($id);
       $this->load->view('admin/gsm',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -85,7 +85,7 @@ class Gsm extends CI_Controller
         $post_id = $this->input->post('id');
         $addl_data = array('updated_by' => $this->session->userdata('id'), 'updated_on' => date('Y-m-d H:i:s'));
         $post_data = array_merge($post_data,$addl_data);
-        if ($this->gsm_model->update($post_data,$post_id)) {
+        if ($this->Gsm_Model->update($post_data,$post_id)) {
           $this->session->set_flashdata('success','Gsm updated successfully');
           redirect('gsm');
         } else {
@@ -106,7 +106,7 @@ class Gsm extends CI_Controller
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $post_data = array('status' => '0');
-      if ($this->gsm_model->update($post_data,$id)) {
+      if ($this->Gsm_Model->update($post_data,$id)) {
         $this->session->set_flashdata('success','Gsm deleted successfully');
         redirect('gsm');
       } else {
@@ -131,7 +131,7 @@ class Gsm extends CI_Controller
         $sts .= '1';
       }
       $post_data = array('status' => $sts);
-      if ($this->gsm_model->update($post_data,$id)) {
+      if ($this->Gsm_Model->update($post_data,$id)) {
         $this->session->set_flashdata('success','Status changed successfully');
         redirect('gsm');
       } else {
@@ -148,7 +148,7 @@ class Gsm extends CI_Controller
   {
     $name = $this->input->post('name');
     $id = $this->input->post('id');
-    if($this->gsm_model->check_exists($name,$id)){
+    if($this->Gsm_Model->check_exists($name,$id)){
       $isAvailable = false;
     } else {
       $isAvailable = true;

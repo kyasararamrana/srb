@@ -10,7 +10,7 @@ class Admin extends CI_Controller
   function __construct()
   {
     parent::__construct();
-    $this->load->model('admin_model');
+    $this->load->model('Admin_Model');
   }
   //dashboard
   public function index()
@@ -18,8 +18,8 @@ class Admin extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Dashboard';
   	  $data = components($arg);
-      $data['category'] = $this->admin_model->get_categories_count();
-      $data['product'] = $this->admin_model->get_products_count();
+      $data['category'] = $this->Admin_Model->get_categories_count();
+      $data['product'] = $this->Admin_Model->get_products_count();
       $this->load->view('admin/index',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -45,7 +45,7 @@ class Admin extends CI_Controller
       $email = $this->input->post('email');
       $password = $this->input->post('password');
       $password = md5($password);
-      $result = $this->admin_model->get_access($email,$password);
+      $result = $this->Admin_Model->get_access($email,$password);
       if($result){
         $user_data = array('name' => $result->name, 'email' => $result->email, 'id' => $result->id, 'status' => $result->status, 'logged_in' => TRUE);
         $this->session->set_userdata($user_data);
@@ -74,7 +74,7 @@ class Admin extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Profile';
       $data = components($arg);
-      $data['profile'] = $this->admin_model->get_user_data();
+      $data['profile'] = $this->Admin_Model->get_user_data();
       $this->load->view('admin/profile',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -87,7 +87,7 @@ class Admin extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Edit Profile';
       $data = components($arg);
-      $data['profile'] = $this->admin_model->get_user_data();
+      $data['profile'] = $this->Admin_Model->get_user_data();
       $this->load->view('admin/edit_profile',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -123,7 +123,7 @@ class Admin extends CI_Controller
           $image_data = array('image' => $image);
           $post_data = array_merge($post_data,$image_data);
           unset($post_data['uploaded_image']);
-          if ($this->admin_model->update_profile($post_data,$post_id)) {
+          if ($this->Admin_Model->update_profile($post_data,$post_id)) {
             $this->session->set_flashdata('success','Profile updated successfully');
             redirect('admin/profile');
           } else {
@@ -158,7 +158,7 @@ class Admin extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $password = $this->input->post('newpassword');
       $post_data = array('password' => md5($password), 'org_password' => $password);
-      if ($this->admin_model->change_password($post_data)) {
+      if ($this->Admin_Model->change_password($post_data)) {
         $this->session->set_flashdata('success','Password changed successfully');
         redirect('admin/change_password');
       } else {
@@ -176,7 +176,7 @@ class Admin extends CI_Controller
   {
     $old_password = $this->input->post('oldpassword');
     $old_password = md5($old_password);
-    if($this->admin_model->check_password($old_password)){
+    if($this->Admin_Model->check_password($old_password)){
       $isAvailable = true;
     } else {
       $isAvailable = false;

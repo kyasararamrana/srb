@@ -12,7 +12,7 @@ class Category extends CI_Controller
     parent::__construct();
     $this->load->library('form_validation');
     $this->load->library('user_agent');
-    $this->load->model('category_model');
+    $this->load->model('Category_Model');
   }
   //categories list
   public function index()
@@ -20,7 +20,7 @@ class Category extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Categories';
       $data = components($arg);
-      $data['categories'] = $this->category_model->get_categories();
+      $data['categories'] = $this->Category_Model->get_categories();
       $this->load->view('admin/categories',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -47,7 +47,7 @@ class Category extends CI_Controller
       if ($post_data) {
         $addl_data = array('created_by' => $this->session->userdata('id'), 'created_on' => date('Y-m-d H:i:s'), 'status' => '1');
         $post_data = array_merge($post_data,$addl_data);
-        if ($this->category_model->insert($post_data)) {
+        if ($this->Category_Model->insert($post_data)) {
           $this->session->set_flashdata('success','category created successfully');
           redirect('category');
         } else {
@@ -69,7 +69,7 @@ class Category extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Categories';
       $data = components($arg);
-      $data['category'] = $this->category_model->get_category_by_id($id);
+      $data['category'] = $this->Category_Model->get_category_by_id($id);
       $this->load->view('admin/category',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -85,7 +85,7 @@ class Category extends CI_Controller
         $post_id = $this->input->post('id');
         $addl_data = array('updated_by' => $this->session->userdata('id'), 'updated_on' => date('Y-m-d H:i:s'));
         $post_data = array_merge($post_data,$addl_data);
-        if ($this->category_model->update($post_data,$post_id)) {
+        if ($this->Category_Model->update($post_data,$post_id)) {
           $this->session->set_flashdata('success','Category updated successfully');
           redirect('category');
         } else {
@@ -106,7 +106,7 @@ class Category extends CI_Controller
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $post_data = array('status' => '0');
-      if ($this->category_model->update($post_data,$id)) {
+      if ($this->Category_Model->update($post_data,$id)) {
         $this->session->set_flashdata('success','Category deleted successfully');
         redirect('category');
       } else {
@@ -131,7 +131,7 @@ class Category extends CI_Controller
         $sts .= '1';
       }
       $post_data = array('status' => $sts);
-      if ($this->category_model->update($post_data,$id)) {
+      if ($this->Category_Model->update($post_data,$id)) {
         $this->session->set_flashdata('success','Status changed successfully');
         redirect('category');
       } else {
@@ -148,7 +148,7 @@ class Category extends CI_Controller
   {
     $name = $this->input->post('name');
     $id = $this->input->post('id');
-    if($this->category_model->check_exists($name,$id)){
+    if($this->Category_Model->check_exists($name,$id)){
       $isAvailable = false;
     } else {
       $isAvailable = true;

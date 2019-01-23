@@ -10,14 +10,14 @@ class Product extends CI_Controller
   function __construct()
   {
     parent::__construct();
-    $this->load->model('category_model');
-    $this->load->model('size_model');
-    $this->load->model('color_model');
-    $this->load->model('gsm_model');
-    $this->load->model('quality_model');
-    $this->load->model('product_model');
-    $this->load->model('cart_model');
-    $this->load->model('wishlist_model');
+    $this->load->model('Category_Model');
+    $this->load->model('Size_Model');
+    $this->load->model('Color_Model');
+    $this->load->model('Gsm_Model');
+    $this->load->model('Quality_Model');
+    $this->load->model('Product_Model');
+    $this->load->model('Cart_Model');
+    $this->load->model('Wishlist_Model');
     $this->load->library('user_agent');
   }
   //admin product list
@@ -26,7 +26,7 @@ class Product extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Products';
       $data = components($arg);
-      $data['products'] = $this->product_model->get_products();
+      $data['products'] = $this->Product_Model->get_products();
       $this->load->view('admin/products',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -39,11 +39,11 @@ class Product extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Product';
       $data = components($arg);
-      $data['categories'] = $this->category_model->get_active_categories();
-      $data['sizes'] = $this->size_model->get_active_sizes();
-      $data['colors'] = $this->color_model->get_active_colors();
-      $data['gsm'] = $this->gsm_model->get_active_gsm();
-      $data['quality'] = $this->quality_model->get_active_quality();
+      $data['categories'] = $this->Category_Model->get_active_categories();
+      $data['sizes'] = $this->Size_Model->get_active_sizes();
+      $data['colors'] = $this->Color_Model->get_active_colors();
+      $data['gsm'] = $this->Gsm_Model->get_active_gsm();
+      $data['quality'] = $this->Quality_Model->get_active_quality();
       $this->load->view('admin/product',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -69,7 +69,7 @@ class Product extends CI_Controller
         }
         $addl_data = array('image' => $image,'thumbnail1' => $thumbnail1, 'thumbnail2' => $thumbnail2, 'thumbnail3' => $thumbnail3,'size' => implode(',',$this->input->post('size')), 'color' => implode(',',$this->input->post('color')), 'gsm' => implode(',',$this->input->post('gsm')), 'quality' => implode(',',$this->input->post('quality')), 'featured' => (int)$this->input->post('featured'), 'deals' => (int)$this->input->post('deals'),'created_on' => date('Y-m-d H:i:s'),'created_by' => $this->session->userdata('id'), 'status' => '1' );
         $post_data = array_merge($post_data,$addl_data);
-        if ($this->product_model->insert($post_data)) {
+        if ($this->Product_Model->insert($post_data)) {
           $this->session->set_flashdata('success','Product inserted successfully');
           redirect('product');
         } else {
@@ -91,12 +91,12 @@ class Product extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Product';
       $data = components($arg);
-      $data['categories'] = $this->category_model->get_active_categories();
-      $data['sizes'] = $this->size_model->get_active_sizes();
-      $data['colors'] = $this->color_model->get_active_colors();
-      $data['gsm'] = $this->gsm_model->get_active_gsm();
-      $data['quality'] = $this->quality_model->get_active_quality();
-      $data['product'] = $this->product_model->get_product_by_id($id);
+      $data['categories'] = $this->Category_Model->get_active_categories();
+      $data['sizes'] = $this->Size_Model->get_active_sizes();
+      $data['colors'] = $this->Color_Model->get_active_colors();
+      $data['gsm'] = $this->Gsm_Model->get_active_gsm();
+      $data['quality'] = $this->Quality_Model->get_active_quality();
+      $data['product'] = $this->Product_Model->get_product_by_id($id);
       $this->load->view('admin/product',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -145,7 +145,7 @@ class Product extends CI_Controller
           unset($post_data['uploaded_thumbnail1']);
           unset($post_data['uploaded_thumbnail2']);
           unset($post_data['uploaded_thumbnail3']);
-          if ($this->product_model->update($post_data,$post_id)) {
+          if ($this->Product_Model->update($post_data,$post_id)) {
             $this->session->set_flashdata('success','Product updated successfully');
             redirect('product');
           } else {
@@ -166,7 +166,7 @@ class Product extends CI_Controller
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $post_data = array('status' => '0');
-      if ($this->product_model->update($post_data,$id)) {
+      if ($this->Product_Model->update($post_data,$id)) {
         $this->session->set_flashdata('success','Product deleted successfully');
         redirect('product');
       } else {
@@ -191,7 +191,7 @@ class Product extends CI_Controller
         $sts .= '1';
       }
       $post_data = array('status' => $sts);
-      if ($this->product_model->update($post_data,$id)) {
+      if ($this->Product_Model->update($post_data,$id)) {
         $this->session->set_flashdata('success','Status changed successfully');
         redirect('product');
       } else {
@@ -208,7 +208,7 @@ class Product extends CI_Controller
   {
     $name = $this->input->post('name');
     $id = $this->input->post('id');
-    if($this->product_model->check_exists($name,$id)){
+    if($this->Product_Model->check_exists($name,$id)){
       $isAvailable = false;
     } else {
       $isAvailable = true;
@@ -222,10 +222,10 @@ class Product extends CI_Controller
   {
     $arg['pageTitle'] = 'Products';
     $data = layouts($arg);
-    $data['products'] = $this->product_model->get_active_products($id);
+    $data['products'] = $this->Product_Model->get_active_products($id);
     $user_id = $this->session->userdata('id');
     if($user_id){
-      $data['wishlist'] = $this->wishlist_model->get_product_id_by_user_id($user_id);
+      $data['wishlist'] = $this->Wishlist_Model->get_product_id_by_user_id($user_id);
     }
     $this->load->view('home/products',$data);
   }
@@ -235,10 +235,10 @@ class Product extends CI_Controller
     if ($id) {
       $arg['pageTitle'] = 'Products';
       $data = layouts($arg);
-      $data['product'] = $this->product_model->get_single_active_product($id);
+      $data['product'] = $this->Product_Model->get_single_active_product($id);
       $user_id = $this->session->userdata('id');
       if($user_id){
-        $data['cart'] = $this->cart_model->get_product_id_by_user_id($user_id);
+        $data['cart'] = $this->Cart_Model->get_product_id_by_user_id($user_id);
       }
       $this->load->view('home/product',$data);
     } else {

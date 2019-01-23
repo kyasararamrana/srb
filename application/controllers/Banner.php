@@ -8,7 +8,7 @@ class Banner extends CI_Controller
   function __construct()
   {
     parent::__construct();
-    $this->load->model('banner_model');
+    $this->load->model('Banner_Model');
     $this->load->library('user_agent');
   }
   //banners list
@@ -17,7 +17,7 @@ class Banner extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Banner';
       $data = components($arg);
-      $data['banners'] = $this->banner_model->get_banners();
+      $data['banners'] = $this->Banner_Model->get_banners();
       $this->load->view('admin/banners',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -55,7 +55,7 @@ class Banner extends CI_Controller
         } else {
           $addl_data = array('image' => $this->upload->data('file_name'), 'created_by' => $this->session->userdata('id'), 'created_on' => date('Y-m-d H:i:s'), 'status' => '1');
           $post_data = array_merge($post_data,$addl_data);
-          if ($this->banner_model->insert($post_data)) {
+          if ($this->Banner_Model->insert($post_data)) {
             $this->session->set_flashdata('success','banner created successfully');
             redirect('banner');
           } else {
@@ -78,7 +78,7 @@ class Banner extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Banners';
       $data = components($arg);
-      $data['banner'] = $this->banner_model->get_banner_by_id($id);
+      $data['banner'] = $this->Banner_Model->get_banner_by_id($id);
       $this->load->view('admin/banner',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -113,7 +113,7 @@ class Banner extends CI_Controller
           $addl_data = array('image' => $image, 'updated_by' => $this->session->userdata('id'), 'updated_on' => date('Y-m-d H:i:s'));
           $post_data = array_merge($post_data,$addl_data);
           unset($post_data['uploaded_image']);
-          if ($this->banner_model->update($post_data,$post_id)) {
+          if ($this->Banner_Model->update($post_data,$post_id)) {
             $this->session->set_flashdata('success','Banner updated successfully');
             redirect('banner');
           } else {
@@ -135,7 +135,7 @@ class Banner extends CI_Controller
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $post_data = array('status' => '0');
-      if ($this->banner_model->update($post_data,$id)) {
+      if ($this->Banner_Model->update($post_data,$id)) {
         $this->session->set_flashdata('success','Banner deleted successfully');
         redirect('banner');
       } else {
@@ -160,7 +160,7 @@ class Banner extends CI_Controller
         $sts .= '1';
       }
       $post_data = array('status' => $sts);
-      if ($this->banner_model->update($post_data,$id)) {
+      if ($this->Banner_Model->update($post_data,$id)) {
         $this->session->set_flashdata('success','Status changed successfully');
         redirect('banner');
       } else {
@@ -177,7 +177,7 @@ class Banner extends CI_Controller
   {
     $name = $this->input->post('name');
     $id = $this->input->post('id');
-    if($this->banner_model->check_exists($name,$id)){
+    if($this->Banner_Model->check_exists($name,$id)){
       $isAvailable = false;
     } else {
       $isAvailable = true;

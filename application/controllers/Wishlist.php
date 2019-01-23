@@ -3,14 +3,14 @@
  *
  */
  defined('BASEPATH') OR exit('No direct script access allowed');
- 
+
 class Wishlist extends CI_Controller
 {
 
   function __construct()
   {
     parent::__construct();
-    $this->load->model('wishlist_model');
+    $this->load->model('Wishlist_Model');
   }
   //wishlist - (view)
   public function index()
@@ -20,7 +20,7 @@ class Wishlist extends CI_Controller
       $data = layouts($arg);
       $user_id = $this->session->userdata('id');
       if ($user_id) {
-        $data['wishlist'] = $this->wishlist_model->get_wishlist_by_userid($user_id);
+        $data['wishlist'] = $this->Wishlist_Model->get_wishlist_by_userid($user_id);
       }
       $this->load->view('home/wishlist',$data);
     } else {
@@ -36,11 +36,11 @@ class Wishlist extends CI_Controller
       if ($post_data) {
         $addl_data = array('product_quantity' => 1, 'created_on' => date('Y-m-d H:i:s'),'created_by' => $this->session->userdata('id'));
         $post_data = array_merge($post_data,$addl_data);
-        if ($this->wishlist_model->insert($post_data)) {
+        if ($this->Wishlist_Model->insert($post_data)) {
           $return['success'] = 'Item added to wishlist';
           $user_id = $this->session->userdata('id');
           if ($user_id) {
-            $return['count'] = $this->wishlist_model->get_wishlist_count_by_user_id($user_id)->wishlist_count;
+            $return['count'] = $this->Wishlist_Model->get_wishlist_count_by_user_id($user_id)->wishlist_count;
           }
         } else {
           $return['error'] = 'Please try again';
@@ -59,7 +59,7 @@ class Wishlist extends CI_Controller
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       if ($id) {
-        if ($this->wishlist_model->delete($id)) {
+        if ($this->Wishlist_Model->delete($id)) {
           $this->session->set_flashdata('success','Item removed from wishlist');
           redirect('wishlist');
         } else {

@@ -12,7 +12,7 @@ class Size extends CI_Controller
     parent::__construct();
     $this->load->library('form_validation');
     $this->load->library('user_agent');
-    $this->load->model('size_model');
+    $this->load->model('Size_Model');
   }
   //sizes list
   public function index()
@@ -20,7 +20,7 @@ class Size extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Sizes';
       $data = components($arg);
-      $data['sizes'] = $this->size_model->get_sizes();
+      $data['sizes'] = $this->Size_Model->get_sizes();
       $this->load->view('admin/sizes',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -47,7 +47,7 @@ class Size extends CI_Controller
       if ($post_data) {
         $addl_data = array('created_by' => $this->session->userdata('id'), 'created_on' => date('Y-m-d H:i:s'), 'status' => '1');
         $post_data = array_merge($post_data,$addl_data);
-        if ($this->size_model->insert($post_data)) {
+        if ($this->Size_Model->insert($post_data)) {
           $this->session->set_flashdata('success','size created successfully');
           redirect('size');
         } else {
@@ -69,7 +69,7 @@ class Size extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Sizes';
       $data = components($arg);
-      $data['size'] = $this->size_model->get_size_by_id($id);
+      $data['size'] = $this->Size_Model->get_size_by_id($id);
       $this->load->view('admin/size',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -85,7 +85,7 @@ class Size extends CI_Controller
         $post_id = $this->input->post('id');
         $addl_data = array('updated_by' => $this->session->userdata('id'), 'updated_on' => date('Y-m-d H:i:s'));
         $post_data = array_merge($post_data,$addl_data);
-        if ($this->size_model->update($post_data,$post_id)) {
+        if ($this->Size_Model->update($post_data,$post_id)) {
           $this->session->set_flashdata('success','Size updated successfully');
           redirect('size');
         } else {
@@ -106,7 +106,7 @@ class Size extends CI_Controller
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $post_data = array('status' => '0');
-      if ($this->size_model->update($post_data,$id)) {
+      if ($this->Size_Model->update($post_data,$id)) {
         $this->session->set_flashdata('success','Size deleted successfully');
         redirect('size');
       } else {
@@ -131,7 +131,7 @@ class Size extends CI_Controller
         $sts .= '1';
       }
       $post_data = array('status' => $sts);
-      if ($this->size_model->update($post_data,$id)) {
+      if ($this->Size_Model->update($post_data,$id)) {
         $this->session->set_flashdata('success','Status changed successfully');
         redirect('size');
       } else {
@@ -148,7 +148,7 @@ class Size extends CI_Controller
   {
     $name = $this->input->post('name');
     $id = $this->input->post('id');
-    if($this->size_model->check_exists($name,$id)){
+    if($this->Size_Model->check_exists($name,$id)){
       $isAvailable = false;
     } else {
       $isAvailable = true;

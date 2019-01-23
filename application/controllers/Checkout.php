@@ -8,8 +8,8 @@ class Checkout extends CI_Controller
   function __construct()
   {
     parent::__construct();
-    $this->load->model('cart_model');
-    $this->load->model('billing_model');
+    $this->load->model('Cart_Model');
+    $this->load->model('Billing_Model');
     $this->load->library('user_agent');
   }
   //checkout - view
@@ -20,8 +20,8 @@ class Checkout extends CI_Controller
       $data = layouts($arg);
       $user_id = $this->session->userdata('id');
       if($user_id){
-        $data['cart'] = $this->cart_model->get_cart_by_user_id($user_id);
-        $data['total'] = $this->cart_model->get_cart_total_by_user_id($user_id);
+        $data['cart'] = $this->Cart_Model->get_cart_by_user_id($user_id);
+        $data['total'] = $this->Cart_Model->get_cart_total_by_user_id($user_id);
       }
       $this->load->view('home/checkout',$data);
     } else {
@@ -37,11 +37,11 @@ class Checkout extends CI_Controller
       if ($post_data) {
         $addl_data = array('created_on' => date('Y-m-d H:i:s'), 'created_by' => $this->session->userdata('id'));
         $post_data = array_merge($post_data,$addl_data);
-        if ($this->billing_model->insert($post_data)) {
+        if ($this->Billing_Model->insert($post_data)) {
           $this->session->set_flashdata('success','Billing information created');
           $user_id = $this->session->userdata('id');
           if($user_id){
-            $cart =  $this->cart_model->get_cart_by_user_id($user_id);
+            $cart =  $this->Cart_Model->get_cart_by_user_id($user_id);
             if ($cart) {
               print_r($cart);die();
             }
@@ -65,7 +65,7 @@ class Checkout extends CI_Controller
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       if ($id) {
-        if ($this->cart_model->delete($id)) {
+        if ($this->Cart_Model->delete($id)) {
           $this->session->set_flashdata('success','Item removed from cart');
           redirect('checkout');
         } else {

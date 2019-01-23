@@ -10,7 +10,7 @@ class Logo extends CI_Controller
   function __construct()
   {
     parent::__construct();
-    $this->load->model('logo_model');
+    $this->load->model('Logo_Model');
   }
   //logo create
   public function index()
@@ -18,7 +18,7 @@ class Logo extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Logo';
       $data = components($arg);
-      $data['logo'] = $this->logo_model->get_logo();
+      $data['logo'] = $this->Logo_Model->get_logo();
       $this->load->view('admin/logo',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -53,7 +53,7 @@ class Logo extends CI_Controller
           $post_data = array_merge($post_data,$addl_data);
           unset($post_data['uploaded_logo']);
           unset($post_data['uploaded_favicon']);
-          if ($this->logo_model->update($post_data,$post_id)) {
+          if ($this->Logo_Model->update($post_data,$post_id)) {
             $this->session->set_flashdata('success','Logo updated successfully');
             redirect('logo');
           } else {
@@ -70,7 +70,7 @@ class Logo extends CI_Controller
           }
           $addl_data = array('logo' => $logo, 'favicon' => $favicon, 'created_by' => $this->session->userdata('id'), 'created_on' => date('Y-m-d H:i:s'), 'status' => '1');
           $post_data = array_merge($post_data,$addl_data);
-          if ($this->logo_model->insert($post_data)) {
+          if ($this->Logo_Model->insert($post_data)) {
             $this->session->set_flashdata('success','logo created successfully');
             redirect('logo');
           } else {

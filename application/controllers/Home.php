@@ -10,11 +10,11 @@ class Home extends CI_Controller
   function __construct()
   {
     parent::__construct();
-    $this->load->model('home_model');
-    $this->load->model('banner_model');
-    $this->load->model('slider_model');
-    $this->load->model('product_model');
-    $this->load->model('wishlist_model');
+    $this->load->model('Home_Model');
+    $this->load->model('Banner_Model');
+    $this->load->model('Slider_Model');
+    $this->load->model('Product_Model');
+    $this->load->model('Wishlist_Model');
     $this->load->library('form_validation');
   }
   //home page
@@ -22,14 +22,14 @@ class Home extends CI_Controller
   {
     $arg['pageTitle'] = 'Home';
     $data = layouts($arg);
-    $data['banner'] = $this->banner_model->get_active_banner();
-    $data['slider'] = $this->slider_model->get_active_slider();
-    $data['featured'] = $this->product_model->get_active_featured_products();
-    $data['discount'] = $this->product_model->get_active_discount_products();
-    $data['deals'] = $this->product_model->get_active_deals_products();
+    $data['banner'] = $this->Banner_Model->get_active_banner();
+    $data['slider'] = $this->Slider_Model->get_active_slider();
+    $data['featured'] = $this->Product_Model->get_active_featured_products();
+    $data['discount'] = $this->Product_Model->get_active_discount_products();
+    $data['deals'] = $this->Product_Model->get_active_deals_products();
     $user_id = $this->session->userdata('id');
     if($user_id){
-      $data['wishlist'] = $this->wishlist_model->get_product_id_by_user_id($user_id);
+      $data['wishlist'] = $this->Wishlist_Model->get_product_id_by_user_id($user_id);
     }
     $this->load->view('home/index',$data);
   }
@@ -56,7 +56,7 @@ class Home extends CI_Controller
         $email = $this->input->post('email');
         $password = $this->input->post('password');
         $password = md5($password);
-        $result = $this->home_model->get_access($email,$password);
+        $result = $this->Home_Model->get_access($email,$password);
         if ($result) {
           $user_data = array('id' => $result->id, 'firstname' => $result->firstname, 'lastname' => $result->lastname, 'email' => $result->email, 'mobile' => $result->mobile, 'logged_in' => TRUE);
           $this->session->set_userdata($user_data);
@@ -104,12 +104,12 @@ class Home extends CI_Controller
         unset($post_data['confirmpassword']);
         $addl_data = array('created_on' => date('Y-m-d H:i:s'),'status' => '1','password' => md5($post_data['password']));
         $post_data = array_merge($post_data,$addl_data);
-        if ($this->home_model->insert($post_data)) {
+        if ($this->Home_Model->insert($post_data)) {
           $this->session->set_flashdata('success','Registered successfully');
           $email = $this->input->post('email');
           $password = $this->input->post('password');
           $password = md5($password);
-          $result = $this->home_model->get_access($email,$password);
+          $result = $this->Home_Model->get_access($email,$password);
           //sending email
           email('rana@prachatech.com',$result->email,$subject='Registation successfully',$message='Registation successfully for "$result->firstname"');
           //-->
@@ -134,7 +134,7 @@ class Home extends CI_Controller
   {
     $email = $this->input->post('email');
     $id = $this->input->post('id');
-    if ($this->home_model->check_exists($email,$id)) {
+    if ($this->Home_Model->check_exists($email,$id)) {
       $isAvailable = false;
     } else {
       $isAvailable = true;
@@ -161,7 +161,7 @@ class Home extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Profile';
       $data = layouts($arg);
-      $data['profile'] = $this->home_model->get_user_data();
+      $data['profile'] = $this->Home_Model->get_user_data();
       $this->load->view('home/profile',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -174,7 +174,7 @@ class Home extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Edit Profile';
       $data = layouts($arg);
-      $data['profile'] = $this->home_model->get_user_data();
+      $data['profile'] = $this->Home_Model->get_user_data();
       $this->load->view('home/edit_profile',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -188,7 +188,7 @@ class Home extends CI_Controller
       $post_data = $this->input->post();
       if ($post_data) {
           $post_id = $this->input->post('id');
-          if ($this->home_model->update_profile($post_data,$post_id)) {
+          if ($this->Home_Model->update_profile($post_data,$post_id)) {
             $this->session->set_flashdata('success','Profile updated successfully');
             redirect('home/profile');
           } else {
@@ -222,7 +222,7 @@ class Home extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $password = $this->input->post('newpassword');
       $post_data = array('password' => md5($password));
-      if ($this->home_model->change_password($post_data)) {
+      if ($this->Home_Model->change_password($post_data)) {
         $this->session->set_flashdata('success','Password changed successfully');
         redirect('home/change_password');
       } else {
@@ -240,7 +240,7 @@ class Home extends CI_Controller
   {
     $old_password = $this->input->post('oldpassword');
     $old_password = md5($old_password);
-    if($this->home_model->check_password($old_password)){
+    if($this->Home_Model->check_password($old_password)){
       $isAvailable = true;
     } else {
       $isAvailable = false;

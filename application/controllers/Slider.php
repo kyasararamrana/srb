@@ -10,7 +10,7 @@ class Slider extends CI_Controller
   function __construct()
   {
     parent::__construct();
-    $this->load->model('slider_model');
+    $this->load->model('Slider_Model');
   }
   //slider list
   public function index()
@@ -18,7 +18,7 @@ class Slider extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Slider';
       $data = components($arg);
-      $data['slider'] = $this->slider_model->get_all_sliders();
+      $data['slider'] = $this->Slider_Model->get_all_sliders();
       $this->load->view('admin/sliders',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -56,7 +56,7 @@ class Slider extends CI_Controller
         } else {
           $addl_data = array('image' => $this->upload->data('file_name') , 'created_on' => date('Y-m-d H:i:s'), 'created_by' => $this->session->userdata('id'), 'status' => '1' );
           $post_data = array_merge($post_data,$addl_data);
-          if ($this->slider_model->insert($post_data)) {
+          if ($this->Slider_Model->insert($post_data)) {
             $this->session->set_flashdata('success','Slider created successfully');
             redirect('slider');
           } else {
@@ -79,7 +79,7 @@ class Slider extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Slider';
       $data = components($arg);
-      $data['slider'] = $this->slider_model->get_slider_by_id($id);
+      $data['slider'] = $this->Slider_Model->get_slider_by_id($id);
       $this->load->view('admin/slider',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -114,7 +114,7 @@ class Slider extends CI_Controller
           $addl_data = array('image' => $image, 'updated_by' => $this->session->userdata('id'), 'updated_on' => date('Y-m-d H:i:s'));
           $post_data = array_merge($post_data,$addl_data);
           unset($post_data['uploaded_image']);
-          if ($this->slider_model->update($post_data,$post_id)) {
+          if ($this->Slider_Model->update($post_data,$post_id)) {
             $this->session->set_flashdata('success','Slider updated successfully');
             redirect('slider');
           } else {
@@ -136,7 +136,7 @@ class Slider extends CI_Controller
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $post_data = array('status' => '0');
-      if ($this->slider_model->update($post_data,$id)) {
+      if ($this->Slider_Model->update($post_data,$id)) {
         $this->session->set_flashdata('success','Slider deleted successfully');
         redirect('slider');
       } else {
@@ -161,7 +161,7 @@ class Slider extends CI_Controller
         $sts .= '1';
       }
       $post_data = array('status' => $sts);
-      if ($this->slider_model->update($post_data,$id)) {
+      if ($this->Slider_Model->update($post_data,$id)) {
         $this->session->set_flashdata('success','Status changed successfully');
         redirect('slider');
       } else {
@@ -178,7 +178,7 @@ class Slider extends CI_Controller
   {
     $heading = $this->input->post('heading');
     $id = $this->input->post('id');
-    if($this->slider_model->check_exists($heading,$id)){
+    if($this->Slider_Model->check_exists($heading,$id)){
       $isAvailable = false;
     } else {
       $isAvailable = true;
