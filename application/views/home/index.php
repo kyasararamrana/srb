@@ -210,7 +210,7 @@
                                                         <button class="product_cart_button">Add to Cart</button>
                                                     </div>
                                                 </div>
-                                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                <div class="product_fav wish" data-product_id="<?php echo $f->id; ?>" data-product_name="<?php echo $f->name; ?>" data-product_image="<?php echo $f->image; ?>" data-actual_price="<?php echo $f->actual_price; ?>" data-net_price="<?php echo $f->net_price; ?>" data-discount_percentage="<?php echo $f->discount_percentage; ?>"><i class="fas fa-heart"></i></div>
                                                 <ul class="product_marks">
                                                   <?php if (isset($f->discount_percentage) && !empty($f->discount_percentage)) { ?>
                                                     <li class="product_mark product_discount"><?php echo '-'.$f->discount_percentage.' %'; ?></li>
@@ -255,7 +255,7 @@
                                                         <button class="product_cart_button">Add to Cart</button>
                                                     </div>
                                                 </div>
-                                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                <div class="product_fav wish"><i class="fas fa-heart"></i></div>
                                                 <ul class="product_marks">
                                                     <li class="product_mark product_discount"> -<?php echo $d->discount_percentage; ?> % </li>
                                                     <li class="product_mark product_new">new</li>

@@ -78,7 +78,7 @@
                           </ul>
                         </li>
                       </ul> -->
-
+                      <div class="clearfix"> &nbsp; </div>
                       <span>Color: </span>
                       <select class="form-control" id="color">
                         <?php if (isset($product->color)) { ?>
