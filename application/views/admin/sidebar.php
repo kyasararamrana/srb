@@ -115,8 +115,10 @@
             </li>
             <li class="header">HEADER</li>
             <li><a href="<?php echo base_url('/logo'); ?>"><i class="fa fa-link"></i> <span>Logo</span></a></li>
+            <li class="header">ORDERS</li>
+            <li><a href="<?php echo base_url('/orders'); ?>"><i class="fa fa-shopping-cart"></i> <span>Orders</span></a></li>
             <li class="header">REQUEST</li>
-            <li><a href="<?php echo base_url('/request'); ?>"><i class="fa fa-handshake-o"></i> <span>Request</span></a></li>
+            <li><a href="<?php echo base_url('/request'); ?>"><i class="fa fa-handshake-o"></i> <span>Requests</span></a></li>
         </ul>
         <!-- /.sidebar-menu -->
     </section>
