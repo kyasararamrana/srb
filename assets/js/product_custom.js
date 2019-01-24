@@ -22,17 +22,17 @@ $(document).ready(function()
 {
 	"use strict";
 
-	/* 
+	/*
 
 	1. Vars and Inits
 
 	*/
-    
+
 	initQuantity();
 	initColor();
 	initImage();
 
-	/* 
+	/*
 
 	1. Init Quantity
 
@@ -60,7 +60,7 @@ $(document).ready(function()
 			decButton.on('click', function()
 			{
 				originalVal = input.val();
-				if(originalVal > 0)
+				if(originalVal > 1)
 				{
 					endVal = parseFloat(originalVal) - 1;
 					input.val(endVal);
@@ -69,7 +69,7 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
+	/*
 
 	2. Init Color
 
@@ -93,7 +93,7 @@ $(document).ready(function()
 		}
 	}
 
-	/* 
+	/*
 
 	3. Init Image
 

@@ -56,13 +56,13 @@
 
                       <!-- Product Quantity -->
                       <div class="product_quantity clearfix">
-                        <span>Quantity: </span>
-                        <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-                        <div class="quantity_buttons">
-                          <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
-                          <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
-                        </div>
-                      </div>
+    										<span>Quantity: </span>
+    										<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+    										<div class="quantity_buttons">
+    											<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
+    											<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
+    										</div>
+    									</div>
 
                       <!-- Product Color -->
                       <!-- <ul class="product_color">
@@ -78,7 +78,7 @@
                           </ul>
                         </li>
                       </ul> -->
-                      <div class="clearfix"> &nbsp; </div>
+                      </br>
                       <span>Color: </span>
                       <select class="form-control" id="color">
                         <?php if (isset($product->color)) { ?>
