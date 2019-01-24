@@ -29,7 +29,7 @@
                         <tr>
                           <th>Product</th>
                           <th></th>
-                          <th>Category</th>
+                          <!-- <th>Category</th> -->
                           <th class="text-center">Price</th>
                           <th class="text-right">Action</th>
                         </tr>
@@ -50,7 +50,7 @@
                                   <li><span>Color: Camelot</span></li>
                                 </ul>
                               </td>
-                              <td class="category"><span>D-cut Bags</span></td>
+                              <!-- <td class="category"><span>D-cut Bags</span></td> -->
                               <?php if (isset($w->discount_percentage) && !empty($w->discount_percentage)) { ?>
                                 <td class="price text-center"><strong>₹ <?php echo number_format($w->net_price,2,'.',','); ?></strong><br><del class="font-weak"><small>₹ <?php echo number_format($w->actual_price,2,'.',','); ?></small></del></td>
                               <?php } else { ?>
