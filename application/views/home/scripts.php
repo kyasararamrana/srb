@@ -49,7 +49,7 @@
       <?php } ?>
     });
     //add to Cart
-    $('.addtocart').click(function(e){
+    /*$('.addtocart').click(function(e){
       e.preventDefault();
       <?php if ($this->session->userdata('logged_in') != TRUE) { ?>
         <?php $this->session->set_userdata('previous_url', current_url()); ?>
@@ -83,6 +83,6 @@
           }
         });
       <?php } ?>
-    });
+    });*/
   });
 </script>

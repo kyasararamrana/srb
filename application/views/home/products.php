@@ -176,7 +176,7 @@
                   <!-- Product Item -->
                   <?php if (isset($products) && count($products) > 0) { ?>
                     <?php foreach ($products as $p) { ?>
-                      <div class="product_item <?php if ((isset($p->discount_percentage) && !empty($p->discount_percentage))) { echo 'discount'; } ?> is_new">
+                      <div class="product_item <?php if ((isset($p->discount_percentage) && !empty($p->discount_percentage))) { echo 'discount'; } ?>">
                         <div class="product_border"></div>
                         <div class="product_image d-flex flex-column align-items-center justify-content-center">
                           <?php if (isset($p->image) && !empty($p->image) && file_exists('assets/uploads/product/'.$p->image)) { ?>
@@ -200,7 +200,6 @@
                           <?php if ((isset($p->discount_percentage) && !empty($p->discount_percentage))) { ?>
                             <li class="product_mark product_discount"><?php echo '-'.$p->discount_percentage.'%'; ?></li>
                           <?php } ?>
-                          <li class="product_mark product_new">new</li>
                         </ul>
                       </div>
                     <?php } ?>
@@ -246,102 +245,38 @@
                                 <div class="viewed_nav viewed_next"><i class="fas fa-chevron-right"></i></div>
                             </div>
                         </div>
-
                         <div class="viewed_slider_container">
-
                             <!-- Recently Viewed Slider -->
-
                             <div class="owl-carousel owl-theme viewed_slider">
-
                                 <!-- Recently Viewed Item -->
-                                <div class="owl-item">
-                                    <div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-                                        <div class="viewed_image"><img src="img/featured_8.jpg" alt=""></div>
-                                        <div class="viewed_content text-center">
-                                            <div class="viewed_price">₹  225<span>₹  300</span></div>
-                                            <div class="viewed_name"><a href="#">Product Name</a></div>
+                                <?php if (isset($products) && count($products) > 0 ) { ?>
+                                  <?php foreach($products as $p) { ?>
+                                    <div class="owl-item">
+                                        <div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                                            <div class="viewed_image">
+                                              <?php if((isset($p->image) && !empty($p->image)) && file_exists('assets/uploads/product/'.$p->image)){ ?>
+                                                <img src="<?php echo base_url('assets/uploads/product/'.$p->image); ?>" alt="">
+                                              <?php } ?>
+                                            </div>
+                                            <div class="viewed_content text-center">
+                                              <?php if ((isset($p->discount_percentage) && !empty($p->discount_percentage))) { ?>
+                                                <div class="viewed_price">₹ <?php echo number_format($p->net_price,2, '.', ','); ?><span>₹ <?php echo number_format($p->actual_price,2, '.', ','); ?></span></div>
+                                              <?php  } else { ?>
+                                                <div class="viewed_price">₹ <?php echo number_format($p->net_price,2, '.', ','); ?></div>
+                                              <?php } ?>
+                                                <div class="viewed_name"><a href="<?php echo base_url('product/'.$p->id); ?>"><?php echo (isset($p->name) && !empty($p->name)) ? $p->name : ''; ?></a></div>
+                                            </div>
+                                            <ul class="item_marks">
+                                                <?php if ((isset($p->discount_percentage) && !empty($p->discount_percentage))) { ?>
+                                                  <li class="item_mark item_discount"><?php echo '-'.$p->discount_percentage.'%'; ?></li>
+                                                <?php } ?>
+                                            </ul>
                                         </div>
-                                        <ul class="item_marks">
-                                            <li class="item_mark item_discount">-25%</li>
-                                            <li class="item_mark item_new">new</li>
-                                        </ul>
                                     </div>
-                                </div>
-
-                                <!-- Recently Viewed Item -->
-                                <div class="owl-item">
-                                    <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                        <div class="viewed_image"><img src="img/featured_9.jpg" alt=""></div>
-                                        <div class="viewed_content text-center">
-                                            <div class="viewed_price">₹  379</div>
-                                            <div class="viewed_name"><a href="#">Product Name</a></div>
-                                        </div>
-                                        <ul class="item_marks">
-                                            <li class="item_mark item_discount">-25%</li>
-                                            <li class="item_mark item_new">new</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <!-- Recently Viewed Item -->
-                                <div class="owl-item">
-                                    <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                        <div class="viewed_image"><img src="img/featured_7.jpg" alt=""></div>
-                                        <div class="viewed_content text-center">
-                                            <div class="viewed_price">₹  225</div>
-                                            <div class="viewed_name"><a href="#">Product Name</a></div>
-                                        </div>
-                                        <ul class="item_marks">
-                                            <li class="item_mark item_discount">-25%</li>
-                                            <li class="item_mark item_new">new</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <!-- Recently Viewed Item -->
-                                <div class="owl-item">
-                                    <div class="viewed_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-                                        <div class="viewed_image"><img src="img/featured_6.jpg" alt=""></div>
-                                        <div class="viewed_content text-center">
-                                            <div class="viewed_price">₹  379</div>
-                                            <div class="viewed_name"><a href="#">Product Name</a></div>
-                                        </div>
-                                        <ul class="item_marks">
-                                            <li class="item_mark item_discount">-25%</li>
-                                            <li class="item_mark item_new">new</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <!-- Recently Viewed Item -->
-                                <div class="owl-item">
-                                    <div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-                                        <div class="viewed_image"><img src="img/featured_5.jpg" alt=""></div>
-                                        <div class="viewed_content text-center">
-                                            <div class="viewed_price">₹  225<span>₹  300</span></div>
-                                            <div class="viewed_name"><a href="#">Product Name</a></div>
-                                        </div>
-                                        <ul class="item_marks">
-                                            <li class="item_mark item_discount">-25%</li>
-                                            <li class="item_mark item_new">new</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <!-- Recently Viewed Item -->
-                                <div class="owl-item">
-                                    <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-                                        <div class="viewed_image"><img src="img/featured_4.jpg" alt=""></div>
-                                        <div class="viewed_content text-center">
-                                            <div class="viewed_price">₹  375</div>
-                                            <div class="viewed_name"><a href="#">Product Name</a></div>
-                                        </div>
-                                        <ul class="item_marks">
-                                            <li class="item_mark item_discount">-25%</li>
-                                            <li class="item_mark item_new">new</li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                  <?php } ?>
+                                <?php } else { ?>
+                                  // code...
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

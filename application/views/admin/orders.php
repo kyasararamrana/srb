@@ -74,7 +74,7 @@
                                         <?php $count++; } ?>
                                       <?php } else { ?>
                                         <tr>
-                                          <td colspan='6' class="text-center">No records found</td>
+                                          <td colspan='10' class="text-center">No records found</td>
                                         </tr>
                                       <?php } ?>
                                     </tbody>
