@@ -56,7 +56,15 @@
                               <?php } else { ?>
                                 <td class="price text-center"><strong>₹ <?php echo number_format($w->net_price,2,'.',','); ?></strong></td>
                               <?php } ?>
-                              <td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-cart-plus"></i></button> <a href="<?php echo base_url('wishlist/delete/'.$w->id); ?>" class="main-btn icon-btn"><i class="fa fa-trash"></i></a></td>
+                              <td class="text-right">
+                                <a href="#" class="main-btn icon-btn addtocart"
+                                data-product_id="<?php echo $w->product_id; ?>"
+                                data-product_name="<?php echo $w->product_name; ?>"
+                                data-product_image="<?php echo $w->product_image; ?>"
+                                data-actual_price="<?php echo $w->actual_price; ?>"
+                                data-discount_percentage="<?php echo $w->discount_percentage; ?>"
+                                data-net_price="<?php echo $w->net_price; ?>"
+                                ><i class="fa fa-cart-plus"></i></a> <a href="<?php echo base_url('wishlist/delete/'.$w->id); ?>" class="main-btn icon-btn"><i class="fa fa-trash"></i></a></td>
                             </tr>
                           <?php } ?>
                         <?php } else { ?>
