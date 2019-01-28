@@ -48,7 +48,7 @@
                                         <td class="thumb"><img src="<?php echo base_url('assets/uploads/product/'.$o->product_image); ?>" alt=""></td>
                                       <?php } ?>
                                       <td><a href="<?php echo base_url('product/'.$o->product_id); ?>"><?php echo (isset($o->product_name) && !empty($o->product_name)) ? $o->product_name : ''; ?></td>
-                                      <td>₹ <?php echo $o->net_price; ?></td>
+                                      <td>₹ <?php echo number_format($o->net_price,2, '.', ','); ?></td>
                                       <td><?php echo date('d-m-Y H:i:s',strtotime($o->created_on)); ?></td>
                                       <td><span class="text-success"><?php echo $o->status; ?></span></td>
                                       <td><a href="" class="btn btn-danger btn-sm">Cancel</a></td>

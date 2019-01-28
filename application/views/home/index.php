@@ -207,7 +207,11 @@
                                                             <input type="radio" name="product_color" style="background:#000000">
                                                             <input type="radio" name="product_color" style="background:#999999">
                                                         </div>
-                                                        <button class="product_cart_button addtocart">Add to Cart</button>
+                                                        <?php if((isset($cart) && !empty($cart)) && in_array($f->id,$cart)) { ?>
+                                                          <button class="product_cart_button addtocart" disabled>Added to Cart</button>
+                                                        <?php } else { ?>
+                                                          <button class="product_cart_button addtocart" data-product_id="<?php echo $f->id; ?>" data-product_name="<?php echo $f->name; ?>" data-product_image="<?php echo $f->image; ?>" data-actual_price="<?php echo $f->actual_price; ?>" data-discount_percentage="<?php echo $f->discount_percentage; ?>" data-net_price="<?php echo $f->net_price; ?>">Add to Cart</button>
+                                                        <?php } ?>
                                                     </div>
                                                 </div>
                                                 <?php if ((isset($wishlist) && !empty($wishlist)) && in_array($f->id,$wishlist)) { ?>
@@ -256,7 +260,11 @@
                                                             <input type="radio" name="product_color" style="background:#000000">
                                                             <input type="radio" name="product_color" style="background:#999999">
                                                         </div>
-                                                        <button class="product_cart_button addtocart">Add to Cart</button>
+                                                        <?php if ((isset($cart) && !empty($cart)) && in_array($d->id,$cart)) { ?>
+                                                          <button class="product_cart_button addtocart" disabled>Added to Cart</button>
+                                                        <?php } else { ?>
+                                                          <button class="product_cart_button addtocart" data-product_id="<?php echo $d->id; ?>" data-product_name="<?php echo $d->name; ?>" data-product_image="<?php echo $d->image; ?>" data-actual_price="<?php echo $d->actual_price; ?>" data-discount_percentage="<?php echo $d->discount_percentage; ?>" data-net_price="<?php echo $d->net_price; ?>">Add to Cart</button>
+                                                        <?php } ?>
                                                     </div>
                                                 </div>
                                                 <div class="product_fav wish"><i class="fas fa-heart"></i></div>

@@ -29,6 +29,7 @@ class Home extends CI_Controller
     $data['deals'] = $this->Product_Model->get_active_deals_products();
     $user_id = $this->session->userdata('id');
     if($user_id){
+      $data['cart'] = $this->Cart_Model->get_product_id_by_user_id($user_id);
       $data['wishlist'] = $this->Wishlist_Model->get_product_id_by_user_id($user_id);
     }
     $this->load->view('home/index',$data);
