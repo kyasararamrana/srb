@@ -16,6 +16,7 @@ class Home extends CI_Controller
     $this->load->model('Product_Model');
     $this->load->model('Wishlist_Model');
     $this->load->library('form_validation');
+    $this->load->library('user_agent');
   }
   //home page
   public function index()
@@ -27,6 +28,7 @@ class Home extends CI_Controller
     $data['featured'] = $this->Product_Model->get_active_featured_products();
     $data['discount'] = $this->Product_Model->get_active_discount_products();
     $data['deals'] = $this->Product_Model->get_active_deals_products();
+    $data['products'] = $this->Product_Model->get_products();
     $user_id = $this->session->userdata('id');
     if($user_id){
       $data['cart'] = $this->Cart_Model->get_product_id_by_user_id($user_id);
@@ -249,6 +251,17 @@ class Home extends CI_Controller
     echo json_encode(array(
       'valid' => $isAvailable,
     ));
+  }
+  //search
+  public function search()
+  {
+    $product_id = $this->input->post('search_key');
+    if ($product_id) {
+      redirect('product/'.$product_id);
+    } else {
+      $this->session->set_flashdata('error','Something went wrong, please try again');
+      redirect($this->agent->referrer());
+    }
   }
 
 }

@@ -35,14 +35,11 @@
       </div>
     <?php } ?>
       <!-- Characteristics -->
-
       <div class="characteristics">
           <div class="container">
               <div class="row">
-
                   <!-- Char. Item -->
                   <div class="col-lg-3 col-md-6 char_col">
-
                       <div class="char_item d-flex flex-row align-items-center justify-content-start">
                           <div class="char_icon"><img src="<?php echo base_url('assets/img/char_1.png'); ?>" alt=""></div>
                           <div class="char_content">
@@ -51,7 +48,6 @@
                           </div>
                       </div>
                   </div>
-
                   <!-- Char. Item -->
                   <div class="col-lg-3 col-md-6 char_col">
 
@@ -63,10 +59,8 @@
                           </div>
                       </div>
                   </div>
-
                   <!-- Char. Item -->
                   <div class="col-lg-3 col-md-6 char_col">
-
                       <div class="char_item d-flex flex-row align-items-center justify-content-start">
                           <div class="char_icon"><img src="<?php echo base_url('assets/img/char_3.png') ?>" alt=""></div>
                           <div class="char_content">
@@ -75,10 +69,8 @@
                           </div>
                       </div>
                   </div>
-
                   <!-- Char. Item -->
                   <div class="col-lg-3 col-md-6 char_col">
-
                       <div class="char_item d-flex flex-row align-items-center justify-content-start">
                           <div class="char_icon"><img src="<?php echo base_url('assets/img/char_4.png') ?>" alt=""></div>
                           <div class="char_content">
@@ -90,16 +82,12 @@
               </div>
           </div>
       </div>
-
       <!-- Deals of the week -->
-
       <div class="deals_featured">
           <div class="container">
               <div class="row">
                   <div class="col d-flex flex-lg-row flex-column align-items-center justify-content-start">
-
                       <!-- Deals -->
-
                       <div class="deals">
                           <div class="deals_title">Deals of the Week</div>
                           <?php if(count($deals) > 0){ ?>
@@ -161,7 +149,6 @@
                           <div>No deals on products</div>
                         <?php } ?>
                       </div>
-
                       <!-- Featured -->
                       <div class="featured">
                           <div class="tabbed_container">
@@ -173,7 +160,6 @@
                                   </ul>
                                   <div class="tabs_line"><span></span></div>
                               </div>
-
                               <!-- Product Panel -->
                               <div class="product_panel panel active">
                                 <?php if (count($featured) > 0) { ?>
@@ -225,7 +211,6 @@
                                     <div class="mt-3 text-center">No featured products found</div>
                                   <?php } ?>
                               </div>
-
                               <!-- Product Panel -->
                               <div class="product_panel panel">
                                     <?php if(count($discount) > 0){ ?>
@@ -263,49 +248,51 @@
                                     <div class="mt-3 text-center">No On Sale product found</div>
                                   <?php } ?>
                               </div>
-
                               <!-- Product Panel -->
                               <div class="product_panel panel">
+                                <?php if(isset($products) && count($products) > 0){ ?>
                                   <div class="featured_slider slider">
-
                                       <!-- Slider Item -->
-                                      <div class="featured_slider_item">
-                                          <div class="border_active"></div>
-                                          <div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
-                                              <div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="img/featured_1.jpg" alt=""></div>
-                                              <div class="product_content">
-                                                  <div class="product_price discount">₹ 225<span>₹ 300</span></div>
-                                                  <div class="product_name">
-                                                      <div><a href="product.php">D-Cut Bag</a></div>
-                                                  </div>
-                                                  <div class="product_extras">
-                                                      <div class="product_color">
-                                                          <input type="radio" checked name="product_color" style="background:#b19c83">
-                                                          <input type="radio" name="product_color" style="background:#000000">
-                                                          <input type="radio" name="product_color" style="background:#999999">
-                                                      </div>
-                                                      <button class="product_cart_button">Add to Cart</button>
-                                                  </div>
-                                              </div>
-                                              <div class="product_fav"><i class="fas fa-heart"></i></div>
-                                              <ul class="product_marks">
-                                                  <li class="product_mark product_discount">-25%</li>
-                                                  <li class="product_mark product_new">new</li>
-                                              </ul>
-                                          </div>
-                                      </div>
+                                      <?php foreach ($products as $p) { ?>
+                                        <div class="featured_slider_item">
+                                            <div class="border_active"></div>
+                                            <div class="product_item <?php  if (isset($p->discount_percentage) && !empty($p->discount_percentage)) { echo 'discount'; } ?> d-flex flex-column align-items-center justify-content-center text-center">
+                                                <div class="product_image d-flex flex-column align-items-center justify-content-center">
+                                                  <?php if ((isset($p->image) && !empty($p->image)) && file_exists('assets/uploads/product/'.$p->image)) { ?>
+                                                    <img src="<?php echo base_url('assets/uploads/product/'.$p->image); ?>" alt="">
+                                                  <?php } ?>
+                                                </div>
+                                                <div class="product_content">
+                                                  <?php if (isset($p->discount_percentage) && !empty($p->discount_percentage)) { ?>
+                                                    <div class="product_price discount">₹ <?php echo number_format($p->net_price,2, '.', ','); ?><span>₹ <?php echo number_format($p->actual_price,2, '.', ','); ?></span></div>
+                                                  <?php } else { ?>
+                                                    <div class="product_price">₹ <?php echo number_format($p->net_price,2, '.', ','); ?></div>
+                                                  <?php } ?>
+                                                    <div class="product_name">
+                                                        <div><a href="<?php echo base_url('product/'.$p->id); ?>"><?php echo (isset($p->name) && !empty($p->name)) ? $p->name : '' ; ?></a></div>
+                                                    </div>
+                                                    <div class="product_extras">
+                                                        <a href="<?php echo base_url('product/'.$p->id); ?>" class="product_cart_button btn btn-primary">More info <i class="fa fa-arrow-right"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                                <ul class="product_marks">
+                                                    <li class="product_mark product_discount"> -<?php echo $p->discount_percentage; ?> % </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                      <?php } ?>
                                   </div>
                                   <div class="featured_slider_dots_cover"></div>
+                                <?php } else { ?>
+                                <?php } ?>
                               </div>
-
                           </div>
                       </div>
-
                   </div>
               </div>
           </div>
       </div>
-
       <!-- Banner -->
       <?php if (isset($slider) && !empty($slider)) { ?>
         <div class="banner_2">
@@ -313,9 +300,7 @@
             <div class="banner_2_container">
                 <div class="banner_2_dots"></div>
                 <!-- Banner 2 Slider -->
-
                 <div class="owl-carousel owl-theme banner_2_slider">
-
                     <!-- Banner 2 Slider Item -->
                     <?php foreach ($slider as $s) { ?>
                       <div class="owl-item">
@@ -340,12 +325,10 @@
                           </div>
                       </div>
                     <?php } ?>
-
                 </div>
             </div>
         </div>
       <?php } ?>
-
       <?php echo $footer; ?>
     </div>
     <?php echo $scripts ?>
