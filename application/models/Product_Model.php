@@ -44,9 +44,11 @@ class Product_Model extends CI_Model
     return $this->db->get_where($this->table,array('name' => $name,'id !=' => $id, 'status !=' => '0'))->row('id');
   }
   //active Products and category
-  public function get_active_products($id='')
+  public function get_active_products($id='',$size='',$color='3')
   {
     if ($id) { $this->db->where('category',$id); }
+    // $this->db->or_where('FIND_IN_SET($size,size)!=',0);
+    // $this->db->or_where('FIND_IN_SET($color,color)!=',0);
     return $this->db->get_where($this->table,array('status' => '1'))->result();
   }
   //single active product
@@ -59,6 +61,10 @@ class Product_Model extends CI_Model
     $this->db->join('ecom_gsm g','FIND_IN_SET(g.id,p.gsm) > 0','left');
     $this->db->join('ecom_quality q','FIND_IN_SET(q.id,p.quality) > 0','left');
     $this->db->group_by('p.id');
+    $this->db->where('s.status','1');
+    $this->db->where('cs.status','1');
+    $this->db->where('g.status','1');
+    $this->db->where('q.status','1');
     return $this->db->get_where($this->table.' p',array('p.id' => $id, 'p.status' => '1'))->row();
   }
   //active and featured Products

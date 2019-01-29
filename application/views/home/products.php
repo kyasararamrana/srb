@@ -50,93 +50,61 @@
                 </div>
                 <div class="sidebar_section">
                   <div class="form-group">
-                    <label class="sidebar_subtitle">Material Type</label>
+                    <label class="sidebar_subtitle">Size</label>
                     <select class="form-control">
-                      <option>select</option>
-                      <option>Type 1</option>
-                      <option>Type 2</option>
+                      <?php if (isset($sizes) && count($sizes) > 0) { ?>
+                        <option value="">select</option>
+                        <?php foreach ($sizes as $s) { ?>
+                          <option value="<?php echo $s->id; ?>"><?php echo $s->name; ?></option>
+                        <?php } ?>
+                      <?php } else { ?>
+                        <option value="">No size found</option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
                 <div class="sidebar_section">
                   <div class="form-group">
-                    <label class="sidebar_subtitle">Bag Size</label>
+                    <label class="sidebar_subtitle">Color</label>
                     <select class="form-control">
-                      <option>select</option>
-                      <option>Size 1</option>
-                      <option>Size 2</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="sidebar_section">
-                  <div class="sidebar_subtitle color_subtitle">Bag Color</div>
-                  <ul class="colors_list">
-                    <li class="color"><a href="#" style="background: #b19c83;"></a></li>
-                    <li class="color"><a href="#" style="background: #000000;"></a></li>
-                    <li class="color"><a href="#" style="background: #999999;"></a></li>
-                    <li class="color"><a href="#" style="background: #0e8ce4;"></a></li>
-                    <li class="color"><a href="#" style="background: #df3b3b;"></a></li>
-                    <li class="color"><a href="#" style="background: #ffffff; border: solid 1px #e1e1e1;"></a></li>
-                  </ul>
-                </div>
-                <div class="sidebar_section">
-                  <div class="form-group">
-                    <label class="sidebar_subtitle">Bag GSM</label>
-                    <select class="form-control">
-                      <option>select</option>
-                      <option>GSM 1</option>
-                      <option>GSM 2</option>
+                      <?php if (isset($colors) && count($colors) > 0) { ?>
+                        <option value="">select</option>
+                        <?php foreach ($colors as $c) { ?>
+                          <option value="<?php echo $c->id; ?>"><?php echo $c->name; ?></option>
+                        <?php } ?>
+                      <?php } else { ?>
+                        <option value="">No Color found</option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
                 <div class="sidebar_section">
                   <div class="form-group">
-                    <label class="sidebar_subtitle">Handle Type</label>
+                    <label class="sidebar_subtitle">GSM</label>
                     <select class="form-control">
-                      <option>select</option>
-                      <option>Type 1</option>
-                      <option>Type 2</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="sidebar_section">
-                  <div class="sidebar_subtitle color_subtitle">Sidepatty Color</div>
-                  <ul class="colors_list">
-                    <li class="color"><a href="#" style="background: #b19c83;"></a></li>
-                    <li class="color"><a href="#" style="background: #000000;"></a></li>
-                    <li class="color"><a href="#" style="background: #999999;"></a></li>
-                    <li class="color"><a href="#" style="background: #0e8ce4;"></a></li>
-                    <li class="color"><a href="#" style="background: #df3b3b;"></a></li>
-                    <li class="color"><a href="#" style="background: #ffffff; border: solid 1px #e1e1e1;"></a></li>
-                  </ul>
-                </div>
-                <div class="sidebar_section">
-                  <div class="form-group">
-                    <label class="sidebar_subtitle">Sidepatty GSM</label>
-                    <select class="form-control">
-                      <option>select</option>
-                      <option>GSM 1</option>
-                      <option>GSM 2</option>
+                      <?php if (isset($gsm) && count($gsm) > 0) { ?>
+                        <option value="">select</option>
+                        <?php foreach ($gsm as $g) { ?>
+                          <option value="<?php echo $g->id; ?>"><?php echo $g->name; ?></option>
+                        <?php } ?>
+                      <?php } else { ?>
+                        <option value="">No GSM found</option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>
                 <div class="sidebar_section">
                   <div class="form-group">
-                    <label class="sidebar_subtitle">Printing Type</label>
+                    <label class="sidebar_subtitle">Quality</label>
                     <select class="form-control">
-                      <option>select</option>
-                      <option>Type 1</option>
-                      <option>Type 2</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="sidebar_section">
-                  <div class="form-group">
-                    <label class="sidebar_subtitle">Model Number</label>
-                    <select class="form-control">
-                      <option>select</option>
-                      <option>Number 1</option>
-                      <option>Number 2</option>
+                      <?php if (isset($quality) && count($quality) > 0) { ?>
+                        <option value="">select</option>
+                        <?php foreach ($quality as $q) { ?>
+                          <option value="<?php echo $q->id; ?>"><?php echo $q->name; ?></option>
+                        <?php } ?>
+                      <?php } else { ?>
+                        <option value="">No Quality found</option>
+                      <?php } ?>
                     </select>
                   </div>
                 </div>

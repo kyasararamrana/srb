@@ -223,6 +223,10 @@ class Product extends CI_Controller
     $arg['pageTitle'] = 'Products';
     $data = layouts($arg);
     $data['products'] = $this->Product_Model->get_active_products($id);
+    $data['sizes'] = $this->Size_Model->get_active_sizes();
+    $data['colors'] = $this->Color_Model->get_active_colors();
+    $data['gsm'] = $this->Gsm_Model->get_active_gsm();
+    $data['quality'] = $this->Quality_Model->get_active_quality();
     $user_id = $this->session->userdata('id');
     if($user_id){
       $data['wishlist'] = $this->Wishlist_Model->get_product_id_by_user_id($user_id);
