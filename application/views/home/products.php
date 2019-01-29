@@ -12,7 +12,6 @@
     <div class="super_container">
       <?php echo $header; ?>
       <!-- Home -->
-
       <div class="home">
         <div class="home_background parallax-window" data-parallax="scroll" data-image-src="<?php echo base_url('assets/img/shop_background.jpg'); ?>"></div>
         <div class="home_overlay"></div>
@@ -20,14 +19,11 @@
           <h1 class="home_title">Products</h1>
         </div>
       </div>
-
       <!-- Shop -->
-
       <div class="shop">
         <div class="container">
           <div class="row">
             <div class="col-lg-3 col-md-3">
-
               <!-- Shop Sidebar -->
               <div class="shop_sidebar">
                 <div class="sidebar_section">
@@ -145,13 +141,9 @@
                   </div>
                 </div>
               </div>
-
             </div>
-
             <div class="col-lg-9 col-md-9">
-
               <!-- Shop Content -->
-
               <div class="shop_content">
                 <div class="shop_bar clearfix">
                   <div class="shop_product_count"><span><?php echo (isset($products) && count($products) > 0) ? count($products) : 0 ; ?></span> PRODUCTS FOUND</div>
@@ -169,10 +161,8 @@
                     </ul>
                   </div>
                 </div>
-
                 <div class="product_grid">
                   <div class="product_grid_border"></div>
-
                   <!-- Product Item -->
                   <?php if (isset($products) && count($products) > 0) { ?>
                     <?php foreach ($products as $p) { ?>
@@ -203,12 +193,8 @@
                         </ul>
                       </div>
                     <?php } ?>
-
-
                 </div>
-
                 <!-- Shop Page Navigation -->
-
                 <div class="shop_page_nav d-flex flex-row">
                   <div class="page_prev d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-left"></i></div>
                   <ul class="page_nav d-flex flex-row">
@@ -220,20 +206,15 @@
                   </ul>
                   <div class="page_next d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-right"></i></div>
                 </div>
-
               <?php } else { ?>
                 <div class="product_item">No Products found</div>
               <?php } ?>
-
               </div>
-
             </div>
           </div>
         </div>
       </div>
-
       <!-- Recently Viewed -->
-
       <div class="viewed">
             <div class="container">
                 <div class="row">
@@ -275,7 +256,9 @@
                                     </div>
                                   <?php } ?>
                                 <?php } else { ?>
-                                  // code...
+                                  <div class="viewed_slider_container">
+                                    No Products found
+                                  </div>
                                 <?php } ?>
                             </div>
                         </div>
