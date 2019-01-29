@@ -236,6 +236,7 @@ class Product extends CI_Controller
       $arg['pageTitle'] = 'Products';
       $data = layouts($arg);
       $data['product'] = $this->Product_Model->get_single_active_product($id);
+      $data['products'] = $this->Product_Model->get_active_products();
       $user_id = $this->session->userdata('id');
       if($user_id){
         $data['cart'] = $this->Cart_Model->get_product_id_by_user_id($user_id);
