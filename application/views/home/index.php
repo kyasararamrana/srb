@@ -117,7 +117,7 @@
                                           <div class="deals_content">
                                               <div class="deals_info_line d-flex flex-row justify-content-start">
                                                   <div class="deals_item_name"><?php echo (isset($dls->name) && !empty($dls->name)) ? $dls->name : ''; ?></div>
-                                                  <div class="deals_item_price ml-auto">₹ <?php echo (isset($dls->net_price) && !empty($dls->net_price)) ? $dls->net_price : ''; ?></div>
+                                                  <div class="deals_item_price ml-auto">₹ <?php echo (isset($dls->net_price) && !empty($dls->net_price)) ? number_format($dls->net_price,2, '.', ',') : ''; ?></div>
                                               </div>
                                               <div class="available">
                                                   <div class="available_line d-flex flex-row justify-content-start">
@@ -190,9 +190,9 @@
                                                 </div>
                                                 <div class="product_content">
                                                   <?php if (isset($f->discount_percentage) && !empty($f->discount_percentage)) { ?>
-                                                    <div class="product_price discount">₹ <?php echo $f->net_price; ?><span>₹ <?php echo $f->actual_price; ?></span></div>
+                                                    <div class="product_price discount">₹ <?php echo number_format($f->net_price,2, '.', ','); ?><span>₹ <?php echo number_format($f->actual_price,2, '.', ','); ?></span></div>
                                                   <?php } else { ?>
-                                                    <div class="product_price">₹ <?php echo $f->net_price; ?></div>
+                                                    <div class="product_price">₹ <?php echo number_format($f->net_price,2, '.', ','); ?></div>
                                                   <?php } ?>
                                                     <div class="product_name">
                                                         <div>
@@ -241,7 +241,7 @@
                                                   <?php } ?>
                                                 </div>
                                                 <div class="product_content">
-                                                    <div class="product_price discount">₹ <?php echo $d->net_price; ?><span>₹ <?php echo $d->actual_price; ?></span></div>
+                                                    <div class="product_price discount">₹ <?php echo number_format($d->net_price,2, '.', ','); ?><span>₹ <?php echo number_format($d->actual_price,2, '.', ','); ?></span></div>
                                                     <div class="product_name">
                                                         <div><a href="<?php echo base_url('product/'.$d->id); ?>"><?php if(isset($d->name) && !empty($d->name)){ echo $d->name; } ?></a></div>
                                                     </div>
