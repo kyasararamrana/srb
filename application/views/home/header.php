@@ -60,8 +60,9 @@
                     <div class="header_search">
                         <div class="header_search_content">
                             <div class="header_search_form_container">
-                                <form action="#" class="header_search_form clearfix">
-                                    <input type="search" required="required" class="header_search_input" placeholder="Search for products...">
+                                <form action="<?php echo base_url('home/search'); ?>" method="post" class="header_search_form clearfix">
+                                    <input type="search" required="required" class="header_search_input" name="search_value" id="search_value" placeholder="Search for products...">
+                                    <input  type="hidden" name="search_key" id="search_key" value="">
                                     <div class="custom_dropdown">
                                         <div class="custom_dropdown_list clc">
                                             <span class="custom_dropdown_placeholder clc">All Categories</span>

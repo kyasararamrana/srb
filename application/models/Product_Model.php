@@ -43,7 +43,7 @@ class Product_Model extends CI_Model
   {
     return $this->db->get_where($this->table,array('name' => $name,'id !=' => $id, 'status !=' => '0'))->row('id');
   }
-  //active Products
+  //active Products and category
   public function get_active_products($id='')
   {
     if ($id) { $this->db->where('category',$id); }
@@ -75,6 +75,12 @@ class Product_Model extends CI_Model
   public function get_active_discount_products()
   {
     return $this->db->get_where($this->table,array('discount_percentage !=' => 0))->result();
+  }
+  //active products (id and name)
+  public function get_active_products_list()
+  {
+    $this->db->select('id,name');
+    return $this->db->get_where($this->table,array('status' => '1'))->result();
   }
 }
 
