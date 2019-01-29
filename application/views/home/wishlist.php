@@ -66,7 +66,7 @@
                           <?php } ?>
                         <?php } else { ?>
                           <tr>
-                            <td colspan='5' class="text-center">Your's Wishlist is empty. <a href="<?php echo base_url('/products'); ?>">Browse Products</a></td>
+                            <td colspan='5' class="text-center">Your Wishlist is empty. <a href="<?php echo base_url('/products'); ?>">Browse Products</a></td>
                           </tr>
                         <?php } ?>
 
