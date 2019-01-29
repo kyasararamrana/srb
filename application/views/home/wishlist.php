@@ -45,10 +45,6 @@
                               </td>
                               <td class="details">
                                 <a href="<?php echo base_url('product/'.$w->product_id); ?>"><?php echo $w->product_name; ?></a>
-                                <ul>
-                                  <li><span>Size: XL</span></li>
-                                  <li><span>Color: Camelot</span></li>
-                                </ul>
                               </td>
                               <!-- <td class="category"><span>D-cut Bags</span></td> -->
                               <?php if (isset($w->discount_percentage) && !empty($w->discount_percentage)) { ?>
