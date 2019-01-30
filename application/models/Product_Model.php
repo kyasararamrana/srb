@@ -44,11 +44,15 @@ class Product_Model extends CI_Model
     return $this->db->get_where($this->table,array('name' => $name,'id !=' => $id, 'status !=' => '0'))->row('id');
   }
   //active Products and category
-  public function get_active_products($id='',$size='',$color='3')
+  public function get_active_products($id='',$size='',$color='',$gsm='',$quality='')
   {
-    if ($id) { $this->db->where('category',$id); }
-    // $this->db->or_where('FIND_IN_SET($size,size)!=',0);
-    // $this->db->or_where('FIND_IN_SET($color,color)!=',0);
+    $this->db->group_start();
+    if ($id) { $this->db->or_where('category',$id); }
+    if ($size) { $this->db->or_where('FIND_IN_SET("'.$size.'",size)!=',0); }
+    if ($color) { $this->db->or_where('FIND_IN_SET("'.$color.'",color)!=',0); }
+    if ($gsm) { $this->db->or_where('FIND_IN_SET("'.$gsm.'",gsm)!=',0); }
+    if ($quality) { $this->db->or_where('FIND_IN_SET("'.$quality.'",quality)!=',0); }
+    $this->db->group_end();
     return $this->db->get_where($this->table,array('status' => '1'))->result();
   }
   //single active product

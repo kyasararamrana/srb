@@ -51,7 +51,7 @@
                 <div class="sidebar_section">
                   <div class="form-group">
                     <label class="sidebar_subtitle">Size</label>
-                    <select class="form-control">
+                    <select class="form-control" id="size">
                       <?php if (isset($sizes) && count($sizes) > 0) { ?>
                         <option value="">select</option>
                         <?php foreach ($sizes as $s) { ?>
@@ -66,7 +66,7 @@
                 <div class="sidebar_section">
                   <div class="form-group">
                     <label class="sidebar_subtitle">Color</label>
-                    <select class="form-control">
+                    <select class="form-control" id="color">
                       <?php if (isset($colors) && count($colors) > 0) { ?>
                         <option value="">select</option>
                         <?php foreach ($colors as $c) { ?>
@@ -81,7 +81,7 @@
                 <div class="sidebar_section">
                   <div class="form-group">
                     <label class="sidebar_subtitle">GSM</label>
-                    <select class="form-control">
+                    <select class="form-control" id="gsm">
                       <?php if (isset($gsm) && count($gsm) > 0) { ?>
                         <option value="">select</option>
                         <?php foreach ($gsm as $g) { ?>
@@ -96,7 +96,7 @@
                 <div class="sidebar_section">
                   <div class="form-group">
                     <label class="sidebar_subtitle">Quality</label>
-                    <select class="form-control">
+                    <select class="form-control" id="quality">
                       <?php if (isset($quality) && count($quality) > 0) { ?>
                         <option value="">select</option>
                         <?php foreach ($quality as $q) { ?>
@@ -110,7 +110,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-9 col-md-9">
+            <div class="col-lg-9 col-md-9 product_template">
               <!-- Shop Content -->
               <div class="shop_content">
                 <div class="shop_bar clearfix">
@@ -174,9 +174,9 @@
                   </ul>
                   <div class="page_next d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-right"></i></div>
                 </div>
-              <?php } else { ?>
-                <div class="product_item">No Products found</div>
-              <?php } ?>
+                <?php } else { ?>
+                  <div class="product_item">No Products found</div>
+                <?php } ?>
               </div>
             </div>
           </div>
@@ -237,5 +237,24 @@
       <?php echo $footer; ?>
     </div>
     <?php echo $scripts ?>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        //search filter
+        $('#size,#color,#gsm,#quality').on('change',function(){
+          var size = $('#size').val();
+          var color = $('#color').val();
+          var gsm = $('#gsm').val();
+          var quality = $('#quality').val();
+          $.ajax({
+            url:'<?php echo base_url('product/search'); ?>',
+            type:'post',
+            data:{'size':size,'color':color,'gsm':gsm,'quality':quality},
+            success:function(data){
+              $('.product_template').html(data);
+            }
+          })
+        });
+      });
+    </script>
   </body>
 </html>

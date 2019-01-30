@@ -266,6 +266,19 @@ class Product extends CI_Controller
       return $data;
     }
   }
+  //search (home)
+  public function search()
+  {
+    $post_data = $this->input->post();
+    if($post_data){
+      $size = $post_data['size'];
+      $color = $post_data['color'];
+      $gsm = $post_data['gsm'];
+      $quality = $post_data['quality'];
+      $data['products'] = $this->Product_Model->get_active_products($id='',$size,$color,$gsm,$quality);
+      echo $this->load->view('home/product_template',$data,TRUE);
+    }
+  }
 
 }
 
