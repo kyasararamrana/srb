@@ -26,7 +26,7 @@ class Logo extends CI_Controller
     }
 
   }
-
+  //insert and update
   public function insert()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
