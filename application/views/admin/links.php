@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome.min.css'); ?>">
 <!-- Ionicons -->
 <link rel="stylesheet" href="<?php echo base_url('assets/css/ionicons.min.css'); ?>">
+<!-- Datepicker -->
+<link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-datepicker.min.css'); ?>">
 <!-- DataTables -->
 <link rel="stylesheet" href="<?php echo base_url('assets/css/dataTables.bootstrap.min.css'); ?>">
 <!-- Theme style -->

@@ -10,7 +10,9 @@
                 <img src="<?php echo base_url('assets/img/admin/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p><?php echo $this->session->userdata('name'); ?></p>
+                <p>
+                    <?php echo $this->session->userdata('name'); ?>
+                </p>
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -119,6 +121,84 @@
             <li><a href="<?php echo base_url('/orders'); ?>"><i class="fa fa-shopping-cart"></i> <span>Orders</span></a></li>
             <li class="header">REQUEST</li>
             <li><a href="<?php echo base_url('/request'); ?>"><i class="fa fa-handshake-o"></i> <span>Requests</span></a></li>
+            
+            
+            <!--- Another Role --->
+            <li class="header">Another Role - Admin</li>
+            <li class="header">BAGS</li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-shopping-bag"></i> <span>Bags</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?php echo base_url('mainadmin/bag'); ?>">Add Bag</a></li>
+                    <li><a href="<?php echo base_url('mainadmin/bags'); ?>">Bags List</a></li>
+                    <li><a href="<?php echo base_url('mainadmin/price'); ?>">Add Price</a></li>
+                    <li><a href="<?php echo base_url('mainadmin/prices'); ?>">Prices List</a></li>
+                </ul>
+            </li>
+            <li class="header">ROLES</li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-users"></i> <span>Roles</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?php echo base_url('mainadmin/role'); ?>">Add Role</a></li>
+                    <li><a href="<?php echo base_url('mainadmin/roles'); ?>">Roles List</a></li>
+                </ul>
+            </li>
+            <li class="header">ORDERS</li>
+            <li><a href="<?php echo base_url('mainadmin/orderslist'); ?>">
+                <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
+            </li>
+            
+            
+            <!--- Another Role --->
+            <li class="header">Another Role - Order Management</li>
+            <li class="header">ORDERS CONFIRMATION</li>
+            <li><a href="<?php echo base_url('ordermanagement/orderconfirm'); ?>">
+                <i class="fa fa-shopping-cart"></i> <span>Confirmation Orders</span></a>
+            </li>
+            <li class="header">ROLL MANAGEMENT</li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-users"></i> <span>Roll Management</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?php echo base_url('ordermanagement/work'); ?>">Add Work</a></li>
+                    <li><a href="<?php echo base_url('ordermanagement/works'); ?>">Works List</a></li>
+                </ul>
+            </li>
+            <li class="header">ORDERS STATUS</li>
+            <li><a href="<?php echo base_url('ordermanagement/orderstatus'); ?>">
+                <i class="fa fa-shopping-cart"></i> <span>Orders Status List</span></a>
+            </li>
+            <li class="header">RETURN ORDERS</li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-reply"></i> <span>Return Orders</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?php echo base_url('ordermanagement/return_bags'); ?>">Add Return Quantity</a></li>
+                    <li><a href="<?php echo base_url('ordermanagement/return_bags_list'); ?>">Return Quantity List</a></li>
+                </ul>
+            </li>
+            
+            <!--- Another Role --->
+            <li class="header">Another Role - Sales Management</li>
+            <li class="header">ORDERS List</li>
+            <li><a href="<?php echo base_url('salesmanagement/orderslist'); ?>">
+                <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
+            </li>
+            
         </ul>
         <!-- /.sidebar-menu -->
     </section>
