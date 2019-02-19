@@ -48,6 +48,17 @@
                                                     <input type="text" name="" placeholder="Text field" class="form-control" />
                                                 </div>
                                             </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Text field</label>
+                                                    <select name="" class="form-control">
+                                                        <option value="" selected disabled>Select</option>
+                                                        <option value="">Option</option>
+                                                        <option value="">Option</option>
+                                                        <option value="">Option</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="table-responsive">
                                             <table id="myTable" class="table table-list">
