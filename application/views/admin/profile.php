@@ -68,8 +68,8 @@
                                                     <td><?php echo ($profile->phone) ? $profile->phone : ' - '; ?></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Location</td>
-                                                    <td><?php echo ($profile->location) ? $profile->location : ' - '; ?></td>
+                                                    <td>Address</td>
+                                                    <td><?php echo ($profile->address) ? $profile->address : ' - '; ?></td>
                                                 </tr>
                                             </tbody>
                                         </table>

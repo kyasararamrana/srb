@@ -59,8 +59,8 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Location</label>
-                                            <input type="text" class="form-control" name="location" id="location" value="<?php echo (isset($profile->location)) ? $profile->location : ''; ?>">
+                                            <label>Address</label>
+                                            <input type="text" class="form-control" name="address" id="address" value="<?php echo (isset($profile->address)) ? $profile->address : ''; ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -138,10 +138,10 @@
                         }
                     }
                 },
-                location: {
+                address: {
                     validators: {
                         notEmpty: {
-                            message: 'Location is required'
+                            message: 'Address is required'
                         }
                     }
                 },
