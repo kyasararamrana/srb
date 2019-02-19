@@ -47,7 +47,14 @@ class Admin extends CI_Controller
       $password = md5($password);
       $result = $this->Admin_Model->get_access($email,$password);
       if($result){
-        $user_data = array('name' => $result->name, 'email' => $result->email, 'id' => $result->id, 'status' => $result->status, 'logged_in' => TRUE);
+        $user_data = array(
+          'id' => $result->id,
+          'name' => $result->name,
+          'email' => $result->email,
+          'role' => $result->role,
+          'status' => $result->status,
+          'logged_in' => TRUE
+        );
         $this->session->set_userdata($user_data);
         redirect('/admin');
       } else {

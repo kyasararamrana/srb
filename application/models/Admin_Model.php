@@ -51,7 +51,34 @@ class Admin_Model extends CI_Model
     $this->db->where('id',$this->session->userdata('id'));
     return $this->db->update($this->table,$post_data);
   }
-
+  //insert
+  public function insert($post_data='')
+  {
+    return $this->db->insert($this->table,$post_data);
+  }
+  //check record exists
+  public function check_exists($email='',$id='')
+  {
+    return $this->db->get_where($this->table,array('email' => $email, 'id!=' =>$id, 'status !=' => '0'))->row('id');
+  }
+  //get users
+  public function get_users()
+  {
+    $this->db->order_by('created_on','desc');
+    $this->db->order_by('updated_on','desc');
+    return $this->db->get_where($this->table,array('status !=' => '0'))->result();
+  }
+  //get user by id
+  public function get_user_by_id($id='')
+  {
+    return $this->db->get_where($this->table,array('id' => $id))->row();
+  }
+  //update
+  public function update($post_data='',$post_id='')
+  {
+    $this->db->where('id',$post_id);
+    return $this->db->update($this->table,$post_data);
+  }
 }
 
 ?>

@@ -37,33 +37,39 @@
                     <div class="col-md-12">
                         <div class="box box-success">
                             <div class="box-body">
-                                <table id="example" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>S.No</th>
-                                            <th>Name</th>
-                                            <th>Email Id</th>
-                                            <th>Phone Number</th>
-                                            <th>Address</th>
-                                            <th>Password</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>
-                                                <a href="#" type="button" class="btn btn-info mr-10"><i class="fa fa-edit"></i></a>
-                                                <a href="#" type="button" class="btn btn-danger mr-10 confirmation"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                              <table id="example" class="table table-bordered table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>S.No</th>
+                                    <th>Name</th>
+                                    <th>Email Id</th>
+                                    <th>Phone Number</th>
+                                    <th>Address</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <?php if (count($users) > 0) { ?>
+                                    <?php $sno = 1; ?>
+                                    <?php foreach($users as $user) { ?>
+                                      <tr>
+                                        <td><?php echo $sno; ?></td>
+                                        <td><?php echo $user->name; ?></td>
+                                        <td><?php echo $user->email; ?></td>
+                                        <td><?php echo $user->phone; ?></td>
+                                        <td><?php echo $user->address; ?></td>
+                                        <td><?php echo $user->role; ?></td>
+                                        <td>
+                                          <a href="<?php echo base_url('superadmin/editrole/'.$user->id); ?>" type="button" class="btn btn-info mr-10"><i class="fa fa-edit"></i></a>
+                                          <a href="<?php echo base_url('superadmin/delete/'.$user->id); ?>" type="button" class="btn btn-danger mr-10 confirmation"><i class="fa fa-trash-o"></i></a>
+                                        </td>
+                                      </tr>
+                                      <?php $sno++; ?>
+                                    <?php } ?>
+                                  <?php } ?>
+                                </tbody>
+                              </table>
                             </div>
                         </div>
                     </div>
@@ -81,7 +87,7 @@
         //confirm message
         $(document).ready(function() {
             $('.confirmation').on('click', function() {
-                return confirm('Are you sure of deleting color?');
+                return confirm('Are you sure of deleting role?');
             });
         });
         //datatables
