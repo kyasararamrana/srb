@@ -121,8 +121,8 @@
             <li><a href="<?php echo base_url('/orders'); ?>"><i class="fa fa-shopping-cart"></i> <span>Orders</span></a></li>
             <li class="header">REQUEST</li>
             <li><a href="<?php echo base_url('/request'); ?>"><i class="fa fa-handshake-o"></i> <span>Requests</span></a></li>
-            
-            
+
+
             <!--- Another Role --->
             <li class="header">Another Role - Admin</li>
             <li class="header">BAGS</li>
@@ -133,10 +133,10 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?php echo base_url('mainadmin/bag'); ?>">Add Bag</a></li>
-                    <li><a href="<?php echo base_url('mainadmin/bags'); ?>">Bags List</a></li>
-                    <li><a href="<?php echo base_url('mainadmin/price'); ?>">Add Price</a></li>
-                    <li><a href="<?php echo base_url('mainadmin/prices'); ?>">Prices List</a></li>
+                    <li><a href="<?php echo base_url('superadmin/bag'); ?>">Add Bag</a></li>
+                    <li><a href="<?php echo base_url('superadmin/bags'); ?>">Bags List</a></li>
+                    <li><a href="<?php echo base_url('superadmin/price'); ?>">Add Price</a></li>
+                    <li><a href="<?php echo base_url('superadmin/prices'); ?>">Prices List</a></li>
                 </ul>
             </li>
             <li class="header">ROLES</li>
@@ -147,16 +147,16 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?php echo base_url('mainadmin/role'); ?>">Add Role</a></li>
-                    <li><a href="<?php echo base_url('mainadmin/roles'); ?>">Roles List</a></li>
+                    <li><a href="<?php echo base_url('superadmin/role'); ?>">Add Role</a></li>
+                    <li><a href="<?php echo base_url('superadmin/roles'); ?>">Roles List</a></li>
                 </ul>
             </li>
             <li class="header">ORDERS</li>
-            <li><a href="<?php echo base_url('mainadmin/orderslist'); ?>">
+            <li><a href="<?php echo base_url('superadmin/orderslist'); ?>">
                 <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
             </li>
-            
-            
+
+
             <!--- Another Role --->
             <li class="header">Another Role - Order Management</li>
             <li class="header">ORDERS CONFIRMATION</li>
@@ -191,14 +191,14 @@
                     <li><a href="<?php echo base_url('ordermanagement/return_bags_list'); ?>">Return Quantity List</a></li>
                 </ul>
             </li>
-            
+
             <!--- Another Role --->
             <li class="header">Another Role - Sales Management</li>
             <li class="header">ORDERS List</li>
             <li><a href="<?php echo base_url('salesmanagement/orderslist'); ?>">
                 <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
             </li>
-            
+
         </ul>
         <!-- /.sidebar-menu -->
     </section>

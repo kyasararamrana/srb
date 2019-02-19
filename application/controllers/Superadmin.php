@@ -1,13 +1,13 @@
 <?php
 /**
- *
- */
+*
+*/
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Mainadmin extends CI_Controller
+class Superadmin extends CI_Controller
 {
 
-function __construct()
+  function __construct()
   {
     parent::__construct();
     $this->load->library('form_validation');
@@ -19,8 +19,8 @@ function __construct()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Bags';
-        $data = components($arg);
-      $this->load->view('mainadmin/bag',$data);
+      $data = components($arg);
+      $this->load->view('superadmin/bag',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
@@ -31,8 +31,8 @@ function __construct()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Bags';
-        $data = components($arg);
-      $this->load->view('mainadmin/bags',$data);
+      $data = components($arg);
+      $this->load->view('superadmin/bags',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
@@ -43,8 +43,8 @@ function __construct()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Bags';
-        $data = components($arg);
-      $this->load->view('mainadmin/price',$data);
+      $data = components($arg);
+      $this->load->view('superadmin/price',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
@@ -55,8 +55,8 @@ function __construct()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Bags';
-        $data = components($arg);
-      $this->load->view('mainadmin/prices',$data);
+      $data = components($arg);
+      $this->load->view('superadmin/prices',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
@@ -67,8 +67,8 @@ function __construct()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Roles';
-        $data = components($arg);
-      $this->load->view('mainadmin/role',$data);
+      $data = components($arg);
+      $this->load->view('superadmin/role',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
@@ -79,8 +79,8 @@ function __construct()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Roles';
-        $data = components($arg);
-      $this->load->view('mainadmin/roles',$data);
+      $data = components($arg);
+      $this->load->view('superadmin/roles',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
@@ -91,8 +91,8 @@ function __construct()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Orders';
-        $data = components($arg);
-      $this->load->view('mainadmin/orders',$data);
+      $data = components($arg);
+      $this->load->view('superadmin/orders',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
@@ -102,8 +102,8 @@ function __construct()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Order Details';
-        $data = components($arg);
-      $this->load->view('mainadmin/order_info',$data);
+      $data = components($arg);
+      $this->load->view('superadmin/order_info',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
