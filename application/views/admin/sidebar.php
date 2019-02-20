@@ -134,6 +134,12 @@
                       </span>
                   </a>
                   <ul class="treeview-menu">
+                      <li><a href="<?php echo base_url('bagtype/create'); ?>">Add Bag Type</a></li>
+                      <li><a href="<?php echo base_url('bagtype'); ?>">Bag Type List</a></li>
+                      <li><a href="<?php echo base_url('baglayout/create'); ?>">Add Bag Layout</a></li>
+                      <li><a href="<?php echo base_url('baglayout'); ?>">Bag Layout List</a></li>
+                      <li><a href="<?php echo base_url('bagsize/create'); ?>">Add Bag Size</a></li>
+                      <li><a href="<?php echo base_url('bagsize'); ?>">Bag Size List</a></li>
                       <li><a href="<?php echo base_url('superadmin/bag'); ?>">Add Bag</a></li>
                       <li><a href="<?php echo base_url('superadmin/bags'); ?>">Bags List</a></li>
                       <li><a href="<?php echo base_url('superadmin/price'); ?>">Add Price</a></li>
