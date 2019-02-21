@@ -9,6 +9,7 @@ class Bag extends CI_Controller
   {
     parent::__construct();
     $this->load->library('user_agent');
+    $this->load->model('Bag_Model');
     $this->load->model('Bagtype_Model');
     $this->load->model('Baglayout_Model');
     $this->load->model('Baggsm_Model');
@@ -20,6 +21,24 @@ class Bag extends CI_Controller
     $this->load->model('Printinglanguage_Model');
   }
   //
+  public function index()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      if ($this->session->userdata('role') == 'Superadmin') {
+        $arg['pageTitle'] = 'Bag';
+        $data = components($arg);
+        $data['bags'] = $this->Bag_Model->get_bags();
+        $this->load->view('superadmin/bags',$data);
+      } else {
+        $this->session->userdata('error','Sorry, you can\'t access');
+        redirect('admin');
+      }
+    } else {
+      $this->sesion->userdata('error','Please login and try again');
+      redirect('admin/login');
+    }
+  }
+  //bag (view)
   public function create()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
@@ -57,6 +76,7 @@ class Bag extends CI_Controller
           $post_data = array_merge($post_data,$addl_data);
           if ($this->Bag_Model->insert($post_data)) {
             $this->session->set_flashdata('success','Bag details created succssfully');
+            redirect('bag');
           } else {
             $this->session->set_flashdata('error','Please try again');
             redirect($this->agent->referrer());

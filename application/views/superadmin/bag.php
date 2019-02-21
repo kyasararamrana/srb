@@ -49,13 +49,13 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Material Type</label>
-                                                <input type="text" class="form-control" name="mtype" id="">
+                                                <input type="text" class="form-control" name="material_type" id="material_type">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Quality</label>
-                                                <input type="text" class="form-control" name="quality" id="">
+                                                <input type="text" class="form-control" name="quality" id="quality">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -95,7 +95,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Bag Color</label>
-                                                <input type="text" class="form-control" name="bcolor" id="">
+                                                <input type="text" class="form-control" name="bag_color" id="bag_color">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -117,31 +117,31 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Handle Type</label>
-                                                <input type="text" class="form-control" name="handletype" id="">
+                                                <input type="text" class="form-control" name="handle_type" id="handle_type">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Handle Material Type</label>
-                                                <input type="text" class="form-control" name="handlematerialtype" id="">
+                                                <input type="text" class="form-control" name="handle_material_type" id="handle_material_type">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Handle Size</label>
-                                                <input type="text" class="form-control" name="handlesize" id="">
+                                                <input type="text" class="form-control" name="handle_size" id="handle_size">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Handle Color</label>
-                                                <input type="text" class="form-control" name="handlecolor" id="">
+                                                <input type="text" class="form-control" name="handle_color" id="handle_color">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Handle GSM</label>
-                                                <input type="text" class="form-control" name="handlegsm" id="">
+                                                <input type="text" class="form-control" name="handle_gsm" id="handle_gsm">
                                             </div>
                                         </div>
                                     </div>
@@ -154,37 +154,37 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Sidepatty Type</label>
-                                                <input type="text" class="form-control" name="sidepattytype" id="">
+                                                <input type="text" class="form-control" name="sidepatty_type" id="sidepatty_type">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Sidepatty Size</label>
-                                                <input type="text" class="form-control" name="sidepattysize" id="">
+                                                <input type="text" class="form-control" name="sidepatty_size" id="sidepatty_size">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Sidepatty Color</label>
-                                                <input type="text" class="form-control" name="sidepattycolor" id="">
+                                                <input type="text" class="form-control" name="sidepatty_color" id="sidepatty_color">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Sidepatty GSM</label>
-                                                <input type="text" class="form-control" name="sidepattygsm" id="">
+                                                <input type="text" class="form-control" name="sidepatty_gsm" id="sidepatty_gsm">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Sidepatty Printing</label>
-                                                <input type="text" class="form-control" name="sidepattyprint" id="">
+                                                <input type="text" class="form-control" name="sidepatty_print" id="sidepatty_print">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Sidepatty Printing Color</label>
-                                                <input type="text" class="form-control" name="sidepattyprintcolor" id="">
+                                                <input type="text" class="form-control" name="sidepatty_print_color" id="sidepatty_print_color">
                                             </div>
                                         </div>
                                     </div>
@@ -197,25 +197,25 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Zip Type</label>
-                                                <input type="text" class="form-control" name="ziptype" id="">
+                                                <input type="text" class="form-control" name="zip_type" id="zip_type">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Zip Color</label>
-                                                <input type="text" class="form-control" name="zipcolor" id="">
+                                                <input type="text" class="form-control" name="zip_color" id="zip_color">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Zip Size</label>
-                                                <input type="text" class="form-control" name="zipsize" id="">
+                                                <input type="text" class="form-control" name="zip_size" id="zip_size">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Zip Quality</label>
-                                                <input type="text" class="form-control" name="zipquality" id="">
+                                                <input type="text" class="form-control" name="zip_quality" id="zip_quality">
                                             </div>
                                         </div>
                                     </div>
@@ -227,19 +227,19 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Stitching Type</label>
-                                                <input type="text" class="form-control" name="stitchtype" id="">
+                                                <input type="text" class="form-control" name="stitching_type" id="stitching_type">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Stitching Thread Color</label>
-                                                <input type="text" class="form-control" name="stitchcolor" id="">
+                                                <input type="text" class="form-control" name="stitching_thread_color" id="stitching_thread_color">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Stitching Design</label>
-                                                <input type="text" class="form-control" name="stitchdesign" id="">
+                                                <input type="text" class="form-control" name="stitching_design" id="stitching_design">
                                             </div>
                                         </div>
                                     </div>
@@ -301,11 +301,11 @@
                                             <div class="form-group">
                                                 <label>Suggested Printing color</label>
                                                 <!-- <input type="text" class="form-control" name="sugprintcolor" id=""> -->
-                                                <select class="form-control" name="Suggested_printing_color">
+                                                <select class="form-control" name="suggested_printing_color">
                                                   <?php if (count($suggestedprintingcolor) > 0) { ?>
                                                     <option value="">Select</option>
                                                     <?php foreach ($suggestedprintingcolor as $suggested) { ?>
-                                                      <option value="<?php $suggested->id; ?>"><?php echo $suggested->suggested_printing_color; ?></option>
+                                                      <option value="<?php echo $suggested->id; ?>"><?php echo $suggested->suggested_printing_color; ?></option>
                                                     <?php } ?>
                                                   <?php } else { ?>
                                                     <option value="">No option found</option>
@@ -338,19 +338,19 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Other Charges</label>
-                                                <input type="text" class="form-control" name="othercharge" id="">
+                                                <input type="text" class="form-control" name="other_charge" id="other_charge">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Printing Cost</label>
-                                                <input type="text" class="form-control" name="printcost" id="">
+                                                <input type="text" class="form-control" name="print_cost" id="print_cost">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Block Charges</label>
-                                                <input type="text" class="form-control" name="blockcharge" id="">
+                                                <input type="text" class="form-control" name="block_charge" id="block_charge">
                                             </div>
                                         </div>
                                     </div>
@@ -362,7 +362,7 @@
                                         <div class="col-md-4">
                                              <div class="form-group">
                                                 <label>Cost per Kg</label>
-                                                <input type="text" class="form-control" name="bagcost" id="">
+                                                <input type="text" class="form-control" name="cost_per_kg" id="cost_per_kg">
                                             </div>
                                         </div>
                                     </div>

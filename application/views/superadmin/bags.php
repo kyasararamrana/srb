@@ -52,21 +52,32 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                      <?php if (count($bags) > 0) { ?>
+                                        <?php $sno = 1; ?>
+                                        <?php foreach($bags as $bag) { ?>
+                                          <tr>
+                                              <td><?php echo $sno; ?></td>
+                                              <td><?php echo $bag->material_type; ?></td>
+                                              <td><?php echo $bag->quality; ?></td>
+                                              <td><?php echo $bag->bag_type; ?></td>
+                                              <td><?php echo $bag->bag_layout; ?></td>
+                                              <td><?php echo $bag->bag_size; ?></td>
+                                              <td><?php echo $bag->bag_color; ?></td>
+                                              <td><?php echo $bag->bag_gsm; ?></td>
+                                              <td>
+                                                  <a href="#" type="button" class="btn btn-primary mr-10"><i class="fa fa-eye"></i></a>
+                                                  <a href="#" type="button" class="btn btn-info mr-10"><i class="fa fa-edit"></i></a>
+                                                  <a href="#" type="button" class="btn btn-danger mr-10 confirmation"><i class="fa fa-trash-o"></i></a>
+                                              </td>
+                                          </tr>
+                                          <?php $sno++; ?>
+                                        <?php } ?>
+                                      <?php } else { ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>
-                                                <a href="#" type="button" class="btn btn-primary mr-10"><i class="fa fa-eye"></i></a>
-                                                <a href="#" type="button" class="btn btn-info mr-10"><i class="fa fa-edit"></i></a>
-                                                <a href="#" type="button" class="btn btn-danger mr-10 confirmation"><i class="fa fa-trash-o"></i></a>
-                                            </td>
+                                          <td>No records found</td>
                                         </tr>
+                                      <?php } ?>
+
                                     </tbody>
                                 </table>
                             </div>

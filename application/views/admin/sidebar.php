@@ -149,8 +149,8 @@
                     <li><a href="<?php echo base_url('suggestedprintingcolor'); ?>">Suggested Printing Color List</a></li>
                     <li><a href="<?php echo base_url('printinglanguage/create'); ?>">Add Printing Language</a></li>
                     <li><a href="<?php echo base_url('printinglanguage'); ?>">Printing Language List</a></li>
-                    <li><a href="<?php echo base_url('superadmin/bag'); ?>">Add Bag</a></li>
-                    <li><a href="<?php echo base_url('superadmin/bags'); ?>">Bags List</a></li>
+                    <li><a href="<?php echo base_url('bag/create'); ?>">Add Bag</a></li>
+                    <li><a href="<?php echo base_url('bag'); ?>">Bags List</a></li>
                     <li><a href="<?php echo base_url('superadmin/price'); ?>">Add Price</a></li>
                     <li><a href="<?php echo base_url('superadmin/prices'); ?>">Prices List</a></li>
                 </ul>
