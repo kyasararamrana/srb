@@ -39,7 +39,7 @@
                     <div class="col-md-12">
                         <div class="box box-success">
                             <!-- form start -->
-                            <form method="post" id="bagForm" action="">
+                            <form method="post" id="bagForm" action="<?php echo base_url('bag/insert'); ?>">
                                 <div class="box-body">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -61,19 +61,35 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Bag Type</label>
-                                                <input type="text" class="form-control" name="btype" id="">
+                                                <!-- <input type="text" class="form-control" name="bag_type" id=""> -->
+                                                <select class="form-control" name="bag_type" id="bag_type">
+                                                  <?php if (count($bagtype) > 0) { ?>
+                                                    <option value="">Select</option>
+                                                    <?php foreach ($bagtype as $type) { ?>
+                                                      <option value="<?php echo $type->id; ?>"><?php echo $type->bag_type; ?></option>
+                                                    <?php } ?>
+                                                  <?php } else { ?>
+                                                    <option value="">No options found</option>
+                                                  <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Layout</label>
-                                                <input type="text" class="form-control" name="layout" id="">
+                                                <label>Bag Layout</label>
+                                                <!-- <input type="text" class="form-control" name="layout" id=""> -->
+                                                <select class="form-control" name="bag_layout" id="bag_layout">
+                                                  <option value="">Select</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Bag Size</label>
-                                                <input type="text" class="form-control" name="bsize" id="">
+                                                <!-- <input type="text" class="form-control" name="bsize" id=""> -->
+                                                <select class="form-control" name="bag_size" id="bag_size">
+                                                  <option value="">Select</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -85,11 +101,14 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Bag GSM</label>
-                                                <input type="text" class="form-control" name="bgsm" id="">
+                                                <!-- <input type="text" class="form-control" name="bgsm" id=""> -->
+                                                <select class="form-control" name="bag_gsm" id="bag_gsm">
+                                                  <option value=""></option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
-                                        
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h4 class="mt-0 text-aqua">Handle Section</h4>
@@ -126,7 +145,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h4 class="mt-0 text-aqua">Sidepatty Section</h4>
@@ -200,7 +219,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h4 class="mt-0 text-aqua">Stitching Section</h4>
@@ -224,7 +243,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                        
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h4 class="mt-0 text-aqua">Printing Section</h4>
@@ -232,35 +251,86 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Printing Method</label>
-                                                <input type="text" class="form-control" name="printmethod" id="">
+                                                <!-- <input type="text" class="form-control" name="printmethod" id=""> -->
+                                                <select class="form-control" name="printing_method">
+                                                  <?php if (count($printingmethod) > 0) { ?>
+                                                    <option value="">Select</option>
+                                                    <?php foreach ($printingmethod as $method) { ?>
+                                                      <option value="<?php echo $method->id; ?>"><?php echo $method->printing_method; ?></option>
+                                                    <?php } ?>
+                                                  <?php } else { ?>
+                                                    <option value="">No option found</option>
+                                                  <?php } ?>
+
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Printing Color Type</label>
-                                                <input type="text" class="form-control" name="printcolor" id="">
+                                                <!-- <input type="text" class="form-control" name="printcolor" id=""> -->
+                                                <select class="form-control" name="printing_color_type">
+                                                  <?php if (count($printingcolortype) > 0) { ?>
+                                                    <option value="">Select</option>
+                                                    <?php foreach ($printingcolortype as $colortype) { ?>
+                                                      <option value="<?php echo $colortype->id; ?>"><?php echo $colortype->printing_color_type; ?></option>
+                                                    <?php } ?>
+                                                  <?php } else { ?>
+                                                    <option value="">No options found</option>
+                                                  <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Printing Style</label>
-                                                <input type="text" class="form-control" name="printstyle" id="">
+                                                <!-- <input type="text" class="form-control" name="printstyle" id=""> -->
+                                                <select class="form-control" name="printing_style">
+                                                  <?php if (count($printingstyle) > 0) { ?>
+                                                    <option value="">Select</option>
+                                                    <?php foreach ($printingstyle as $style) { ?>
+                                                      <option value="<?php echo $style->id; ?>"><?php echo $style->printing_style; ?></option>
+                                                    <?php } ?>
+                                                  <?php } else { ?>
+                                                    <option value="">No options found</option>
+                                                  <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Suggested Printing color</label>
-                                                <input type="text" class="form-control" name="sugprintcolor" id="">
+                                                <!-- <input type="text" class="form-control" name="sugprintcolor" id=""> -->
+                                                <select class="form-control" name="Suggested_printing_color">
+                                                  <?php if (count($suggestedprintingcolor) > 0) { ?>
+                                                    <option value="">Select</option>
+                                                    <?php foreach ($suggestedprintingcolor as $suggested) { ?>
+                                                      <option value="<?php $suggested->id; ?>"><?php echo $suggested->suggested_printing_color; ?></option>
+                                                    <?php } ?>
+                                                  <?php } else { ?>
+                                                    <option value="">No option found</option>
+                                                  <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Language</label>
-                                                <input type="text" class="form-control" name="lang" id="">
+                                                <label>Printing Language</label>
+                                                <!-- <input type="text" class="form-control" name="lang" id=""> -->
+                                                <select class="form-control" name="printing_language">
+                                                  <?php if (count($printinglanguage) > 0) { ?>
+                                                    <option value="">Select</option>
+                                                    <?php foreach ($printinglanguage as $language) { ?>
+                                                      <option value="<?php echo $language->id; ?>"><?php echo $language->printing_language; ?></option>
+                                                    <?php } ?>
+                                                  <?php } else { ?>
+                                                    <option value="">No option found</option>
+                                                  <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h4 class="mt-0 text-aqua">Charges</h4>
@@ -284,7 +354,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h4 class="mt-0 text-aqua">Cost Details</h4>
@@ -296,7 +366,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="clearfix">&nbsp;</div>
                                     <div class="col-md-6">
                                         <button type="submit" class="btn btn-primary">Add</button>
@@ -320,19 +390,58 @@
     <?php echo $scripts; ?>
 
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('#bagForm').bootstrapValidator({
-                fields: {
-                    name: {
-                        validators: {
-                            notEmpty: {
-                                message: 'Bag Name is required'
-                            }
-                        }
-                    }
+      $(document).ready(function() {
+        $('#bagForm').bootstrapValidator({
+          fields: {
+            name: {
+              validators: {
+                notEmpty: {
+                  message: 'Bag Name is required'
                 }
-            });
+              }
+            }
+          }
         });
+        //ajax call for bag layout by bag type
+        $('#bag_type').on('change',function(){
+          var bag_type = $(this).val();
+          $('#bag_layout').html('<option value="">loading...</option>');
+          $.ajax({
+            url:'<?php echo base_url('bag/get_baglayout_by_bagtype'); ?>',
+            type:'post',
+            data:{'bag_type':bag_type},
+            success:function(data){
+              $('#bag_layout').html(data);
+            }
+          });
+        });
+        //ajax call for bag size by bag layout
+        $('#bag_layout').on('change',function(){
+         var bag_layout = $(this).val();
+         $('#bag_size').html('<option value="">loading...</option>');
+         $.ajax({
+           url:'<?php echo base_url('bag/get_bagsize_by_baglayout'); ?>',
+           type:'post',
+           data:{'bag_layout':bag_layout},
+           success:function(data){
+             $('#bag_size').html(data);
+           }
+         });
+        });
+        //ajax call for bag size by bag layout
+        $('#bag_size').on('change',function(){
+         var bag_size = $(this).val();
+         $('#bag_gsm').html('<option value="">loading...</option>');
+         $.ajax({
+           url:'<?php echo base_url('bag/get_baggsm_by_bagsize'); ?>',
+           type:'post',
+           data:{'bag_size':bag_size},
+           success:function(data){
+             $('#bag_gsm').html(data);
+           }
+         });
+        });
+      });
     </script>
 
 </body>

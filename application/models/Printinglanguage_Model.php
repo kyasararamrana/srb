@@ -21,6 +21,12 @@ class Printinglanguage_Model extends CI_Model
     $this->db->order_by('printing_language','asc');
     return $this->db->get($this->table)->result();
   }
+  //get active printing languages
+  public function get_active_printinglanguage()
+  {
+    $this->db->order_by('printing_language','asc');
+    return $this->db->get_where($this->table, array('status', 1))->result();
+  }
 }
 
 ?>

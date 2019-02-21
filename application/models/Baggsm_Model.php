@@ -26,6 +26,13 @@ class Baggsm_Model extends CI_Model
     $this->db->order_by('g.bag_gsm','asc');
     return $this->db->get()->result();
   }
+  //get bag gsm by bag size
+  public function get_baggsm_by_bagsize($bag_size='')
+  {
+    $this->db->select('id,bag_gsm');
+    $this->db->order_by('bag_gsm','asc');
+    return $this->db->get_where($this->table,array('bag_size' => $bag_size))->result();
+  }
 }
 
 ?>
