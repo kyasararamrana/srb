@@ -204,6 +204,11 @@
                     <i class="fa fa-money"></i> <span>Price List</span></a>
             </li>
             <?php } ?>
+            <?php if($this->session->userdata('role') == 'Inventory') { ?>
+            <li><a href="<?php echo base_url('salesmanagement/'); ?>">
+                    <i class="fa fa-file-text"></i> <span>Orders Form</span></a>
+            </li>
+            <?php } ?>
         </ul>
         <!-- /.sidebar-menu -->
     </section>
