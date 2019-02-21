@@ -48,42 +48,78 @@
                                         <!-- col -->
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Order ID</label>
-                                                <input type="text" class="form-control" name="orderid" id="" value="xxxxxx" readonly>
+                                                <label>OrderId</label>
+                                                <input type="text" class="form-control" name="orderid" value="Name of the Customer" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Customer Name</label>
-                                                <input type="text" class="form-control" name="cname" id="" value="xxxxxx" readonly>
+                                                <input type="text" class="form-control" name="cname" value="Name of the Customer" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Shop Name</label>
+                                                <input type="text" class="form-control" name="shopname" value="Name of the Customer" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="text" class="form-control" name="cemail" value="Email" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Phone Number</label>
-                                                <input type="text" class="form-control" name="mobile" id="" value="xxxxxx" readonly>
+                                                <input type="text" class="form-control" name="mobile" value="Phone Number" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Quantity</label>
-                                                <input type="text" class="form-control" name="quantity" id="" value="xxxxxx" readonly>
+                                                <label>GST / Aadhar Number</label>
+                                                <input type="text" class="form-control" name="mobile" value="GST / Aadhar Number" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Cost</label>
-                                                <input type="text" class="form-control" name="cost" id="" value="xxxxxx" readonly>
+                                                <label>Whatsapp Number</label>
+                                                <input type="text" class="form-control" name="mobile" value="Whatsapp Number" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Date</label>
-                                                <input type="text" class="form-control" name="orderdate" id="" value="xxxxxx" readonly>
+                                                <label>Main Address</label>
+                                                <input type="text" class="form-control" name="mainaddress" value="Address Line.." readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Shipping Address</label>
+                                                <input type="text" class="form-control" name="shippingaddress" value="Address Line.." readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>City</label>
+                                                <input type="text" class="form-control" name="quantity" value="Name of the City" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>State</label>
+                                                <input type="text" class="form-control" name="cost" value="Name of the State" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Zipcode</label>
+                                                <input type="text" class="form-control" name="orderdate" value="Zipcode" readonly>
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h4 class="mt-0 text-aqua">Bag Section</h4>
@@ -132,7 +168,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                        
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h4 class="mt-0 text-aqua">Handle Section</h4>
@@ -169,7 +205,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h4 class="mt-0 text-aqua">Sidepatty Section</h4>
@@ -243,7 +279,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h4 class="mt-0 text-aqua">Stitching Section</h4>
@@ -267,7 +303,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                        
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h4 class="mt-0 text-aqua">Printing Section</h4>
@@ -303,7 +339,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h4 class="mt-0 text-aqua">Charges</h4>
@@ -327,20 +363,31 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <h4 class="mt-0 text-aqua">Cost Details</h4>
                                         </div>
                                         <div class="col-md-4">
-                                             <div class="form-group">
+                                            <div class="form-group">
+                                                <label>Quantity</label>
+                                                <input type="text" class="form-control" name="quantity" value="xxxxx" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
                                                 <label>Cost per Kg</label>
-                                                <input type="text" class="form-control" name="bagcost" id="" value="xxxxxx" readonly>
+                                                <input type="text" class="form-control" name="costperkg" value="xxxxx" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Total Cost</label>
+                                                <input type="text" class="form-control" name="totalcost" value="xxxxx" readonly>
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                    <div class="clearfix">&nbsp;</div>
+
                                 </div>
                             </form>
                         </div>

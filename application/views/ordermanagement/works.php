@@ -47,6 +47,7 @@
                                             <th>Start Date</th>
                                             <th>End Date</th>
                                             <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -60,6 +61,21 @@
                                             <td>
                                                 <a href="#" class="text-green">Completed</a>
                                             </td>
+                                            <td class="valigntop">
+                                                <div class="btn-group">
+                                                    <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                                        <i class="fa fa-angle-down"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li>
+                                                            <a href=""><i class="fa fa-refresh"></i>Pending</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-check-circle"></i>Completed</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
@@ -69,7 +85,22 @@
                                             <td>xxxxx</td>
                                             <td>xxxxx</td>
                                             <td>
-                                                <a href="#" class="text-red">incomplete</a>
+                                                <a href="#" class="text-orange">Pending</a>
+                                            </td>
+                                            <td class="valigntop">
+                                                <div class="btn-group">
+                                                    <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                                        <i class="fa fa-angle-down"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li>
+                                                            <a href=""><i class="fa fa-refresh"></i>Pending</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-check-circle"></i>Completed</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </td>
                                         </tr>
                                     </tbody>
