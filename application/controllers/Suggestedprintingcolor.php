@@ -62,7 +62,7 @@ class Suggestedprintingcolor extends CI_Controller
             $this->Suggestedprintingcolor_Model->insert($post_array);
           }
           $this->session->set_flashdata('success','Suggested printing color created successfully');
-          redirect('bagtype');
+          redirect('suggestedprintingcolor');
         } else {
           $this->session->set_flashdata('error','Please try again');
           redirect($this->agent->referrer());

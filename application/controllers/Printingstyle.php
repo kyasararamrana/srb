@@ -62,7 +62,7 @@ class Printingstyle extends CI_Controller
             $this->Printingstyle_Model->insert($post_array);
           }
           $this->session->set_flashdata('success','Printing style created successfully');
-          redirect('bagtype');
+          redirect('printingstyle');
         } else {
           $this->session->set_flashdata('error','Please try again');
           redirect($this->agent->referrer());

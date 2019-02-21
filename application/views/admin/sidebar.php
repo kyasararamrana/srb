@@ -139,7 +139,16 @@
                     <li><a href="<?php echo base_url('bagsize/create'); ?>">Add Bag Size</a></li>
                     <li><a href="<?php echo base_url('bagsize'); ?>">Bag Size List</a></li>
                     <li><a href="<?php echo base_url('baggsm/create'); ?>">Add Bag GSM</a></li>
-                    <li><a href="<?php echo base_url('baggsm'); ?>">Bag GSM List</a></li>
+                    <li><a href="<?php echo base_url('printingmethod/create'); ?>">Add Printing Method</a></li>
+                    <li><a href="<?php echo base_url('printingmethod'); ?>">Printing Method List</a></li>
+                    <li><a href="<?php echo base_url('printingcolortype/create'); ?>">Add Printing Color Type</a></li>
+                    <li><a href="<?php echo base_url('printingcolortype'); ?>">Printing Color Type List</a></li>
+                    <li><a href="<?php echo base_url('printingstyle/create'); ?>">Add Printing Style</a></li>
+                    <li><a href="<?php echo base_url('printingstyle'); ?>">Printing Style List</a></li>
+                    <li><a href="<?php echo base_url('suggestedprintingcolor/create'); ?>">Add Suggested Printing Color</a></li>
+                    <li><a href="<?php echo base_url('suggestedprintingcolor'); ?>">Suggested Printing Color List</a></li>
+                    <li><a href="<?php echo base_url('printinglanguage/create'); ?>">Add Printing Language</a></li>
+                    <li><a href="<?php echo base_url('printinglanguage'); ?>">Printing Language List</a></li>
                     <li><a href="<?php echo base_url('superadmin/bag'); ?>">Add Bag</a></li>
                     <li><a href="<?php echo base_url('superadmin/bags'); ?>">Bags List</a></li>
                     <li><a href="<?php echo base_url('superadmin/price'); ?>">Add Price</a></li>

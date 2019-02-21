@@ -62,7 +62,7 @@ class Printingcolortype extends CI_Controller
             $this->Printingcolortype_Model->insert($post_array);
           }
           $this->session->set_flashdata('success','Printing color type created successfully');
-          redirect('bagtype');
+          redirect('printingcolortype');
         } else {
           $this->session->set_flashdata('error','Please try again');
           redirect($this->agent->referrer());
