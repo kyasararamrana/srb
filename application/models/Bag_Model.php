@@ -19,12 +19,7 @@ class Bag_Model extends CI_Model
   //get all bags
   public function get_bags()
   {
-    $this->db->select(
-      'b.*,t.bag_type as bag_type,
-      l.bag_layout as bag_layout,
-      s.bag_size as bag_size,
-      g.bag_gsm as bag_gsm'
-    );
+    $this->db->select('b.*,t.bag_type as bag_type,l.bag_layout as bag_layout,s.bag_size as bag_size,g.bag_gsm as bag_gsm');
     $this->db->from($this->table.' b');
     $this->db->join('ecom_bagtype t','t.id = b.bag_type','left');
     $this->db->join('ecom_baglayout l','l.id = b.bag_layout','left');
@@ -33,6 +28,7 @@ class Bag_Model extends CI_Model
     $this->db->order_by('b.created_on','desc');
     return $this->db->get()->result();
   }
+  
 }
 
 ?>
