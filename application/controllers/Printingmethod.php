@@ -62,7 +62,7 @@ class Printingmethod extends CI_Controller
             $this->Printingmethod_Model->insert($post_array);
           }
           $this->session->set_flashdata('success','Printing method created successfully');
-          redirect('bagtype');
+          redirect('printingmethod');
         } else {
           $this->session->set_flashdata('error','Please try again');
           redirect($this->agent->referrer());
