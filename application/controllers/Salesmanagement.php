@@ -39,12 +39,24 @@ class Salesmanagement extends CI_Controller
     }
   }
     
-  public function editorderdetails()
+  public function orderform()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Order Details';
+      $arg['pageTitle'] = 'Order Form';
         $data = components($arg);
-      $this->load->view('salesmanagement/edit_order_details',$data);
+      $this->load->view('salesmanagement/order_form',$data);
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('login');
+    }
+  }
+    
+  public function pricelist()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      $arg['pageTitle'] = 'Order Form';
+        $data = components($arg);
+      $this->load->view('salesmanagement/price_list',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
