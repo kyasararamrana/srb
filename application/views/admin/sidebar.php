@@ -205,8 +205,43 @@
             </li>
             <?php } ?>
             <?php if($this->session->userdata('role') == 'Inventory') { ?>
-            <li><a href="<?php echo base_url('salesmanagement/'); ?>">
-                    <i class="fa fa-file-text"></i> <span>Orders Form</span></a>
+            <li><a href="<?php echo base_url('inventory/orderslist'); ?>">
+                    <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-cubes"></i> <span>Stocks</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?php echo base_url('inventory/addstock'); ?>">Add Stock</a></li>
+                    <li><a href="<?php echo base_url('inventory/stocklist'); ?>">Stock List</a></li>
+                    <li><a href="<?php echo base_url('inventory/add_damage_stock'); ?>">Add Damage Stock</a></li>
+                    <li><a href="<?php echo base_url('inventory/damaged_stock_list'); ?>">Damaged Stock List</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-users"></i> <span>Vendors</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?php echo base_url('inventory/addvendor'); ?>">Add Vendor</a></li>
+                    <li><a href="<?php echo base_url('inventory/vendorlist'); ?>">Vendors List</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-users"></i> <span>Roles</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?php echo base_url('inventory/addrole'); ?>">Add Role</a></li>
+                    <li><a href="<?php echo base_url('inventory/roleslist'); ?>">Roles List</a></li>
+                </ul>
             </li>
             <?php } ?>
         </ul>
