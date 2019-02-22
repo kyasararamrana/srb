@@ -19,12 +19,13 @@ class Bag_Model extends CI_Model
   //get all bags
   public function get_bags()
   {
-    $this->db->select('b.*,t.bag_type as bag_type,l.bag_layout as bag_layout,s.bag_size as bag_size,g.bag_gsm as bag_gsm');
+    $this->db->select('b.*,t.bag_type as bag_type,l.bag_layout as bag_layout,s.bag_size as bag_size,g.bag_gsm as bag_gsm,c.bag_color as bag_color');
     $this->db->from($this->table.' b');
     $this->db->join('ecom_bagtype t','t.id = b.bag_type','left');
     $this->db->join('ecom_baglayout l','l.id = b.bag_layout','left');
     $this->db->join('ecom_bagsize s','s.id = b.bag_size','left');
     $this->db->join('ecom_baggsm g','g.id = b.bag_gsm','left');
+    $this->db->join('ecom_bagcolor c','c.id = b.bag_color','left');
     $this->db->order_by('b.created_on','desc');
     $this->db->where('b.status != ',0);
     return $this->db->get()->result();

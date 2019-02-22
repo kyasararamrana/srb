@@ -12,7 +12,7 @@ class Bag extends CI_Controller
     $this->load->model('Bag_Model');
     $this->load->model('Bagtype_Model');
     $this->load->model('Baglayout_Model');
-    $this->load->model('Baggsm_Model');
+    $this->load->model('Bagcolor_Model');
     $this->load->model('Baggsm_Model');
     $this->load->model('Printingmethod_Model');
     $this->load->model('Printingcolortype_Model');
@@ -46,6 +46,7 @@ class Bag extends CI_Controller
         $arg['pageTitle'] = 'Bag';
         $data = components($arg);
         $data['bagtype'] = $this->Bagtype_Model->get_active_bagtype();
+        $data['bagcolor'] = $this->Bagcolor_Model->get_active_bagcolor();
         $data['printingmethod'] = $this->Printingmethod_Model->get_active_printingmethod();
         $data['printingcolortype'] = $this->Printingcolortype_Model->get_active_printingcolortype();
         $data['printingstyle'] = $this->Printingstyle_Model->get_active_printingstyle();
@@ -102,6 +103,7 @@ class Bag extends CI_Controller
         $arg['pageTitle'] = 'Bag';
         $data = components($arg);
         $data['bagtype'] = $this->Bagtype_Model->get_active_bagtype();
+        $data['bagcolor'] = $this->Bagcolor_Model->get_active_bagcolor();
         $data['printingmethod'] = $this->Printingmethod_Model->get_active_printingmethod();
         $data['printingcolortype'] = $this->Printingcolortype_Model->get_active_printingcolortype();
         $data['printingstyle'] = $this->Printingstyle_Model->get_active_printingstyle();

@@ -138,7 +138,10 @@
                     <li><a href="<?php echo base_url('baglayout'); ?>">Bag Layout List</a></li>
                     <li><a href="<?php echo base_url('bagsize/create'); ?>">Add Bag Size</a></li>
                     <li><a href="<?php echo base_url('bagsize'); ?>">Bag Size List</a></li>
+                    <li><a href="<?php echo base_url('bagcolor/create'); ?>">Add Bag Color</a></li>
+                    <li><a href="<?php echo base_url('bagcolor'); ?>">Bag Color List</a></li>
                     <li><a href="<?php echo base_url('baggsm/create'); ?>">Add Bag GSM</a></li>
+                    <li><a href="<?php echo base_url('baggsm'); ?>">Bag GSM List</a></li>
                     <li><a href="<?php echo base_url('printingmethod/create'); ?>">Add Printing Method</a></li>
                     <li><a href="<?php echo base_url('printingmethod'); ?>">Printing Method List</a></li>
                     <li><a href="<?php echo base_url('printingcolortype/create'); ?>">Add Printing Color Type</a></li>
