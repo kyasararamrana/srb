@@ -252,6 +252,86 @@
                     <li><a href="<?php echo base_url('inventory/roleslist'); ?>">Roles List</a></li>
                 </ul>
             </li>
+            
+            <!-- Zip Module -->
+            <li class="header">Zip Role Module</li>
+            <li><a href="<?php echo base_url('zipmodule/orderslist'); ?>">
+                    <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-cubes"></i> <span>Stocks</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?php echo base_url('zipmodule/addstock'); ?>">Add Stock</a></li>
+                    <li><a href="<?php echo base_url('zipmodule/stocklist'); ?>">Stock List</a></li>
+                </ul>
+            </li>
+            <li><a href="<?php echo base_url('zipmodule/orderstock'); ?>">
+                    <i class="fa fa-shopping-cart"></i> <span>Order Stock</span></a>
+            </li>
+            
+            <!-- Handle Module -->
+            <li class="header">Handle Role Module</li>
+            <li><a href="<?php echo base_url('handlemodule/orderslist'); ?>">
+                    <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-cubes"></i> <span>Stocks</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?php echo base_url('handlemodule/addstock'); ?>">Add Stock</a></li>
+                    <li><a href="<?php echo base_url('handlemodule/stocklist'); ?>">Stock List</a></li>
+                </ul>
+            </li>
+            <li><a href="<?php echo base_url('handlemodule/orderstock'); ?>">
+                    <i class="fa fa-shopping-cart"></i> <span>Order Stock</span></a>
+            </li>
+            
+            <!-- Sidepatty Module -->
+            <li class="header">Sidepatty Role Module</li>
+            <li><a href="<?php echo base_url('sidepattymodule/orderslist'); ?>">
+                    <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-cubes"></i> <span>Stocks</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?php echo base_url('sidepattymodule/addstock'); ?>">Add Stock</a></li>
+                    <li><a href="<?php echo base_url('sidepattymodule/stocklist'); ?>">Stock List</a></li>
+                </ul>
+            </li>
+            <li><a href="<?php echo base_url('sidepattymodule/orderstock'); ?>">
+                    <i class="fa fa-shopping-cart"></i> <span>Order Stock</span></a>
+            </li>
+            
+            <!-- Bag Module -->
+            <li class="header">Bag Role Module</li>
+            <li><a href="<?php echo base_url('bagmodule/orderslist'); ?>">
+                    <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-cubes"></i> <span>Stocks</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?php echo base_url('bagmodule/addstock'); ?>">Add Stock</a></li>
+                    <li><a href="<?php echo base_url('bagmodule/stocklist'); ?>">Stock List</a></li>
+                </ul>
+            </li>
+            <li><a href="<?php echo base_url('bagmodule/orderstock'); ?>">
+                    <i class="fa fa-shopping-cart"></i> <span>Order Stock</span></a>
+            </li>
             <?php } ?>
         </ul>
         <!-- /.sidebar-menu -->

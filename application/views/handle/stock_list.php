@@ -22,11 +22,12 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Orders List
+                    Stock List
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-                    <li class="active">Orders List</li>
+                    <li>Stocks</li>
+                    <li class="active">Stock List</li>
                 </ol>
             </section>
 
@@ -42,47 +43,29 @@
                                     <thead>
                                         <tr>
                                             <th>S.No</th>
-                                            <th>Order ID</th>
-                                            <th>Customer Name</th>
-                                            <th>Bag Type</th>
-                                            <th>Bag Size</th>
-                                            <th>GSM</th>
+                                            <th>Stock Name</th>
+                                            <th>Handle Material Type</th>
+                                            <th>Handle Type</th>
+                                            <th>Handle Size</th>
+                                            <th>Handle Color</th>
+                                            <th>Handle GSM</th>
                                             <th>Quantity</th>
-                                            <th>Cost</th>
-                                            <th>Advance</th>
-                                            <th>Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>SRB00000012</td>
-                                            <td>customer2</td>
-                                            <td>D-cut</td>
-                                            <td>11x60</td>
-                                            <td>70</td>
-                                            <td>250</td>
-                                            <td>4,000.00</td>
-                                            <td>2000.00</td>
-                                            <td>29-01-2019 10:33:13</td>
-                                            <td class="valigntop">
-                                                <div class="btn-group">
-                                                    <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
-                                                        <i class="fa fa-angle-down"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu" role="menu" style="right:0;left:auto;">
-                                                        <li>
-                                                            <a href="<?php echo base_url('inventory/assignstock'); ?>"><i class="fa fa-check"></i>Assign Stock</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href=""><i class="fa fa-user"></i>Client Confirmation</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#"><i class="fa fa-close"></i>Reject Order</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                            <td>xxxxxxx</td>
+                                            <td>xxxxxxx</td>
+                                            <td>xxxxxxx</td>
+                                            <td>xxxxxxx</td>
+                                            <td>xxxxxxx</td>
+                                            <td>xxxxxxx</td>
+                                            <td>xxxxxxx</td>
+                                            <td>
+                                                <a href="<?php echo base_url('handlemodule/editstock'); ?>" type="button" class="btn btn-info mr-10"><i class="fa fa-edit"></i></a>
+                                                <a href="#" type="button" class="btn btn-danger mr-10 confirmation"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
                                     </tbody>

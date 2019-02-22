@@ -26,6 +26,17 @@ class Inventory extends CI_Controller
       redirect('login');
     }
   }
+  public function assignstock()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      $arg['pageTitle'] = 'Stocks';
+        $data = components($arg);
+      $this->load->view('inventory/assign_stock',$data);
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('login');
+    }
+  }
   public function addstock()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
