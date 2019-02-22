@@ -42,30 +42,30 @@
                                     <thead>
                                         <tr>
                                             <th>S.No</th>
-                                            <th>Order ID</th>
-                                            <th>Customer Name</th>
-                                            <th>Bag Type</th>
-                                            <th>Bag Size</th>
+                                            <th>Stock Name</th>
+                                            <th>Material Type</th>
+                                            <th>Quality</th>
+                                            <th>Type</th>
+                                            <th>Layout</th>
+                                            <th>Size</th>
+                                            <th>Color</th>
                                             <th>GSM</th>
                                             <th>Quantity</th>
-                                            <th>Cost</th>
-                                            <th>Advance</th>
-                                            <th>Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>SRB00000012</td>
-                                            <td>customer2</td>
-                                            <td>D-cut</td>
-                                            <td>11x60</td>
-                                            <td>70</td>
-                                            <td>250</td>
-                                            <td>4,000.00</td>
-                                            <td>2000.00</td>
-                                            <td>29-01-2019 10:33:13</td>
+                                            <td>xxxxxxx</td>
+                                            <td>xxxxxxx</td>
+                                            <td>xxxxxxx</td>
+                                            <td>xxxxxxx</td>
+                                            <td>xxxxxxx</td>
+                                            <td>xxxxxxx</td>
+                                            <td>xxxxxxx</td>
+                                            <td>xxxxxxx</td>
+                                            <td>xxxxxxx</td>
                                             <td class="valigntop">
                                                 <div class="btn-group">
                                                     <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
@@ -73,13 +73,10 @@
                                                     </button>
                                                     <ul class="dropdown-menu" role="menu" style="right:0;left:auto;">
                                                         <li>
-                                                            <a href="<?php echo base_url('inventory/assignstock'); ?>"><i class="fa fa-check"></i>Assign Stock</a>
+                                                            <a href=""><i class="fa fa-check-circle"></i>Accept Order</a>
                                                         </li>
                                                         <li>
-                                                            <a href=""><i class="fa fa-user"></i>Client Confirmation</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#"><i class="fa fa-close"></i>Reject Order</a>
+                                                            <a href=""><i class="fa fa-close"></i>Reject Order</a>
                                                         </li>
                                                     </ul>
                                                 </div>
