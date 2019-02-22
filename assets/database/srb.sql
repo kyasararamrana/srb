@@ -21,21 +21,159 @@ USE `srb`;
 DROP TABLE IF EXISTS `ecom_admin`;
 
 CREATE TABLE `ecom_admin` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `phone` bigint(11) DEFAULT NULL,
-  `location` varchar(100) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `org_password` varchar(100) DEFAULT NULL,
   `image` varchar(100) DEFAULT NULL,
+  `role` varchar(100) DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_on` datetime DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
   `status` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 /*Data for the table `ecom_admin` */
 
-insert  into `ecom_admin`(`id`,`name`,`email`,`phone`,`location`,`password`,`org_password`,`image`,`status`) values (1,'Administrator','admin@admin.com',9676270951,'hyderabad','e10adc3949ba59abbe56e057f20f883e','123456','b511eb0ada770cc40cc85ecf8003852c.jpg','1');
+insert  into `ecom_admin`(`id`,`name`,`email`,`phone`,`address`,`password`,`org_password`,`image`,`role`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,'Administrator','admin@admin.com',9676270951,'hyderabad','e10adc3949ba59abbe56e057f20f883e','123456','b511eb0ada770cc40cc85ecf8003852c.jpg','Superadmin',NULL,NULL,NULL,NULL,'1'),(9,'RanaPrathap Reddy','Sales@sales.com',9678451230,'testing','e10adc3949ba59abbe56e057f20f883e','123456','1714daec5e5a5e278c0009801e9a2f23.jpg','Sales','2019-02-19 08:20:44',1,'2019-02-19 10:40:27',1,'0'),(10,'RanaPrathap Reddy','sales@sales2.com',9676270951,'testing','e10adc3949ba59abbe56e057f20f883e','123456','4bc59384ff63296b28acd8489af23aae.jpg','Sales','2019-02-19 08:21:27',1,'2019-02-19 10:40:40',1,'1'),(11,'RanaPrathap Reddy','order@order.com',9676270951,'testing','e10adc3949ba59abbe56e057f20f883e','123456','8a06f3ec5f316804aca6c180037cf3a8.jpg','Order','2019-02-19 08:46:38',1,'2019-02-19 10:40:43',1,'1');
+
+/*Table structure for table `ecom_bag` */
+
+DROP TABLE IF EXISTS `ecom_bag`;
+
+CREATE TABLE `ecom_bag` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `material_type` varchar(200) DEFAULT NULL,
+  `quality` varchar(200) DEFAULT NULL,
+  `bag_type` int(11) DEFAULT NULL,
+  `bag_layout` int(11) DEFAULT NULL,
+  `bag_size` int(11) DEFAULT NULL,
+  `bag_color` varchar(200) DEFAULT NULL,
+  `bag_gsm` int(11) DEFAULT NULL,
+  `handle_type` varchar(200) DEFAULT NULL,
+  `handle_material_type` varchar(200) DEFAULT NULL,
+  `handle_size` varchar(200) DEFAULT NULL,
+  `handle_color` varchar(200) DEFAULT NULL,
+  `handle_gsm` varchar(200) DEFAULT NULL,
+  `sidepatty_type` varchar(200) DEFAULT NULL,
+  `sidepatty_size` varchar(200) DEFAULT NULL,
+  `sidepatty_color` varchar(200) DEFAULT NULL,
+  `sidepatty_gsm` varchar(200) DEFAULT NULL,
+  `sidepatty_print` varchar(200) DEFAULT NULL,
+  `sidepatty_print_color` varchar(200) DEFAULT NULL,
+  `zip_type` varchar(200) DEFAULT NULL,
+  `zip_color` varchar(200) DEFAULT NULL,
+  `zip_size` varchar(200) DEFAULT NULL,
+  `zip_quality` varchar(200) DEFAULT NULL,
+  `stitching_type` varchar(200) DEFAULT NULL,
+  `stitching_thread_color` varchar(200) DEFAULT NULL,
+  `stitching_design` varchar(200) DEFAULT NULL,
+  `printing_method` int(11) DEFAULT NULL,
+  `printing_color_type` int(11) DEFAULT NULL,
+  `printing_style` int(11) DEFAULT NULL,
+  `suggested_printing_color` int(11) DEFAULT NULL,
+  `printing_language` int(11) DEFAULT NULL,
+  `other_charge` varchar(200) DEFAULT NULL,
+  `print_cost` varchar(200) DEFAULT NULL,
+  `block_charge` varchar(200) DEFAULT NULL,
+  `cost_per_kg` varchar(200) DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_on` datetime DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+/*Data for the table `ecom_bag` */
+
+insert  into `ecom_bag`(`id`,`material_type`,`quality`,`bag_type`,`bag_layout`,`bag_size`,`bag_color`,`bag_gsm`,`handle_type`,`handle_material_type`,`handle_size`,`handle_color`,`handle_gsm`,`sidepatty_type`,`sidepatty_size`,`sidepatty_color`,`sidepatty_gsm`,`sidepatty_print`,`sidepatty_print_color`,`zip_type`,`zip_color`,`zip_size`,`zip_quality`,`stitching_type`,`stitching_thread_color`,`stitching_design`,`printing_method`,`printing_color_type`,`printing_style`,`suggested_printing_color`,`printing_language`,`other_charge`,`print_cost`,`block_charge`,`cost_per_kg`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,'test','test',2,1,3,'red',2,'test','test','test','test','test','test','test','test','test','test','test','test','test','test','test','test','test','test',1,2,2,1,1,'test','test','test','test','2019-02-21 14:00:11',1,NULL,NULL,1),(2,'Material Type','Quality',2,1,3,'red',2,'','test','test','test','test','test','test','test','test','test','test','test','test','test','test','test','test','test',1,1,1,2,1,'test','test','test','test','2019-02-21 14:02:14',1,NULL,NULL,1);
+
+/*Table structure for table `ecom_baggsm` */
+
+DROP TABLE IF EXISTS `ecom_baggsm`;
+
+CREATE TABLE `ecom_baggsm` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bag_type` int(11) DEFAULT NULL,
+  `bag_layout` int(11) DEFAULT NULL,
+  `bag_size` int(11) DEFAULT NULL,
+  `bag_gsm` varchar(200) DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_on` datetime DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+/*Data for the table `ecom_baggsm` */
+
+insert  into `ecom_baggsm`(`id`,`bag_type`,`bag_layout`,`bag_size`,`bag_gsm`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,2,9,8,'50','2019-02-20 13:59:22',1,NULL,NULL,1),(2,2,1,3,'50','2019-02-20 14:00:09',1,NULL,NULL,1),(3,2,2,8,'50','2019-02-20 14:02:53',1,NULL,NULL,1),(4,2,1,2,'50','2019-02-20 14:03:45',1,NULL,NULL,1),(5,2,1,2,'60','2019-02-20 14:03:45',1,NULL,NULL,1),(6,2,1,2,'70','2019-02-20 14:03:45',1,NULL,NULL,1);
+
+/*Table structure for table `ecom_baglayout` */
+
+DROP TABLE IF EXISTS `ecom_baglayout`;
+
+CREATE TABLE `ecom_baglayout` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bag_type` varchar(200) DEFAULT NULL,
+  `bag_layout` varchar(200) DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_on` datetime DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+/*Data for the table `ecom_baglayout` */
+
+insert  into `ecom_baglayout`(`id`,`bag_type`,`bag_layout`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,'2','Horizontal','2019-02-20 06:37:53',1,NULL,NULL,1),(2,'2','Verical','2019-02-20 06:37:53',1,NULL,NULL,1),(5,'1','Verical','2019-02-20 06:38:31',1,NULL,NULL,1),(6,'1','Horizontal','2019-02-20 06:38:31',1,NULL,NULL,1),(9,'2','Horizontal','2019-02-20 10:06:57',1,NULL,NULL,1);
+
+/*Table structure for table `ecom_bagsize` */
+
+DROP TABLE IF EXISTS `ecom_bagsize`;
+
+CREATE TABLE `ecom_bagsize` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bag_layout` int(11) DEFAULT NULL,
+  `bag_size` varchar(200) DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_on` datetime DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+/*Data for the table `ecom_bagsize` */
+
+insert  into `ecom_bagsize`(`id`,`bag_layout`,`bag_size`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,1,'14*10','2019-02-20 09:42:51',1,NULL,NULL,1),(2,1,'12*14','2019-02-20 09:42:51',1,NULL,NULL,1),(3,1,'10*14','2019-02-20 09:42:51',1,NULL,NULL,1),(4,2,'14*10','2019-02-20 10:01:39',1,NULL,NULL,1),(5,2,'12*14','2019-02-20 10:01:39',1,NULL,NULL,1),(6,2,'10*14','2019-02-20 10:01:39',1,NULL,NULL,1),(7,2,'14*10','2019-02-20 10:17:13',1,NULL,NULL,1),(8,9,'14*10','2019-02-20 13:28:24',1,NULL,NULL,1);
+
+/*Table structure for table `ecom_bagtype` */
+
+DROP TABLE IF EXISTS `ecom_bagtype`;
+
+CREATE TABLE `ecom_bagtype` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bag_type` varchar(200) DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_on` datetime DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+/*Data for the table `ecom_bagtype` */
+
+insert  into `ecom_bagtype`(`id`,`bag_type`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,'Dcut','2019-02-20 05:50:34',1,NULL,NULL,1),(2,'Handle bag','2019-02-20 05:50:34',1,NULL,NULL,1);
 
 /*Table structure for table `ecom_banner` */
 
@@ -236,6 +374,82 @@ CREATE TABLE `ecom_order_items` (
 
 insert  into `ecom_order_items`(`id`,`user_id`,`order_number`,`order_id`,`product_id`,`product_name`,`product_image`,`product_size`,`product_color`,`product_gsm`,`product_quality`,`product_quantity`,`actual_price`,`discount_percentage`,`net_price`,`created_on`,`created_by`,`status`) values (1,1,'SRB0201901291',1,2,'product2','ce00473891dfe826849e0b5f11bd8793.jpg','12x12','Red','Test@123','Grade 1',1,'4000.00',10,'3600.00','2019-01-29 10:33:13',1,'Confirm');
 
+/*Table structure for table `ecom_printingcolortype` */
+
+DROP TABLE IF EXISTS `ecom_printingcolortype`;
+
+CREATE TABLE `ecom_printingcolortype` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `printing_color_type` varchar(200) DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_on` datetime DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+/*Data for the table `ecom_printingcolortype` */
+
+insert  into `ecom_printingcolortype`(`id`,`printing_color_type`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,'Printing color type 1','2019-02-21 07:21:26',1,NULL,NULL,1),(2,'Printing color type 2','2019-02-21 07:21:26',1,NULL,NULL,1),(3,'Printing color type 3','2019-02-21 10:00:00',1,NULL,NULL,1),(4,'Printing color type 4','2019-02-21 10:00:50',1,NULL,NULL,1);
+
+/*Table structure for table `ecom_printinglanguage` */
+
+DROP TABLE IF EXISTS `ecom_printinglanguage`;
+
+CREATE TABLE `ecom_printinglanguage` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `printing_language` varchar(200) DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_on` datetime DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+/*Data for the table `ecom_printinglanguage` */
+
+insert  into `ecom_printinglanguage`(`id`,`printing_language`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,'Printing language 1','2019-02-21 08:48:42',1,NULL,NULL,1),(2,'Printing language 2','2019-02-21 08:48:42',1,NULL,NULL,1);
+
+/*Table structure for table `ecom_printingmethod` */
+
+DROP TABLE IF EXISTS `ecom_printingmethod`;
+
+CREATE TABLE `ecom_printingmethod` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `printing_method` varchar(200) DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_on` datetime DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+/*Data for the table `ecom_printingmethod` */
+
+insert  into `ecom_printingmethod`(`id`,`printing_method`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,'Printing method 1','2019-02-21 09:57:20',1,NULL,NULL,1),(2,'Printing method 2','2019-02-21 09:57:20',1,NULL,NULL,1),(3,'Printing method 3','2019-02-21 09:58:17',1,NULL,NULL,1);
+
+/*Table structure for table `ecom_printingstyle` */
+
+DROP TABLE IF EXISTS `ecom_printingstyle`;
+
+CREATE TABLE `ecom_printingstyle` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `printing_style` varchar(200) DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_on` datetime DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+/*Data for the table `ecom_printingstyle` */
+
+insert  into `ecom_printingstyle`(`id`,`printing_style`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,'Printing style 1','2019-02-21 07:47:48',1,NULL,NULL,1),(2,'Printing style 2','2019-02-21 07:47:48',1,NULL,NULL,1),(3,'Printing style 3','2019-02-21 07:47:48',1,NULL,NULL,1),(4,'Printing style 3','2019-02-21 10:03:08',1,NULL,NULL,1);
+
 /*Table structure for table `ecom_product` */
 
 DROP TABLE IF EXISTS `ecom_product`;
@@ -346,6 +560,25 @@ CREATE TABLE `ecom_slider` (
 /*Data for the table `ecom_slider` */
 
 insert  into `ecom_slider`(`id`,`heading`,`content`,`image`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,'Some dummy testing text','Some dummy testing content','2fc45b26bb81c806b540f96565ce3b8c.png','2019-01-19 17:03:15',1,NULL,NULL,'1'),(2,'Some dummy testing text2','Some dummy testing text','e242c85d3bdafe7a1ccef8dcd6a6f91e.png','2019-01-19 17:04:06',1,NULL,NULL,'1'),(3,'Some dummy testing text3','Some dummy testing text','81fca30b5d5b207e872ae5b12cd5fdac.png','2019-01-19 17:04:36',1,NULL,NULL,'1');
+
+/*Table structure for table `ecom_suggestedprintingcolor` */
+
+DROP TABLE IF EXISTS `ecom_suggestedprintingcolor`;
+
+CREATE TABLE `ecom_suggestedprintingcolor` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `suggested_printing_color` varchar(200) DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_on` datetime DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+/*Data for the table `ecom_suggestedprintingcolor` */
+
+insert  into `ecom_suggestedprintingcolor`(`id`,`suggested_printing_color`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,'Suggested printing color 1','2019-02-21 08:10:20',1,NULL,NULL,1),(2,'suggested printing color 2','2019-02-21 08:10:20',1,NULL,NULL,1),(3,'Suggested printing color 3','2019-02-21 10:05:08',1,NULL,NULL,1);
 
 /*Table structure for table `ecom_users` */
 

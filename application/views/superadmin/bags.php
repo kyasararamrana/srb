@@ -57,16 +57,16 @@
                           <td><?php echo $bag->bag_color; ?></td>
                           <td><?php echo $bag->bag_gsm; ?></td>
                           <td>
-                            <a href="#" type="button" class="btn btn-primary mr-10"><i class="fa fa-eye"></i></a>
-                            <a href="#" type="button" class="btn btn-info mr-10"><i class="fa fa-edit"></i></a>
-                            <a href="#" type="button" class="btn btn-danger mr-10 confirmation"><i class="fa fa-trash-o"></i></a>
+                            <a href="<?php echo base_url('edit/'.$bag->id); ?>" type="button" class="btn btn-primary mr-10"><i class="fa fa-eye"></i></a>
+                            <a href="<?php echo base_url('bag/edit/'.$bag->id); ?>" type="button" class="btn btn-info mr-10"><i class="fa fa-edit"></i></a>
+                            <a href="<?php echo base_url('bag/delete/'.$bag->id); ?>" type="button" class="btn btn-danger mr-10 confirmation"><i class="fa fa-trash-o"></i></a>
                           </td>
                         </tr>
                         <?php $sno++; ?>
                       <?php } ?>
                     <?php } else { ?>
                       <tr>
-                        <td>No records found</td>
+                        <td colspan="9" class="text-center">No records found</td>
                       </tr>
                     <?php } ?>
                   </tbody>
@@ -84,14 +84,12 @@
   <!-- ./wrapper -->
   <?php echo $scripts; ?>
   <script type="text/javascript">
-    //confirm message
     $(document).ready(function() {
+      //confirm message
       $('.confirmation').on('click', function() {
         return confirm('Are you sure of deleting bag?');
       });
-    });
-    //datatables
-    $(document).ready(function() {
+      //datatables
       $('#example').DataTable();
     });
   </script>
