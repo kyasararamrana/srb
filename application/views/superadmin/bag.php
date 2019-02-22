@@ -85,7 +85,16 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Bag Color</label>
-                                                <input type="text" class="form-control" name="bag_color" id="bag_color" value="<?php echo (isset($bag->bag_color)) ? $bag->bag_color : '' ; ?>">
+                                                <select class="form-control" name="bag_color" id="bag_color">
+                                                  <?php if (count($bagcolor) > 0) { ?>
+                                                    <option value="">Select</option>
+                                                    <?php foreach ($bagcolor as $color) { ?>
+                                                      <option value="<?php echo $color->id; ?>" <?php echo (isset($bag->bag_color) && $bag->bag_color == $color->id) ? 'selected' : '' ; ?>><?php echo $color->bag_color; ?></option>
+                                                    <?php } ?>
+                                                  <?php } else { ?>
+                                                    <option value="">No options found</option>
+                                                  <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -106,7 +115,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Handle Type</label>
-                                                <input type="text" class="form-control" name="handle_type" id="handle_type" <?php echo (isset($bag->handle_type)) ? $bag->handle_type : '' ; ?>>
+                                                <input type="text" class="form-control" name="handle_type" id="handle_type" value="<?php echo (isset($bag->handle_type)) ? $bag->handle_type : '' ; ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
