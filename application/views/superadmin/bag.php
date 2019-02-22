@@ -115,7 +115,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Handle Type</label>
-                                                <input type="text" class="form-control" name="handle_type" id="handle_type" <?php echo (isset($bag->handle_type)) ? $bag->handle_type : '' ; ?>>
+                                                <input type="text" class="form-control" name="handle_type" id="handle_type" value="<?php echo (isset($bag->handle_type)) ? $bag->handle_type : '' ; ?>">
                                             </div>
                                         </div>
                                         <div class="col-md-4">

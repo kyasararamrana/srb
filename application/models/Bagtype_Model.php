@@ -19,6 +19,7 @@ class Bagtype_Model extends CI_Model
   //get active bag types
   public function get_active_bagtype()
   {
+    $this->db->select('id,bag_type');
     $this->db->order_by('bag_type','asc');
     return $this->db->get_where($this->table,array('status' => 1))->result();
   }

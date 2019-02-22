@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,31 +8,24 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <?php echo $links; ?>
 </head>
-
 <body class="hold-transition skin-green sidebar-mini">
     <div class="wrapper">
-
         <?php echo $header; ?>
         <?php echo $sidebar; ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1>
-                    Add Price
-                </h1>
+                <h1>Add Price</h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
                     <li>Bags</li>
                     <li class="active">Add Price</li>
                 </ol>
             </section>
-
             <!-- Main content -->
             <section class="content container-fluid">
-
                 <div class="row">
-
                     <div class="col-md-12">
                         <div class="box box-success">
                             <!-- form start -->
@@ -42,10 +34,15 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Bag Type</label>
-                                            <select class="form-control" name="btype">
-                                                <option value="" selected disabled>Select</option>
-                                                <option value="">Option 1</option>
-                                                <option value="">Option 2</option>
+                                            <select class="form-control" name="bag_type" id="bag_type">
+                                              <?php if (count($bagtype) > 0) { ?>
+                                                <option value="">Select</option>
+                                                <?php foreach ($bagtype as $type) { ?>
+                                                  <option value="<?php echo $type->id; ?>"><?php echo $type->bag_type; ?></option>
+                                                <?php } ?>
+                                              <?php } else { ?>
+                                                <option value="">No records found</option>
+                                              <?php } ?>
                                             </select>
                                         </div>
                                     </div>
@@ -81,7 +78,7 @@
                                             <input type="text" class="form-control" name="costperkg" value="200" readonly>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="clearfix">&nbsp;</div>
                                     <div class="col-md-6">
                                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -132,6 +129,16 @@
                 }
             }
         })
+      });
+      $('#bag_type').on('change',function(){
+        var bag_type = $(this).val();
+        $.ajax({
+          url:'<?php echo base_url('price/get_bagsize'); ?>',
+          type:'post',
+          success:function(data){
+
+          }
+        });
       });
     </script>
 
