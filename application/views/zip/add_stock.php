@@ -105,6 +105,10 @@
                                                 </tbody>
                                             </table>
                                             <button type="button" class="btn btn-md" id="addRow1">Add Row</button>
+                                            <hr class="mb-10">
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-md btn-success">Add</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

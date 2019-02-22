@@ -22,11 +22,11 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Orders Status List
+                    Wishlist
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-                    <li class="active">Orders Status List</li>
+                    <li class="active">Wishlist</li>
                 </ol>
             </section>
 
@@ -38,87 +38,78 @@
                     <div class="col-md-12">
                         <div class="box box-success">
                             <div class="box-body">
-                                <table id="example" class="table table-bordered table-striped">
+                                <table id="" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>S.No</th>
-                                            <th>Order ID</th>
-                                            <th>Name</th>
-                                            <th>Mobile Number</th>
+                                            <th style="width:5%;">Select</th>
                                             <th>Bag Type</th>
+                                            <th>Bag Size</th>
+                                            <th>Handle Type</th>
+                                            <th>Handle Size</th>
+                                            <th>Sidepatty Type</th>
+                                            <th>Sidepatty Size</th>
+                                            <th>Zip Type</th>
+                                            <th>Zip Size</th>
+                                            <th>Stitching Type</th>
                                             <th>Quantity</th>
-                                            <th>Order Status</th>
+                                            <th>Total Cost</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>1</td>
-                                            <td>SRB00000012</td>
-                                            <td>Kasi</td>
-                                            <td>98xxxxxx20</td>
-                                            <td>D-cut</td>
-                                            <td>4,000</td>
-                                            <td><p class="text-aqua">Packed</p></td>
+                                            <td class="text-center"><input type="checkbox"></td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
                                             <td class="valigntop">
                                                 <div class="btn-group">
-                                                    <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="true"> Actions
+                                                    <button class="btn btn-xs btn-info" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
                                                         <i class="fa fa-angle-down"></i>
                                                     </button>
                                                     <ul class="dropdown-menu" role="menu" style="right:0;left:auto;">
                                                         <li>
-                                                            <a href=""><i class="fa fa-gift"></i>Packed</a>
+                                                            <a href="<?php echo base_url('salesmanagement/wishlistItemView'); ?>"><i class="fa fa-eye"></i>View</a>
                                                         </li>
                                                         <li>
-                                                            <a href=""><i class="fa fa-truck"></i>Ready for Delivery</a>
+                                                            <a href="<?php echo base_url('salesmanagement/editWishlistItem'); ?>"><i class="fa fa-edit"></i>Edit</a>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>2</td>
-                                            <td>SRB00000012</td>
-                                            <td>Mahesh</td>
-                                            <td>98xxxxxx20</td>
-                                            <td>D-cut</td>
-                                            <td>4,000</td>
-                                            <td><p class="text-green">Ready for Delivery</p></td>
+                                            <td class="text-center"><input type="checkbox"></td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
+                                            <td>xxxxxx</td>
                                             <td class="valigntop">
                                                 <div class="btn-group">
-                                                    <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="true"> Actions
+                                                    <button class="btn btn-xs btn-info" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
                                                         <i class="fa fa-angle-down"></i>
                                                     </button>
                                                     <ul class="dropdown-menu" role="menu" style="right:0;left:auto;">
                                                         <li>
-                                                            <a href=""><i class="fa fa-gift"></i>Packed</a>
+                                                            <a href="<?php echo base_url('salesmanagement/wishlistItemView'); ?>"><i class="fa fa-eye"></i>View</a>
                                                         </li>
                                                         <li>
-                                                            <a href=""><i class="fa fa-truck"></i>Ready for Delivery</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>SRB00000012</td>
-                                            <td>Uma</td>
-                                            <td>98xxxxxx20</td>
-                                            <td>D-cut</td>
-                                            <td>4,000</td>
-                                            <td><p class="text-aqua">Packed</p></td>
-                                            <td class="valigntop">
-                                                <div class="btn-group">
-                                                    <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="true"> Actions
-                                                        <i class="fa fa-angle-down"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu" role="menu" style="right:0;left:auto;">
-                                                        <li>
-                                                            <a href=""><i class="fa fa-gift"></i>Packed</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href=""><i class="fa fa-truck"></i>Ready for Delivery</a>
+                                                            <a href="<?php echo base_url('salesmanagement/editWishlistItem'); ?>"><i class="fa fa-edit"></i>Edit</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -126,6 +117,12 @@
                                         </tr>
                                     </tbody>
                                 </table>
+
+                                <div class="clearfix"><br><br></div>
+                                <div class="text-right">
+                                    <a href="" class="btn btn-danger btn-sm mr-10"><i class="fa fa-trash mr-5"></i>Delete</a>
+                                    <a href="" class="btn btn-success btn-sm"><i class="fa fa-shopping-cart mr-5"></i>Buy Now</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -139,8 +136,14 @@
     </div>
     <!-- ./wrapper -->
     <?php echo $scripts; ?>
-    
+
     <script type="text/javascript">
+        //confirm message
+        $(document).ready(function() {
+            $('.confirmation').on('click', function() {
+                return confirm('Are you sure of deleting category?');
+            });
+        });
         //datatables
         $(document).ready(function() {
             $('#example').DataTable();

@@ -45,22 +45,22 @@
                                             <div class="stepper">
                                                 <ul class="nav nav-tabs" role="tablist">
                                                     <li role="presentation" class="active">
-                                                        <a class="persistant-disabled" href="#stepper-step-1" data-toggle="tab" aria-controls="stepper-step-1" role="tab" title="Cutomer Details">
+                                                        <a class="persistant-disabled" href="#stepper-step-1" data-toggle="tab" aria-controls="stepper-step-1" role="tab" title="Product Details">
                                                             <span class="round-tab">1</span>
                                                         </a>
                                                     </li>
                                                     <li role="presentation" class="disabled">
-                                                        <a class="persistant-disabled" href="#stepper-step-2" data-toggle="tab" aria-controls="stepper-step-2" role="tab" title="Product Details">
+                                                        <a class="persistant-disabled" href="#stepper-step-2" data-toggle="tab" aria-controls="stepper-step-2" role="tab" title="Cost Details">
                                                             <span class="round-tab">2</span>
                                                         </a>
                                                     </li>
                                                     <li role="presentation" class="disabled">
-                                                        <a class="persistant-disabled" href="#stepper-step-3" data-toggle="tab" aria-controls="stepper-step-3" role="tab" title="Cost Details">
+                                                        <a class="persistant-disabled" href="#stepper-step-3" data-toggle="tab" aria-controls="stepper-step-3" role="tab" title="Customer Details">
                                                             <span class="round-tab">3</span>
                                                         </a>
                                                     </li>
                                                     <li role="presentation" class="disabled">
-                                                        <a class="persistant-disabled" href="#stepper-step-4" data-toggle="tab" aria-controls="stepper-step-4" role="tab" title="Order Confirmation">
+                                                        <a class="persistant-disabled" href="#stepper-step-4" data-toggle="tab" aria-controls="stepper-step-4" role="tab" title="Order Status">
                                                             <span class="round-tab">4</span>
                                                         </a>
                                                     </li>
@@ -68,85 +68,6 @@
                                                 <form role="form">
                                                     <div class="tab-content">
                                                         <div class="tab-pane fade in active" role="tabpanel" id="stepper-step-1">
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <h4 class="mt-0 text-aqua">Customer Info</h4>
-                                                                </div>
-                                                                <!-- col -->
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label>Customer Name</label>
-                                                                        <input type="text" class="form-control" name="cname" placeholder="Name of the Customer">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label>Shop Name</label>
-                                                                        <input type="text" class="form-control" name="shopname" placeholder="Name of the Customer">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label>Email</label>
-                                                                        <input type="text" class="form-control" name="cemail" placeholder="Enter Email">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label>Phone Number</label>
-                                                                        <input type="text" class="form-control" name="mobile" placeholder="Enter Phone Number">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label>GST / Aadhar Number</label>
-                                                                        <input type="text" class="form-control" name="mobile" placeholder="Enter GST / Aadhar Number">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label>Whatsapp Number</label>
-                                                                        <input type="text" class="form-control" name="mobile" placeholder="Enter Whatsapp Number">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label>Main Address</label>
-                                                                        <input type="text" class="form-control" name="mainaddress" placeholder="Address Line..">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label>Shipping Address</label>
-                                                                        <input type="text" class="form-control" name="shippingaddress" placeholder="Address Line..">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label>City</label>
-                                                                        <input type="text" class="form-control" name="quantity" placeholder="Name of the City">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label>State</label>
-                                                                        <input type="text" class="form-control" name="cost" placeholder="Name of the State">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label>Zipcode</label>
-                                                                        <input type="text" class="form-control" name="orderdate" placeholder="Enter Zipcode">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <ul class="list-inline pull-right">
-                                                                <li>
-                                                                    <a class="btn btn-primary next-step">Next</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="tab-pane fade" role="tabpanel" id="stepper-step-2">
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <h4 class="mt-0 text-aqua">Bag Section</h4>
@@ -542,14 +463,11 @@
                                                             </div>
                                                             <ul class="list-inline pull-right">
                                                                 <li>
-                                                                    <a class="btn btn-default prev-step">Previous</a>
-                                                                </li>
-                                                                <li>
                                                                     <a class="btn btn-primary next-step">Next</a>
                                                                 </li>
                                                             </ul>
                                                         </div>
-                                                        <div class="tab-pane fade" role="tabpanel" id="stepper-step-3">
+                                                        <div class="tab-pane fade" role="tabpanel" id="stepper-step-2">
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <h4 class="mt-0 text-aqua">Cost Details</h4>
@@ -578,13 +496,98 @@
                                                                     <a class="btn btn-default prev-step">Previous</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a class="btn btn-primary next-step">Submit Order</a>
+                                                                    <a href="<?php echo base_url('salesmanagement/wishlist'); ?>" class="btn btn-info">Add to Wishlist</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a class="btn btn-primary next-step">Order Now</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="tab-pane fade" role="tabpanel" id="stepper-step-3">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <h4 class="mt-0 text-aqua">Customer Info</h4>
+                                                                </div>
+                                                                <!-- col -->
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Customer Name</label>
+                                                                        <input type="text" class="form-control" name="cname" placeholder="Name of the Customer">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Shop Name</label>
+                                                                        <input type="text" class="form-control" name="shopname" placeholder="Name of the Customer">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Email</label>
+                                                                        <input type="text" class="form-control" name="cemail" placeholder="Enter Email">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Phone Number</label>
+                                                                        <input type="text" class="form-control" name="mobile" placeholder="Enter Phone Number">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>GST / Aadhar Number</label>
+                                                                        <input type="text" class="form-control" name="mobile" placeholder="Enter GST / Aadhar Number">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Whatsapp Number</label>
+                                                                        <input type="text" class="form-control" name="mobile" placeholder="Enter Whatsapp Number">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Main Address</label>
+                                                                        <input type="text" class="form-control" name="mainaddress" placeholder="Address Line..">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Shipping Address</label>
+                                                                        <input type="text" class="form-control" name="shippingaddress" placeholder="Address Line..">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>City</label>
+                                                                        <input type="text" class="form-control" name="quantity" placeholder="Name of the City">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>State</label>
+                                                                        <input type="text" class="form-control" name="cost" placeholder="Name of the State">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Zipcode</label>
+                                                                        <input type="text" class="form-control" name="orderdate" placeholder="Enter Zipcode">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <ul class="list-inline pull-right">
+                                                                <li>
+                                                                    <a class="btn btn-default prev-step">Previous</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a class="btn btn-primary next-step">Place Order</a>
                                                                 </li>
                                                             </ul>
                                                         </div>
                                                         <div class="tab-pane fade" role="tabpanel" id="stepper-step-4">
                                                             <h3>All done!</h3>
-                                                            <p>You have successfully completed your order.</p>
+                                                            <p>You have successfully placed your order.</p>
                                                         </div>
                                                     </div>
                                                 </form>

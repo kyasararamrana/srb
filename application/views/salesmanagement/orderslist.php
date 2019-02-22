@@ -67,7 +67,7 @@
                                             <td>2000.00</td>
                                             <td>29-01-2019 10:33:13</td>
                                             <td>
-                                                <a href="<?php echo base_url('salesmanagement/orderdetails'); ?>" type="button" class="btn btn-primary btn-sm mr-5"><i class="fa fa-eye"></i></a>
+                                                <a href="<?php echo base_url('salesmanagement/orderdetails'); ?>" type="button" class="btn btn-info btn-sm mr-5"><i class="fa fa-eye"></i></a>
                                                 <a href="#" type="button" class="btn btn-danger btn-sm mr-5 confirmation"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>

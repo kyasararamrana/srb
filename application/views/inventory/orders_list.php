@@ -76,6 +76,9 @@
                                                             <a href="<?php echo base_url('inventory/assignstock'); ?>"><i class="fa fa-check"></i>Assign Stock</a>
                                                         </li>
                                                         <li>
+                                                            <a href=""><i class="fa fa-check-circle"></i>Ready for Printing</a>
+                                                        </li>
+                                                        <li>
                                                             <a href=""><i class="fa fa-user"></i>Client Confirmation</a>
                                                         </li>
                                                         <li>

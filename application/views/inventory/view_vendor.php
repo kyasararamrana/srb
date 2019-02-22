@@ -41,98 +41,98 @@
                         <div class="box box-success">
                             <div class="box-body">
                                 <div class="row">
-                                <div class="col-md-6">
-                                    <h4 class="text-aqua">Vendor Details</h4>
-                                    <table class="table table-bordered">
-                                        <tr>
-                                            <td><b>Vendor Name</b></td>
-                                            <td>xxxxxx</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Primary Mobile Number</b></td>
-                                            <td>xxxxxx</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Secondary Mobile Number</b></td>
-                                            <td>xxxxxx</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Primary Email ID</b></td>
-                                            <td>xxxxxx</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Secondary Email Id</b></td>
-                                            <td>xxxxxx</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Landline Number</b></td>
-                                            <td>xxxxxx</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Fax Number</b></td>
-                                            <td>xxxxxx</td>
-                                        </tr>
-                                    </table>
-                                    
-                                    <h4 class="text-aqua">Additional Details</h4>
-                                    <table class="table table-bordered">
-                                        <tr>
-                                            <td><b>Aadhar Number</b></td>
-                                            <td>xxxxxx</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>GST Number</b></td>
-                                            <td>xxxxxx</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Others</b></td>
-                                            <td>xxxxxx</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="col-md-6">
-                                    <h4 class="text-aqua">Address Details
-                                        <a href="<?php echo base_url('inventory/vendorlist'); ?>" class="btn btn-info btn-xs pull-right"><i class="fa fa-arrow-left mr-5"></i>Back</a>
-                                    </h4>
-                                    <table class="table table-bordered">
-                                        <tr>
-                                            <td><b>Address</b></td>
-                                            <td>xxxxxx</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>City</b></td>
-                                            <td>xxxxxx</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>District</b></td>
-                                            <td>xxxxxx</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>State</b></td>
-                                            <td>xxxxxx</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Zip Code</b></td>
-                                            <td>xxxxxx</td>
-                                        </tr>
-                                    </table>
-                                    
-                                    <h4 class="text-aqua">Bank Details</h4>
-                                    <table class="table table-bordered">
-                                        <tr>
-                                            <td><b>Account Number</b></td>
-                                            <td>xxxxxx</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Account Holder Name</b></td>
-                                            <td>xxxxxx</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>IFSC Code</b></td>
-                                            <td>xxxxxx</td>
-                                        </tr>
-                                    </table>
-                                </div>
+                                    <div class="col-md-6">
+                                        <h4 class="text-aqua">Vendor Details</h4>
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td><b>Vendor Name</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Primary Mobile Number</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Secondary Mobile Number</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Primary Email ID</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Secondary Email Id</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Landline Number</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Fax Number</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                        </table>
+
+                                        <h4 class="text-aqua">Additional Details</h4>
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td><b>Aadhar Number</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>GST Number</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Others</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 class="text-aqua">Address Details
+                                            <a href="<?php echo base_url('inventory/vendorlist'); ?>" class="btn btn-info btn-xs pull-right"><i class="fa fa-arrow-left mr-5"></i>Back</a>
+                                        </h4>
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td><b>Address</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>City</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>District</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>State</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Zip Code</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                        </table>
+
+                                        <h4 class="text-aqua">Bank Details</h4>
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td><b>Account Number</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Account Holder Name</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>IFSC Code</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="clearfix">&nbsp;</div>
                                     <div class="col-md-6">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary">Add</button>
                                     </div>
                                 </div>
                             </form>

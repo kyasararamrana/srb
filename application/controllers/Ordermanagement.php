@@ -14,11 +14,11 @@ class Ordermanagement extends CI_Controller
     $this->load->library('user_agent');
     $this->load->model('Color_Model');
   }
-  //orders list
+  //Order Confirmation
   public function orderconfirm()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Order_confirmation';
+      $arg['pageTitle'] = 'Order Confirmation';
         $data = components($arg);
       $this->load->view('ordermanagement/orderconfirm',$data);
     } else {
@@ -26,6 +26,7 @@ class Ordermanagement extends CI_Controller
       redirect('login');
     }
   }
+  //Order Details
   public function orderdetails()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
@@ -37,11 +38,11 @@ class Ordermanagement extends CI_Controller
       redirect('login');
     }
   }
-  //add machine work
+  //Add Work
   public function work()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Machine_work';
+      $arg['pageTitle'] = 'Roll Management';
         $data = components($arg);
       $this->load->view('ordermanagement/work',$data);
     } else {
@@ -49,11 +50,11 @@ class Ordermanagement extends CI_Controller
       redirect('login');
     }
   }
-  //machine works list
+  //Machine Works List
   public function works()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Machine_works';
+      $arg['pageTitle'] = 'Roll Management';
         $data = components($arg);
       $this->load->view('ordermanagement/works',$data);
     } else {
@@ -61,11 +62,11 @@ class Ordermanagement extends CI_Controller
       redirect('login');
     }
   }
-  //orders status list
+  //Orders Status List
   public function orderstatus()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Orders_status';
+      $arg['pageTitle'] = 'Orders Status';
         $data = components($arg);
       $this->load->view('ordermanagement/orders_status_list',$data);
     } else {
@@ -73,11 +74,11 @@ class Ordermanagement extends CI_Controller
       redirect('login');
     }
   }
-  //orders status list
+  //Add Return Bags
   public function return_bags()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Orders_status';
+      $arg['pageTitle'] = 'Return Orders';
         $data = components($arg);
       $this->load->view('ordermanagement/return_bags',$data);
     } else {
@@ -85,11 +86,11 @@ class Ordermanagement extends CI_Controller
       redirect('login');
     }
   }
-  //orders status list
+  //Return Bags List
   public function return_bags_list()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Orders_status';
+      $arg['pageTitle'] = 'Return Orders';
         $data = components($arg);
       $this->load->view('ordermanagement/return_bags_list',$data);
     } else {

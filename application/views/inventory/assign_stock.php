@@ -45,30 +45,98 @@
                                         <div class="panel-body">
                                             <div class="stepper">
                                                 <ul class="nav nav-tabs" role="tablist">
-                                                    <li role="presentation" class="active">
-                                                        <a class="persistant-disabled" href="#stepper-step-1" data-toggle="tab" aria-controls="stepper-step-1" role="tab" title="Zip Setion">
+                                                    <li role="presentation" class="active fivetabs">
+                                                        <a class="persistant-disabled" href="#stepper-step-0" data-toggle="tab" aria-controls="stepper-step-0" role="tab" title="Material Setion">
                                                             <span class="round-tab">1</span>
                                                         </a>
                                                     </li>
-                                                    <li role="presentation" class="disabled">
-                                                        <a class="persistant-disabled" href="#stepper-step-2" data-toggle="tab" aria-controls="stepper-step-2" role="tab" title="Handle Section">
+                                                    <li role="presentation" class="disabled fivetabs">
+                                                        <a class="persistant-disabled" href="#stepper-step-1" data-toggle="tab" aria-controls="stepper-step-1" role="tab" title="Zip Setion">
                                                             <span class="round-tab">2</span>
                                                         </a>
                                                     </li>
-                                                    <li role="presentation" class="disabled">
-                                                        <a class="persistant-disabled" href="#stepper-step-3" data-toggle="tab" aria-controls="stepper-step-3" role="tab" title="Sidepatty Section">
+                                                    <li role="presentation" class="disabled fivetabs">
+                                                        <a class="persistant-disabled" href="#stepper-step-2" data-toggle="tab" aria-controls="stepper-step-2" role="tab" title="Handle Section">
                                                             <span class="round-tab">3</span>
                                                         </a>
                                                     </li>
-                                                    <li role="presentation" class="disabled">
-                                                        <a class="persistant-disabled" href="#stepper-step-4" data-toggle="tab" aria-controls="stepper-step-4" role="tab" title="Bag Section">
+                                                    <li role="presentation" class="disabled fivetabs">
+                                                        <a class="persistant-disabled" href="#stepper-step-3" data-toggle="tab" aria-controls="stepper-step-3" role="tab" title="Sidepatty Section">
                                                             <span class="round-tab">4</span>
+                                                        </a>
+                                                    </li>
+                                                    <li role="presentation" class="disabled fivetabs">
+                                                        <a class="persistant-disabled" href="#stepper-step-4" data-toggle="tab" aria-controls="stepper-step-4" role="tab" title="Bag Section">
+                                                            <span class="round-tab">5</span>
                                                         </a>
                                                     </li>
                                                 </ul>
 <form role="form">
     <div class="tab-content">
-        <div class="tab-pane fade in active" role="tabpanel" id="stepper-step-1">
+        <div class="tab-pane fade in active" role="tabpanel" id="stepper-step-0">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="mt-0 text-aqua">Material Section</h4>
+                </div>
+                <!-- col -->
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table id="myTable" class="table table-list-0">
+                            <thead>
+                                <tr>
+                                    <th>Select Vendor</th>
+                                    <th>Order Id</th>
+                                    <th>Stock Name</th>
+                                    <th>Size</th>
+                                    <th>Thickness</th>
+                                    <th>Color</th>
+                                    <th>Pieces</th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <select name="vendor" class="form-control">
+                                            <option value="0" selected disabled>Select</option>
+                                            <option value="1">Option name</option>
+                                            <option value="2">Option name</option>
+                                            <option value="3">Option name</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="orderid" placeholder="Order Id" class="form-control"/>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="sname" placeholder="Name" class="form-control"/>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="size" placeholder="Enter Size" class="form-control"/>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="thickness" placeholder="Enter Thickness" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" name="color" placeholder="Enter Color" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" name="pieces" placeholder="Enter Pieces" class="form-control" />
+                                    </td>
+                                    <td>&nbsp;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-md" id="addRow0">Add Row</button>
+                    </div>
+                </div>
+            </div>
+            <ul class="list-inline pull-right">
+                <li>
+                    <a class="btn btn-primary next-step">Next</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-pane fade" role="tabpanel" id="stepper-step-1">
             <div class="row">
                 <div class="col-md-12">
                     <h4 class="mt-0 text-aqua">Zip Section</h4>
@@ -142,6 +210,9 @@
                 </div>
             </div>
             <ul class="list-inline pull-right">
+                <li>
+                    <a class="btn btn-default prev-step">Previous</a>
+                </li>
                 <li>
                     <a class="btn btn-primary next-step">Next</a>
                 </li>
@@ -551,6 +622,43 @@
 
         }(jQuery, this));
     </script>
+    
+    <!-- Material Section -->
+    <script>
+        $(document).ready(function() {
+            var counter = 0;
+
+            $("#addRow0").on("click", function() {
+                var newRow = $("<tr>");
+                var cols = "";
+
+                cols += '<td><select class="form-control" name="vendor' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+
+                cols += '<td><input type="text" class="form-control" placeholder="Order Id" name="orderid' + counter + '"/></td>';
+                
+                cols += '<td><input type="text" class="form-control" placeholder="Name" name="sname' + counter + '"/></td>';
+
+                cols += '<td><input type="text" class="form-control" placeholder="Enter Size" name="size' + counter + '"/></td>';
+
+                cols += '<td><input type="email" class="form-control" placeholder="Enter Thickness" name="thickness' + counter + '"/></td>';
+
+                cols += '<td><input type="text" class="form-control" placeholder="Enter Color" name="color' + counter + '"/></td>';
+                
+                cols += '<td><input type="text" class="form-control" placeholder="Enter Pieces" name="pieces' + counter + '"/></td>';
+
+                cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger"><i class="fa fa-trash"></i></button></td>';
+                newRow.append(cols);
+                $("table.table-list-0").append(newRow);
+                counter++;
+            });
+
+            $("table.table-list-0").on("click", ".ibtnDel", function(event) {
+                $(this).closest("tr").remove();
+                counter -= 1
+            });
+        });
+    </script>
+    
     <!-- Zip Section -->
     <script>
         $(document).ready(function() {
