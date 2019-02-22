@@ -26,9 +26,21 @@ class Bag_Model extends CI_Model
     $this->db->join('ecom_bagsize s','s.id = b.bag_size','left');
     $this->db->join('ecom_baggsm g','g.id = b.bag_gsm','left');
     $this->db->order_by('b.created_on','desc');
+    $this->db->where('b.status != ',0);
     return $this->db->get()->result();
   }
-  
+  //get bag by id
+  public function get_bag_by_id($id='')
+  {
+    return $this->db->get_where($this->table,array('id' => $id))->row();
+  }
+  //update
+  public function update($post_data='', $post_id='')
+  {
+    $this->db->where('id',$post_id);
+    $this->db->set($post_data);
+    return $this->db->update($this->table);
+  }
 }
 
 ?>
