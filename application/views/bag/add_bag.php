@@ -22,12 +22,12 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Add Stock
+                    Add Bag
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-                    <li>Stocks</li>
-                    <li class="active">Add Stock</li>
+                    <li>Bags</li>
+                    <li class="active">Add Bag</li>
                 </ol>
             </section>
 
@@ -43,12 +43,13 @@
                                 <div class="box-body">
                                     <div class="col-md-12">
                                         <div class="table-responsive">
-                                            <table id="" class="table table-list-2">
+                                            <table id="" class="table table-list-4">
                                                 <thead>
                                                     <tr>
-                                                        <th>Stock Name</th>
-                                                        <th>Type</th>
                                                         <th>Material Type</th>
+                                                        <th>Quality</th>
+                                                        <th>Type</th>
+                                                        <th>Layout</th>
                                                         <th>Size</th>
                                                         <th>Color</th>
                                                         <th>GSM</th>
@@ -59,7 +60,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>
-                                                            <select name="hsname" class="form-control">
+                                                            <select name="bmtype" class="form-control">
                                                                 <option value="0" selected disabled>Select</option>
                                                                 <option value="1">Option name</option>
                                                                 <option value="2">Option name</option>
@@ -67,7 +68,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <select name="htype" class="form-control">
+                                                            <select name="bquality" class="form-control">
                                                                 <option value="0" selected disabled>Select</option>
                                                                 <option value="1">Option name</option>
                                                                 <option value="2">Option name</option>
@@ -75,7 +76,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <select name="hmtype" class="form-control">
+                                                            <select name="btype" class="form-control">
                                                                 <option value="0" selected disabled>Select</option>
                                                                 <option value="1">Option name</option>
                                                                 <option value="2">Option name</option>
@@ -83,7 +84,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <select name="hsize" class="form-control">
+                                                            <select name="blayout" class="form-control">
                                                                 <option value="0" selected disabled>Select</option>
                                                                 <option value="1">Option name</option>
                                                                 <option value="2">Option name</option>
@@ -91,7 +92,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <select name="hcolor" class="form-control">
+                                                            <select name="bsize" class="form-control">
                                                                 <option value="0" selected disabled>Select</option>
                                                                 <option value="1">Option name</option>
                                                                 <option value="2">Option name</option>
@@ -99,7 +100,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <select name="hgsm" class="form-control">
+                                                            <select name="bcolor" class="form-control">
                                                                 <option value="0" selected disabled>Select</option>
                                                                 <option value="1">Option name</option>
                                                                 <option value="2">Option name</option>
@@ -107,13 +108,21 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" name="hquantity" placeholder="Enter Quantity" class="form-control" />
+                                                            <select name="bgsm" class="form-control">
+                                                                <option value="0" selected disabled>Select</option>
+                                                                <option value="1">Option name</option>
+                                                                <option value="2">Option name</option>
+                                                                <option value="3">Option name</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="bquantity" placeholder="Enter Quantity" class="form-control" />
                                                         </td>
                                                         <td>&nbsp;</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <button type="button" class="btn btn-md" id="addRow2">Add Row</button>
+                                            <button type="button" class="btn btn-md" id="addRow4">Add Row</button>
                                             <hr class="mb-10">
                                             <div class="text-center">
                                                 <button type="submit" class="btn btn-md btn-success">Add</button>
@@ -138,35 +147,38 @@
 
     <?php echo $scripts; ?>
 
+    <!-- Bag Section -->
     <script>
         $(document).ready(function() {
             var counter = 0;
 
-            $("#addRow2").on("click", function() {
+            $("#addRow4").on("click", function() {
                 var newRow = $("<tr>");
                 var cols = "";
 
-                cols += '<td><select class="form-control" name="hsname' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><select class="form-control" name="bmtype' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
 
-                cols += '<td><select class="form-control" name="htype' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><select class="form-control" name="bquality' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
 
-                cols += '<td><select class="form-control" name="hmtype' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><select class="form-control" name="btype' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
 
-                cols += '<td><select class="form-control" name="hsize' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><select class="form-control" name="blayout' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
 
-                cols += '<td><select class="form-control" name="hcolor' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><select class="form-control" name="bsize' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
 
-                cols += '<td><select class="form-control" name="hgsm' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><select class="form-control" name="bcolor' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
 
-                cols += '<td><input type="text" class="form-control" placeholder="Enter Quantity" name="hquantity' + counter + '"/></td>';
+                cols += '<td><select class="form-control" name="bgsm' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+
+                cols += '<td><input type="text" class="form-control" placeholder="Enter Quantity" name="bquantity' + counter + '"/></td>';
 
                 cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger"><i class="fa fa-trash"></i></button></td>';
                 newRow.append(cols);
-                $("table.table-list-2").append(newRow);
+                $("table.table-list-4").append(newRow);
                 counter++;
             });
 
-            $("table.table-list-2").on("click", ".ibtnDel", function(event) {
+            $("table.table-list-4").on("click", ".ibtnDel", function(event) {
                 $(this).closest("tr").remove();
                 counter -= 1
             });

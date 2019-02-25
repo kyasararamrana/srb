@@ -22,12 +22,12 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Stock List
+                    Sidepatty List
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-                    <li>Stocks</li>
-                    <li class="active">Stock List</li>
+                    <li>Sidepatty</li>
+                    <li class="active">Sidepatty List</li>
                 </ol>
             </section>
 
@@ -43,12 +43,12 @@
                                     <thead>
                                         <tr>
                                             <th>S.No</th>
-                                            <th>Stock Name</th>
-                                            <th>Handle Material Type</th>
-                                            <th>Handle Type</th>
-                                            <th>Handle Size</th>
-                                            <th>Handle Color</th>
-                                            <th>Handle GSM</th>
+                                            <th>Sidepatty Type</th>
+                                            <th>Sidepatty Size</th>
+                                            <th>Sidepatty Color</th>
+                                            <th>Sidepatty GSM</th>
+                                            <th>Sidepatty Printing</th>
+                                            <th>Sidepatty Printing Color</th>
                                             <th>Quantity</th>
                                             <th>Action</th>
                                         </tr>
@@ -64,8 +64,8 @@
                                             <td>xxxxxxx</td>
                                             <td>xxxxxxx</td>
                                             <td>
-                                                <a href="<?php echo base_url('handlemodule/editstock'); ?>" type="button" class="btn btn-info mr-10"><i class="fa fa-edit"></i></a>
-                                                <a href="#" type="button" class="btn btn-danger mr-10 confirmation"><i class="fa fa-trash-o"></i></a>
+                                                <a href="<?php echo base_url('sidepattymodule/editsidepatty'); ?>" type="button" class="btn btn-info mr-10 mb-5"><i class="fa fa-edit"></i></a>
+                                                <a href="#" type="button" class="btn btn-danger mr-10 mb-5 confirmation"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
                                     </tbody>

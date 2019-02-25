@@ -22,13 +22,13 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Edit Stock Details
+                    Edit Zip Details
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-                    <li>Stocks</li>
-                    <li><a href="<?php echo base_url('inventory/stocklist'); ?>">Stock List</a></li>
-                    <li class="active">Edit Stock Details</li>
+                    <li>Zips</li>
+                    <li><a href="<?php echo base_url('zipmodule/ziplist'); ?>">Zip List</a></li>
+                    <li class="active">Edit Zip Details</li>
                 </ol>
             </section>
 
@@ -108,7 +108,7 @@
                                         <button type="submit" class="btn btn-primary">Save Changes</button>
                                     </div>
                                     <div class="col-md-6">
-                                        <a href="<?php echo base_url('zipmodule/stocklist'); ?>" class="btn btn-info pull-right"><i class="fa fa-arrow-left mr-5"></i>Back</a>
+                                        <a href="<?php echo base_url('zipmodule/ziplist'); ?>" class="btn btn-info pull-right"><i class="fa fa-arrow-left mr-5"></i>Back</a>
                                     </div>
                                 </div>
                             </form>

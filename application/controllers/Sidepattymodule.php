@@ -26,34 +26,34 @@ class Sidepattymodule extends CI_Controller
       redirect('login');
     }
   }
-  public function addstock()
+  public function addsidepatty()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
+      $arg['pageTitle'] = 'Sidepatty';
         $data = components($arg);
-      $this->load->view('sidepatty/add_stock',$data);
+      $this->load->view('sidepatty/add_sidepatty',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
-  public function stocklist()
+  public function sidepattylist()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
+      $arg['pageTitle'] = 'Sidepatty';
         $data = components($arg);
-      $this->load->view('sidepatty/stock_list',$data);
+      $this->load->view('sidepatty/sidepatty_list',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
-  public function editstock()
+  public function editsidepatty()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
+      $arg['pageTitle'] = 'Sidepatty';
         $data = components($arg);
-      $this->load->view('sidepatty/edit_stock',$data);
+      $this->load->view('sidepatty/edit_sidepatty',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');

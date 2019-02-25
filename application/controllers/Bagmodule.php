@@ -26,34 +26,34 @@ class Bagmodule extends CI_Controller
       redirect('login');
     }
   }
-  public function addstock()
+  public function addbag()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
+      $arg['pageTitle'] = 'Bags';
         $data = components($arg);
-      $this->load->view('bag/add_stock',$data);
+      $this->load->view('bag/add_bag',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
-  public function stocklist()
+  public function baglist()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
+      $arg['pageTitle'] = 'Bags';
         $data = components($arg);
-      $this->load->view('bag/stock_list',$data);
+      $this->load->view('bag/bag_list',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
-  public function editstock()
+  public function editbag()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
+      $arg['pageTitle'] = 'Bags';
         $data = components($arg);
-      $this->load->view('bag/edit_stock',$data);
+      $this->load->view('bag/edit_bag',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');

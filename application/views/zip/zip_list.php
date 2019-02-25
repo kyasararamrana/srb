@@ -22,12 +22,12 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Stock List
+                    Zip List
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-                    <li>Stocks</li>
-                    <li class="active">Stock List</li>
+                    <li>Zips</li>
+                    <li class="active">Zip List</li>
                 </ol>
             </section>
 
@@ -43,7 +43,6 @@
                                     <thead>
                                         <tr>
                                             <th>S.No</th>
-                                            <th>Stock Name</th>
                                             <th>Zip Type</th>
                                             <th>Zip Size</th>
                                             <th>Zip Color</th>
@@ -60,9 +59,8 @@
                                             <td>xxxxxxx</td>
                                             <td>xxxxxxx</td>
                                             <td>xxxxxxx</td>
-                                            <td>xxxxxxx</td>
                                             <td>
-                                                <a href="<?php echo base_url('zipmodule/editstock'); ?>" type="button" class="btn btn-info mr-10"><i class="fa fa-edit"></i></a>
+                                                <a href="<?php echo base_url('zipmodule/editzip'); ?>" type="button" class="btn btn-info mr-10"><i class="fa fa-edit"></i></a>
                                                 <a href="#" type="button" class="btn btn-danger mr-10 confirmation"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
