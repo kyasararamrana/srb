@@ -26,34 +26,34 @@ class Handlemodule extends CI_Controller
       redirect('login');
     }
   }
-  public function addstock()
+  public function addhandle()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
+      $arg['pageTitle'] = 'Handle';
         $data = components($arg);
-      $this->load->view('handle/add_stock',$data);
+      $this->load->view('handle/add_handle',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
-  public function stocklist()
+  public function handlelist()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
+      $arg['pageTitle'] = 'Handle';
         $data = components($arg);
-      $this->load->view('handle/stock_list',$data);
+      $this->load->view('handle/handle_list',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
-  public function editstock()
+  public function edithandle()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
+      $arg['pageTitle'] = 'Handle';
         $data = components($arg);
-      $this->load->view('handle/edit_stock',$data);
+      $this->load->view('handle/edit_handle',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');

@@ -26,34 +26,34 @@ class Zipmodule extends CI_Controller
       redirect('login');
     }
   }
-  public function addstock()
+  public function addzip()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
+      $arg['pageTitle'] = 'Zips';
         $data = components($arg);
-      $this->load->view('zip/add_stock',$data);
+      $this->load->view('zip/add_zip',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
-  public function stocklist()
+  public function ziplist()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
+      $arg['pageTitle'] = 'Zips';
         $data = components($arg);
-      $this->load->view('zip/stock_list',$data);
+      $this->load->view('zip/zip_list',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
-  public function editstock()
+  public function editzip()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
+      $arg['pageTitle'] = 'Zips';
         $data = components($arg);
-      $this->load->view('zip/edit_stock',$data);
+      $this->load->view('zip/edit_zip',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');

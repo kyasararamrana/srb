@@ -121,7 +121,7 @@
                                 <div class="clearfix"><br><br></div>
                                 <div class="text-right">
                                     <a href="" class="btn btn-danger btn-sm mr-10"><i class="fa fa-trash mr-5"></i>Delete</a>
-                                    <a href="" class="btn btn-success btn-sm"><i class="fa fa-shopping-cart mr-5"></i>Buy Now</a>
+                                    <a href="" class="btn btn-success btn-sm"><i class="fa fa-shopping-cart mr-5"></i>Order Now</a>
                                 </div>
                             </div>
                         </div>

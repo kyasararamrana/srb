@@ -299,14 +299,14 @@
                     <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
             </li>
             <li class="treeview">
-                <a href="#"><i class="fa fa-cubes"></i> <span>Stocks</span>
+                <a href="#"><i class="fa fa-file-archive-o"></i> <span>Zips</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?php echo base_url('zipmodule/addstock'); ?>">Add Stock</a></li>
-                    <li><a href="<?php echo base_url('zipmodule/stocklist'); ?>">Stock List</a></li>
+                    <li><a href="<?php echo base_url('zipmodule/addzip'); ?>">Add Zip</a></li>
+                    <li><a href="<?php echo base_url('zipmodule/ziplist'); ?>">Zip List</a></li>
                 </ul>
             </li>
             <li><a href="<?php echo base_url('zipmodule/orderstock'); ?>">
@@ -323,14 +323,14 @@
                     <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
             </li>
             <li class="treeview">
-                <a href="#"><i class="fa fa-cubes"></i> <span>Stocks</span>
+                <a href="#"><i class="fa fa-cubes"></i> <span>Handles</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?php echo base_url('handlemodule/addstock'); ?>">Add Stock</a></li>
-                    <li><a href="<?php echo base_url('handlemodule/stocklist'); ?>">Stock List</a></li>
+                    <li><a href="<?php echo base_url('handlemodule/addhandle'); ?>">Add Handle</a></li>
+                    <li><a href="<?php echo base_url('handlemodule/handlelist'); ?>">Handle List</a></li>
                 </ul>
             </li>
             <li><a href="<?php echo base_url('handlemodule/orderstock'); ?>">
@@ -347,14 +347,14 @@
                     <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
             </li>
             <li class="treeview">
-                <a href="#"><i class="fa fa-cubes"></i> <span>Stocks</span>
+                <a href="#"><i class="fa fa-cubes"></i> <span>Sidepatty</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?php echo base_url('sidepattymodule/addstock'); ?>">Add Stock</a></li>
-                    <li><a href="<?php echo base_url('sidepattymodule/stocklist'); ?>">Stock List</a></li>
+                    <li><a href="<?php echo base_url('sidepattymodule/addsidepatty'); ?>">Add Sidepatty</a></li>
+                    <li><a href="<?php echo base_url('sidepattymodule/sidepattylist'); ?>">Sidepatty List</a></li>
                 </ul>
             </li>
             <li><a href="<?php echo base_url('sidepattymodule/orderstock'); ?>">
@@ -371,14 +371,14 @@
                     <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
             </li>
             <li class="treeview">
-                <a href="#"><i class="fa fa-cubes"></i> <span>Stocks</span>
+                <a href="#"><i class="fa fa-shopping-bag"></i> <span>Bags</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="<?php echo base_url('bagmodule/addstock'); ?>">Add Stock</a></li>
-                    <li><a href="<?php echo base_url('bagmodule/stocklist'); ?>">Stock List</a></li>
+                    <li><a href="<?php echo base_url('bagmodule/addbag'); ?>">Add Bag</a></li>
+                    <li><a href="<?php echo base_url('bagmodule/baglist'); ?>">Bag List</a></li>
                 </ul>
             </li>
             <li><a href="<?php echo base_url('bagmodule/orderstock'); ?>">

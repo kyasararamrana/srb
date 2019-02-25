@@ -22,12 +22,12 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Add Stock
+                    Add Handle
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-                    <li>Stocks</li>
-                    <li class="active">Add Stock</li>
+                    <li>Handles</li>
+                    <li class="active">Add Handle</li>
                 </ol>
             </section>
 
@@ -43,14 +43,14 @@
                                 <div class="box-body">
                                     <div class="col-md-12">
                                         <div class="table-responsive">
-                                            <table id="" class="table table-list-1">
+                                            <table id="" class="table table-list-2">
                                                 <thead>
                                                     <tr>
-                                                        <th>Stock Name</th>
                                                         <th>Type</th>
+                                                        <th>Material Type</th>
                                                         <th>Size</th>
                                                         <th>Color</th>
-                                                        <th>Quality</th>
+                                                        <th>GSM</th>
                                                         <th>Quantity</th>
                                                         <th>&nbsp;</th>
                                                     </tr>
@@ -58,7 +58,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>
-                                                            <select name="zsname" class="form-control">
+                                                            <select name="htype" class="form-control">
                                                                 <option value="0" selected disabled>Select</option>
                                                                 <option value="1">Option name</option>
                                                                 <option value="2">Option name</option>
@@ -66,7 +66,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <select name="ztype" class="form-control">
+                                                            <select name="hmtype" class="form-control">
                                                                 <option value="0" selected disabled>Select</option>
                                                                 <option value="1">Option name</option>
                                                                 <option value="2">Option name</option>
@@ -74,7 +74,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <select name="zsize" class="form-control">
+                                                            <select name="hsize" class="form-control">
                                                                 <option value="0" selected disabled>Select</option>
                                                                 <option value="1">Option name</option>
                                                                 <option value="2">Option name</option>
@@ -82,7 +82,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <select name="zcolor" class="form-control">
+                                                            <select name="hcolor" class="form-control">
                                                                 <option value="0" selected disabled>Select</option>
                                                                 <option value="1">Option name</option>
                                                                 <option value="2">Option name</option>
@@ -90,7 +90,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <select name="zquality" class="form-control">
+                                                            <select name="hgsm" class="form-control">
                                                                 <option value="0" selected disabled>Select</option>
                                                                 <option value="1">Option name</option>
                                                                 <option value="2">Option name</option>
@@ -98,13 +98,13 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" name="zquantity" placeholder="Enter Quantity" class="form-control" />
+                                                            <input type="text" name="hquantity" placeholder="Enter Quantity" class="form-control" />
                                                         </td>
                                                         <td>&nbsp;</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <button type="button" class="btn btn-md" id="addRow1">Add Row</button>
+                                            <button type="button" class="btn btn-md" id="addRow2">Add Row</button>
                                             <hr class="mb-10">
                                             <div class="text-center">
                                                 <button type="submit" class="btn btn-md btn-success">Add</button>
@@ -133,29 +133,29 @@
         $(document).ready(function() {
             var counter = 0;
 
-            $("#addRow1").on("click", function() {
+            $("#addRow2").on("click", function() {
                 var newRow = $("<tr>");
                 var cols = "";
 
-                cols += '<td><select class="form-control" name="zsname' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><select class="form-control" name="htype' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
 
-                cols += '<td><select class="form-control" name="ztype' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><select class="form-control" name="hmtype' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
 
-                cols += '<td><select class="form-control" name="zsize' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><select class="form-control" name="hsize' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
 
-                cols += '<td><select class="form-control" name="zcolor' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><select class="form-control" name="hcolor' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
 
-                cols += '<td><select class="form-control" name="zquality' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><select class="form-control" name="hgsm' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
 
-                cols += '<td><input type="text" class="form-control" placeholder="Enter Quantity" name="zquantity' + counter + '"/></td>';
+                cols += '<td><input type="text" class="form-control" placeholder="Enter Quantity" name="hquantity' + counter + '"/></td>';
 
                 cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger"><i class="fa fa-trash"></i></button></td>';
                 newRow.append(cols);
-                $("table.table-list-1").append(newRow);
+                $("table.table-list-2").append(newRow);
                 counter++;
             });
 
-            $("table.table-list-1").on("click", ".ibtnDel", function(event) {
+            $("table.table-list-2").on("click", ".ibtnDel", function(event) {
                 $(this).closest("tr").remove();
                 counter -= 1
             });

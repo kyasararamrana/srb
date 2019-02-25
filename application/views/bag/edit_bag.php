@@ -22,13 +22,13 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Edit Stock Details
+                    Edit Bag Details
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-                    <li>Stocks</li>
-                    <li><a href="<?php echo base_url('inventory/stocklist'); ?>">Stock List</a></li>
-                    <li class="active">Edit Stock Details</li>
+                    <li>Bag</li>
+                    <li><a href="<?php echo base_url('bagmodule/baglist'); ?>">Bag List</a></li>
+                    <li class="active">Edit Bag Details</li>
                 </ol>
             </section>
 
@@ -44,17 +44,6 @@
                                 <div class="box-body">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Stock Name</label>
-                                            <select name="sname" class="form-control">
-                                                <option value="0" disabled>Select</option>
-                                                <option value="1" selected>Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
                                             <label>Material Type</label>
                                             <select name="mtype" class="form-control">
                                                 <option value="0" disabled>Select</option>
@@ -66,7 +55,29 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label>Quality</label>
+                                            <select name="mtype" class="form-control">
+                                                <option value="0" disabled>Select</option>
+                                                <option value="1" selected>Option name</option>
+                                                <option value="2">Option name</option>
+                                                <option value="3">Option name</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label>Type</label>
+                                            <select name="type" class="form-control">
+                                                <option value="0" disabled>Select</option>
+                                                <option value="1" selected>Option name</option>
+                                                <option value="2">Option name</option>
+                                                <option value="3">Option name</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Layout</label>
                                             <select name="type" class="form-control">
                                                 <option value="0" disabled>Select</option>
                                                 <option value="1" selected>Option name</option>
@@ -119,7 +130,7 @@
                                         <button type="submit" class="btn btn-primary">Save Changes</button>
                                     </div>
                                     <div class="col-md-6">
-                                        <a href="<?php echo base_url('handlemodule/stocklist'); ?>" class="btn btn-info pull-right"><i class="fa fa-arrow-left mr-5"></i>Back</a>
+                                        <a href="<?php echo base_url('bagmodule/baglist'); ?>" class="btn btn-info pull-right"><i class="fa fa-arrow-left mr-5"></i>Back</a>
                                     </div>
                                 </div>
                             </form>
