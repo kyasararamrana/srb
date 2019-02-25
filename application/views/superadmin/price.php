@@ -29,9 +29,9 @@
                     <div class="col-md-12">
                         <div class="box box-success">
                             <!-- form start -->
-                            <form id="priceForm" name="priceForm" action="">
+                            <form id="priceForm" name="priceForm" method="post" action="<?php echo base_url('price/insert'); ?>">
                                 <div class="box-body">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Bag Type</label>
                                             <select class="form-control" name="bag_type" id="bag_type">
@@ -46,39 +46,48 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Bag Layout</label>
+                                            <select class="form-control" name="bag_layout" id="bag_layout">
+                                                <option value="">Select</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Bag Size</label>
-                                            <select class="form-control" name="bsize">
-                                                <option value="" selected disabled>Select</option>
-                                                <option value="">Option 1</option>
-                                                <option value="">Option 2</option>
+                                            <select class="form-control" name="bag_size" id="bag_size">
+                                                <option value="">Select</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>GSM</label>
-                                            <select class="form-control" name="bgsm">
-                                                <option value="" selected disabled>Select</option>
-                                                <option value="">Option 1</option>
-                                                <option value="">Option 2</option>
+                                            <select class="form-control" name="bag_gsm" id="bag_gsm">
+                                                <option value="">Select</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-2">
+                                      <div class="form-group">
+                                        <label>Printing cost</label>
+                                        <input type="text" class="form-control" name="printing_cost" id="printing_cost" value="">
+                                      </div>
+                                    </div>
+                                    <div class="col-md-5">
                                         <div class="form-group">
                                             <label>Bags per KG</label>
-                                            <input type="text" class="form-control" name="bagsperkg" value="1200" readonly>
+                                            <input type="text" class="form-control" name="bags_per_kg" id="bags_per_kg" value="0" readonly>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <div class="form-group">
                                             <label>Cost per Bag for Single Color</label>
-                                            <input type="text" class="form-control" name="costperkg" value="200" readonly>
+                                            <input type="text" class="form-control" name="cost_per_bag" id="cost_per_bag" value="0" readonly>
                                         </div>
                                     </div>
-
                                     <div class="clearfix">&nbsp;</div>
                                     <div class="col-md-6">
                                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -87,24 +96,18 @@
                             </form>
                         </div>
                     </div>
-
                 </div>
-
             </section>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
         <?php echo $footer; ?>
-
     </div>
     <!-- ./wrapper -->
-
     <?php echo $scripts; ?>
-
     <script type="text/javascript">
       $(document).ready(function(){
         $('#priceForm').bootstrapValidator({
-
             fields: {
                 btype: {
                     validators: {
@@ -128,20 +131,73 @@
                     }
                 }
             }
-        })
-      });
-      $('#bag_type').on('change',function(){
-        var bag_type = $(this).val();
-        $.ajax({
-          url:'<?php echo base_url('price/get_bagsize'); ?>',
-          type:'post',
-          success:function(data){
-
+        });
+        //ajax call for bag layout by bag type
+        $('#bag_type').on('change',function(){
+          var bag_type = $(this).val();
+          var layout = $(this).data('layout');
+          $('#bag_layout').html('<option value="">loading...</option>');
+          $.ajax({
+            url:'<?php echo base_url('bag/get_baglayout_by_bagtype'); ?>',
+            type:'post',
+            data:{'bag_type':bag_type,'layout':layout},
+            success:function(data){
+              $('#bag_layout').html(data);
+            }
+          });
+        });
+        //ajax call for bag size by bag layout
+        $('#bag_layout').on('change',function(){
+         var bag_layout = $(this).val();
+         var size = $(this).data('size');
+         $('#bag_size').html('<option value="">loading...</option>');
+         $.ajax({
+           url:'<?php echo base_url('bag/get_bagsize_by_baglayout'); ?>',
+           type:'post',
+           data:{'bag_layout':bag_layout,'size':size},
+           success:function(data){
+             $('#bag_size').html(data);
+           }
+         });
+        });
+        //ajax call for bag size by bag layout
+        $('#bag_size').on('change',function(){
+         var bag_size = $(this).val();
+         $('#bag_gsm').html('<option value="">loading...</option>');
+         $.ajax({
+           url:'<?php echo base_url('bag/get_baggsm_by_bagsize'); ?>',
+           type:'post',
+           data:{'bag_size':bag_size},
+           success:function(data){
+             $('#bag_gsm').html(data);
+           }
+         });
+        });
+        //price calculation
+        $('#printing_cost').on('keyup',function(){
+          if ($('#bag_type').find('option:selected').text() == 'Dcut') {
+            var bag_size = $('#bag_size').find('option:selected').text().split('*');
+            var bag_gsm = $('#bag_gsm').find('option:selected').text();
+            var printing_cost = $('#printing_cost').val();
+            var additional_gsm = 3;
+            var percentage = 0.45;
+            var cost_per_kg = 170;
+            var width = bag_size[0];
+            var length = bag_size[1];
+            var weight_of_bag_formula = (width * ((length * 2) + 5) * (parseInt(bag_gsm) + parseInt(additional_gsm))) / 1550;
+            var weight_of_bag = weight_of_bag_formula;
+            //no of bags per kg
+            var no_of_bags_per_kg_formula = 1000/weight_of_bag;
+            var no_of_bags_per_kg = no_of_bags_per_kg_formula;
+            $('#bags_per_kg').val(no_of_bags_per_kg.toFixed(2));
+            //cost of the bag
+            var cost_per_bag_formula = ((weight_of_bag / 1000) * cost_per_kg);
+            var cost_per_bag_value = cost_per_bag_formula;
+            var final_cost_per_bag = cost_per_bag_value + (cost_per_bag_value * percentage) + (parseInt(printing_cost));
+            $('#cost_per_bag').val(final_cost_per_bag.toFixed(2));
           }
         });
       });
     </script>
-
 </body>
-
 </html>

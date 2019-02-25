@@ -10,6 +10,7 @@ class Price extends CI_Controller
     parent::__construct();
     $this->load->library('user_agent');
     $this->load->model('Bagtype_Model');
+    $this->load->model('Price_Model');
   }
   //
   public function index()
@@ -54,7 +55,19 @@ class Price extends CI_Controller
       if ($this->session->userdata('role') == 'Superadmin') {
         $post_data = $this->input->post();
         if ($post_data) {
-
+          $addl_data = array(
+            'created_on' => date('Y-m-d H:i:s'),
+            'created_by' => $this->session->userdata('id'),
+            'status' => 1
+          );
+          $post_data = array_merge($post_data, $addl_data);
+          if ($this->Price_Model->insert($post_data)) {
+            $this->session->set_flashdata('success','Price details created successfully');
+            redirect('price');
+          } else {
+            $this->session->set_flashdata('error','Please try again');
+            redirect($this->agent->referrer());
+          }
         } else {
           $this->session->set_flashdata('error','Please try again');
           redirect($this->agent->referrer());
@@ -67,7 +80,6 @@ class Price extends CI_Controller
       $this->session->set_flashdata('error','Please login and try again');
       redirect('admin/login');
     }
-
   }
 }
 

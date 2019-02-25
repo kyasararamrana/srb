@@ -92,7 +92,26 @@ CREATE TABLE `ecom_bag` (
 
 /*Data for the table `ecom_bag` */
 
-insert  into `ecom_bag`(`id`,`material_type`,`quality`,`bag_type`,`bag_layout`,`bag_size`,`bag_color`,`bag_gsm`,`handle_type`,`handle_material_type`,`handle_size`,`handle_color`,`handle_gsm`,`sidepatty_type`,`sidepatty_size`,`sidepatty_color`,`sidepatty_gsm`,`sidepatty_print`,`sidepatty_print_color`,`zip_type`,`zip_color`,`zip_size`,`zip_quality`,`stitching_type`,`stitching_thread_color`,`stitching_design`,`printing_method`,`printing_color_type`,`printing_style`,`suggested_printing_color`,`printing_language`,`other_charge`,`print_cost`,`block_charge`,`cost_per_kg`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,'test','test',2,1,3,'red',2,'test','test','test','test','test','test','test','test','test','test','test','test','test','test','test','test','test','test',1,2,2,1,1,'test','test','test','test','2019-02-21 14:00:11',1,NULL,NULL,1),(2,'Material Type','Quality',2,1,3,'red',2,'','test','test','test','test','test','test','test','test','test','test','test','test','test','test','test','test','test',1,1,1,2,1,'test','test','test','test','2019-02-21 14:02:14',1,NULL,NULL,1);
+insert  into `ecom_bag`(`id`,`material_type`,`quality`,`bag_type`,`bag_layout`,`bag_size`,`bag_color`,`bag_gsm`,`handle_type`,`handle_material_type`,`handle_size`,`handle_color`,`handle_gsm`,`sidepatty_type`,`sidepatty_size`,`sidepatty_color`,`sidepatty_gsm`,`sidepatty_print`,`sidepatty_print_color`,`zip_type`,`zip_color`,`zip_size`,`zip_quality`,`stitching_type`,`stitching_thread_color`,`stitching_design`,`printing_method`,`printing_color_type`,`printing_style`,`suggested_printing_color`,`printing_language`,`other_charge`,`print_cost`,`block_charge`,`cost_per_kg`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,'test','test',2,1,3,'1',2,'test','test','test','test','test','test','test','test','test','test','test','test','test','test','test','test','test','test',1,2,2,1,1,'test','test','test','test','2019-02-21 14:00:11',1,NULL,NULL,1),(2,'Material Type','Quality',2,1,3,'3',2,'test','test','test','test','test','test','test','test','test','test','test','test','test','test','test','test','test','test',1,1,1,2,1,'test','test','test','test','2019-02-21 14:02:14',1,NULL,NULL,1);
+
+/*Table structure for table `ecom_bagcolor` */
+
+DROP TABLE IF EXISTS `ecom_bagcolor`;
+
+CREATE TABLE `ecom_bagcolor` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bag_color` varchar(200) DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_on` datetime DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+/*Data for the table `ecom_bagcolor` */
+
+insert  into `ecom_bagcolor`(`id`,`bag_color`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,'bag color','2019-02-22 10:40:53',1,NULL,NULL,1),(2,'bag color','2019-02-22 10:40:53',1,NULL,NULL,1),(3,'bag color 1','2019-02-22 10:48:45',1,NULL,NULL,1),(4,'bag color 2','2019-02-22 10:48:45',1,NULL,NULL,1);
 
 /*Table structure for table `ecom_baggsm` */
 
@@ -130,11 +149,11 @@ CREATE TABLE `ecom_baglayout` (
   `updated_by` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 /*Data for the table `ecom_baglayout` */
 
-insert  into `ecom_baglayout`(`id`,`bag_type`,`bag_layout`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,'2','Horizontal','2019-02-20 06:37:53',1,NULL,NULL,1),(2,'2','Verical','2019-02-20 06:37:53',1,NULL,NULL,1),(5,'1','Verical','2019-02-20 06:38:31',1,NULL,NULL,1),(6,'1','Horizontal','2019-02-20 06:38:31',1,NULL,NULL,1),(9,'2','Horizontal','2019-02-20 10:06:57',1,NULL,NULL,1);
+insert  into `ecom_baglayout`(`id`,`bag_type`,`bag_layout`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,'2','Horizontal','2019-02-20 06:37:53',1,NULL,NULL,1),(2,'2','Verical','2019-02-20 06:37:53',1,NULL,NULL,1),(5,'1','Verical','2019-02-20 06:38:31',1,NULL,NULL,1),(6,'1','Horizontal','2019-02-20 06:38:31',1,NULL,NULL,1),(9,'2','Horizontal','2019-02-20 10:06:57',1,NULL,NULL,1),(10,'3','Vertical','2019-02-22 10:49:49',1,NULL,NULL,1),(11,'3','Horizontal','2019-02-22 10:50:22',1,NULL,NULL,1);
 
 /*Table structure for table `ecom_bagsize` */
 
@@ -169,11 +188,11 @@ CREATE TABLE `ecom_bagtype` (
   `updated_by` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `ecom_bagtype` */
 
-insert  into `ecom_bagtype`(`id`,`bag_type`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,'Dcut','2019-02-20 05:50:34',1,NULL,NULL,1),(2,'Handle bag','2019-02-20 05:50:34',1,NULL,NULL,1);
+insert  into `ecom_bagtype`(`id`,`bag_type`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,'Handle bag','2019-02-20 05:50:34',1,NULL,NULL,1),(2,'Dcut','2019-02-20 05:50:34',1,NULL,NULL,1),(3,'Bag type 1','2019-02-22 10:49:29',1,NULL,NULL,1);
 
 /*Table structure for table `ecom_banner` */
 
@@ -373,6 +392,31 @@ CREATE TABLE `ecom_order_items` (
 /*Data for the table `ecom_order_items` */
 
 insert  into `ecom_order_items`(`id`,`user_id`,`order_number`,`order_id`,`product_id`,`product_name`,`product_image`,`product_size`,`product_color`,`product_gsm`,`product_quality`,`product_quantity`,`actual_price`,`discount_percentage`,`net_price`,`created_on`,`created_by`,`status`) values (1,1,'SRB0201901291',1,2,'product2','ce00473891dfe826849e0b5f11bd8793.jpg','12x12','Red','Test@123','Grade 1',1,'4000.00',10,'3600.00','2019-01-29 10:33:13',1,'Confirm');
+
+/*Table structure for table `ecom_price` */
+
+DROP TABLE IF EXISTS `ecom_price`;
+
+CREATE TABLE `ecom_price` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `bag_type` int(11) DEFAULT NULL,
+  `bag_layout` int(11) DEFAULT NULL,
+  `bag_size` int(11) DEFAULT NULL,
+  `bag_gsm` int(11) DEFAULT NULL,
+  `printing_cost` decimal(13,2) DEFAULT NULL,
+  `bags_per_kg` decimal(13,2) DEFAULT NULL,
+  `cost_per_bag` decimal(13,2) DEFAULT NULL,
+  `created_on` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `updated_on` datetime DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+/*Data for the table `ecom_price` */
+
+insert  into `ecom_price`(`id`,`bag_type`,`bag_layout`,`bag_size`,`bag_gsm`,`printing_cost`,`bags_per_kg`,`cost_per_bag`,`created_on`,`created_by`,`updated_on`,`updated_by`,`status`) values (1,2,9,8,1,'1.00','83.56','3.95',NULL,NULL,NULL,NULL,NULL),(2,2,9,8,1,'1.00','83.56','3.95','2019-02-25 07:33:21',1,NULL,NULL,1);
 
 /*Table structure for table `ecom_printingcolortype` */
 
