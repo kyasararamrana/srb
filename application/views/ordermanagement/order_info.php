@@ -27,7 +27,7 @@
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
                     <li><a href="#">Confirmation Orders</a></li>
-                    <li class="active">Order Info</li>
+                    <li class="active">Order Details</li>
                 </ol>
             </section>
 
@@ -41,306 +41,237 @@
                             <!-- form start -->
                             <form method="post" id="bagForm" action="">
                                 <div class="box-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h4 class="mt-0 text-aqua">Order Info</h4>
-                                        </div>
-                                        <!-- col -->
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Order ID</label>
-                                                <input type="text" class="form-control" name="orderid" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Customer Name</label>
-                                                <input type="text" class="form-control" name="cname" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Phone Number</label>
-                                                <input type="text" class="form-control" name="mobile" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Quantity</label>
-                                                <input type="text" class="form-control" name="quantity" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Cost</label>
-                                                <input type="text" class="form-control" name="cost" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Date</label>
-                                                <input type="text" class="form-control" name="orderdate" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h4 class="mt-0 text-aqua">Bag Section</h4>
-                                        </div>
-                                        <!-- col -->
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Material Type</label>
-                                                <input type="text" class="form-control" name="mtype" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Quality</label>
-                                                <input type="text" class="form-control" name="quality" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Bag Type</label>
-                                                <input type="text" class="form-control" name="btype" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Layout</label>
-                                                <input type="text" class="form-control" name="layout" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Bag Size</label>
-                                                <input type="text" class="form-control" name="bsize" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Bag Color</label>
-                                                <input type="text" class="form-control" name="bcolor" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Bag GSM</label>
-                                                <input type="text" class="form-control" name="bgsm" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div class="col-md-4">
+                                        <h4 class="mt-0 text-aqua">Order Info</h4>
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td><b>Order ID</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Quantity</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Cost per Kg</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Total Cost</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Ordered Date</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                        </table>
+
+                                        <h4 class="mt-0 text-aqua">Customer Info</h4>
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td><b>Customer Name</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Shop Name</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Email</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Phone Number</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Aadhar Number</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Shipping Address</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>City</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>State</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Zip Code</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                        </table>
                                         
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h4 class="mt-0 text-aqua">Handle Section</h4>
-                                        </div>
-                                        <!-- col -->
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Handle Type</label>
-                                                <input type="text" class="form-control" name="handletype" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Handle Material Type</label>
-                                                <input type="text" class="form-control" name="handlematerialtype" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Handle Size</label>
-                                                <input type="text" class="form-control" name="handlesize" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Handle Color</label>
-                                                <input type="text" class="form-control" name="handlecolor" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Handle GSM</label>
-                                                <input type="text" class="form-control" name="handlegsm" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h4 class="mt-0 text-aqua">Sidepatty Section</h4>
-                                        </div>
-                                        <!-- col -->
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Sidepatty Type</label>
-                                                <input type="text" class="form-control" name="sidepattytype" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Sidepatty Size</label>
-                                                <input type="text" class="form-control" name="sidepattysize" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Sidepatty Color</label>
-                                                <input type="text" class="form-control" name="sidepattycolor" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Sidepatty GSM</label>
-                                                <input type="text" class="form-control" name="sidepattygsm" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Sidepatty Printing</label>
-                                                <input type="text" class="form-control" name="sidepattyprint" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Sidepatty Printing Color</label>
-                                                <input type="text" class="form-control" name="sidepattyprintcolor" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
+                                        <h4 class="mt-0 text-aqua">Charges</h4>
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td><b>Other Charges</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Printing Cost</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Block Charges</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                        </table>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h4 class="mt-0 text-aqua">Zip Section</h4>
-                                        </div>
-                                        <!-- col -->
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Zip Type</label>
-                                                <input type="text" class="form-control" name="ziptype" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Zip Color</label>
-                                                <input type="text" class="form-control" name="zipcolor" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Zip Size</label>
-                                                <input type="text" class="form-control" name="zipsize" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Zip Quality</label>
-                                                <input type="text" class="form-control" name="zipquality" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h4 class="mt-0 text-aqua">Stitching Section</h4>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Stitching Type</label>
-                                                <input type="text" class="form-control" name="stitchtype" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Stitching Thread Color</label>
-                                                <input type="text" class="form-control" name="stitchcolor" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Stitching Design</label>
-                                                <input type="text" class="form-control" name="stitchdesign" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div class="col-md-4">
+                                        <h4 class="mt-0 text-aqua">Bag Section</h4>
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td><b>Material Type</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Quality</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Bag Type</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Layout</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Bag Size</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Bag Color</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Bag GSM</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                        </table>
                                         
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h4 class="mt-0 text-aqua">Printing Section</h4>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Printing Method</label>
-                                                <input type="text" class="form-control" name="printmethod" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Printing Color Type</label>
-                                                <input type="text" class="form-control" name="printcolor" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Printing Style</label>
-                                                <input type="text" class="form-control" name="printstyle" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Suggested Printing color</label>
-                                                <input type="text" class="form-control" name="sugprintcolor" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Language</label>
-                                                <input type="text" class="form-control" name="lang" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
+                                        <h4 class="mt-0 text-aqua">Handle Section</h4>
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td><b>Handle Type</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Handle Material Type</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Handle Size</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Handle Color</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Handle GSM</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <h4 class="mt-0 text-aqua">Stitching Section</h4>
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td><b>Stitching Type</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Stitching Thread Color</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Stitching Design</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                        </table>
                                     </div>
-                                    
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h4 class="mt-0 text-aqua">Charges</h4>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Other Charges</label>
-                                                <input type="text" class="form-control" name="othercharge" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Printing Cost</label>
-                                                <input type="text" class="form-control" name="printcost" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Block Charges</label>
-                                                <input type="text" class="form-control" name="blockcharge" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
+
+                                    <div class="col-md-4">
+                                        <h4 class="mt-0 text-aqua">Sidepatty Section
+                                            <a href="<?php echo base_url('ordermanagement/orderconfirm'); ?>" class="btn btn-info btn-xs pull-right"><i class="fa fa-arrow-left mr-5"></i>Back</a>
+                                        </h4>
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td><b>Sidepatty Type</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Sidepatty Size</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Sidepatty Color</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Sidepatty GSM</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Sidepatty Printing</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Sidepatty Printing Color</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <h4 class="mt-0 text-aqua">Zip Section</h4>
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td><b>Zip Type</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Zip Color</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Zip Size</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Zip Quality</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <h4 class="mt-0 text-aqua">Printing Section</h4>
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td><b>Printing Method</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Printing Color Type</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Printing Style</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Suggested Printing color</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Language</b></td>
+                                                <td>xxxxxx</td>
+                                            </tr>
+                                        </table>
                                     </div>
-                                    
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h4 class="mt-0 text-aqua">Cost Details</h4>
-                                        </div>
-                                        <div class="col-md-4">
-                                             <div class="form-group">
-                                                <label>Cost per Kg</label>
-                                                <input type="text" class="form-control" name="bagcost" id="" value="xxxxxx" readonly>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="clearfix">&nbsp;</div>
                                 </div>
                             </form>
                         </div>

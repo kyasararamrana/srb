@@ -123,6 +123,10 @@
                                                 </tbody>
                                             </table>
                                             <button type="button" class="btn btn-md" id="addRow3">Add Row</button>
+                                            <hr class="mb-10">
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-md btn-success">Add</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -153,17 +157,17 @@
                 var cols = "";
 
                 cols += '<td><select class="form-control" name="ssname' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
-                
+
                 cols += '<td><select class="form-control" name="stype' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
-                
+
                 cols += '<td><select class="form-control" name="ssize' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
-                
+
                 cols += '<td><select class="form-control" name="scolor' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
-                
+
                 cols += '<td><select class="form-control" name="sgsm' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
-                
+
                 cols += '<td><select class="form-control" name="sprinting' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
-                
+
                 cols += '<td><select class="form-control" name="sprintcolor' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
 
                 cols += '<td><input type="text" class="form-control" placeholder="Enter Quantity" name="squantity' + counter + '"/></td>';

@@ -1,3 +1,9 @@
+body{
+    font-size: 15px;
+}
+.navbar-nav > .user-menu > .dropdown-menu > .user-footer {
+    background-color: #b3e0b4;
+}
 /* notifications  */
 .bg-succ {
     background: #449d44 !important;
@@ -96,6 +102,10 @@
 .stepper .nav-tabs > li {
     width: 25%;
     position: relative;
+}
+
+.stepper .nav-tabs > li.fivetabs {
+    width: 20%;
 }
 
 .stepper .nav-tabs > li:after {

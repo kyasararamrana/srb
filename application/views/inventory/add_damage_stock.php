@@ -93,7 +93,7 @@
                                         </div>
                                         <hr class="mb-10">
                                         <div class="text-center">
-                                            <button type="submit" class="btn btn-md btn-success">Submit</button>
+                                            <button type="submit" class="btn btn-md btn-success">Add</button>
                                         </div>
                                     </div>
                                 </div>

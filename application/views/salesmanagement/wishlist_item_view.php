@@ -22,12 +22,12 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Order Details
+                    Product Details
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-                    <li><a href="#">Confirmation Orders</a></li>
-                    <li class="active">Order Details</li>
+                    <li>Wishlist</li>
+                    <li class="active">Product Details</li>
                 </ol>
             </section>
 
@@ -199,7 +199,7 @@
 
                                     <div class="col-md-4">
                                         <h4 class="mt-0 text-aqua">Sidepatty Section
-                                            <a href="<?php echo base_url('salesmanagement/orderslist'); ?>" class="btn btn-info btn-xs pull-right"><i class="fa fa-arrow-left mr-5"></i>Back</a>
+                                            <a href="<?php echo base_url('salesmanagement/wishlist'); ?>" class="btn btn-info btn-xs pull-right"><i class="fa fa-arrow-left mr-5"></i>Back</a>
                                         </h4>
                                         <table class="table table-bordered">
                                             <tr>

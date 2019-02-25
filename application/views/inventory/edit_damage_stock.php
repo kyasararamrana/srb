@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Ordef ID</label>
+                                            <label>Order ID</label>
                                             <input type="text" class="form-control" name="orderid" id="" value="Order Id">
                                         </div>
                                     </div>
