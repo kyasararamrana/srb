@@ -123,11 +123,11 @@
             <li class="header">REQUEST</li>
             <li><a href="<?php echo base_url('/request'); ?>"><i class="fa fa-handshake-o"></i> <span>Requests</span></a></li>
             <?php } ?>
-            
-            
+
+
             <!-- Super Admin -->
-            
-            
+
+
             <?php if ($this->session->userdata('role') == 'Superadmin') { ?>
             <li class="header">BAGS</li>
             <li class="treeview">
@@ -190,11 +190,11 @@
                     <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
             </li>
             <?php } ?>
-            
-            
+
+
             <!-- Order Management -->
-            
-            
+
+
             <?php if ($this->session->userdata('role') == 'Order') { ?>
             <li><a href="<?php echo base_url('ordermanagement/orderconfirm'); ?>">
                     <i class="fa fa-check-circle"></i> <span>Confirmation Orders</span></a>
@@ -225,11 +225,11 @@
                 </ul>
             </li>
             <?php } ?>
-            
-            
+
+
             <!-- Sales Management -->
-            
-            
+
+
             <?php if ($this->session->userdata('role') == 'Sales') { ?>
             <li><a href="<?php echo base_url('salesmanagement/orderform'); ?>">
                     <i class="fa fa-file-text"></i> <span>Orders Form</span></a>
@@ -244,11 +244,11 @@
                     <i class="fa fa-star"></i> <span>Wishlist</span></a>
             </li>
             <?php } ?>
-            
-            
+
+
             <!-- Inventory -->
-            
-            
+
+
             <?php if($this->session->userdata('role') == 'Inventory') { ?>
             <li><a href="<?php echo base_url('inventory/orderslist'); ?>">
                     <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
@@ -288,15 +288,12 @@
                     <li><a href="<?php echo base_url('inventory/roleslist'); ?>">Roles List</a></li>
                 </ul>
             </li>
-<<<<<<< HEAD
 
-=======
-            
-            
->>>>>>> 99bce853273b289c81b4675894ccffd639691874
+
+
             <!-- Zip Module -->
-            
-            
+
+
             <li class="header">Zip Role Module</li>
             <li><a href="<?php echo base_url('zipmodule/orderslist'); ?>">
                     <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
@@ -315,15 +312,12 @@
             <li><a href="<?php echo base_url('zipmodule/orderstock'); ?>">
                     <i class="fa fa-shopping-cart"></i> <span>Order Stock</span></a>
             </li>
-<<<<<<< HEAD
 
-=======
-            
-            
->>>>>>> 99bce853273b289c81b4675894ccffd639691874
+
+
             <!-- Handle Module -->
-            
-            
+
+
             <li class="header">Handle Role Module</li>
             <li><a href="<?php echo base_url('handlemodule/orderslist'); ?>">
                     <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
@@ -342,15 +336,12 @@
             <li><a href="<?php echo base_url('handlemodule/orderstock'); ?>">
                     <i class="fa fa-shopping-cart"></i> <span>Order Stock</span></a>
             </li>
-<<<<<<< HEAD
 
-=======
-            
-            
->>>>>>> 99bce853273b289c81b4675894ccffd639691874
+
+
             <!-- Sidepatty Module -->
-            
-            
+
+
             <li class="header">Sidepatty Role Module</li>
             <li><a href="<?php echo base_url('sidepattymodule/orderslist'); ?>">
                     <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
@@ -369,15 +360,12 @@
             <li><a href="<?php echo base_url('sidepattymodule/orderstock'); ?>">
                     <i class="fa fa-shopping-cart"></i> <span>Order Stock</span></a>
             </li>
-<<<<<<< HEAD
 
-=======
-            
-            
->>>>>>> 99bce853273b289c81b4675894ccffd639691874
+
+
             <!-- Bag Module -->
-            
-            
+
+
             <li class="header">Bag Role Module</li>
             <li><a href="<?php echo base_url('bagmodule/orderslist'); ?>">
                     <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
