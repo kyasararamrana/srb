@@ -154,8 +154,18 @@
                     <li><a href="<?php echo base_url('printinglanguage'); ?>">Printing Language List</a></li>
                     <li><a href="<?php echo base_url('bag/create'); ?>">Add Bag</a></li>
                     <li><a href="<?php echo base_url('bag'); ?>">Bags List</a></li>
-                    <li><a href="<?php echo base_url('superadmin/price'); ?>">Add Price</a></li>
-                    <li><a href="<?php echo base_url('superadmin/prices'); ?>">Prices List</a></li>
+                </ul>
+            </li>
+            <li class="header">Price</li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-money"></i> <span>Price</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="<?php echo base_url('price/create'); ?>">Add Price</a></li>
+                  <li><a href="<?php echo base_url('price'); ?>">Prices List</a></li>
                 </ul>
             </li>
             <li class="header">ROLES</li>
@@ -255,7 +265,7 @@
                     <li><a href="<?php echo base_url('inventory/roleslist'); ?>">Roles List</a></li>
                 </ul>
             </li>
-            
+
             <!-- Zip Module -->
             <li class="header">Zip Role Module</li>
             <li><a href="<?php echo base_url('zipmodule/orderslist'); ?>">
@@ -275,7 +285,7 @@
             <li><a href="<?php echo base_url('zipmodule/orderstock'); ?>">
                     <i class="fa fa-shopping-cart"></i> <span>Order Stock</span></a>
             </li>
-            
+
             <!-- Handle Module -->
             <li class="header">Handle Role Module</li>
             <li><a href="<?php echo base_url('handlemodule/orderslist'); ?>">
@@ -295,7 +305,7 @@
             <li><a href="<?php echo base_url('handlemodule/orderstock'); ?>">
                     <i class="fa fa-shopping-cart"></i> <span>Order Stock</span></a>
             </li>
-            
+
             <!-- Sidepatty Module -->
             <li class="header">Sidepatty Role Module</li>
             <li><a href="<?php echo base_url('sidepattymodule/orderslist'); ?>">
@@ -315,7 +325,7 @@
             <li><a href="<?php echo base_url('sidepattymodule/orderstock'); ?>">
                     <i class="fa fa-shopping-cart"></i> <span>Order Stock</span></a>
             </li>
-            
+
             <!-- Bag Module -->
             <li class="header">Bag Role Module</li>
             <li><a href="<?php echo base_url('bagmodule/orderslist'); ?>">
