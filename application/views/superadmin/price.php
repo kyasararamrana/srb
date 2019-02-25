@@ -29,16 +29,16 @@
                     <div class="col-md-12">
                         <div class="box box-success">
                             <!-- form start -->
-                            <form id="priceForm" name="priceForm" method="post" action="<?php echo base_url('price/insert'); ?>">
+                            <form id="priceForm" name="priceForm" method="post" action="<?php if (isset($price->id)) { echo base_url('price/update'); } else { echo base_url('price/insert'); } ?>">
                                 <div class="box-body">
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Bag Type</label>
-                                            <select class="form-control" name="bag_type" id="bag_type">
+                                            <select class="form-control" name="bag_type" id="bag_type" data-layout="<?php echo (isset($price->bag_layout)) ? $price->bag_layout : '' ; ?>">
                                               <?php if (count($bagtype) > 0) { ?>
                                                 <option value="">Select</option>
                                                 <?php foreach ($bagtype as $type) { ?>
-                                                  <option value="<?php echo $type->id; ?>"><?php echo $type->bag_type; ?></option>
+                                                  <option value="<?php echo $type->id; ?>" <?php echo (isset($price->bag_type) && $price->bag_type == $type->id) ? 'selected' : '' ; ?>><?php echo $type->bag_type; ?></option>
                                                 <?php } ?>
                                               <?php } else { ?>
                                                 <option value="">No records found</option>
@@ -49,7 +49,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Bag Layout</label>
-                                            <select class="form-control" name="bag_layout" id="bag_layout">
+                                            <select class="form-control" name="bag_layout" id="bag_layout" data-size="<?php echo (isset($price->bag_size)) ? $price->bag_size : '' ; ?>">
                                                 <option value="">Select</option>
                                             </select>
                                         </div>
@@ -73,23 +73,26 @@
                                     <div class="col-md-2">
                                       <div class="form-group">
                                         <label>Printing cost</label>
-                                        <input type="text" class="form-control" name="printing_cost" id="printing_cost" value="">
+                                        <input type="text" class="form-control" name="printing_cost" id="printing_cost" value="<?php echo (isset($price->printing_cost)) ? $price->printing_cost : '' ; ?>">
                                       </div>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <label>Bags per KG</label>
-                                            <input type="text" class="form-control" name="bags_per_kg" id="bags_per_kg" value="0" readonly>
+                                            <input type="text" class="form-control" name="bags_per_kg" id="bags_per_kg" value="<?php echo (isset($price->bags_per_kg)) ? $price->bags_per_kg : 0 ; ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <label>Cost per Bag for Single Color</label>
-                                            <input type="text" class="form-control" name="cost_per_bag" id="cost_per_bag" value="0" readonly>
+                                            <input type="text" class="form-control" name="cost_per_bag" id="cost_per_bag" value="<?php echo (isset($price->cost_per_kg)) ? $price->cost_per_kg : 0 ; ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="clearfix">&nbsp;</div>
                                     <div class="col-md-6">
+                                        <?php if (isset($price->id)) { ?>
+                                          <input type="hidden" name="id" value="<?php echo (isset($price->id)) ? $price->id: '' ; ?>">
+                                        <?php } ?>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </div>
@@ -145,7 +148,7 @@
               $('#bag_layout').html(data);
             }
           });
-        });
+        }).trigger('change');
         //ajax call for bag size by bag layout
         $('#bag_layout').on('change',function(){
          var bag_layout = $(this).val();
@@ -159,7 +162,7 @@
              $('#bag_size').html(data);
            }
          });
-        });
+       }).trigger('change');
         //ajax call for bag size by bag layout
         $('#bag_size').on('change',function(){
          var bag_size = $(this).val();
@@ -172,7 +175,7 @@
              $('#bag_gsm').html(data);
            }
          });
-        });
+       }).trigger('change');
         //price calculation
         $('#printing_cost').on('keyup',function(){
           if ($('#bag_type').find('option:selected').text() == 'Dcut') {
@@ -196,7 +199,7 @@
             var final_cost_per_bag = cost_per_bag_value + (cost_per_bag_value * percentage) + (parseInt(printing_cost));
             $('#cost_per_bag').val(final_cost_per_bag.toFixed(2));
           }
-        });
+        }).trigger('keyup');
       });
     </script>
 </body>

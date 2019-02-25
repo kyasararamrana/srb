@@ -59,50 +59,38 @@
                                         <tr>
                                             <th>S.No</th>
                                             <th>Bag Type</th>
+                                            <th>Bag Layout</th>
                                             <th>Bag Size</th>
-                                            <th>GSM</th>
+                                            <th>Bag GSM</th>
                                             <th>Bags per KG</th>
                                             <th>Cost per Bag for Single Color</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                      <?php if (count($price) > 0) { ?>
+                                        <?php $sno = 1; ?>
+                                        <?php foreach ($price as $p) { ?>
+                                          <tr>
+                                              <td><?php echo $sno; ?></td>
+                                              <td><?php echo $p->bag_type; ?></td>
+                                              <td><?php echo $p->bag_layout; ?></td>
+                                              <td><?php echo $p->bag_size; ?></td>
+                                              <td><?php echo $p->bag_gsm; ?></td>
+                                              <td><?php echo $p->bags_per_kg; ?></td>
+                                              <td><?php echo $p->cost_per_bag; ?></td>
+                                              <td>
+                                                  <a href="<?php echo base_url('price/edit/'.$p->id); ?>" type="button" class="btn btn-info mr-10"><i class="fa fa-edit"></i></a>
+                                                  <a href="<?php echo base_url('price/delete/'.$p->id); ?>" type="button" class="btn btn-danger mr-10 confirmation"><i class="fa fa-trash-o"></i></a>
+                                              </td>
+                                          </tr>
+                                        <?php $sno++; ?>
+                                        <?php } ?>
+                                      <?php } else { ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>
-                                                <a href="#" type="button" class="btn btn-info mr-10"><i class="fa fa-edit"></i></a>
-                                                <a href="#" type="button" class="btn btn-danger mr-10 confirmation"><i class="fa fa-trash-o"></i></a>
-                                            </td>
+                                          <td colspan="7" class="text-center">No records found</td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>
-                                                <a href="#" type="button" class="btn btn-info mr-10"><i class="fa fa-edit"></i></a>
-                                                <a href="#" type="button" class="btn btn-danger mr-10 confirmation"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>
-                                                <a href="#" type="button" class="btn btn-info mr-10"><i class="fa fa-edit"></i></a>
-                                                <a href="#" type="button" class="btn btn-danger mr-10 confirmation"><i class="fa fa-trash-o"></i></a>
-                                            </td>
-                                        </tr>
+                                      <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
