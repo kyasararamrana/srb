@@ -66,6 +66,7 @@ class Admin_Model extends CI_Model
   {
     $this->db->order_by('created_on','desc');
     $this->db->order_by('updated_on','desc');
+    $this->db->where('created_by',$this->session->userdata('id'));
     return $this->db->get_where($this->table,array('status !=' => '0'))->result();
   }
   //get user by id

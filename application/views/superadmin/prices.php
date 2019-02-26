@@ -64,6 +64,7 @@
                                             <th>Bag GSM</th>
                                             <th>Bags per KG</th>
                                             <th>Cost per Bag for Single Color</th>
+                                            <th>Cost per kg</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -79,6 +80,7 @@
                                               <td><?php echo $p->bag_gsm; ?></td>
                                               <td><?php echo $p->bags_per_kg; ?></td>
                                               <td><?php echo $p->cost_per_bag; ?></td>
+                                              <td><?php echo $p->cost_per_kg; ?></td>
                                               <td>
                                                   <a href="<?php echo base_url('price/edit/'.$p->id); ?>" type="button" class="btn btn-info mr-10"><i class="fa fa-edit"></i></a>
                                                   <a href="<?php echo base_url('price/delete/'.$p->id); ?>" type="button" class="btn btn-danger mr-10 confirmation"><i class="fa fa-trash-o"></i></a>

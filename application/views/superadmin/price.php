@@ -70,22 +70,52 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Handle Rate</label>
+                                            <input type="text" class="form-control" name="handle_rate" id="handle_rate" value="<?php echo (isset($price->handle_rate)) ? $price->handle_rate : '' ; ?>">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Zip Rate</label>
+                                            <input type="text" class="form-control" name="zip_rate" id="zip_rate" value="<?php echo (isset($price->zip_rate)) ? $price->zip_rate : '' ; ?>">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Other Charges</label>
+                                            <input type="text" class="form-control" name="other_charges" id="other_charges" value="<?php echo (isset($price->other_charges)) ? $price->other_charges : '' ; ?>">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                      <div class="form-group">
+                                        <label>Minimum Quantity</label>
+                                        <input type="text" class="form-control" name="minimum_quantity" id="minimum_quantity" value="<?php echo (isset($price->minimum_quantity)) ? $price->minimum_quantity : '' ; ?>">
+                                      </div>
+                                    </div>
+                                    <div class="col-md-3">
                                       <div class="form-group">
                                         <label>Printing cost</label>
                                         <input type="text" class="form-control" name="printing_cost" id="printing_cost" value="<?php echo (isset($price->printing_cost)) ? $price->printing_cost : '' ; ?>">
                                       </div>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Bags per KG</label>
                                             <input type="text" class="form-control" name="bags_per_kg" id="bags_per_kg" value="<?php echo (isset($price->bags_per_kg)) ? $price->bags_per_kg : 0 ; ?>" readonly>
                                         </div>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Cost per Bag for Single Color</label>
-                                            <input type="text" class="form-control" name="cost_per_bag" id="cost_per_bag" value="<?php echo (isset($price->cost_per_kg)) ? $price->cost_per_kg : 0 ; ?>" readonly>
+                                            <input type="text" class="form-control" name="cost_per_bag" id="cost_per_bag" value="<?php echo (isset($price->cost_per_bag)) ? $price->cost_per_bag : 0 ; ?>" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Cost per kg</label>
+                                            <input type="text" class="form-control" name="cost_per_kg" id="cost_per_kg" value="<?php echo (isset($price->cost_per_kg)) ? $price->cost_per_kg : 0 ; ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="clearfix">&nbsp;</div>
@@ -151,18 +181,18 @@
         }).trigger('change');
         //ajax call for bag size by bag layout
         $('#bag_layout').on('change',function(){
-         var bag_layout = $(this).val();
-         var size = $(this).data('size');
-         $('#bag_size').html('<option value="">loading...</option>');
-         $.ajax({
-           url:'<?php echo base_url('bag/get_bagsize_by_baglayout'); ?>',
-           type:'post',
-           data:{'bag_layout':bag_layout,'size':size},
-           success:function(data){
-             $('#bag_size').html(data);
-           }
-         });
-       }).trigger('change');
+          var bag_layout = $(this).val();
+          var size = $(this).data('size');
+          $('#bag_size').html('<option value="">loading...</option>');
+          $.ajax({
+            url:'<?php echo base_url('bag/get_bagsize_by_baglayout'); ?>',
+            type:'post',
+            data:{'bag_layout':bag_layout,'size':size},
+            success:function(data){
+              $('#bag_size').html(data);
+            }
+          });
+        }).trigger('change');
         //ajax call for bag size by bag layout
         $('#bag_size').on('change',function(){
          var bag_size = $(this).val();
@@ -182,6 +212,10 @@
             var bag_size = $('#bag_size').find('option:selected').text().split('*');
             var bag_gsm = $('#bag_gsm').find('option:selected').text();
             var printing_cost = $('#printing_cost').val();
+            var handle_rate = $('#handle_rate').val();
+            var zip_rate = $('#zip_rate').val();
+            var other_charges = $('#other_charges').val();
+            var minimum_quantity = $('#minimum_quantity').val();
             var additional_gsm = 3;
             var percentage = 0.45;
             var cost_per_kg = 170;
@@ -198,6 +232,9 @@
             var cost_per_bag_value = cost_per_bag_formula;
             var final_cost_per_bag = cost_per_bag_value + (cost_per_bag_value * percentage) + (parseInt(printing_cost));
             $('#cost_per_bag').val(final_cost_per_bag.toFixed(2));
+            //cost per kg
+            cost_per_kg = cost_per_kg + (no_of_bags_per_kg * (parseInt(handle_rate) + parseInt(zip_rate) + parseInt(other_charges) + parseInt(minimum_quantity)));
+            $('#cost_per_kg').val(cost_per_kg.toFixed(2));
           }
         }).trigger('keyup');
       });
