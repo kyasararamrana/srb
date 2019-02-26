@@ -214,7 +214,7 @@ class Bag extends CI_Controller
     $bag_size = $this->input->post('bag_size');
     if ($bag_size) {
       $result = $this->Baggsm_Model->get_baggsm_by_bagsize($bag_size);
-      if ($result) {
+      if (count($result) > 0) {
         echo '<option value="">Select</option>';
         foreach($result as $res) {
           echo '<option value="'.$res->id.'">'.$res->bag_gsm.'</option>';

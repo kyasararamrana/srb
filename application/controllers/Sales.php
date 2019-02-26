@@ -4,7 +4,7 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Salesmanagement extends CI_Controller
+class Sales extends CI_Controller
 {
 
   function __construct()
@@ -12,7 +12,14 @@ class Salesmanagement extends CI_Controller
     parent::__construct();
     $this->load->library('form_validation');
     $this->load->library('user_agent');
-    $this->load->model('Color_Model');
+    $this->load->model('Bagtype_Model');
+    $this->load->model('Bagcolor_Model');
+    $this->load->model('Printingmethod_Model');
+    $this->load->model('Printingcolortype_Model');
+    $this->load->model('Printingstyle_Model');
+    $this->load->model('Suggestedprintingcolor_Model');
+    $this->load->model('Printinglanguage_Model');
+    $this->load->model('Handle_Model');
   }
   //Orders List
   public function orderslist()
@@ -20,43 +27,50 @@ class Salesmanagement extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Orders';
         $data = components($arg);
-      $this->load->view('salesmanagement/orderslist',$data);
+      $this->load->view('sales/orderslist',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
-  //Order Details  
+  //Order Details
   public function orderdetails()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Order Details';
         $data = components($arg);
-      $this->load->view('salesmanagement/order_details',$data);
+      $this->load->view('sales/order_details',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
-  //Order Form    
-  public function orderform()
+  //Order Form (view)
+  public function create()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Order Form';
-        $data = components($arg);
-      $this->load->view('salesmanagement/order_form',$data);
+      $arg['pageTitle'] = 'Order';
+      $data = components($arg);
+      $data['bagtype'] = $this->Bagtype_Model->get_active_bagtype();
+      $data['bagcolor'] = $this->Bagcolor_Model->get_active_bagcolor();
+      $data['printingmethod'] = $this->Printingmethod_Model->get_active_printingmethod();
+      $data['printingcolortype'] = $this->Printingcolortype_Model->get_active_printingcolortype();
+      $data['printingstyle'] = $this->Printingstyle_Model->get_active_printingstyle();
+      $data['suggestedprintingcolor'] = $this->Suggestedprintingcolor_Model->get_active_suggestedprintingcolor();
+      $data['printinglanguage'] = $this->Printinglanguage_Model->get_active_printinglanguage();
+      $this->load->view('sales/order',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
-  //Price List 
+  //Price List
   public function pricelist()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Order Form';
         $data = components($arg);
-      $this->load->view('salesmanagement/price_list',$data);
+      $this->load->view('sales/price_list',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
@@ -68,7 +82,7 @@ class Salesmanagement extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Wishlist';
         $data = components($arg);
-      $this->load->view('salesmanagement/wishlist',$data);
+      $this->load->view('sales/wishlist',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
@@ -80,7 +94,7 @@ class Salesmanagement extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Wishlist';
         $data = components($arg);
-      $this->load->view('salesmanagement/wishlist_item_view',$data);
+      $this->load->view('sales/wishlist_item_view',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
@@ -92,7 +106,7 @@ class Salesmanagement extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Wishlist';
         $data = components($arg);
-      $this->load->view('salesmanagement/edit_wishlist_item',$data);
+      $this->load->view('sales/edit_wishlist_item',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
