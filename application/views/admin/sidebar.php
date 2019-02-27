@@ -332,6 +332,9 @@
           <li><a href="<?php echo base_url('sidepattymodule/orderstock'); ?>">
             <i class="fa fa-shopping-cart"></i> <span>Order Stock</span></a>
           </li>
+          <li><a href="<?php echo base_url('sidepattymodule/printing'); ?>">
+            <i class="fa fa-paint-brush"></i> <span>Printing</span></a>
+          </li>
         <?php } ?>
         <!-- Bag Module -->
         <?php if ($this->session->userdata('role') == 'Bag') { ?>

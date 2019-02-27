@@ -70,4 +70,15 @@ class Sidepattymodule extends CI_Controller
       redirect('login');
     }
   }
+  public function printing()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      $arg['pageTitle'] = 'Printing';
+        $data = components($arg);
+      $this->load->view('sidepatty/printing',$data);
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('login');
+    }
+  }
 }
