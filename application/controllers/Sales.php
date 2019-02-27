@@ -49,19 +49,24 @@ class Sales extends CI_Controller
   public function create()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Order';
-      $data = components($arg);
-      $data['bagtype'] = $this->Bagtype_Model->get_active_bagtype();
-      $data['bagcolor'] = $this->Bagcolor_Model->get_active_bagcolor();
-      $data['printingmethod'] = $this->Printingmethod_Model->get_active_printingmethod();
-      $data['printingcolortype'] = $this->Printingcolortype_Model->get_active_printingcolortype();
-      $data['printingstyle'] = $this->Printingstyle_Model->get_active_printingstyle();
-      $data['suggestedprintingcolor'] = $this->Suggestedprintingcolor_Model->get_active_suggestedprintingcolor();
-      $data['printinglanguage'] = $this->Printinglanguage_Model->get_active_printinglanguage();
-      $this->load->view('sales/order',$data);
+      if ($this->session->userdata('role') == 'Sales') {
+        $arg['pageTitle'] = 'Order';
+        $data = components($arg);
+        $data['bagtype'] = $this->Bagtype_Model->get_active_bagtype();
+        $data['bagcolor'] = $this->Bagcolor_Model->get_active_bagcolor();
+        $data['printingmethod'] = $this->Printingmethod_Model->get_active_printingmethod();
+        $data['printingcolortype'] = $this->Printingcolortype_Model->get_active_printingcolortype();
+        $data['printingstyle'] = $this->Printingstyle_Model->get_active_printingstyle();
+        $data['suggestedprintingcolor'] = $this->Suggestedprintingcolor_Model->get_active_suggestedprintingcolor();
+        $data['printinglanguage'] = $this->Printinglanguage_Model->get_active_printinglanguage();
+        $this->load->view('sales/order',$data);
+      } else {
+        $this->session->set_flashdata('error','Sorry, you can\'t access');
+        redirect('admin');
+      }
     } else {
       $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
+      redirect('admin/login');
     }
   }
   //Price List

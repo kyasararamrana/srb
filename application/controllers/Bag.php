@@ -212,12 +212,14 @@ class Bag extends CI_Controller
   public function get_baggsm_by_bagsize()
   {
     $bag_size = $this->input->post('bag_size');
+    $gsm = $this->input->post('gsm');
     if ($bag_size) {
       $result = $this->Baggsm_Model->get_baggsm_by_bagsize($bag_size);
       if (count($result) > 0) {
         echo '<option value="">Select</option>';
         foreach($result as $res) {
-          echo '<option value="'.$res->id.'">'.$res->bag_gsm.'</option>';
+          $selected = (isset($gsm) && ($gsm == $res->id)) ? "selected":"";
+          echo '<option value="'.$res->id.'" '.$selected.'>'.$res->bag_gsm.'</option>';
         }
         exit(0);
       } else {

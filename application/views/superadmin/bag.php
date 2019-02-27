@@ -77,7 +77,7 @@
                                             <div class="form-group">
                                                 <label>Bag Size</label>
                                                 <!-- <input type="text" class="form-control" name="bsize" id=""> -->
-                                                <select class="form-control" name="bag_size" id="bag_size">
+                                                <select class="form-control" name="bag_size" id="bag_size" data-gsm="<?php echo (isset($bag->bag_gsm)) ? $bag->bag_gsm : '' ; ?>">
                                                   <option value="">Select</option>
                                                 </select>
                                             </div>
@@ -400,37 +400,50 @@
             type:'post',
             data:{'bag_type':bag_type,'layout':layout},
             success:function(data){
-              $('#bag_layout').html(data);
+              if (data) {
+                $('#bag_layout').html(data).trigger('change');
+              } else {
+                $('#bag_layout').html('<option value="">Select</option>');
+              }
             }
           });
         }).trigger('change');
         //ajax call for bag size by bag layout
         $('#bag_layout').on('change',function(){
-         var bag_layout = $(this).val();
-         var size = $(this).data('size');
-         $('#bag_size').html('<option value="">loading...</option>');
-         $.ajax({
-           url:'<?php echo base_url('bag/get_bagsize_by_baglayout'); ?>',
-           type:'post',
-           data:{'bag_layout':bag_layout,'size':size},
-           success:function(data){
-             $('#bag_size').html(data);
-           }
-         });
-        }).trigger('change');
+          var bag_layout = $(this).val();
+          var size = $(this).data('size');
+          $('#bag_size').html('<option value="">loading...</option>');
+          $.ajax({
+            url:'<?php echo base_url('bag/get_bagsize_by_baglayout'); ?>',
+            type:'post',
+            data:{'bag_layout':bag_layout,'size':size},
+            success:function(data){
+              if (data) {
+                $('#bag_size').html(data).trigger('change');
+              } else {
+                $('#bag_size').html('<option value="">Select</option>');
+              }
+            }
+          });
+        });
         //ajax call for bag size by bag layout
         $('#bag_size').on('change',function(){
-         var bag_size = $(this).val();
-         $('#bag_gsm').html('<option value="">loading...</option>');
-         $.ajax({
-           url:'<?php echo base_url('bag/get_baggsm_by_bagsize'); ?>',
-           type:'post',
-           data:{'bag_size':bag_size},
-           success:function(data){
-             $('#bag_gsm').html(data);
-           }
-         });
-        }).trigger('change');
+          var bag_size = $(this).val();
+          var gsm = $(this).data('gsm');
+          $('#bag_gsm').html('<option value="">loading...</option>');
+          $.ajax({
+            url:'<?php echo base_url('bag/get_baggsm_by_bagsize'); ?>',
+            type:'post',
+            data:{'bag_size':bag_size,'gsm':gsm},
+            success:function(data){
+              if (data) {
+                $('#bag_gsm').html(data);
+              } else {
+                $('#bag_gsm').html('<option value="">Select</option>');
+              }
+            }
+          });
+        });
       });
     </script>
 </body>
