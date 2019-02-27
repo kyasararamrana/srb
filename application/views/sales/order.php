@@ -28,7 +28,7 @@
                     <div class="col-md-12">
                         <div class="box box-success">
                             <!-- form start -->
-                            <form method="post" id="editOrderForm" action="">
+                            <form method="post" id="editOrderForm" action="<?php echo base_url('sales/insert'); ?>">
                                 <div class="box-body">
                                     <div class="panel panel-default">
                                         <div class="panel-body">
@@ -55,7 +55,7 @@
                                                         </a>
                                                     </li>
                                                 </ul>
-                                                <form role="form">
+                                                <!-- <form role="form"> -->
                                                     <div class="tab-content">
                                                         <div class="tab-pane fade in active" role="tabpanel" id="stepper-step-1">
                                                             <div class="row">
@@ -63,11 +63,11 @@
                                                                     <h4 class="mt-0 text-aqua">Bag Section</h4>
                                                                 </div>
                                                                 <!-- col -->
-                                                                <!-- <div class="col-md-4">
+                                                                <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Material Type</label>
-                                                                        <select class="form-control" name="mtype">
-                                                                          <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="material_type">
+                                                                          <option value="">Select</option>
                                                                           <option value="1">Option</option>
                                                                           <option value="2">Option</option>
                                                                           <option value="3">Option</option>
@@ -84,11 +84,11 @@
                                                                             <option value="3">Option</option>
                                                                         </select>
                                                                     </div>
-                                                                </div> -->
+                                                                </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Bag Type</label>
-                                                                        <select class="form-control" name="btype" id="bag_type">
+                                                                        <select class="form-control" name="bag_type" id="bag_type">
                                                                           <option value="">Select</option>
                                                                           <?php if (count($bagtype) > 0) { ?>
                                                                             <?php foreach ($bagtype as $type) { ?>
@@ -103,7 +103,7 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Layout</label>
-                                                                        <select class="form-control" name="layout" id="bag_layout">
+                                                                        <select class="form-control" name="bag_layout" id="bag_layout">
                                                                             <option value="">Select</option>
                                                                         </select>
                                                                     </div>
@@ -111,7 +111,7 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Bag Size</label>
-                                                                        <select class="form-control" name="bsize" id="bag_size">
+                                                                        <select class="form-control" name="bag_size" id="bag_size">
                                                                             <option value="">Select</option>
                                                                         </select>
                                                                     </div>
@@ -119,7 +119,7 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Bag Color</label>
-                                                                        <select class="form-control" name="bcolor">
+                                                                        <select class="form-control" name="bag_color" id="bag_color">
                                                                           <option value="">Select</option>
                                                                             <?php if (count($bagcolor) > 0) { ?>
                                                                               <?php foreach ($bagcolor as $color) { ?>
@@ -135,8 +135,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Bag GSM</label>
-                                                                        <select class="form-control" name="bgsm" id="bag_gsm">
-                                                                            <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="bag_gsm" id="bag_gsm">
+                                                                            <option value="">Select</option>
                                                                             <option value="1">Option</option>
                                                                             <option value="2">Option</option>
                                                                             <option value="3">Option</option>
@@ -153,8 +153,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Handle Type</label>
-                                                                        <select class="form-control" name="handletype">
-                                                                            <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="handle_type">
+                                                                            <option value="">Select</option>
                                                                             <option value="1">Option</option>
                                                                             <option value="2">Option</option>
                                                                             <option value="3">Option</option>
@@ -164,8 +164,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Handle Material Type</label>
-                                                                        <select class="form-control" name="handlematerialtype">
-                                                                            <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="handle_material_type">
+                                                                            <option value="">Select</option>
                                                                             <option value="1">Option</option>
                                                                             <option value="2">Option</option>
                                                                             <option value="3">Option</option>
@@ -175,8 +175,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Handle Size</label>
-                                                                        <select class="form-control" name="handlesize">
-                                                                            <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="handle_size">
+                                                                            <option value="">Select</option>
                                                                             <option value="1">Option</option>
                                                                             <option value="2">Option</option>
                                                                             <option value="3">Option</option>
@@ -186,8 +186,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Handle Color</label>
-                                                                        <select class="form-control" name="handlecolor">
-                                                                            <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="handle_color">
+                                                                            <option value="">Select</option>
                                                                             <option value="1">Option</option>
                                                                             <option value="2">Option</option>
                                                                             <option value="3">Option</option>
@@ -197,8 +197,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Handle GSM</label>
-                                                                        <select class="form-control" name="handlegsm">
-                                                                            <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="handle_gsm">
+                                                                            <option value="">Select</option>
                                                                             <option value="1">Option</option>
                                                                             <option value="2">Option</option>
                                                                             <option value="3">Option</option>
@@ -215,8 +215,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Sidepatty Type</label>
-                                                                        <select class="form-control" name="sidepattytype">
-                                                                            <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="sidepatty_type">
+                                                                            <option value="">Select</option>
                                                                             <option value="1">Option</option>
                                                                             <option value="2">Option</option>
                                                                             <option value="3">Option</option>
@@ -226,8 +226,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Sidepatty Size</label>
-                                                                        <select class="form-control" name="sidepattysize">
-                                                                            <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="sidepatty_size">
+                                                                            <option value="">Select</option>
                                                                             <option value="1">Option</option>
                                                                             <option value="2">Option</option>
                                                                             <option value="3">Option</option>
@@ -237,8 +237,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Sidepatty Color</label>
-                                                                        <select class="form-control" name="sidepattycolor">
-                                                                            <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="sidepatty_color">
+                                                                            <option value="">Select</option>
                                                                             <option value="1">Option</option>
                                                                             <option value="2">Option</option>
                                                                             <option value="3">Option</option>
@@ -248,8 +248,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Sidepatty GSM</label>
-                                                                        <select class="form-control" name="sidepattygsm">
-                                                                            <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="sidepatty_gsm">
+                                                                            <option value="">Select</option>
                                                                             <option value="1">Option</option>
                                                                             <option value="2">Option</option>
                                                                             <option value="3">Option</option>
@@ -259,8 +259,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Sidepatty Printing</label>
-                                                                        <select class="form-control" name="sidepattyprint">
-                                                                            <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="sidepatty_printing">
+                                                                            <option value="">Select</option>
                                                                             <option value="1">Option</option>
                                                                             <option value="2">Option</option>
                                                                             <option value="3">Option</option>
@@ -270,8 +270,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Sidepatty Printing Color</label>
-                                                                        <select class="form-control" name="sidepattyprintcolor">
-                                                                            <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="sidepatty_printing_color">
+                                                                            <option value="">Select</option>
                                                                             <option value="1">Option</option>
                                                                             <option value="2">Option</option>
                                                                             <option value="3">Option</option>
@@ -288,8 +288,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Zip Type</label>
-                                                                        <select class="form-control" name="ziptype">
-                                                                            <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="zip_type">
+                                                                            <option value="">Select</option>
                                                                             <option value="1">Option</option>
                                                                             <option value="2">Option</option>
                                                                             <option value="3">Option</option>
@@ -299,8 +299,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Zip Color</label>
-                                                                        <select class="form-control" name="zipcolor">
-                                                                            <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="zip_color">
+                                                                            <option value="">Select</option>
                                                                             <option value="1">Option</option>
                                                                             <option value="2">Option</option>
                                                                             <option value="3">Option</option>
@@ -310,8 +310,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Zip Size</label>
-                                                                        <select class="form-control" name="zipsize">
-                                                                            <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="zip_size">
+                                                                            <option value="">Select</option>
                                                                             <option value="1">Option</option>
                                                                             <option value="2">Option</option>
                                                                             <option value="3">Option</option>
@@ -321,8 +321,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Zip Quality</label>
-                                                                        <select class="form-control" name="zipquality">
-                                                                            <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="zip_quality">
+                                                                            <option value="">Select</option>
                                                                             <option value="1">Option</option>
                                                                             <option value="2">Option</option>
                                                                             <option value="3">Option</option>
@@ -337,8 +337,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Stitching Type</label>
-                                                                        <select class="form-control" name="stitchtype">
-                                                                            <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="stitching_type">
+                                                                            <option value="">Select</option>
                                                                             <option value="1">Option</option>
                                                                             <option value="2">Option</option>
                                                                             <option value="3">Option</option>
@@ -348,8 +348,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Stitching Thread Color</label>
-                                                                        <select class="form-control" name="stitchcolor">
-                                                                            <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="stitching_thread_color">
+                                                                            <option value="">Select</option>
                                                                             <option value="1">Option</option>
                                                                             <option value="2">Option</option>
                                                                             <option value="3">Option</option>
@@ -359,8 +359,8 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Stitching Design</label>
-                                                                        <select class="form-control" name="stitchdesign">
-                                                                            <option value="" selected disabled>Select</option>
+                                                                        <select class="form-control" name="stitching_design">
+                                                                            <option value="">Select</option>
                                                                             <option value="1">Option</option>
                                                                             <option value="2">Option</option>
                                                                             <option value="3">Option</option>
@@ -375,7 +375,7 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Printing Method</label>
-                                                                        <select class="form-control" name="printmethod">
+                                                                        <select class="form-control" name="printing_method">
                                                                             <option value="">Select</option>
                                                                             <?php if (count($printingmethod) > 0) { ?>
                                                                               <?php foreach ($printingmethod as $method) { ?>
@@ -390,7 +390,7 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Printing Color Type</label>
-                                                                        <select class="form-control" name="printcolor">
+                                                                        <select class="form-control" name="printing_color_type">
                                                                           <option value="">Select</option>
                                                                           <?php if (count($printingcolortype) > 0) { ?>
                                                                             <?php foreach ($printingcolortype as $colortype) { ?>
@@ -405,7 +405,7 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Printing Style</label>
-                                                                        <select class="form-control" name="printstyle">
+                                                                        <select class="form-control" name="printing_style">
                                                                           <option value="">Select</option>
                                                                           <?php if (count($printingstyle) > 0) { ?>
                                                                             <?php foreach ($printingstyle as $style) { ?>
@@ -420,7 +420,7 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Suggested Printing color</label>
-                                                                        <select class="form-control" name="sugprintcolor">
+                                                                        <select class="form-control" name="suggested_printing_color">
                                                                           <option value="">Select</option>
                                                                           <?php if (count($suggestedprintingcolor) > 0) { ?>
                                                                             <?php foreach ($suggestedprintingcolor as $suggested) { ?>
@@ -435,7 +435,7 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Printing Language</label>
-                                                                        <select class="form-control" name="lang">
+                                                                        <select class="form-control" name="printing_language">
                                                                             <option value="">Select</option>
                                                                             <?php if (count($printinglanguage) > 0) { ?>
                                                                               <?php foreach ($printinglanguage as $language) { ?>
@@ -456,19 +456,19 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Other Charges</label>
-                                                                        <input type="text" class="form-control" name="othercharge">
+                                                                        <input type="text" class="form-control" name="other_charges">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Printing Cost</label>
-                                                                        <input type="text" class="form-control" name="printcost">
+                                                                        <input type="text" class="form-control" name="printing_cost">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Block Charges</label>
-                                                                        <input type="text" class="form-control" name="blockcharge">
+                                                                        <input type="text" class="form-control" name="block_charges">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -492,13 +492,13 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Cost per Kg</label>
-                                                                        <input type="text" class="form-control" name="costperkg">
+                                                                        <input type="text" class="form-control" name="cost_per_kg">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Total Cost</label>
-                                                                        <input type="text" class="form-control" name="totalcost">
+                                                                        <input type="text" class="form-control" name="total_cost">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -506,11 +506,11 @@
                                                                 <li>
                                                                     <a class="btn btn-default prev-step">Previous</a>
                                                                 </li>
-                                                                <li>
+                                                                <!-- <li>
                                                                     <a href="<?php echo base_url('salesmanagement/wishlist'); ?>" class="btn btn-info">Add to Wishlist</a>
-                                                                </li>
+                                                                </li> -->
                                                                 <li>
-                                                                    <a class="btn btn-primary next-step">Order Now</a>
+                                                                    <a class="btn btn-primary next-step">Next</a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -523,19 +523,19 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Customer Name</label>
-                                                                        <input type="text" class="form-control" name="cname" placeholder="Name of the Customer">
+                                                                        <input type="text" class="form-control" name="customer_name" placeholder="Name of the Customer">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Shop Name</label>
-                                                                        <input type="text" class="form-control" name="shopname" placeholder="Name of the Customer">
+                                                                        <input type="text" class="form-control" name="shop_name" placeholder="Name of the Customer">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Email</label>
-                                                                        <input type="text" class="form-control" name="cemail" placeholder="Enter Email">
+                                                                        <input type="text" class="form-control" name="customer_email" placeholder="Enter Email">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
@@ -547,43 +547,43 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>GST / Aadhar Number</label>
-                                                                        <input type="text" class="form-control" name="mobile" placeholder="Enter GST / Aadhar Number">
+                                                                        <input type="text" class="form-control" name="gst_aadhar_number" placeholder="Enter GST / Aadhar Number">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Whatsapp Number</label>
-                                                                        <input type="text" class="form-control" name="mobile" placeholder="Enter Whatsapp Number">
+                                                                        <input type="text" class="form-control" name="whatsapp_number" placeholder="Enter Whatsapp Number">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Main Address</label>
-                                                                        <input type="text" class="form-control" name="mainaddress" placeholder="Address Line..">
+                                                                        <input type="text" class="form-control" name="main_address" placeholder="Address Line..">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Shipping Address</label>
-                                                                        <input type="text" class="form-control" name="shippingaddress" placeholder="Address Line..">
+                                                                        <input type="text" class="form-control" name="shipping_address" placeholder="Address Line..">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>City</label>
-                                                                        <input type="text" class="form-control" name="quantity" placeholder="Name of the City">
+                                                                        <input type="text" class="form-control" name="city" placeholder="Name of the City">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>State</label>
-                                                                        <input type="text" class="form-control" name="cost" placeholder="Name of the State">
+                                                                        <input type="text" class="form-control" name="state" placeholder="Name of the State">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Zipcode</label>
-                                                                        <input type="text" class="form-control" name="orderdate" placeholder="Enter Zipcode">
+                                                                        <input type="text" class="form-control" name="zip_code" placeholder="Enter Zipcode">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -591,8 +591,13 @@
                                                                 <li>
                                                                     <a class="btn btn-default prev-step">Previous</a>
                                                                 </li>
+                                                                <li class="checkbox">
+                                                                    <!-- <a class="btn btn-default prev-step">Previous</a> -->
+                                                                    <label><input type="checkbox" id="wishlist" name="wishlist" value="1"> Add to Wishlist</label>
+                                                                </li>
                                                                 <li>
-                                                                    <a class="btn btn-primary next-step">Place Order</a>
+                                                                    <!-- <a class="btn btn-primary next-step">Place Order</a> -->
+                                                                    <button type="submit" class="btn btn-primary" id="place_order">Place Order</button>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -601,7 +606,7 @@
                                                             <p>You have successfully placed your order.</p>
                                                         </div>
                                                     </div>
-                                                </form>
+                                                <!-- </form> -->
                                             </div>
                                         </div>
                                     </div>
@@ -751,6 +756,14 @@
              }
            });
           }).trigger('change');
+        });
+        //place order button override to wishlist
+        $('#wishlist').on('click',function(){
+          if ($(this).prop('checked') == true) {
+            $('#place_order').text('Add to Wishlist');
+          } else {
+            $('#place_order').text('Place Order');
+          }
         });
     </script>
 </body>
