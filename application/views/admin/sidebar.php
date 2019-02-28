@@ -216,10 +216,10 @@
       <?php } ?>
       <!-- Sales Management -->
       <?php if ($this->session->userdata('role') == 'Sales') { ?>
-        <li><a href="<?php echo base_url('salesmanagement/orderform'); ?>">
+        <li><a href="<?php echo base_url('sales/create'); ?>">
           <i class="fa fa-file-text"></i> <span>Orders Form</span></a>
         </li>
-        <li><a href="<?php echo base_url('salesmanagement/orderslist'); ?>">
+        <li><a href="<?php echo base_url('sales'); ?>">
           <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
         </li>
         <li><a href="<?php echo base_url('salesmanagement/pricelist'); ?>">
@@ -331,6 +331,9 @@
           </li>
           <li><a href="<?php echo base_url('sidepattymodule/orderstock'); ?>">
             <i class="fa fa-shopping-cart"></i> <span>Order Stock</span></a>
+          </li>
+          <li><a href="<?php echo base_url('sidepattymodule/printing'); ?>">
+            <i class="fa fa-paint-brush"></i> <span>Printing</span></a>
           </li>
         <?php } ?>
         <!-- Bag Module -->

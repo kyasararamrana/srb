@@ -20,8 +20,71 @@ class Sales extends CI_Controller
     $this->load->model('Suggestedprintingcolor_Model');
     $this->load->model('Printinglanguage_Model');
     $this->load->model('Handle_Model');
+    $this->load->model('Sales_Model');
+    $this->load->model('Sales_Wishlist_Model');
   }
   //Orders List
+  public function index()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      if ($this->session->userdata('role') == 'Sales') {
+        $arg['pageTitle'] = 'Order';
+        $data = components($arg);
+        $data['orders'] = $this->Sales_Model->get_order();
+        $this->load->view('sales/orders',$data);
+      } else {
+        $this->session->set_flashdata('error','Sorry, you can\'t assess');
+        redirect('admin');
+      }
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
+  }
+  //order details list (view)
+  public function details($id='')
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      if ($this->session->userdata('role') == 'Sales') {
+        $arg['pageTitle'] = 'Order';
+        $data = components($arg);
+        $data['order'] = $this->Sales_Model->get_details_by_id($id);
+        $this->load->view('sales/order_details',$data);
+      } else {
+        $this->session->set_flashdata('error','Sorry, you can\'t assess');
+        redirect('admin');
+      }
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
+  }
+  //delete
+  public function delete($id='')
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      if ($this->session->userdata('role') == 'Sales') {
+        if ($id) {
+          if ($this->Sales_Model->delete($id)) {
+            $this->session->set_flashdata('success','Order deleted successfully');
+            redirect('sales');
+          } else {
+            $this->session->set_flashdata('error','Please try again');
+            redirect($this->agent->referrer());
+          }
+        } else {
+          $this->session->set_flashdata('error','Please try again');
+          redirect($this->agent->referrer());
+        }
+      } else {
+        $this->session->set_flashdata('error','Sorry, you can\'t access');
+        redirect('admin');
+      }
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
+  }
   public function orderslist()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
@@ -69,6 +132,52 @@ class Sales extends CI_Controller
       redirect('admin/login');
     }
   }
+  //insert
+  public function insert()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      if ($this->session->userdata('role') == 'Sales') {
+        $post_data = $this->input->post();
+        $addl_data = array(
+          'created_on' => date('Y-m-d H:i:s'),
+          'created_by' => $this->session->userdata('id')
+        );
+        $post_data = array_merge($post_data, $addl_data);
+        if ($post_data) {
+          if (isset($post_data['wishlist']) && $post_data['wishlist'] == 1) {
+            //adding to wishlist
+            unset($post_data['wishlist']);
+            if ($this->Sales_Wishlist_Model->insert($post_data)) {
+              $this->session->set_flashdata('success','Wishlist created successfully');
+              redirect('sales/wishlist');
+            } else {
+              $this->session->set_flashdata('error','Please try again');
+              redirect($this->agent->referrer());
+            }
+          } else {
+            //placing new order
+            unset($post_data['wishlist']);
+            if ($this->Sales_Model->insert($post_data)) {
+              $this->session->set_flashdata('success','Order created successfully');
+              redirect('sales');
+            } else {
+              $this->session->set_flashdata('error','Please try again');
+              redirect($this->agent->referrer());
+            }
+          }
+        } else {
+          $this->session->set_flashdata('error','Please try again');
+          redirect($this->agent->referrer());
+        }
+      } else {
+        $this->session->set_flashdata('error','Sorry, you can\'t access');
+        redirect('admin');
+      }
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
+  }
   //Price List
   public function pricelist()
   {
@@ -85,12 +194,19 @@ class Sales extends CI_Controller
   public function wishlist()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Wishlist';
+      if ($this->session->userdata('role') == 'Sales') {
+        $arg['pageTitle'] = 'Wishlist';
         $data = components($arg);
-      $this->load->view('sales/wishlist',$data);
+        $data['wishlists'] = $this->Sales_Wishlist_Model->get_wishlist();
+        print_r($data['wishlists']);
+        $this->load->view('sales/wishlist',$data);
+      } else {
+        $this->session->set_flashdata('error','Sorry, you can\'t access');
+        redirect('admin');
+      }
     } else {
       $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
+      redirect('admin/login');
     }
   }
   //Wishlist Item View

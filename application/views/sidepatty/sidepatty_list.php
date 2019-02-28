@@ -47,8 +47,6 @@
                                             <th>Sidepatty Size</th>
                                             <th>Sidepatty Color</th>
                                             <th>Sidepatty GSM</th>
-                                            <th>Sidepatty Printing</th>
-                                            <th>Sidepatty Printing Color</th>
                                             <th>Quantity</th>
                                             <th>Action</th>
                                         </tr>
@@ -56,8 +54,6 @@
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>xxxxxxx</td>
-                                            <td>xxxxxxx</td>
                                             <td>xxxxxxx</td>
                                             <td>xxxxxxx</td>
                                             <td>xxxxxxx</td>

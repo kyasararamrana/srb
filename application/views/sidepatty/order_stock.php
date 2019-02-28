@@ -43,12 +43,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Stock Name</label>
-                                            <select name="sname" class="form-control">
-                                                <option value="0" selected disabled>Select</option>
-                                                <option value="1">Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
-                                            </select>
+                                            <input type="text" class="form-control" name="sname" id="" placeholder="Stock Name">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
