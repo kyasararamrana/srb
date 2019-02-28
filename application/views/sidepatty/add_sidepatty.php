@@ -50,8 +50,6 @@
                                                         <th>Size</th>
                                                         <th>Color</th>
                                                         <th>GSM</th>
-                                                        <th>Printing</th>
-                                                        <th>Printing Color</th>
                                                         <th>Quantity</th>
                                                         <th>&nbsp;</th>
                                                     </tr>
@@ -84,22 +82,6 @@
                                                         </td>
                                                         <td>
                                                             <select name="sgsm" class="form-control">
-                                                                <option value="0" selected disabled>Select</option>
-                                                                <option value="1">Option name</option>
-                                                                <option value="2">Option name</option>
-                                                                <option value="3">Option name</option>
-                                                            </select>
-                                                        </td>
-                                                        <td>
-                                                            <select name="sprinting" class="form-control">
-                                                                <option value="0" selected disabled>Select</option>
-                                                                <option value="1">Option name</option>
-                                                                <option value="2">Option name</option>
-                                                                <option value="3">Option name</option>
-                                                            </select>
-                                                        </td>
-                                                        <td>
-                                                            <select name="sprintcolor" class="form-control">
                                                                 <option value="0" selected disabled>Select</option>
                                                                 <option value="1">Option name</option>
                                                                 <option value="2">Option name</option>
@@ -154,11 +136,7 @@
                 cols += '<td><select class="form-control" name="scolor' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
 
                 cols += '<td><select class="form-control" name="sgsm' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
-
-                cols += '<td><select class="form-control" name="sprinting' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
-
-                cols += '<td><select class="form-control" name="sprintcolor' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
-
+                
                 cols += '<td><input type="text" class="form-control" placeholder="Enter Quantity" name="squantity' + counter + '"/></td>';
 
                 cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger"><i class="fa fa-trash"></i></button></td>';

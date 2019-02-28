@@ -88,28 +88,6 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Printing</label>
-                                            <select name="gsm" class="form-control">
-                                                <option value="0" disabled>Select</option>
-                                                <option value="1" selected>Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Printing Color</label>
-                                            <select name="gsm" class="form-control">
-                                                <option value="0" disabled>Select</option>
-                                                <option value="1" selected>Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
                                             <label>Quantity</label>
                                             <input type="text" class="form-control" name="quantity" id="" value="Quantity">
                                         </div>

@@ -103,50 +103,9 @@ class Inventory extends CI_Controller
       redirect('login');
     }
   }
-  public function addvendor()
-  {
-    if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Vendors';
-      $data = components($arg);
-      $this->load->view('inventory/add_vendor',$data);
-    } else {
-      $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
-    }
-  }
-  public function vendorlist()
-  {
-    if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Vendors';
-      $data = components($arg);
-      $this->load->view('inventory/vendor_list',$data);
-    } else {
-      $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
-    }
-  }
-  public function editvendor()
-  {
-    if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Vendors';
-      $data = components($arg);
-      $this->load->view('inventory/edit_vendor',$data);
-    } else {
-      $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
-    }
-  }
-  public function viewvendor()
-  {
-    if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Vendors';
-      $data = components($arg);
-      $this->load->view('inventory/view_vendor',$data);
-    } else {
-      $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
-    }
-  }
+
+  
+  
   //add role
   public function role()
   {

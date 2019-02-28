@@ -254,8 +254,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('inventory/addvendor'); ?>">Add Vendor</a></li>
-            <li><a href="<?php echo base_url('inventory/vendorlist'); ?>">Vendors List</a></li>
+            <li><a href="<?php echo base_url('vendor/add'); ?>">Add Vendor</a></li>
+            <li><a href="<?php echo base_url('vendor/lists'); ?>">Vendors List</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -331,6 +331,9 @@
           </li>
           <li><a href="<?php echo base_url('sidepattymodule/orderstock'); ?>">
             <i class="fa fa-shopping-cart"></i> <span>Order Stock</span></a>
+          </li>
+          <li><a href="<?php echo base_url('sidepattymodule/printing'); ?>">
+            <i class="fa fa-paint-brush"></i> <span>Printing</span></a>
           </li>
         <?php } ?>
         <!-- Bag Module -->
