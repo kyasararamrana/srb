@@ -4,7 +4,7 @@
 */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Inventory extends CI_Controller
+class Vendor extends CI_Controller
 {
 
   function __construct()
@@ -12,7 +12,7 @@ class Inventory extends CI_Controller
     parent::__construct();
     $this->load->library('form_validation');
     $this->load->library('user_agent');
-    $this->load->model('Admin_Model');
+    $this->load->model('Vendor_Model');
   }
   //orders list
   public function orderslist()
@@ -108,7 +108,7 @@ class Inventory extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Vendors';
       $data = components($arg);
-      $this->load->view('inventory/vendor/add',$data);
+      $this->load->view('inventory/add_vendor',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
@@ -119,7 +119,7 @@ class Inventory extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Vendors';
       $data = components($arg);
-      $this->load->view('inventory/list',$data);
+      $this->load->view('inventory/vendor_list',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
