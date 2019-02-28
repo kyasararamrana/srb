@@ -54,21 +54,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+									<?php $cnt=1;foreach($vendor_list as $lis){ ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>SRB00000012</td>
-                                            <td>xxxxxxx</td>
-                                            <td>xxxxxxx</td>
-                                            <td>xxxxxxx</td>
-                                            <td>xxxxxxx</td>
-                                            <td>xxxxxxx</td>
-                                            <td>xxxxxxx</td>
+                                            <td><?php echo $cnt; ?></td>
+                                            <td><?php echo isset($lis->v_u_id)?$lis->v_u_id:''; ?></td>
+                                            <td><?php echo isset($lis->v_name)?$lis->v_name:''; ?></td>
+                                            <td><?php echo isset($lis->v_p_mobile)?$lis->v_p_mobile:''; ?></td>
+                                            <td><?php echo isset($lis->v_p_email)?$lis->v_p_email:''; ?></td>
+                                            <td><?php echo isset($lis->v_address)?$lis->v_address:''; ?></td>
+                                            <td><?php echo isset($lis->v_aadhar_no)?$lis->v_aadhar_no:''; ?></td>
+                                            <td><?php echo isset($lis->v_gst_no)?$lis->v_gst_no:''; ?></td>
+                                           
                                             <td>
-                                                <a href="<?php echo base_url('inventory/viewvendor'); ?>" type="button" class="btn btn-primary btn-sm mr-5"><i class="fa fa-eye"></i></a>
-                                                <a href="<?php echo base_url('inventory/editvendor'); ?>" type="button" class="btn btn-info btn-sm mr-5"><i class="fa fa-edit"></i></a>
-                                                <a href="#" type="button" class="btn btn-danger btn-sm mr-5 confirmation"><i class="fa fa-trash-o"></i></a>
+                                                <a href="<?php echo base_url('vendor/view/'.base64_encode($lis->v_id)); ?>" type="button" class="btn btn-primary btn-sm mr-5"><i class="fa fa-eye"></i></a>
+                                                <a href="<?php echo base_url('vendor/edit/'.base64_encode($lis->v_id)); ?>" type="button" class="btn btn-info btn-sm mr-5"><i class="fa fa-edit"></i></a>
+                                                <a href="<?php echo base_url('vendor/deletes/'.base64_encode($lis->v_id)); ?>" type="button" class="btn btn-danger btn-sm mr-5 confirmation"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
+									<?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -89,7 +92,7 @@
         //confirm message
         $(document).ready(function() {
             $('.confirmation').on('click', function() {
-                return confirm('Are you sure of deleting category?');
+                return confirm('Are you sure of deleting ?');
             });
         });
         //datatables

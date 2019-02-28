@@ -14,196 +14,93 @@ class Vendor extends CI_Controller
     $this->load->library('user_agent');
     $this->load->model('Vendor_Model');
   }
-  //orders list
-  public function orderslist()
+  
+  public function add()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Orders';
+      $arg['pageTitle'] = 'Vendor add';
       $data = components($arg);
-      $this->load->view('inventory/orders_list',$data);
+      $this->load->view('inventory/vendor/add',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
-  public function assignstock()
+  public function lists()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
+      $arg['pageTitle'] = 'Vendor List';
       $data = components($arg);
-      $this->load->view('inventory/assign_stock',$data);
-    } else {
+	  $data['vendor_list']=$this->Vendor_Model->get_vendor_lists($this->session->userdata('id'));
+      $this->load->view('inventory/vendor/list',$data);
+    }else{
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
-  public function addstock()
+  public function view()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
+      $arg['pageTitle'] = 'Vendor view';
       $data = components($arg);
-      $this->load->view('inventory/add_stock',$data);
+	  $data['v_details']=$this->Vendor_Model->get_v_details(base64_decode($this->uri->segment(3)));
+      $this->load->view('inventory/vendor/view',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
-  public function stocklist()
+  
+  public function edit()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
+      $arg['pageTitle'] = 'Vendor edit';
       $data = components($arg);
-      $this->load->view('inventory/stock_list',$data);
+	  $data['v_details']=$this->Vendor_Model->get_v_details(base64_decode($this->uri->segment(3)));
+      $this->load->view('inventory/vendor/edit',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
-  public function editstock()
-  {
-    if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
-      $data = components($arg);
-      $this->load->view('inventory/edit_stock',$data);
-    } else {
-      $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
-    }
-  }
-  public function add_damage_stock()
-  {
-    if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
-      $data = components($arg);
-      $this->load->view('inventory/add_damage_stock',$data);
-    } else {
-      $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
-    }
-  }
-  public function damaged_stock_list()
-  {
-    if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
-      $data = components($arg);
-      $this->load->view('inventory/damaged_stock_list',$data);
-    } else {
-      $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
-    }
-  }
-  public function edit_damage_stock()
-  {
-    if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
-      $data = components($arg);
-      $this->load->view('inventory/edit_damage_stock',$data);
-    } else {
-      $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
-    }
-  }
-  public function addvendor()
-  {
-    if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Vendors';
-      $data = components($arg);
-      $this->load->view('inventory/add_vendor',$data);
-    } else {
-      $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
-    }
-  }
-  public function vendorlist()
-  {
-    if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Vendors';
-      $data = components($arg);
-      $this->load->view('inventory/vendor_list',$data);
-    } else {
-      $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
-    }
-  }
-  public function editvendor()
-  {
-    if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Vendors';
-      $data = components($arg);
-      $this->load->view('inventory/edit_vendor',$data);
-    } else {
-      $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
-    }
-  }
-  public function viewvendor()
-  {
-    if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Vendors';
-      $data = components($arg);
-      $this->load->view('inventory/view_vendor',$data);
-    } else {
-      $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
-    }
-  }
-  //add role
-  public function role()
-  {
-    //print_r($this->session->userdata());
-    if ($this->session->userdata('logged_in') == TRUE) {
-      if ($this->session->userdata('role') == 'Inventory') {
-        $arg['pageTitle'] = 'Roles';
-        $data = components($arg);
-        $this->load->view('inventory/role',$data);
-      } else {
-        $this->session->set_flashdata('error','Sorry, you can\'t access');
-        redirect('admin');
-      }
-    } else {
-      $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
-    }
-  }
-  //insert role
-  public function create()
+ 
+  //insert vendor
+  public function addpost()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       if ($this->session->userdata('role') == 'Inventory') {
         $post_data = $this->input->post();
+		//echo '<pre>';print_r($post_data);exit;
         if ($post_data) {
-          if (isset($_FILES['image']['name']) && $_FILES['image']['name'] != '') {
-            $config['upload_path']   = './assets/uploads/admin/';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_width']     = 128;
-            $config['max_height']    = 128;
-            $config['encrypt_name']  = TRUE;
-            $this->load->library('upload', $config);
-            if ( ! $this->upload->do_upload('image')) {
-              $error = $this->upload->display_errors();
-              $this->session->set_flashdata('error',$error);
-              redirect($this->agent->referrer());
-            } else {
-              $file_name = $this->upload->data('file_name');
-            }
-          }
-          $addl_data = array(
-            'password' => md5($post_data['password']),
-            'org_password' => $post_data['confirmpassword'],
-            'image' => $file_name,
-            'created_on' => date('Y-m-d H:i:s'),
-            'created_by' => $this->session->userdata('id'),
-            'status' => 1
-          );
-          $post_data = array_merge($post_data,$addl_data);
-          unset($post_data['confirmpassword']);
-          if ($this->Admin_Model->insert($post_data)) {
-            $this->session->set_flashdata('success','Role created successfully');
-            redirect('inventory/roles');
-          } else {
-            $this->session->set_flashdata('error','Please try again');
-            redirect($this->agent->referrer());
-          }
+         
+		  if(isset($post_data['v_id'])&& $post_data['v_id']!=''){
+			   $addl_data = array('v_updated_at' => date('Y-m-d H:i:s'));
+		  }else{
+			   $addl_data = array(
+				'v_u_id' => time(),
+					'v_created_at' => date('Y-m-d H:i:s'),
+				'v_created_by' => $this->session->userdata('id'),
+				'v_status' => 1
+			);
+		  }
+			$post_data = array_merge($post_data,$addl_data);
+				if(isset($post_data['v_id'])&& $post_data['v_id']!=''){				 
+				 $save=$this->Vendor_Model->update($post_data['v_id'],$post_data);
+				}else{
+					$save=$this->Vendor_Model->insert($post_data);				 
+				}
+				if(count($save)>0){
+					if(isset($post_data['v_id'])&& $post_data['v_id']!=''){
+					$this->session->set_flashdata('success','Vendor updated successfully');
+					}else{
+						$this->session->set_flashdata('success','Vendor added successfully');
+					}
+					redirect('vendor/lists');
+				} else {
+					$this->session->set_flashdata('error','Please try again');
+					redirect($this->agent->referrer());
+				}
+          
         } else {
           $this->session->set_flashdata('error','Please try again');
           redirect($this->agent->referrer());
@@ -218,14 +115,21 @@ class Vendor extends CI_Controller
     }
   }
   //roles list
-  public function roles()
+  public function deletes()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       if ($this->session->userdata('role') == 'Inventory') {
-        $arg['pageTitle'] = 'Roles';
-        $data = components($arg);
-        $data['users'] = $this->Admin_Model->get_users();
-        $this->load->view('inventory/roles',$data);
+				$addl_data = array(
+				'v_updated_at' => date('Y-m-d H:i:s'),
+				'v_status' => 2
+				);
+			if ($this->Vendor_Model->update(base64_decode($this->uri->segment(3)),$addl_data)){
+				$this->session->set_flashdata('success','Vendor deleted successfully');
+				redirect('vendor/lists');
+			  } else {
+				$this->session->set_flashdata('error','Please try again');
+				redirect($this->agent->referrer());
+			  }
       } else {
         $this->session->set_flashdata('error','Sorry, you can\'t access');
         redirect('admin');
@@ -347,38 +251,6 @@ class Vendor extends CI_Controller
       'valid' => $isAvailable,
     ));
   }
-  //-->
-  public function addrole()
-  {
-    if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Roles';
-      $data = components($arg);
-      $this->load->view('inventory/add_role',$data);
-    } else {
-      $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
-    }
-  }
-  public function roleslist()
-  {
-    if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Roles';
-      $data = components($arg);
-      $this->load->view('inventory/roles_list',$data);
-    } else {
-      $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
-    }
-  }
-  // public function editrole()
-  // {
-  //   if ($this->session->userdata('logged_in') == TRUE) {
-  //     $arg['pageTitle'] = 'Roles';
-  //     $data = components($arg);
-  //     $this->load->view('inventory/edit_role',$data);
-  //   } else {
-  //     $this->session->set_flashdata('error','Please login and try again');
-  //     redirect('login');
-  //   }
-  // }
+ 
+  
 }

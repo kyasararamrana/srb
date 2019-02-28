@@ -22,12 +22,13 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Add Vendor
+                    Edit Vendor Details
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
                     <li>Vendors</li>
-                    <li class="active">Add Vendor</li>
+                    <li><a href="<?php echo base_url('vendor/lists'); ?>">Vendors List</a></li>
+                    <li class="active">Edit Vendor Details</li>
                 </ol>
             </section>
 
@@ -40,18 +41,19 @@
                         <div class="box box-success">
                             <!-- form start -->
                             <form id="addVendorForm" name="addVendorForm" action="<?php echo base_url('vendor/addpost'); ?>" method="POST">
-                                <div class="box-body">
+                                <input type="hidden"  name="v_id" id="v_id" value="<?php echo isset($v_details['v_id'])?$v_details['v_id']:''; ?>">
+								<div class="box-body">
 								<div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Vendor Name</label>
-                                            <input type="text" class="form-control" name="v_name" id="v_name" placeholder="Enter Name">
+                                            <input type="text" class="form-control" name="v_name" id="v_name" value="<?php echo isset($v_details['v_name'])?$v_details['v_name']:''; ?>" placeholder="Enter Name">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Primary Mobile Number</label>
-                                            <input type="text" class="form-control" name="v_p_mobile" id="v_p_mobile" placeholder="Enter Mobile Number">
+                                            <input type="text" class="form-control" name="v_p_mobile" id="v_p_mobile" value="<?php echo isset($v_details['v_p_mobile'])?$v_details['v_p_mobile']:''; ?>" placeholder="Enter Mobile Number">
                                         </div>
                                     </div>
 								</div>
@@ -59,13 +61,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Secondary Mobile Number</label>
-                                            <input type="text" class="form-control" name="v_s_mobile" id="v_s_mobile" placeholder="Enter Mobile Number">
+                                            <input type="text" class="form-control" name="v_s_mobile" id="v_s_mobile" value="<?php echo isset($v_details['v_s_mobile'])?$v_details['v_s_mobile']:''; ?>" placeholder="Enter Mobile Number">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Landline Number</label>
-                                            <input type="text" class="form-control" name="v_landline_no" id="v_landline_no" placeholder="Enter Landline Number">
+                                            <input type="text" class="form-control" name="v_landline_no" id="v_landline_no" value="<?php echo isset($v_details['v_landline_no'])?$v_details['v_landline_no']:''; ?>" placeholder="Enter Landline Number">
                                         </div>
                                     </div>
                                   </div>
@@ -73,13 +75,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Fax No</label>
-                                            <input type="text" class="form-control" name="v_fax_no" id="v_fax_no" placeholder="Enter Fax Number">
+                                            <input type="text" class="form-control" name="v_fax_no" id="v_fax_no" value="<?php echo isset($v_details['v_fax_no'])?$v_details['v_fax_no']:''; ?>" placeholder="Enter Fax Number">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Primary Email Id</label>
-                                            <input type="text" class="form-control" name="v_p_email" id="v_p_email" placeholder="Enter Mail Id">
+                                            <input type="text" class="form-control" name="v_p_email" id="v_p_email" value="<?php echo isset($v_details['v_p_email'])?$v_details['v_p_email']:''; ?>" placeholder="Enter Mail Id">
                                         </div>
                                     </div>
                                   </div>
@@ -87,13 +89,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Secondary Email Id</label>
-                                            <input type="text" class="form-control" name="v_s_email" id="v_s_email" placeholder="Enter Enter Mail Id">
+                                            <input type="text" class="form-control" name="v_s_email" id="v_s_email" value="<?php echo isset($v_details['v_s_email'])?$v_details['v_s_email']:''; ?>" placeholder="Enter Enter Mail Id">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Address</label>
-                                            <input type="text" class="form-control" name="v_address" id="v_address" placeholder="Enter Address">
+                                            <input type="text" class="form-control" name="v_address" id="v_address" value="<?php echo isset($v_details['v_address'])?$v_details['v_address']:''; ?>" placeholder="Enter Address">
                                         </div>
                                     </div>
 								 </div>
@@ -101,13 +103,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>City</label>
-                                            <input type="text" class="form-control" name="v_city" id="v_city" placeholder="Enter City">
+                                            <input type="text" class="form-control" name="v_city" id="v_city" value="<?php echo isset($v_details['v_city'])?$v_details['v_city']:''; ?>" placeholder="Enter City">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>District</label>
-                                            <input type="text" class="form-control" name="v_district" id="v_district" placeholder="Enter District">
+                                            <input type="text" class="form-control" name="v_district" id="v_district" value="<?php echo isset($v_details['v_district'])?$v_details['v_district']:''; ?>" placeholder="Enter District">
                                         </div>
                                     </div>
 								</div>
@@ -119,7 +121,7 @@
                                             <select class="form-control" name="v_state" id="v_state">
                                                  <option value = "">Select State</option>
 												<?php foreach($states as $key=>$state):
-														if(isset($details['v_state']) && $details['hos_rep_state'] == $state):
+														if(isset($v_details['v_state']) && $v_details['v_state'] == $state):
 														$selected ='selected=selected';
 														else : 
 														$selected = '';
@@ -133,7 +135,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Zipcode</label>
-                                            <input type="text" class="form-control" name="v_zipcode" id="v_zipcode" placeholder="Enter Zip Code">
+                                            <input type="text" class="form-control" name="v_zipcode" id="v_zipcode" value="<?php echo isset($v_details['v_zipcode'])?$v_details['v_zipcode']:''; ?>" placeholder="Enter Zip Code">
                                         </div>
                                     </div>
                                   </div>
@@ -141,13 +143,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Bank Account Number</label>
-                                            <input type="text" class="form-control" name="v_bank_acc_no" id="v_bank_acc_no" placeholder="Enter Bank Account Number">
+                                            <input type="text" class="form-control" name="v_bank_acc_no" id="v_bank_acc_no" value="<?php echo isset($v_details['v_bank_acc_no'])?$v_details['v_bank_acc_no']:''; ?>" placeholder="Enter Bank Account Number">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Bank Account Holder Name</label>
-                                            <input type="text" class="form-control" name="v_bank_hold_name" id="v_bank_hold_name" placeholder="Enter Bank Account Holder Name">
+                                            <input type="text" class="form-control" name="v_bank_hold_name" id="v_bank_hold_name" value="<?php echo isset($v_details['v_bank_hold_name'])?$v_details['v_bank_hold_name']:''; ?>" placeholder="Enter Bank Account Holder Name">
                                         </div>
                                     </div>
                                   </div>
@@ -155,13 +157,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>IFSC Code</label>
-                                            <input type="text" class="form-control" name="v_ifsc_code" id="v_ifsc_code" placeholder="Enter IFSC Code">
+                                            <input type="text" class="form-control" name="v_ifsc_code" id="v_ifsc_code" value="<?php echo isset($v_details['v_ifsc_code'])?$v_details['v_ifsc_code']:''; ?>" placeholder="Enter IFSC Code">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Aadhar Number</label>
-                                            <input type="text" class="form-control" name="v_aadhar_no" id="v_aadhar_no" placeholder="Enter Aadhar Number">
+                                            <input type="text" class="form-control" name="v_aadhar_no" id="v_aadhar_no" value="<?php echo isset($v_details['v_aadhar_no'])?$v_details['v_aadhar_no']:''; ?>" placeholder="Enter Aadhar Number">
                                         </div>
                                     </div>
                                   </div>
@@ -169,13 +171,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>GST Number</label>
-                                            <input type="text" class="form-control" name="v_gst_no" id="v_gst_no" placeholder="Enter GST Number">
+                                            <input type="text" class="form-control" name="v_gst_no" id="v_gst_no" value="<?php echo isset($v_details['v_gst_no'])?$v_details['v_gst_no']:''; ?>" placeholder="Enter GST Number">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Others</label>
-                                            <input type="text" class="form-control" name="v_others" id="v_others" placeholder="Enter here..">
+                                            <input type="text" class="form-control" name="v_others" id="v_others" value="<?php echo isset($v_details['v_others'])?$v_details['v_others']:''; ?>" placeholder="Enter here..">
                                         </div>
                                     </div>
                                    </div>
