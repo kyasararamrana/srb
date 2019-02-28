@@ -225,7 +225,7 @@
         <li><a href="<?php echo base_url('salesmanagement/pricelist'); ?>">
           <i class="fa fa-money"></i> <span>Price List</span></a>
         </li>
-        <li><a href="<?php echo base_url('salesmanagement/wishlist'); ?>">
+        <li><a href="<?php echo base_url('sales/wishlist'); ?>">
           <i class="fa fa-star"></i> <span>Wishlist</span></a>
         </li>
       <?php } ?>
