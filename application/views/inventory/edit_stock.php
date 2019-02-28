@@ -40,37 +40,44 @@
                     <div class="col-md-12">
                         <div class="box box-success">
                             <!-- form start -->
-                            <form id="" name="" action="">
-                                <div class="box-body">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Stock Name</label>
-                                            <input type="text" class="form-control" name="sname" id="" value="Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Size</label>
-                                            <input type="text" class="form-control" name="size" id="" value="Size">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Thickness</label>
-                                            <input type="text" class="form-control" name="thickness" id="" value="Thickness">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Color</label>
-                                            <input type="text" class="form-control" name="color" id="" value="Color">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Pieces</label>
-                                            <input type="text" class="form-control" name="pieces" id="" value="Pieces">
-                                        </div>
+                            <form id="edit_stocks" name="edit_stocks" action="<?php echo base_url('inventory/editstock_post'); ?>" method="post">
+                                <input type="hidden" name="st_o_id" id="st_o_id" value="<?php echo isset($s_detail['st_o_id'])?$s_detail['st_o_id']:''; ?>">
+								<div class="box-body">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Stock Name</label>
+												<input type="text" class="form-control" name="st_name" id="st_name" value="<?php echo isset($s_detail['st_name'])?$s_detail['st_name']:''; ?>">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Size</label>
+												<input type="text" class="form-control" name="st_size" id="st_size" value="<?php echo isset($s_detail['st_size'])?$s_detail['st_size']:''; ?>">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Thickness</label>
+												<input type="text" class="form-control" name="st_thickness" id="st_thickness" value="<?php echo isset($s_detail['st_thickness'])?$s_detail['st_thickness']:''; ?>">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Color</label>
+												<input type="text" class="form-control" name="st_color" id="st_color" value="<?php echo isset($s_detail['st_color'])?$s_detail['st_color']:''; ?>">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Pieces</label>
+												<input type="text" class="form-control" name="st_pieces" id="st_pieces" value="<?php echo isset($s_detail['st_pieces'])?$s_detail['st_pieces']:''; ?>">
+											</div>
+										</div>
                                     </div>
                                     <div class="clearfix">&nbsp;</div>
                                     <div class="col-md-6">
@@ -108,23 +115,46 @@
             });
         });
     </script>
-    <script type="text/javascript">
+<script type="text/javascript">
         $(document).ready(function() {
-            $('#addVendorForm').bootstrapValidator({
+            $('#edit_stocks').bootstrapValidator({
                 fields: {
-                    vname: {
-                        validators: {
-                            notEmpty: {
-                                message: 'Name is required'
-                            }
-                        }
+                    
+                    st_name: {
+                         validators: {
+								notEmpty: {
+									message: 'Stock Name is required'
+								}
+							
+							}
+                    }, st_thickness: {
+                         validators: {
+								notEmpty: {
+									message: 'Thickness is required'
+								}
+							
+							}
+                    }, st_color: {
+                         validators: {
+								notEmpty: {
+									message: 'Color is required'
+								}
+							
+							}
+                    },st_pieces: {
+                         validators: {
+								notEmpty: {
+									message: 'Pieces is required'
+								}
+							
+							}
                     },
-                    vnumber1: {
-                        validators: {
-                            notEmpty: {
-                                message: 'Number is required'
-                            }
-                        }
+					st_size: {
+						validators: {
+							notEmpty: {
+								message: 'Size is required'
+							}
+						}
                     }
                 }
             })

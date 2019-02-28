@@ -43,27 +43,35 @@
                                     <thead>
                                         <tr>
                                             <th>S.No</th>
+                                            <th>Vendor Name</th>
                                             <th>Stock Name</th>
                                             <th>Size</th>
                                             <th>Thickness</th>
                                             <th>Color</th>
                                             <th>Pieces</th>
+                                            <th>Date & Time</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+								<?php if(isset($s_list) && count($s_list)>0){ ?>
+									<?php $cnt=1;foreach($s_list as $lis){ ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>Rolls</td>
-                                            <td>xxxxxxx</td>
-                                            <td>xxxxxxx</td>
-                                            <td>xxxxxxx</td>
-                                            <td>xxxxxxx</td>
-                                            <td>
-                                                <a href="<?php echo base_url('inventory/editstock'); ?>" type="button" class="btn btn-info btn-sm mr-5"><i class="fa fa-edit"></i></a>
-                                                <a href="#" type="button" class="btn btn-danger btn-sm mr-5 confirmation"><i class="fa fa-trash-o"></i></a>
+                                            <td><?php echo $cnt; ?></td>
+                                            <td><?php echo isset($lis->v_name)?$lis->v_name:''; ?></td>
+                                            <td><?php echo isset($lis->st_name)?$lis->st_name:''; ?></td>
+                                            <td><?php echo isset($lis->st_size)?$lis->st_size:''; ?></td>
+                                            <td><?php echo isset($lis->st_thickness)?$lis->st_thickness:''; ?></td>
+                                            <td><?php echo isset($lis->st_color)?$lis->st_color:''; ?></td>
+                                            <td><?php echo isset($lis->st_pieces)?$lis->st_pieces:''; ?></td>
+                                            <td><?php echo isset($lis->st_created_at)?$lis->st_created_at:''; ?></td>
+                                              <td>
+                                                <a href="<?php echo base_url('inventory/editstock/'.base64_encode($lis->st_o_id)); ?>" type="button" class="btn btn-info btn-sm mr-5"><i class="fa fa-edit"></i></a>
+                                                <a href="<?php echo base_url('inventory/deletestock/'.base64_encode($lis->st_o_id)); ?>" type="button" class="btn btn-danger btn-sm mr-5 confirmation"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
+									<?php $cnt++;} ?>
+									<?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -84,12 +92,14 @@
         //confirm message
         $(document).ready(function() {
             $('.confirmation').on('click', function() {
-                return confirm('Are you sure of deleting category?');
+                return confirm('Are you sure of deleting stock?');
             });
         });
         //datatables
         $(document).ready(function() {
-            $('#example').DataTable();
+            $('#example').DataTable( {
+				"order": [[ 7, "desc" ]]
+			} );
         });
     </script>
 

@@ -39,7 +39,7 @@
                     <div class="col-md-12">
                         <div class="box box-success">
                             <!-- form start -->
-                            <form id="" name="" action="" method="">
+                            <form id="add_stocks" name="add_stocks" action="<?php echo base_url('inventory/stcockaddpost'); ?>" method="post">
                                 <div class="box-body">
                                     <div class="col-md-12">
 
@@ -48,7 +48,6 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Select Vendor</th>
-                                                        <th>Order Id</th>
                                                         <th>Stock Name</th>
                                                         <th>Size</th>
                                                         <th>Thickness</th>
@@ -59,31 +58,31 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>
-                                                            <select name="vendor" class="form-control">
-                                                                <option value="0" selected disabled>Select</option>
-                                                                <option value="1">Option name</option>
-                                                                <option value="2">Option name</option>
-                                                                <option value="3">Option name</option>
+                                                        <td class="form-group">
+                                                            <select name="v_id[]" id="v_id" class="form-control">
+                                                                <option value="">Select</option>
+																<?php if(isset($v_list) && count($v_list)>0){ ?>
+																	<?php foreach($v_list as $lis){ ?>
+																		<option value="<?php echo $lis['v_id']; ?>"><?php echo $lis['v_name']; ?></option>
+																	<?php } ?>
+																<?php } ?>
                                                             </select>
                                                         </td>
-                                                        <td>
-                                                            <input type="text" name="orderid" placeholder="Order Id" class="form-control"/>
+                                                       
+                                                        <td class="form-group">
+                                                            <input type="text" name="st_name[]" id="st_name" placeholder="Name" class="form-control"/>
                                                         </td>
-                                                        <td>
-                                                            <input type="text" name="sname" placeholder="Name" class="form-control"/>
+                                                        <td class="form-group">
+                                                            <input type="text" name="st_size[]" id="st_size" placeholder="Enter Size" class="form-control"/>
                                                         </td>
-                                                        <td>
-                                                            <input type="text" name="size" placeholder="Enter Size" class="form-control"/>
+                                                        <td class="form-group">
+                                                            <input type="text" name="st_thickness[]" id="st_thickness" placeholder="Enter Thickness" class="form-control" />
                                                         </td>
-                                                        <td>
-                                                            <input type="text" name="thickness" placeholder="Enter Thickness" class="form-control" />
+                                                        <td class="form-group">
+                                                            <input type="text" name="st_color[]" id="st_color" placeholder="Enter Color" class="form-control" />
                                                         </td>
-                                                        <td>
-                                                            <input type="text" name="color" placeholder="Enter Color" class="form-control" />
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" name="pieces" placeholder="Enter Pieces" class="form-control" />
+                                                        <td class="form-group">
+                                                            <input type="text" name="st_pieces[]" id="st_pieces" placeholder="Enter Pieces" class="form-control" />
                                                         </td>
                                                         <td>&nbsp;</td>
                                                     </tr>
@@ -122,19 +121,18 @@
                 var newRow = $("<tr>");
                 var cols = "";
 
-                cols += '<td><select class="form-control" name="vendor' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><select class="form-control" name="v_id[]" id="vendor' + counter + '" required><option value="" >Select</option><?php if(isset($v_list) && count($v_list)>0){ ?><?php foreach($v_list as $lis){ ?><option value="<?php echo $lis['v_id']; ?>"><?php echo $lis['v_name']; ?></option><?php } ?><?php } ?></select></td>';
 
-                cols += '<td><input type="text" class="form-control" placeholder="Order Id" name="orderid' + counter + '"/></td>';
                 
-                cols += '<td><input type="text" class="form-control" placeholder="Name" name="sname' + counter + '"/></td>';
+                cols += '<td><input type="text" class="form-control" placeholder="Name" name="st_name[]" id="sname' + counter + '" required="true"></td>';
 
-                cols += '<td><input type="text" class="form-control" placeholder="Enter Size" name="size' + counter + '"/></td>';
+                cols += '<td><input type="text" class="form-control" placeholder="Enter Size" name="st_size[]" id="size' + counter + '" required="true"></td>';
 
-                cols += '<td><input type="email" class="form-control" placeholder="Enter Thickness" name="thickness' + counter + '"/></td>';
+                cols += '<td><input type="email" class="form-control" placeholder="Enter Thickness" name="st_thickness[]" id="thickness' + counter + '" required></td>';
 
-                cols += '<td><input type="text" class="form-control" placeholder="Enter Color" name="color' + counter + '"/></td>';
+                cols += '<td><input type="text" class="form-control" placeholder="Enter Color" name="st_color[]" id="color' + counter + '"  required></td>';
                 
-                cols += '<td><input type="text" class="form-control" placeholder="Enter Pieces" name="pieces' + counter + '"/></td>';
+                cols += '<td><input type="text" class="form-control" placeholder="Enter Pieces" name="st_pieces[]" id="pieces' + counter + '" required></td>';
 
                 cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger"><i class="fa fa-trash"></i></button></td>';
                 newRow.append(cols);
@@ -146,6 +144,58 @@
                 $(this).closest("tr").remove();
                 counter -= 1
             });
+        });
+		
+    </script>
+	  <script type="text/javascript">
+        $(document).ready(function() {
+            $('#add_stocks').bootstrapValidator({
+                fields: {
+                    'v_id[]': {
+                        validators: {
+							notEmpty: {
+								message: 'Vendor is required'
+							}
+						}
+                    },
+                    'st_name[]': {
+                         validators: {
+								notEmpty: {
+									message: 'Stock Name is required'
+								}
+							
+							}
+                    }, 'st_thickness[]': {
+                         validators: {
+								notEmpty: {
+									message: 'Thickness is required'
+								}
+							
+							}
+                    }, 'st_color[]': {
+                         validators: {
+								notEmpty: {
+									message: 'Color is required'
+								}
+							
+							}
+                    },'st_pieces[]': {
+                         validators: {
+								notEmpty: {
+									message: 'Pieces is required'
+								}
+							
+							}
+                    },
+					'st_size[]': {
+						validators: {
+							notEmpty: {
+								message: 'Size is required'
+							}
+						}
+                    }
+                }
+            })
         });
     </script>
 
