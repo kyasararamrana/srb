@@ -54,6 +54,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+									<?php if(isset($vendor_list) && count($vendor_list)>0){ ?>
 									<?php $cnt=1;foreach($vendor_list as $lis){ ?>
                                         <tr>
                                             <td><?php echo $cnt; ?></td>
@@ -71,6 +72,7 @@
                                                 <a href="<?php echo base_url('vendor/deletes/'.base64_encode($lis->v_id)); ?>" type="button" class="btn btn-danger btn-sm mr-5 confirmation"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr>
+									<?php } ?>
 									<?php } ?>
                                     </tbody>
                                 </table>

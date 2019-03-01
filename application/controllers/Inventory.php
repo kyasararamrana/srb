@@ -42,6 +42,8 @@ class Inventory extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Stocks';
       $data = components($arg);
+	  $this->load->model('Vendor_Model');
+	  $data['v_list']=$this->Vendor_Model->get_all_vendor_lists();
       $this->load->view('inventory/add_stock',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -51,8 +53,10 @@ class Inventory extends CI_Controller
   public function stocklist()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
+      $arg['pageTitle'] = 'Stock list';
       $data = components($arg);
+	   $this->load->model('Vendor_Model');
+	   $data['s_list']=$this->Vendor_Model->get_stick_list($this->session->userdata('id'));
       $this->load->view('inventory/stock_list',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -62,8 +66,10 @@ class Inventory extends CI_Controller
   public function editstock()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Stocks';
+      $arg['pageTitle'] = 'Edit Stock';
       $data = components($arg);
+	  $this->load->model('Vendor_Model');
+	  $data['s_detail']=$this->Vendor_Model->get_stock_details(base64_decode($this->uri->segment(3)));
       $this->load->view('inventory/edit_stock',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -329,15 +335,99 @@ class Inventory extends CI_Controller
       redirect('login');
     }
   }
-  // public function editrole()
-  // {
-  //   if ($this->session->userdata('logged_in') == TRUE) {
-  //     $arg['pageTitle'] = 'Roles';
-  //     $data = components($arg);
-  //     $this->load->view('inventory/edit_role',$data);
-  //   } else {
-  //     $this->session->set_flashdata('error','Please login and try again');
-  //     redirect('login');
-  //   }
-  // }
+ //stock add 
+ public function stcockaddpost(){
+	   if ($this->session->userdata('logged_in') == TRUE) {
+           if ($this->session->userdata('role') == 'Inventory'){
+			   $post=$this->input->post();
+			   $cnt=0;foreach($post['v_id'] as $li){
+				   if($li!=''){
+				   $add=array(
+					   'st_v_id'=>isset($post['v_id'][$cnt])?$post['v_id'][$cnt]:'',
+					   'st_name'=>isset($post['st_name'][$cnt])?$post['st_name'][$cnt]:'',
+					   'st_size'=>isset($post['st_size'][$cnt])?$post['st_size'][$cnt]:'',
+					   'st_thickness'=>isset($post['st_thickness'][$cnt])?$post['st_thickness'][$cnt]:'',
+					   'st_color'=>isset($post['st_color'][$cnt])?$post['st_color'][$cnt]:'',
+					   'st_pieces'=>isset($post['st_pieces'][$cnt])?$post['st_pieces'][$cnt]:'',
+					   'st_created_by'=>$this->session->userdata('id'),
+				    );
+					$this->load->model('Vendor_Model');
+					$save=$this->Vendor_Model->save_v_stock_data($add);
+				   }
+				 $cnt++;}
+				 if(count($save)>0){
+					 $this->session->set_flashdata('success','Stock added successfully');
+					redirect('inventory/stocklist');
+				 }else{
+					$this->session->set_flashdata('error','Please try again');
+					redirect('inventory/addstock'); 
+				 }
+			   
+		   }else {
+			$this->session->set_flashdata('error','Sorry, you can\'t access');
+			redirect('admin');
+			}
+		} else {
+		  $this->session->set_flashdata('error','Please login and try again');
+		  redirect('login');
+		}
+ }
+ //stockedit postpublic 
+
+ function editstock_post(){
+	  if ($this->session->userdata('logged_in') == TRUE) {
+           if ($this->session->userdata('role') == 'Inventory'){
+			   $post=$this->input->post();
+				$s_update=array(
+					'st_name'=>isset($post['st_name'])?$post['st_name']:'',
+					'st_size'=>isset($post['st_size'])?$post['st_size']:'',
+					'st_thickness'=>isset($post['st_thickness'])?$post['st_thickness']:'',
+					'st_color'=>isset($post['st_color'])?$post['st_color']:'',
+					'st_pieces'=>isset($post['st_pieces'])?$post['st_pieces']:'',
+					);
+					$this->load->model('Vendor_Model');
+					$update=$this->Vendor_Model->save_v_stock_update($post['st_o_id'],$s_update);
+					 if(count($update)>0){
+						 $this->session->set_flashdata('success','Stock updated successfully');
+						redirect('inventory/stocklist');
+					 }else{
+						$this->session->set_flashdata('error','Please try again');
+						redirect('inventory/editstock/'.base64_encode($post['st_o_id'])); 
+					 }
+			}else {
+				$this->session->set_flashdata('error','Sorry, you can\'t access');
+				redirect('admin');
+			}
+		} else {
+		  $this->session->set_flashdata('error','Please login and try again');
+		  redirect('login');
+		}
+ } 
+ //delete stock
+ public function deletestock()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      if ($this->session->userdata('role') == 'Inventory') {
+		  $this->load->model('Vendor_Model');
+				$u_data = array(
+				'st_updated_at' => date('Y-m-d H:i:s'),
+				'st_status' => 2
+				);
+			if ($this->Vendor_Model->save_v_stock_update(base64_decode($this->uri->segment(3)),$u_data)){
+				$this->session->set_flashdata('success','Stcok deleted successfully');
+				redirect('inventory/stocklist');
+			  } else {
+				$this->session->set_flashdata('error','Please try again');
+				redirect('inventory/stocklist');
+			  }
+      } else {
+        $this->session->set_flashdata('error','Sorry, you can\'t access');
+        redirect('admin');
+      }
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
+  }
+			
 }
