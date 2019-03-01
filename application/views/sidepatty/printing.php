@@ -39,10 +39,16 @@
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
                                 <li class="active">
-                                    <a href="#tab_1" data-toggle="tab" aria-expanded="false">Add Printings</a>
+                                    <a href="#tab_1" data-toggle="tab" aria-expanded="false">Add Printings Type</a>
                                 </li>
                                 <li class="">
-                                    <a href="#tab_2" data-toggle="tab" aria-expanded="false">Printings List</a>
+                                    <a href="#tab_2" data-toggle="tab" aria-expanded="false">Printings Type List</a>
+                                </li>
+                                <li class="">
+                                    <a href="#tab_3" data-toggle="tab" aria-expanded="false">Add Printing Color</a>
+                                </li>
+                                <li class="">
+                                    <a href="#tab_4" data-toggle="tab" aria-expanded="false">Printing Color List</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -56,7 +62,6 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>Printing Type</th>
-                                                                <th>Printing Color</th>
                                                                 <th>&nbsp;</th>
                                                             </tr>
                                                         </thead>
@@ -64,14 +69,6 @@
                                                             <tr>
                                                                 <td>
                                                                     <select name="sprinting" class="form-control">
-                                                                        <option value="0" selected disabled>Select</option>
-                                                                        <option value="1">Option name</option>
-                                                                        <option value="2">Option name</option>
-                                                                        <option value="3">Option name</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <select name="sprintcolor" class="form-control">
                                                                         <option value="0" selected disabled>Select</option>
                                                                         <option value="1">Option name</option>
                                                                         <option value="2">Option name</option>
@@ -99,14 +96,105 @@
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
+                                                    <th>S.No</th>
                                                     <th>Printing Type</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>xxxxx</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-sm">
+                                                            <i class="fa fa-edit"></i> Edit
+                                                        </a>
+                                                        <a href="#" class="btn btn-danger btn-sm">
+                                                            <i class="fa fa-trash"></i> Delete
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>xxxxx</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-sm">
+                                                            <i class="fa fa-edit"></i> Edit
+                                                        </a>
+                                                        <a href="#" class="btn btn-danger btn-sm">
+                                                            <i class="fa fa-trash"></i> Delete
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- /.tab-pane -->
+                                
+                                <div class="tab-pane" id="tab_3">
+                                    <form id="" name="" action="" method="">
+                                        <div class="box-body">
+                                            <div class="col-md-12">
+                                                <div class="table-responsive">
+                                                    <table id="" class="table table-list-2">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Printing Color</th>
+                                                                <th>&nbsp;</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <select name="sprintcolor" class="form-control">
+                                                                        <option value="0" selected disabled>Select</option>
+                                                                        <option value="1">Option name</option>
+                                                                        <option value="2">Option name</option>
+                                                                        <option value="3">Option name</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>&nbsp;</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <button type="button" class="btn btn-md" id="addRow2">Add Row</button>
+                                                    <hr class="mb-10">
+                                                    <div class="text-center">
+                                                        <button type="submit" class="btn btn-md btn-success">Add</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- /.tab-pane -->
+
+                                <div class="tab-pane" id="tab_4">
+                                    <div class="table-responsive">
+                                        <table id="example2" class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>S.No</th>
                                                     <th>Printing Color</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
+                                                    <td>1</td>
                                                     <td>xxxxx</td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-info btn-sm">
+                                                            <i class="fa fa-edit"></i> Edit
+                                                        </a>
+                                                        <a href="#" class="btn btn-danger btn-sm">
+                                                            <i class="fa fa-trash"></i> Delete
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
                                                     <td>xxxxx</td>
                                                     <td>
                                                         <a href="#" class="btn btn-info btn-sm">
@@ -148,6 +236,7 @@
         //datatables
         $(document).ready(function() {
             $('#example1').DataTable();
+            $('#example2').DataTable();
         });
     </script>
     
@@ -161,8 +250,6 @@
 
                 cols += '<td><select class="form-control" name="sprinting' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
 
-                cols += '<td><select class="form-control" name="sprintcolor' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
-
                 cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger"><i class="fa fa-trash"></i></button></td>';
                 newRow.append(cols);
                 $("table.table-list-3").append(newRow);
@@ -170,6 +257,29 @@
             });
 
             $("table.table-list-3").on("click", ".ibtnDel", function(event) {
+                $(this).closest("tr").remove();
+                counter -= 1
+            });
+        });
+    </script>
+    
+    <script>
+        $(document).ready(function() {
+            var counter = 0;
+
+            $("#addRow2").on("click", function() {
+                var newRow = $("<tr>");
+                var cols = "";
+
+                cols += '<td><select class="form-control" name="sprintcolor' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+
+                cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger"><i class="fa fa-trash"></i></button></td>';
+                newRow.append(cols);
+                $("table.table-list-2").append(newRow);
+                counter++;
+            });
+
+            $("table.table-list-2").on("click", ".ibtnDel", function(event) {
                 $(this).closest("tr").remove();
                 counter -= 1
             });
