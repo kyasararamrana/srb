@@ -456,19 +456,19 @@
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Other Charges</label>
-                                                                        <input type="text" class="form-control" name="other_charges">
+                                                                        <input type="text" class="form-control" name="other_charges" id="other_charges">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Printing Cost</label>
-                                                                        <input type="text" class="form-control" name="printing_cost">
+                                                                        <input type="text" class="form-control" name="printing_cost" id="printing_cost">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Block Charges</label>
-                                                                        <input type="text" class="form-control" name="block_charges">
+                                                                        <input type="text" class="form-control" name="block_charges" id="block_charges">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -485,20 +485,56 @@
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
-                                                                        <label>Quantity</label>
-                                                                        <input type="text" class="form-control" name="quantity">
+                                                                        <label><input type="radio"  name="quantity" value="1" checked> Quantity (in kg's)</label>
+                                                                        <!-- <input type="text" class="form-control" name="quantity"> -->
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label><input type="radio"  name="quantity" value="2"> Quantity (required no.of bags per kg)</label>
+                                                                        <!-- <input type="text" class="form-control" name="quantity"> -->
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4" id="quantity_in_kgs_container">
+                                                                    <div class="form-group">
+                                                                        <label>Quantity (in kg's)</label>
+                                                                        <input type="text" class="form-control" name="quantity_in_kgs" id="quantity_in_kgs" placeholder="in kg's">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4" id="quantity_no_of_bags_per_kg_container" style="display:none">
+                                                                    <div class="form-group">
+                                                                        <label>Quantity (required no.of bags per kg)</label>
+                                                                        <input type="text" class="form-control" name="quantity_per_kg" id="quantity_per_kg" placeholder="required no.of bags per kg">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label>Cost per Kg</label>
-                                                                        <input type="text" class="form-control" name="cost_per_kg">
+                                                                        <input type="text" class="form-control" name="cost_per_kg" id="cost_per_kg" value="170">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
-                                                                        <label>Total Cost</label>
-                                                                        <input type="text" class="form-control" name="total_cost">
+                                                                        <label>Weight of bag</label>
+                                                                        <input type="text" class="form-control" id="weight_of_bag" name="weight_of_bag" readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Number of bag per kg</label>
+                                                                        <input type="text" class="form-control" name="bags_per_kg" id="bags_per_kg" readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Cost per bag</label>
+                                                                        <input type="text" class="form-control" name="cost_per_bag" id="cost_per_bag" readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Total price</label>
+                                                                        <input type="text" class="form-control" name="total_price" id="total_price" readonly>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -642,65 +678,49 @@
         /*jslint browser: true*/
         /*global $, jQuery, alert*/
         (function($) {
-            'use strict';
+          'use strict';
+          $(function() {
+            $(document).ready(function() {
+              function triggerClick(elem) {
+                $(elem).click();
+              }
+              var $progressWizard = $('.stepper'),
+              $tab_active,
+              $tab_prev,
+              $tab_next,
+              $btn_prev = $progressWizard.find('.prev-step'),
+              $btn_next = $progressWizard.find('.next-step'),
+              $tab_toggle = $progressWizard.find('[data-toggle="tab"]'),
+              $tooltips = $progressWizard.find('[data-toggle="tab"][title]');
+              // To do:
+              // Disable User select drop-down after first step.
+              // Add support for payment type switching.
+              //Initialize tooltips
+              $tooltips.tooltip();
+              //Wizard
+              $tab_toggle.on('show.bs.tab', function(e) {
+                var $target = $(e.target);
 
-            $(function() {
-
-                $(document).ready(function() {
-                    function triggerClick(elem) {
-                        $(elem).click();
-                    }
-                    var $progressWizard = $('.stepper'),
-                        $tab_active,
-                        $tab_prev,
-                        $tab_next,
-                        $btn_prev = $progressWizard.find('.prev-step'),
-                        $btn_next = $progressWizard.find('.next-step'),
-                        $tab_toggle = $progressWizard.find('[data-toggle="tab"]'),
-                        $tooltips = $progressWizard.find('[data-toggle="tab"][title]');
-
-                    // To do:
-                    // Disable User select drop-down after first step.
-                    // Add support for payment type switching.
-
-                    //Initialize tooltips
-                    $tooltips.tooltip();
-
-                    //Wizard
-                    $tab_toggle.on('show.bs.tab', function(e) {
-                        var $target = $(e.target);
-
-                        if (!$target.parent().hasClass('active, disabled')) {
-                            $target.parent().prev().addClass('completed');
-                        }
-                        if ($target.parent().hasClass('disabled')) {
-                            return false;
-                        }
-                    });
-
-                    // $tab_toggle.on('click', function(event) {
-                    //     event.preventDefault();
-                    //     event.stopPropagation();
-                    //     return false;
-                    // });
-
-                    $btn_next.on('click', function() {
-                        $tab_active = $progressWizard.find('.active');
-
-                        $tab_active.next().removeClass('disabled');
-
-                        $tab_next = $tab_active.next().find('a[data-toggle="tab"]');
-                        triggerClick($tab_next);
-
-                    });
-                    $btn_prev.click(function() {
-                        $tab_active = $progressWizard.find('.active');
-                        $tab_prev = $tab_active.prev().find('a[data-toggle="tab"]');
-                        triggerClick($tab_prev);
-                    });
-                });
+                if (!$target.parent().hasClass('active, disabled')) {
+                  $target.parent().prev().addClass('completed');
+                }
+                if ($target.parent().hasClass('disabled')) {
+                  return false;
+                }
+              });
+              $btn_next.on('click', function() {
+                $tab_active = $progressWizard.find('.active');
+                $tab_active.next().removeClass('disabled');
+                $tab_next = $tab_active.next().find('a[data-toggle="tab"]');
+                triggerClick($tab_next);
+              });
+              $btn_prev.click(function() {
+                $tab_active = $progressWizard.find('.active');
+                $tab_prev = $tab_active.prev().find('a[data-toggle="tab"]');
+                triggerClick($tab_prev);
+              });
             });
-
+          });
         }(jQuery, this));
         $(document).ready(function(){
           //ajax call for bag layout by bag type
@@ -717,6 +737,25 @@
                   $('#bag_layout').html(data);
                 } else {
                   $('#bag_layout').html('<option value="">Select</option>');
+                }
+              }
+            });
+          }).on('change',function(){
+            var bag_type = $(this).val();
+            $.ajax({
+              url:'<?php echo base_url('bag/get_bag_additional_details'); ?>',
+              type:'post',
+              data:{'bag_type':bag_type},
+              dataType:'JSON',
+              success:function(data){
+                if (data) {
+                  $('#other_charges').val(data.other_charges);
+                  $('#printing_cost').val(data.printing_cost);
+                  $('#block_charges').val(data.block_charges);
+                } else {
+                  $('#other_charges').val('');
+                  $('#printing_cost').val('');
+                  $('#block_charges').val('');
                 }
               }
             });
@@ -763,6 +802,60 @@
             $('#place_order').text('Add to Wishlist');
           } else {
             $('#place_order').text('Place Order');
+          }
+        });
+        //price calculation
+        $('#quantity_in_kgs,#quantity_per_kg').on('keyup',function(){
+          if ($('#bag_type').find('option:selected').text() == 'Dcut') {
+            var bag_size = $('#bag_size').find('option:selected').text().split('*');
+            var bag_gsm = $('#bag_gsm').find('option:selected').text();
+            var printing_cost = $('#printing_cost').val();
+            var handle_rate = $('#handle_rate').val();
+            var zip_rate = $('#zip_rate').val();
+            var other_charges = $('#other_charges').val();
+            var minimum_quantity = $('#minimum_quantity').val();
+            var quantity_kg = $('#quantity_in_kgs').val();
+            var quantity_per_kg = $('#quantity_per_kg').val();
+            var additional_gsm = 3;
+            var percentage = 0.45;
+            var cost_per_kg = 170;
+            var width = bag_size[0];
+            var length = bag_size[1];
+            var weight_of_bag_formula = (width * ((length * 2) + 5) * (parseInt(bag_gsm) + parseInt(additional_gsm))) / 1550;
+            var weight_of_bag = weight_of_bag_formula;
+            $('#weight_of_bag').val(weight_of_bag);
+            //no of bags per kg
+            var no_of_bags_per_kg_formula = 1000/weight_of_bag;
+            var no_of_bags_per_kg = no_of_bags_per_kg_formula;
+            $('#bags_per_kg').val(no_of_bags_per_kg.toFixed(2));
+            //cost of the bag
+            var cost_per_bag_formula = ((weight_of_bag / 1000) * cost_per_kg);
+            var cost_per_bag_value = cost_per_bag_formula;
+            var final_cost_per_bag = cost_per_bag_value + (cost_per_bag_value * percentage) + (parseInt(printing_cost));
+            $('#cost_per_bag').val(final_cost_per_bag.toFixed(2));
+            //cost per kg
+            // cost_per_kg = cost_per_kg + (no_of_bags_per_kg * (parseInt(handle_rate) + parseInt(zip_rate) + parseInt(other_charges) + parseInt(minimum_quantity)));
+            // $('#cost_per_kg').val(cost_per_kg.toFixed(2));
+            //total bag cost
+            if((quantity_per_kg != '') && (typeof quantity_per_kg !== "undefined")) {
+              var total_cost = final_cost_per_bag * parseInt(quantity_per_kg) * no_of_bags_per_kg;
+              $('#total_price').val(total_cost);
+            } else if((quantity_kg != '') && (typeof quantity_kg !== "undefined")) {
+              var total_cost = final_cost_per_bag * parseInt(quantity_kg);
+              $('#total_price').val(total_cost);
+            }
+          }
+        }).trigger('keyup');
+        //show and hiding quantity input boxes
+        $('input[name="quantity"]').click(function(){
+          if($(this).val() == 1) {
+            $('#quantity_in_kgs_container').css('display','block');
+            $('#quantity_no_of_bags_per_kg_container').css('display','none');
+            $('#quantity_in_kgs').val('');
+          } else if ($(this).val() == 2) {
+            $('#quantity_no_of_bags_per_kg_container').css('display','block');
+            $('#quantity_in_kgs_container').css('display','none');
+            $('#quantity_per_kg').val('');
           }
         });
     </script>

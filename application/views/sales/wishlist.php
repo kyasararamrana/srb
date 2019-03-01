@@ -50,7 +50,7 @@
                                   <?php if (count($wishlists) > 0) { ?>
                                     <?php foreach ($wishlists as $wishlist) { ?>
                                       <tr>
-                                        <td class="text-center"><input type="checkbox" class="checkbox"></td>
+                                        <td class="text-center"><input type="checkbox" class="checkbox" data-id="<?php echo $wishlist->id; ?>"></td>
                                         <td><?php echo $wishlist->bag_type; ?></td>
                                         <td><?php echo $wishlist->bag_size; ?></td>
                                         <td><?php echo $wishlist->handle_type; ?></td>
@@ -81,38 +81,9 @@
                                     <?php } ?>
                                   <?php } else { ?>
                                     <tr>
-                                      <td colspan="12" class="text-center">No records found</td>
+                                      <td colspan="13" class="text-center">No records found</td>
                                     </tr>
                                   <?php } ?>
-                                  <!-- <tr>
-                                    <td class="text-center"><input type="checkbox"></td>
-                                    <td>xxxxxx</td>
-                                    <td>xxxxxx</td>
-                                    <td>xxxxxx</td>
-                                    <td>xxxxxx</td>
-                                    <td>xxxxxx</td>
-                                    <td>xxxxxx</td>
-                                    <td>xxxxxx</td>
-                                    <td>xxxxxx</td>
-                                    <td>xxxxxx</td>
-                                    <td>xxxxxx</td>
-                                    <td>xxxxxx</td>
-                                    <td class="valigntop">
-                                      <div class="btn-group">
-                                        <button class="btn btn-xs btn-info" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
-                                          <i class="fa fa-angle-down"></i>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu" style="right:0;left:auto;">
-                                          <li>
-                                            <a href="<?php echo base_url('salesmanagement/wishlistItemView'); ?>"><i class="fa fa-eye"></i>View</a>
-                                          </li>
-                                          <li>
-                                            <a href="<?php echo base_url('salesmanagement/editWishlistItem'); ?>"><i class="fa fa-edit"></i>Edit</a>
-                                          </li>
-                                        </ul>
-                                      </div>
-                                    </td>
-                                  </tr> -->
                                 </tbody>
                               </table>
                                 <div class="clearfix"><br><br></div>
@@ -133,20 +104,45 @@
     <!-- ./wrapper -->
     <?php echo $scripts; ?>
     <script type="text/javascript">
-        //confirm message
-        $(document).ready(function() {
-            $('.confirmation').on('click', function() {
-                return confirm('Are you sure of deleting category?');
-            });
+      //confirm message
+      $(document).ready(function() {
+        $('.confirmation').on('click', function() {
+          return confirm('Are you sure of deleting category?');
         });
-        //datatables
-        $(document).ready(function() {
-            $('#example').DataTable();
-            //multiple delete records
-            $('#multi_delete').click(function(){
-              alert($('.checkbox:checked').length);
+      });
+      //datatables
+      $(document).ready(function() {
+        $('#example').DataTable();
+        //multiple delete records
+        var id = [];
+        $('#multi_delete').click(function(e) {
+          e.preventDefault();
+          $('.checkbox:checked').each(function() {
+            id.push($(this).data('id'));
+          });
+          if (id.length <= 0) {
+            alert('Please check atleast once checkbox');
+          } else {
+            id = id.join(',');
+            $.ajax({
+              url:'<?php echo base_url('sales/wishlist_delete'); ?>',
+              type:'post',
+              data:{'id':id},
+              dataType:'JSON',
+              success:function(data){
+                if(data.success){
+                  $('#message').html('<div class="alert_msg1 animated slideInUp bg-succ">'+data.success+' <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
+                } else if (data.error) {
+                  $('#message').html('<div class="alert_msg1 animated slideInUp bg-warn">'+data.error+' <i class="fa fa-check text-warning ico_bac" aria-hidden="true"></i></div>');
+                }
+                setTimeout(function(){
+                  window.location.reload();
+                },2000);
+              }
             });
+          }
         });
+      });
     </script>
 </body>
 </html>

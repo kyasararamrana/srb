@@ -55,17 +55,20 @@ class Bagtype extends CI_Controller
       if ($this->session->userdata('role') == 'Superadmin') {
         $post_data = $this->input->post();
         if ($post_data) {
-          foreach ($post_data as $key => $value) {
-            $post_data = array(
-              'bag_type' => $value,
+          for ($i = 0; $i < count($post_data['bagtype']); $i++) {
+            $post_array = array(
+              'bag_type' => $post_data['bagtype'][$i],
+              'other_charges' => $post_data['othercharges'][$i],
+              'printing_cost' => $post_data['printingcost'][$i],
+              'block_charges' => $post_data['blockcharges'][$i],
               'created_on' => date('Y-m-d H:i:s'),
               'created_by' => $this->session->userdata('id'),
               'status' => 1
             );
-            $this->Bagtype_Model->insert($post_data);
-            $this->session->set_flashdata('success','Bag type created successfully');
-            redirect('bagtype');
+            $this->Bagtype_Model->insert($post_array);
           }
+          $this->session->set_flashdata('success','Bag type created successfully');
+          redirect('bagtype');
         } else {
           $this->session->set_flashdata('error','Please try again');
           redirect($this->agent->referrer());

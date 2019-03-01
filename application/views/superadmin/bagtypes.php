@@ -38,6 +38,9 @@
                       <tr>
                         <th>S.No</th>
                         <th>Bag type</th>
+                        <th>Other charges</th>
+                        <th>Printing charges</th>
+                        <th>Block charges</th>
                         <!-- <th>Action</th> -->
                       </tr>
                     </thead>
@@ -48,6 +51,9 @@
                           <tr>
                             <td><?php echo $sno; ?></td>
                             <td><?php echo $bagtype->bag_type; ?></td>
+                            <td><?php echo $bagtype->other_charges; ?></td>
+                            <td><?php echo $bagtype->printing_cost; ?></td>
+                            <td><?php echo $bagtype->block_charges; ?></td>
                             <!-- <td>
                             <a href="<?php echo base_url('superadmin/editrole/'.$bagtype->id); ?>" type="button" class="btn btn-info mr-10"><i class="fa fa-edit"></i></a>
                             <a href="<?php echo base_url('superadmin/delete/'.$bagtype->id); ?>" type="button" class="btn btn-danger mr-10 confirmation"><i class="fa fa-trash-o"></i></a>

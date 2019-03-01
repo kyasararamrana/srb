@@ -28,6 +28,12 @@ class Sales_Wishlist_Model extends CI_Model
     $this->db->order_by('sw.created_on','desc');
     return $this->db->get()->result();
   }
+  //delete
+  public function delete($post_id='')
+  {
+    $this->db->where_in('id',$post_id);
+    return $this->db->delete($this->table);
+  }
 
 }
 

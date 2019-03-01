@@ -29,6 +29,12 @@ class Bagtype_Model extends CI_Model
     $this->db->order_by('bag_type','asc');
     return $this->db->get($this->table)->result();
   }
+  //get other charges, printing charges, block changes by bag type
+  public function get_bag_additional_details($bag_type='')
+  {
+    $this->db->select('other_charges,printing_cost,block_charges');
+    return $this->db->get_where($this->table, array('id' => $bag_type))->row();
+  }
 }
 
 ?>

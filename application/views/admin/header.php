@@ -63,3 +63,4 @@
     <?php echo $this->session->flashdata('error');?> &nbsp; <i class="fa fa-exclamation-triangle text-success ico_bac" aria-hidden="true"></i>
   </div>
 <?php endif; ?>
+<div id="message"></div>

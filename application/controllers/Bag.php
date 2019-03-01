@@ -227,6 +227,15 @@ class Bag extends CI_Controller
       }
     }
   }
+  //get other charges, printing charges, block changes by bag type
+  public function get_bag_additional_details()
+  {
+    $bag_type = $this->input->post('bag_type');
+    if ($bag_type) {
+      $result = $this->Bagtype_Model->get_bag_additional_details($bag_type);
+      echo json_encode($result);
+    }
+  }
 
 }
 

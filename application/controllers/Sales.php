@@ -198,7 +198,6 @@ class Sales extends CI_Controller
         $arg['pageTitle'] = 'Wishlist';
         $data = components($arg);
         $data['wishlists'] = $this->Sales_Wishlist_Model->get_wishlist();
-        print_r($data['wishlists']);
         $this->load->view('sales/wishlist',$data);
       } else {
         $this->session->set_flashdata('error','Sorry, you can\'t access');
@@ -233,4 +232,22 @@ class Sales extends CI_Controller
       redirect('login');
     }
   }
+  //wishlist delete
+  public function wishlist_delete()
+  {
+    $id = $this->input->post('id');
+    if ($id) {
+      $id = explode(',',$id);
+      if ($this->Sales_Wishlist_Model->delete($id)) {
+        $return['success'] = 'Wishlist items deleted successfully';
+      } else {
+        $return['error'] = 'Please try again';
+      }
+    } else {
+      $return['error'] = 'Please try again';
+    }
+    echo json_encode($return);
+    exit(0);
+  }
+
 }
