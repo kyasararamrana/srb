@@ -22,6 +22,7 @@ class Sales extends CI_Controller
     $this->load->model('Handle_Model');
     $this->load->model('Sales_Model');
     $this->load->model('Sales_Wishlist_Model');
+    $this->load->model('Price_Model');
   }
   //Orders List
   public function index()
@@ -85,29 +86,29 @@ class Sales extends CI_Controller
       redirect('admin/login');
     }
   }
-  public function orderslist()
-  {
-    if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Orders';
-        $data = components($arg);
-      $this->load->view('sales/orderslist',$data);
-    } else {
-      $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
-    }
-  }
+  // public function orderslist()
+  // {
+  //   if ($this->session->userdata('logged_in') == TRUE) {
+  //     $arg['pageTitle'] = 'Orders';
+  //       $data = components($arg);
+  //     $this->load->view('sales/orderslist',$data);
+  //   } else {
+  //     $this->session->set_flashdata('error','Please login and try again');
+  //     redirect('login');
+  //   }
+  // }
   //Order Details
-  public function orderdetails()
-  {
-    if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Order Details';
-        $data = components($arg);
-      $this->load->view('sales/order_details',$data);
-    } else {
-      $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
-    }
-  }
+  // public function orderdetails()
+  // {
+  //   if ($this->session->userdata('logged_in') == TRUE) {
+  //     $arg['pageTitle'] = 'Order Details';
+  //       $data = components($arg);
+  //     $this->load->view('sales/order_details',$data);
+  //   } else {
+  //     $this->session->set_flashdata('error','Please login and try again');
+  //     redirect('login');
+  //   }
+  // }
   //Order Form (view)
   public function create()
   {
@@ -181,13 +182,27 @@ class Sales extends CI_Controller
   //Price List
   public function pricelist()
   {
+    // if ($this->session->userdata('logged_in') == TRUE) {
+    //   $arg['pageTitle'] = 'Order Form';
+    //     $data = components($arg);
+    //   $this->load->view('sales/price_list',$data);
+    // } else {
+    //   $this->session->set_flashdata('error','Please login and try again');
+    //   redirect('login');
+    // }
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Order Form';
+      if ($this->session->userdata('role') == 'Sales') {
+        $arg['pageType'] = 'Price';
         $data = components($arg);
-      $this->load->view('sales/price_list',$data);
+        $data['price'] = $this->Price_Model->get_price();
+        $this->load->view('sales/price_list',$data);
+      } else {
+        $this->session->set_flashdata('error','Sorry, you can\'t access');
+        redirect('admin');
+      }
     } else {
       $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
+      redirect('admin/login');
     }
   }
   //Wishlist
@@ -209,15 +224,32 @@ class Sales extends CI_Controller
     }
   }
   //Wishlist Item View
-  public function wishlistItemView()
+  // public function wishlistItemView()
+  // {
+  //   if ($this->session->userdata('logged_in') == TRUE) {
+  //     $arg['pageTitle'] = 'Wishlist';
+  //       $data = components($arg);
+  //     $this->load->view('sales/wishlist_item_view',$data);
+  //   } else {
+  //     $this->session->set_flashdata('error','Please login and try again');
+  //     redirect('login');
+  //   }
+  // }
+  public function wishlist_details($id='')
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Wishlist';
+      if ($this->session->userdata('role') == 'Sales') {
+        $arg['pageTitle'] = 'Wishlist';
         $data = components($arg);
-      $this->load->view('sales/wishlist_item_view',$data);
+        $data['wishlist'] = $this->Sales_Wishlist_Model->get_wishlist_by_id($id);
+        $this->load->view('sales/wishlist_details',$data);
+      } else {
+        $this->session->set_flashdata('error','Sorry, you can\'t access');
+        redirect('admin');
+      }
     } else {
       $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
+      redirect('admin/login');
     }
   }
   //Edit Wishlist Item
@@ -240,6 +272,35 @@ class Sales extends CI_Controller
       $id = explode(',',$id);
       if ($this->Sales_Wishlist_Model->delete($id)) {
         $return['success'] = 'Wishlist items deleted successfully';
+      } else {
+        $return['error'] = 'Please try again';
+      }
+    } else {
+      $return['error'] = 'Please try again';
+    }
+    echo json_encode($return);
+    exit(0);
+  }
+  //adding wishlist items to order list
+  public function wishlist_order()
+  {
+    $id = $this->input->post('id');
+    if ($id) {
+      $id = explode(',',$id);
+      $wishlist = $this->Sales_Wishlist_Model->get_wishlist_by_ids($id);
+      if (count($wishlist) > 0) {
+        foreach ($wishlist as $w) {
+          $id = $w->id;
+          unset($w->id);
+          unset($w->created_on);
+          unset($w->updated_on);
+          unset($w->updated_by);
+          $w->created_on = date('Y-m-d H:i:s');
+          $w->created_by = $this->session->userdata('id');
+          $this->Sales_Model->insert($w);
+          $this->Sales_Wishlist_Model->delete($id);
+        }
+        $return['success'] = 'Item(s) added to orders list';
       } else {
         $return['error'] = 'Please try again';
       }

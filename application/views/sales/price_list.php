@@ -53,44 +53,42 @@
                                 <div class="clearfix">&nbsp;</div>
                             </div>
                             <div class="box-body">
-                                <table id="example" class="table table-bordered table-striped">
-                                    <thead>
+                              <table id="example" class="table table-bordered table-striped">
+                                  <thead>
+                                      <tr>
+                                          <th>S.No</th>
+                                          <th>Bag Type</th>
+                                          <th>Bag Layout</th>
+                                          <th>Bag Size</th>
+                                          <th>Bag GSM</th>
+                                          <th>Bags per KG</th>
+                                          <th>Cost per Bag for Single Color</th>
+                                          <th>Cost per kg</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    <?php if (count($price) > 0) { ?>
+                                      <?php $sno = 1; ?>
+                                      <?php foreach ($price as $p) { ?>
                                         <tr>
-                                            <th>S.No</th>
-                                            <th>Bag Type</th>
-                                            <th>Bag Size</th>
-                                            <th>GSM</th>
-                                            <th>Bags per KG</th>
-                                            <th>Cost per Bag for Single Color</th>
+                                            <td><?php echo $sno; ?></td>
+                                            <td><?php echo $p->bag_type; ?></td>
+                                            <td><?php echo $p->bag_layout; ?></td>
+                                            <td><?php echo $p->bag_size; ?></td>
+                                            <td><?php echo $p->bag_gsm; ?></td>
+                                            <td><?php echo $p->bags_per_kg; ?></td>
+                                            <td><?php echo $p->cost_per_bag; ?></td>
+                                            <td><?php echo $p->cost_per_kg; ?></td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                      <?php $sno++; ?>
+                                      <?php } ?>
+                                    <?php } else { ?>
+                                      <tr>
+                                        <td colspan="6" class="text-center">No records found</td>
+                                      </tr>
+                                    <?php } ?>
+                                  </tbody>
+                              </table>
                             </div>
                         </div>
                     </div>

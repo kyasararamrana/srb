@@ -38,8 +38,12 @@
                                                 <td><b>Order ID</b></td>
                                                 <td>
                                                   <?php
-                                                    $str = date('Ymd').$order->id;
-                                                    echo 'SRB'.str_pad($str,10,'0',STR_PAD_LEFT);
+                                                    if (isset($order->id)) {
+                                                      $str = date('Ymd').$order->id;
+                                                      echo 'SRB'.str_pad($str,10,'0',STR_PAD_LEFT);
+                                                    } else {
+                                                      echo '-';
+                                                    }
                                                   ?>
                                                 </td>
                                             </tr>
