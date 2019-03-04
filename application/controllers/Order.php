@@ -21,7 +21,7 @@ class Order extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Order Confirmation';
       $data = components($arg);
-      $data['orders'] = $this->Sales_Model->get_order();
+      $data['orders'] = $this->Sales_Model->get_order_confirmed();
       $this->load->view('order/orderconfirm',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -156,4 +156,69 @@ class Order extends CI_Controller
       redirect('login');
     }
   }
+  //accept order status
+  public function acceptstatus()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      if ($this->session->userdata('role') == 'Order') {
+        $status = $this->uri->segment(3);
+        $id = $this->uri->segment(4);
+        $sts = '';
+        if ($status == 1) {
+          $sts .= 2;//accept flag
+        }
+        $post_data = array(
+          'status' => $sts,
+          'updated_on' => date('Y-m-d H:i:s'),
+          'updated_by' => $this->session->userdata('id')
+        );
+        if ($this->Sales_Model->update($post_data,$id)) {
+          $this->session->set_flashdata('success','Status changed successfully');
+          redirect($this->agent->referrer());
+        } else {
+          $this->session->set_flashdata('error','Please try again');
+          redirect($this->agent->referrer());
+        }
+      } else {
+        $this->session->set_flashdata('error','Sorry,you can\'t access');
+        redirect('admin');
+      }
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
+  }
+  //reject order status
+  public function rejectstatus()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      if ($this->session->userdata('role') == 'Order') {
+        $status = $this->uri->segment(3);
+        $id = $this->uri->segment(4);
+        $sts = '';
+        if ($status == 1) {
+          $sts .= 3;//reject flag
+        }
+        $post_data = array(
+          'status' => $sts,
+          'updated_on' => date('Y-m-d H:i:s'),
+          'updated_by' => $this->session->userdata('id')
+        );
+        if ($this->Sales_Model->update($post_data,$id)) {
+          $this->session->set_flashdata('success','Status changed successfully');
+          redirect($this->agent->referrer());
+        } else {
+          $this->session->set_flashdata('error','Please try again');
+          redirect($this->agent->referrer());
+        }
+      } else {
+        $this->session->set_flashdata('error','Sorry,you can\'t access');
+        redirect('admin');
+      }
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
+  }
+
 }

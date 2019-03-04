@@ -57,7 +57,19 @@
                                               <td><?php echo $order->mobile; ?></td>
                                               <td><?php echo $order->bag_type; ?></td>
                                               <td><?php echo $order->quantity; ?></td>
-                                              <td><p class="text-aqua">Packed</p></td>
+                                              <td>
+                                                <p class="text-aqua">
+                                                  <?php if ($order->status == 1) { ?>
+                                                    <p class="text-success">  Active </p>
+                                                  <?php } elseif ($order->status == 0) { ?>
+                                                    <p class="text-warning"> Inactive </p>
+                                                  <?php } elseif ($order->status == 2) { ?>
+                                                    <p class="text-aqua"> Accepted </p>
+                                                  <?php } elseif ($order->status == 3) { ?>
+                                                    <p class="text-danger"> Rejected </p>
+                                                  <?php } ?>
+                                                </p>
+                                              </td>
                                               <td class="valigntop">
                                                   <div class="btn-group">
                                                       <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="true"> Actions
