@@ -47,8 +47,8 @@
                             </ul>
                             <div class="tab-content">
 
-                                <div class="tab-pane active" id="tab_1">
-                                    <form id="" name="" action="" method="">
+                                <div class="tab-pane <?php if(isset($tab) && $tab==''){ echo "active"; } ?>" id="tab_1">
+                                    <form id="add_print" name="add_print" action="<?php echo base_url('sidepattymodule/printaddpost'); ?>" method="POST">
                                         <div class="box-body">
                                             <div class="col-md-12">
                                                 <div class="table-responsive">
@@ -62,22 +62,12 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td>
-                                                                    <select name="sprinting" class="form-control">
-                                                                        <option value="0" selected disabled>Select</option>
-                                                                        <option value="1">Option name</option>
-                                                                        <option value="2">Option name</option>
-                                                                        <option value="3">Option name</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td>
-                                                                    <select name="sprintcolor" class="form-control">
-                                                                        <option value="0" selected disabled>Select</option>
-                                                                        <option value="1">Option name</option>
-                                                                        <option value="2">Option name</option>
-                                                                        <option value="3">Option name</option>
-                                                                    </select>
-                                                                </td>
+                                                                 <td class="form-group">
+																	<input type="text" name="p_type[]" id="p_color" placeholder="Enter Printing Type" class="form-control" />
+																</td>
+                                                                 <td class="form-group">
+																	<input type="text" name="p_color[]" id="p_color" placeholder="Enter Printing Color" class="form-control" />
+																</td>
                                                                 <td>&nbsp;</td>
                                                             </tr>
                                                         </tbody>
@@ -94,7 +84,7 @@
                                 </div>
                                 <!-- /.tab-pane -->
 
-                                <div class="tab-pane" id="tab_2">
+                                <div class="tab-pane <?php if(isset($tab) && $tab==1){ echo "active"; } ?>" id="tab_2" >
                                     <div class="table-responsive">
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
@@ -105,18 +95,24 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>xxxxx</td>
-                                                    <td>xxxxx</td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-info btn-sm">
-                                                            <i class="fa fa-edit"></i> Edit
-                                                        </a>
-                                                        <a href="#" class="btn btn-danger btn-sm">
-                                                            <i class="fa fa-trash"></i> Delete
-                                                        </a>
-                                                    </td>
-                                                </tr>
+											<?php if(isset($p_list) && count($p_list)>0){ ?>
+												<?php foreach($p_list as $lis){ ?>
+													<tr>
+														<td><?php echo isset($lis->p_type)?$lis->p_type:''; ?></td>
+														<td><?php echo isset($lis->p_color)?$lis->p_color:''; ?></td>
+														<td>
+															<a href="<?php echo base_url('sidepattymodule/editprint/'.base64_encode($lis->s_p_id)); ?>" class="btn btn-info btn-sm">
+																<i class="fa fa-edit"></i> Edit
+															</a>
+															<a href="<?php echo base_url('sidepattymodule/deleteprint/'.base64_encode($lis->s_p_id)); ?>" class="btn btn-danger btn-sm confirmation">
+																<i class="fa fa-trash"></i> Delete
+															</a>
+														</td>
+													</tr>
+												<?php } ?>
+											<?php }else{ ?>
+											<div>NO data</div>
+											<?php } ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -158,10 +154,9 @@
             $("#addRow3").on("click", function() {
                 var newRow = $("<tr>");
                 var cols = "";
+				cols += '<td><input type="text" name="p_type[]" id="p_type' + counter + '" placeholder="Enter Printing Type" class="form-control" /></td>';
 
-                cols += '<td><select class="form-control" name="sprinting' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
-
-                cols += '<td><select class="form-control" name="sprintcolor' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><input type="text" name="p_color[]" id="p_color' + counter + '" placeholder="Enter Printing Color" class="form-control" /></td>';
 
                 cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger"><i class="fa fa-trash"></i></button></td>';
                 newRow.append(cols);
@@ -173,6 +168,35 @@
                 $(this).closest("tr").remove();
                 counter -= 1
             });
+        });
+    </script>
+	<script type="text/javascript">
+        $(document).ready(function() {
+            $('#add_print').bootstrapValidator({
+                fields: {
+                    'p_type[]': {
+                        validators: {
+							notEmpty: {
+								message: 'Type is required'
+							},
+							regexp: {
+							regexp: /^[a-zA-Z0-9. ]+$/,
+							message: 'Type can only consist of alphanumeric, space and dot'
+							}
+						}
+                    },'p_color[]': {
+                        validators: {
+							notEmpty: {
+								message: 'Color is required'
+							},
+							regexp: {
+							regexp: /^[a-zA-Z0-8. ]+$/,
+							message: 'Color can only consist of alphanumeric, space and dot'
+							}
+						}
+                    }
+                }
+            })
         });
     </script>
 

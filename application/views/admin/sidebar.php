@@ -328,10 +328,19 @@
               <li><a href="<?php echo base_url('sidepattymodule/addsidepatty'); ?>">Add Sidepatty</a></li>
               <li><a href="<?php echo base_url('sidepattymodule/sidepattylist'); ?>">Sidepatty List</a></li>
             </ul>
+          </li> 
+		  <li class="treeview">
+            <a href="#"><i class="fa fa-cubes"></i> <span>Order Stock</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="<?php echo base_url('sidepattymodule/orderstock'); ?>">Add Order Stock</a></li>
+              <li><a href="<?php echo base_url('sidepattymodule/orderstocklist'); ?>">Order Stock List</a></li>
+            </ul>
           </li>
-          <li><a href="<?php echo base_url('sidepattymodule/orderstock'); ?>">
-            <i class="fa fa-shopping-cart"></i> <span>Order Stock</span></a>
-          </li>
+        
           <li><a href="<?php echo base_url('sidepattymodule/printing'); ?>">
             <i class="fa fa-paint-brush"></i> <span>Printing</span></a>
           </li>

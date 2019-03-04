@@ -22,12 +22,11 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Sidepatty List
+                    Orders List
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-                    <li>Sidepatty</li>
-                    <li class="active">Sidepatty List</li>
+                    <li class="active">Orders List</li>
                 </ol>
             </section>
 
@@ -43,30 +42,37 @@
                                     <thead>
                                         <tr>
                                             <th>S.No</th>
+                                            <th>Stock Name</th>
                                             <th>Sidepatty Type</th>
                                             <th>Sidepatty Size</th>
                                             <th>Sidepatty Color</th>
                                             <th>Sidepatty GSM</th>
+                                            <th>Sidepatty Printing</th>
+                                            <th>Sidepatty Printing Color</th>
                                             <th>Quantity</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       <?php if(isset($s_list) && count($s_list)>0){ ?>
-									<?php $cnt=1;foreach($s_list as $lis){ ?>
+									<?php if(isset($order_stock_list) && count($order_stock_list)>0){ ?>
+									<?php $cnt=1;foreach($order_stock_list as $lis){ ?>
                                         <tr>
                                             <td><?php echo $cnt; ?></td>
-                                            <td><?php echo isset($lis->s_type)?$lis->s_type:''; ?></td>
-                                            <td><?php echo isset($lis->s_size)?$lis->s_size:''; ?></td>
-                                            <td><?php echo isset($lis->s_color)?$lis->s_color:''; ?></td>
-                                            <td><?php echo isset($lis->s_gsm)?$lis->s_gsm:''; ?></td>
-                                            <td><?php echo isset($lis->s_qty)?$lis->s_qty:''; ?></td>
-                                            <td>
-                                                <a href="<?php echo base_url('sidepattymodule/editsidepatty/'.base64_encode($lis->s_id)); ?>" type="button" class="btn btn-info mr-10 mb-5"><i class="fa fa-edit"></i></a>
-                                                <a href="<?php echo base_url('sidepattymodule/deletesidepatty/'.base64_encode($lis->s_id)); ?>" type="button" class="btn btn-danger mr-10 mb-5 confirmation"><i class="fa fa-trash-o"></i></a>
-                                            </td>
+                                            <td><?php echo isset($lis['o_sname'])?$lis['o_sname']:''; ?></td>
+                                            <td><?php echo isset($lis['o_type'])?$lis['o_type']:''; ?></td>
+                                            <td><?php echo isset($lis['o_size'])?$lis['o_size']:''; ?></td>
+                                            <td><?php echo isset($lis['o_color'])?$lis['o_color']:''; ?></td>
+                                            <td><?php echo isset($lis['o_gsm'])?$lis['o_gsm']:''; ?></td>
+                                            <td><?php echo isset($lis['o_p_type'])?$lis['o_p_type']:''; ?></td>
+                                            <td><?php echo isset($lis['o_p_color'])?$lis['o_p_color']:''; ?></td>
+                                            <td><input type="text" onkeyup="update_stock_qty(this.value,'<?php echo $lis['o_s_id']; ?>');" value="<?php echo isset($lis['o_qty'])?$lis['o_qty']:''; ?>"></td>
+                                            <td class="valigntop">
+                                                 <a href="<?php echo base_url('sidepattymodule/deleteorderstock/'.base64_encode($lis['o_s_id'])); ?>" type="button" class="btn btn-danger mr-10 mb-5 confirmation"><i class="fa fa-trash-o"></i></a>
+											</td>
                                         </tr>
 									<?php $cnt++;} ?>
+									<?php }else{ ?>
+									<div>NO data</div>
 									<?php } ?>
                                     </tbody>
                                 </table>
@@ -81,14 +87,34 @@
         <!-- /.content-wrapper -->
         <?php echo $footer; ?>
     </div>
+	<div id="sucessmsg" style=""></div>
     <!-- ./wrapper -->
     <?php echo $scripts; ?>
 
     <script type="text/javascript">
+	function update_stock_qty(val,id){
+			if(val!='' && id!=''){
+				jQuery.ajax({
+   				url: "<?php echo base_url('sidepattymodule/update_s_s_o_qty');?>",
+   					data: {u_qty:val,o_id: id,},
+   					dataType: 'json',
+   					type: 'POST',
+   					success: function (data) {
+						if(data.msg==1){
+   							$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp bg-succ"> Quantity successfully updated<i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
+						}else{
+							$('#sucessmsg').html('<div class="alt_cus"><div class="alert_msg1 animated slideInUp bg-warn"> Technical problem will occurred . Please try again<i class="fa fa-check  text-success ico_bac" aria-hidden="true"></i></div></div>');  
+						}
+					}
+   				});
+			}else{
+				alert('error will occured');
+			}
+		}
         //confirm message
         $(document).ready(function() {
             $('.confirmation').on('click', function() {
-                return confirm('Are you sure of deleting stock?');
+                return confirm('Are you sure of deleting category?');
             });
         });
         //datatables
