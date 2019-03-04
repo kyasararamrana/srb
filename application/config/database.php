@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'srb',
+	'hostname' => '166.62.26.2',
+	'username' => 'srbecom',
+	'password' => 'srbecom@123',
+	'database' => 'srbecom_db',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

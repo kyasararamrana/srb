@@ -38,85 +38,105 @@
                     <div class="col-md-12">
                         <div class="box box-success">
                             <!-- form start -->
-                            <form id="" name="" action="">
+                            <form id="add_order_staock" name="add_order_staock" action="<?php echo base_url('sidepattymodule/addorder_post'); ?>" method="POST">
                                 <div class="box-body">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Stock Name</label>
-                                            <input type="text" class="form-control" name="sname" id="" placeholder="Stock Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Type</label>
-                                            <select name="type" class="form-control">
-                                                <option value="0" selected disabled>Select</option>
-                                                <option value="1">Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
-                                            </select>
-                                        </div>
-                                    </div>
+								  <div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Stock Name</label>
+												<input type="text" class="form-control" name="o_sname" id="o_sname" placeholder="Stock Name">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Type</label>
+												<select name="o_type" id="o_type" class="form-control">
+													<option value="">Select</option>
+													<?php if(isset($type_list) && count($type_list)>0){ ?>
+														<?php foreach($type_list as $lis){ ?>
+															<option value="<?php echo $lis['s_type']; ?>"><?php echo $lis['s_type']; ?></option>
+														<?php } ?>
+													<?php } ?>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Size</label>
-                                            <select name="size" class="form-control">
-                                                <option value="0" selected disabled>Select</option>
-                                                <option value="1">Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
+                                           <select name="o_size" id="o_size" class="form-control">
+                                                <option value="">Select</option>
+												<?php if(isset($size_list) && count($size_list)>0){ ?>
+													<?php foreach($size_list as $lis){ ?>
+														<option value="<?php echo $lis['s_size']; ?>"><?php echo $lis['s_size']; ?></option>
+													<?php } ?>
+												<?php } ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Color</label>
-                                            <select name="color" class="form-control">
-                                                <option value="0" selected disabled>Select</option>
-                                                <option value="1">Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
+                                           <select name="o_color" id="o_color" class="form-control">
+                                                <option value="">Select</option>
+												<?php if(isset($color_list) && count($color_list)>0){ ?>
+													<?php foreach($color_list as $lis){ ?>
+														<option value="<?php echo $lis['s_color']; ?>"><?php echo $lis['s_color']; ?></option>
+													<?php } ?>
+												<?php } ?>
                                             </select>
                                         </div>
                                     </div>
+                                    </div>
+									<div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>GSM</label>
-                                            <select name="gsm" class="form-control">
-                                                <option value="0" selected disabled>Select</option>
-                                                <option value="1">Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
-                                            </select>
+												<select name="o_gsm" id="o_gsm" class="form-control">
+													<option value="">Select</option>
+													<?php if(isset($gsm_list) && count($gsm_list)>0){ ?>
+														<?php foreach($gsm_list as $lis){ ?>
+															<option value="<?php echo $lis['s_gsm']; ?>"><?php echo $lis['s_gsm']; ?></option>
+														<?php } ?>
+													<?php } ?>
+												</select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Printing</label>
-                                            <select name="gsm" class="form-control">
-                                                <option value="0" selected disabled>Select</option>
-                                                <option value="1">Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
-                                            </select>
+                                            <label>Printing Type</label>
+												<select name="o_p_type" id="o_p_type" class="form-control">
+													<option value="">Select</option>
+													<?php if(isset($print_type_list) && count($print_type_list)>0){ ?>
+														<?php foreach($print_type_list as $lis){ ?>
+															<option value="<?php echo $lis['p_type']; ?>"><?php echo $lis['p_type']; ?></option>
+														<?php } ?>
+													<?php } ?>
+												</select>
                                         </div>
                                     </div>
+                                    </div>
+									<div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Printing Color</label>
-                                            <select name="gsm" class="form-control">
-                                                <option value="0" selected disabled>Select</option>
-                                                <option value="1">Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
-                                            </select>
+                                            <select name="o_p_color" id="o_p_color" class="form-control">
+													<option value="">Select</option>
+													<?php if(isset($print_color_list) && count($print_color_list)>0){ ?>
+														<?php foreach($print_color_list as $lis){ ?>
+															<option value="<?php echo $lis['p_color']; ?>"><?php echo $lis['p_color']; ?></option>
+														<?php } ?>
+													<?php } ?>
+												</select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Quantity</label>
-                                            <input type="text" class="form-control" name="quantity" id="" placeholder="Quantity">
+                                            <input type="text" class="form-control" name="qty" id="qty" placeholder="Quantity">
                                         </div>
+                                    </div>
                                     </div>
                                     <div class="clearfix">&nbsp;</div>
                                     <div class="col-md-6">
@@ -153,20 +173,65 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#addVendorForm').bootstrapValidator({
+            $('#add_order_staock').bootstrapValidator({
                 fields: {
-                    vname: {
+                    o_sname: {
                         validators: {
                             notEmpty: {
-                                message: 'Name is required'
+                                message: 'Stock Name is required'
+                            },regexp: {
+							regexp: /^[a-zA-Z0-9. ]+$/,
+							message: 'Stock Name can only consist of alphanumeric, space and dot'
+							}
+                        }
+                    },
+                    o_type: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Type is required'
                             }
                         }
                     },
-                    vnumber1: {
+                    o_size: {
                         validators: {
                             notEmpty: {
-                                message: 'Number is required'
+                                message: 'Size is required'
                             }
+                        }
+                    },
+                    o_color: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Color is required'
+                            }
+                        }
+                    },
+                    o_gsm: {
+                        validators: {
+                            notEmpty: {
+                                message: 'GSM is required'
+                            }
+                        }
+                    },o_p_type: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Printing Type is required'
+                            }
+                        }
+                    },o_p_color: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Printing Color is required'
+                            }
+                        }
+                    },qty: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Quantity is required'
+                            },regexp: {
+								regexp:  /^[0-9]+$/,
+								message:'Quantity must be digits'
+								}
                         }
                     }
                 }

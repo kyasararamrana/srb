@@ -40,58 +40,46 @@
                     <div class="col-md-12">
                         <div class="box box-success">
                             <!-- form start -->
-                            <form id="" name="" action="">
+                            <form id="edit_sidepatty" name="edit_sidepatty" action="<?php echo base_url('sidepattymodule/editpost'); ?>" method="POST">
+							    <input type="hidden"  name="s_id" id="s_id" value="<?php echo isset($s_details['s_id'])?$s_details['s_id']:''; ?>">
+
                                 <div class="box-body">
+								<div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Type</label>
-                                            <select name="type" class="form-control">
-                                                <option value="0" disabled>Select</option>
-                                                <option value="1" selected>Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
-                                            </select>
+                                            <input type="text" name="s_type" id="s_type" value="<?php echo isset($s_details['s_type'])?$s_details['s_type']:''; ?>" placeholder="Enter Type" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Size</label>
-                                            <select name="size" class="form-control">
-                                                <option value="0" disabled>Select</option>
-                                                <option value="1" selected>Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
-                                            </select>
+                                            <input type="text" name="s_size" id="s_size" value="<?php echo isset($s_details['s_size'])?$s_details['s_size']:''; ?>" placeholder="Enter Size" class="form-control" />
                                         </div>
                                     </div>
+								</div>
+								<div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Color</label>
-                                            <select name="color" class="form-control">
-                                                <option value="0" disabled>Select</option>
-                                                <option value="1" selected>Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
-                                            </select>
+                                            <input type="text" name="s_color" id="s_color" value="<?php echo isset($s_details['s_color'])?$s_details['s_color']:''; ?>" placeholder="Enter Color" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>GSM</label>
-                                            <select name="gsm" class="form-control">
-                                                <option value="0" disabled>Select</option>
-                                                <option value="1" selected>Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
-                                            </select>
+                                            <input type="text" name="s_gsm" id="s_gsm" value="<?php echo isset($s_details['s_gsm'])?$s_details['s_gsm']:''; ?>" placeholder="Enter GSM" class="form-control" />
                                         </div>
                                     </div>
+								</div>
+								<div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Quantity</label>
-                                            <input type="text" class="form-control" name="quantity" id="" value="Quantity">
+                                           <input type="text" name="s_qty" id="s_qty" value="<?php echo isset($s_details['s_qty'])?$s_details['s_qty']:''; ?>" placeholder="Enter Quantity" class="form-control" />
                                         </div>
                                     </div>
+								</div>
                                     <div class="clearfix">&nbsp;</div>
                                     <div class="col-md-6">
                                         <button type="submit" class="btn btn-primary">Save Changes</button>
@@ -130,21 +118,69 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#addVendorForm').bootstrapValidator({
+            $('#edit_sidepatty').bootstrapValidator({
                 fields: {
-                    vname: {
+                    s_type: {
                         validators: {
-                            notEmpty: {
-                                message: 'Name is required'
-                            }
-                        }
+							notEmpty: {
+								message: 'Type is required'
+							},
+							regexp: {
+							regexp: /^[a-zA-Z0-9. ]+$/,
+							message: 'Type can only consist of alphanumeric, space and dot'
+							}
+						}
                     },
-                    vnumber1: {
+					s_size: {
                         validators: {
-                            notEmpty: {
-                                message: 'Number is required'
-                            }
-                        }
+							notEmpty: {
+								message: 'Size is required'
+							},
+							regexp: {
+							regexp: /^[a-zA-Z0-9*-_=\/. ]+$/,
+							message: 'Size can only consist of alphanumeric, space and dot'
+							}
+						}
+                    },s_color: {
+                        validators: {
+							notEmpty: {
+								message: 'Color is required'
+							},
+							regexp: {
+							regexp: /^[a-zA-Z0-8. ]+$/,
+							message: 'Color can only consist of alphanumeric, space and dot'
+							}
+						}
+                    },s_gsm: {
+                        validators: {
+							notEmpty: {
+								message: 'GSM is required'
+							},
+							regexp: {
+							regexp: /^[a-zA-Z0-8. ]+$/,
+							message: 'GSM can only consist of alphanumeric, space and dot'
+							}
+						}
+                    },s_qty: {
+                        validators: {
+							notEmpty: {
+								message: 'Quantity is required'
+							},
+							regexp: {
+							regexp: /^[0-9]+$/,
+							message: 'Quantity can only consist of only digits'
+							}
+						}
+                    },
+                    v_others: {
+						validators: {
+							notEmpty: {
+								message: 'Others is required'
+							},regexp: {
+							regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
+							message:'Others wont allow <> [] = % '
+							}
+						}
                     }
                 }
             })

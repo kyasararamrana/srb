@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SRB | <?php echo $pageTitle; ?> </title>
+    <title>SRB |
+        <?php echo $pageTitle; ?>
+    </title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <?php echo $links; ?>
 </head>
+
 <body class="hold-transition skin-green sidebar-mini">
     <div class="wrapper">
+
         <?php echo $header; ?>
         <?php echo $sidebar; ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1> Prices List </h1>
+                <h1>
+                    Prices List
+                </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
                     <li><a href="#">Bags</a></li>
                     <li class="active">Prices List</li>
                 </ol>
             </section>
+
             <!-- Main content -->
             <section class="content container-fluid">
                 <div class="row">
@@ -99,6 +107,7 @@
     </div>
     <!-- ./wrapper -->
     <?php echo $scripts; ?>
+
     <script type="text/javascript">
         //confirm message
         $(document).ready(function() {
@@ -111,5 +120,7 @@
             $('#example').DataTable();
         });
     </script>
+
 </body>
+
 </html>

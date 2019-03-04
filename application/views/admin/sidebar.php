@@ -217,12 +217,12 @@
       <!-- Sales Management -->
       <?php if ($this->session->userdata('role') == 'Sales') { ?>
         <li><a href="<?php echo base_url('sales/create'); ?>">
-          <i class="fa fa-file-text"></i> <span>Orders</span></a>
+          <i class="fa fa-file-text"></i> <span>Orders Form</span></a>
         </li>
         <li><a href="<?php echo base_url('sales'); ?>">
           <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
         </li>
-        <li><a href="<?php echo base_url('sales/pricelist'); ?>">
+        <li><a href="<?php echo base_url('salesmanagement/pricelist'); ?>">
           <i class="fa fa-money"></i> <span>Price List</span></a>
         </li>
         <li><a href="<?php echo base_url('sales/wishlist'); ?>">
@@ -328,10 +328,19 @@
               <li><a href="<?php echo base_url('sidepattymodule/addsidepatty'); ?>">Add Sidepatty</a></li>
               <li><a href="<?php echo base_url('sidepattymodule/sidepattylist'); ?>">Sidepatty List</a></li>
             </ul>
+          </li> 
+		  <li class="treeview">
+            <a href="#"><i class="fa fa-cubes"></i> <span>Order Stock</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="<?php echo base_url('sidepattymodule/orderstock'); ?>">Add Order Stock</a></li>
+              <li><a href="<?php echo base_url('sidepattymodule/orderstocklist'); ?>">Order Stock List</a></li>
+            </ul>
           </li>
-          <li><a href="<?php echo base_url('sidepattymodule/orderstock'); ?>">
-            <i class="fa fa-shopping-cart"></i> <span>Order Stock</span></a>
-          </li>
+        
           <li><a href="<?php echo base_url('sidepattymodule/printing'); ?>">
             <i class="fa fa-paint-brush"></i> <span>Printing</span></a>
           </li>

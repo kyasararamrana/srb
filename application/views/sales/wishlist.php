@@ -31,7 +31,7 @@
                               <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                   <tr>
-                                    <th style="width:5%;"><input type="checkbox" id="checkAll"/></th>
+                                    <th style="width:5%;">Select</th>
                                     <th>Bag Type</th>
                                     <th>Bag Size</th>
                                     <th>Handle Type</th>
@@ -69,7 +69,7 @@
                                             </button>
                                             <ul class="dropdown-menu" role="menu" style="right:0;left:auto;">
                                               <li>
-                                                <a href="<?php echo base_url('sales/wishlist_details/'.$wishlist->id); ?>"><i class="fa fa-eye"></i>View</a>
+                                                <a href="<?php echo base_url('salesmanagement/wishlistItemView'); ?>"><i class="fa fa-eye"></i>View</a>
                                               </li>
                                               <li>
                                                 <a href="<?php echo base_url('salesmanagement/editWishlistItem'); ?>"><i class="fa fa-edit"></i>Edit</a>
@@ -88,8 +88,8 @@
                               </table>
                                 <div class="clearfix"><br><br></div>
                                 <div class="text-right">
-                                    <a class="btn btn-danger btn-sm mr-10"  <?php echo (count($wishlists) <= 0) ? 'disabled' : 'id="multi_delete" href="#"' ; ?>><i class="fa fa-trash mr-5"></i>Delete</a>
-                                    <a class="btn btn-success btn-sm" <?php echo (count($wishlists) <= 0) ? 'disabled' : 'id="multi_order" href="#"' ; ?>><i class="fa fa-shopping-cart mr-5"></i>Order Now</a>
+                                    <a href="" class="btn btn-danger btn-sm mr-10" id="multi_delete"><i class="fa fa-trash mr-5"></i>Delete</a>
+                                    <a href="" class="btn btn-success btn-sm"><i class="fa fa-shopping-cart mr-5"></i>Order Now</a>
                                 </div>
                             </div>
                         </div>
@@ -113,77 +113,33 @@
       //datatables
       $(document).ready(function() {
         $('#example').DataTable();
-        //Check all checkboxes
-        $("#checkAll").click(function(){
-          $('input:checkbox').not(this).prop('checked', this.checked);
-        });
-        var id = [];
         //multiple delete records
+        var id = [];
         $('#multi_delete').click(function(e) {
           e.preventDefault();
           $('.checkbox:checked').each(function() {
             id.push($(this).data('id'));
           });
           if (id.length <= 0) {
-            $('#message').html('<div class="alert_msg1 animated slideInUp bg-warn">Please check atleast once checkbox  <i class="fa fa-exclamation-triangle text-warning ico_bac" aria-hidden="true"></i></div>');
-            return false;
+            alert('Please check atleast once checkbox');
           } else {
-            var response = confirm('Are you sure of deleting wishlist item(s)?');
-            if (response == true) {
-              id = id.join(',');
-              $.ajax({
-                url:'<?php echo base_url('sales/wishlist_delete'); ?>',
-                type:'post',
-                data:{'id':id},
-                dataType:'JSON',
-                success:function(data){
-                  if(data.success){
-                    $('#message').html('<div class="alert_msg1 animated slideInUp bg-succ">'+data.success+' <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
-                  } else if (data.error) {
-                    $('#message').html('<div class="alert_msg1 animated slideInUp bg-warn">'+data.error+' <i class="fa fa-exclamation-triangle text-warning ico_bac" aria-hidden="true"></i></div>');
-                  }
-                  setTimeout(function(){
-                    window.location.reload();
-                  },2000);
+            id = id.join(',');
+            $.ajax({
+              url:'<?php echo base_url('sales/wishlist_delete'); ?>',
+              type:'post',
+              data:{'id':id},
+              dataType:'JSON',
+              success:function(data){
+                if(data.success){
+                  $('#message').html('<div class="alert_msg1 animated slideInUp bg-succ">'+data.success+' <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
+                } else if (data.error) {
+                  $('#message').html('<div class="alert_msg1 animated slideInUp bg-warn">'+data.error+' <i class="fa fa-check text-warning ico_bac" aria-hidden="true"></i></div>');
                 }
-              });
-            } else {
-              return false;
-            }
-          }
-        });
-        //multiple orders
-        $('#multi_order').click(function(e) {
-          e.preventDefault();
-          $('.checkbox:checked').each(function() {
-            id.push($(this).data('id'));
-          });
-          if (id.length <= 0) {
-            $('#message').html('<div class="alert_msg1 animated slideInUp bg-warn">Please check atleast once checkbox  <i class="fa fa-exclamation-triangle text-warning ico_bac" aria-hidden="true"></i></div>');
-            return false;
-          } else {
-            var response = confirm('Are you sure of adding wishlist item(s) to order list?');
-            if (response == true) {
-              id = id.join(',');
-              $.ajax({
-                url:'<?php echo base_url('sales/wishlist_order'); ?>',
-                type:'post',
-                data:{'id':id},
-                dataType:'JSON',
-                success:function(data){
-                  if(data.success){
-                    $('#message').html('<div class="alert_msg1 animated slideInUp bg-succ">'+data.success+' <i class="fa fa-check text-success ico_bac" aria-hidden="true"></i></div>');
-                  } else if (data.error) {
-                    $('#message').html('<div class="alert_msg1 animated slideInUp bg-warn">'+data.error+' <i class="fa fa-exclamation-triangle text-warning ico_bac" aria-hidden="true"></i></div>');
-                  }
-                  setTimeout(function(){
-                    window.location = '<?php echo base_url('sales'); ?>';
-                  },2000);
-                }
-              });
-            } else {
-              return false;
-            }
+                setTimeout(function(){
+                  window.location.reload();
+                },2000);
+              }
+            });
           }
         });
       });

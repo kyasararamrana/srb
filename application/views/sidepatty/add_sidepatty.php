@@ -39,7 +39,7 @@
                     <div class="col-md-12">
                         <div class="box box-success">
                             <!-- form start -->
-                            <form id="" name="" action="" method="">
+                            <form id="add_sidepatty" name="add_sidepatty" action="<?php echo base_url('sidepattymodule/addpost'); ?>" method="POST">
                                 <div class="box-body">
                                     <div class="col-md-12">
                                         <div class="table-responsive">
@@ -56,40 +56,20 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>
-                                                            <select name="stype" class="form-control">
-                                                                <option value="0" selected disabled>Select</option>
-                                                                <option value="1">Option name</option>
-                                                                <option value="2">Option name</option>
-                                                                <option value="3">Option name</option>
-                                                            </select>
+                                                         <td class="form-group">
+                                                            <input type="text" name="s_type[]" id="s_type" placeholder="Enter Type" class="form-control" />
                                                         </td>
-                                                        <td>
-                                                            <select name="ssize" class="form-control">
-                                                                <option value="0" selected disabled>Select</option>
-                                                                <option value="1">Option name</option>
-                                                                <option value="2">Option name</option>
-                                                                <option value="3">Option name</option>
-                                                            </select>
+                                                         <td class="form-group">
+                                                            <input type="text" name="s_size[]" id="s_size" placeholder="Enter Size" class="form-control" />
                                                         </td>
-                                                        <td>
-                                                            <select name="scolor" class="form-control">
-                                                                <option value="0" selected disabled>Select</option>
-                                                                <option value="1">Option name</option>
-                                                                <option value="2">Option name</option>
-                                                                <option value="3">Option name</option>
-                                                            </select>
+                                                         <td class="form-group">
+                                                            <input type="text" name="s_color[]" id="s_color" placeholder="Enter Color" class="form-control" />
                                                         </td>
-                                                        <td>
-                                                            <select name="sgsm" class="form-control">
-                                                                <option value="0" selected disabled>Select</option>
-                                                                <option value="1">Option name</option>
-                                                                <option value="2">Option name</option>
-                                                                <option value="3">Option name</option>
-                                                            </select>
+                                                        <td class="form-group">
+                                                            <input type="text" name="s_gsm[]" id="s_gsm" placeholder="Enter GSM" class="form-control" />
                                                         </td>
-                                                        <td>
-                                                            <input type="text" name="squantity" placeholder="Enter Quantity" class="form-control" />
+                                                        <td class="form-group">
+                                                            <input type="text" name="s_qty[]" id="s_qty" placeholder="Enter Quantity" class="form-control" />
                                                         </td>
                                                         <td>&nbsp;</td>
                                                     </tr>
@@ -129,15 +109,15 @@
                 var newRow = $("<tr>");
                 var cols = "";
 
-                cols += '<td><select class="form-control" name="stype' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><input type="text" name="s_type[]" id="s_type' + counter + '" placeholder="Enter Type" class="form-control" /></td>';
 
-                cols += '<td><select class="form-control" name="ssize' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td> <input type="text" name="s_size[]" id="s_size' + counter + '" placeholder="Enter Size" class="form-control" /></td>';
 
-                cols += '<td><select class="form-control" name="scolor' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><input type="text" name="s_color[]" id="s_color' + counter + '" placeholder="Enter Color" class="form-control" /></td>';
 
-                cols += '<td><select class="form-control" name="sgsm' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><input type="text" name="s_gsm[]" id="s_gsm' + counter + '" placeholder="Enter GSM" class="form-control" /></td>';
                 
-                cols += '<td><input type="text" class="form-control" placeholder="Enter Quantity" name="squantity' + counter + '"/></td>';
+                cols += '<td><input type="text" name="s_qty[]"  id="s_qty' + counter + '"  placeholder="Enter Quantity" class="form-control"/></td>';
 
                 cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger"><i class="fa fa-trash"></i></button></td>';
                 newRow.append(cols);
@@ -151,7 +131,76 @@
             });
         });
     </script>
-
+ <script type="text/javascript">
+        $(document).ready(function() {
+            $('#add_sidepatty').bootstrapValidator({
+                fields: {
+                    's_type[]': {
+                        validators: {
+							notEmpty: {
+								message: 'Type is required'
+							},
+							regexp: {
+							regexp: /^[a-zA-Z0-9. ]+$/,
+							message: 'Type can only consist of alphanumeric, space and dot'
+							}
+						}
+                    },
+					's_size[]': {
+                        validators: {
+							notEmpty: {
+								message: 'Size is required'
+							},
+							regexp: {
+							regexp: /^[a-zA-Z0-9*-_=\/. ]+$/,
+							message: 'Size can only consist of alphanumeric, space and dot'
+							}
+						}
+                    },'s_color[]': {
+                        validators: {
+							notEmpty: {
+								message: 'Color is required'
+							},
+							regexp: {
+							regexp: /^[a-zA-Z0-8. ]+$/,
+							message: 'Color can only consist of alphanumeric, space and dot'
+							}
+						}
+                    },'s_gsm[]': {
+                        validators: {
+							notEmpty: {
+								message: 'GSM is required'
+							},
+							regexp: {
+							regexp: /^[a-zA-Z0-8. ]+$/,
+							message: 'GSM can only consist of alphanumeric, space and dot'
+							}
+						}
+                    },'s_qty[]': {
+                        validators: {
+							notEmpty: {
+								message: 'Quantity is required'
+							},
+							regexp: {
+							regexp: /^[0-9]+$/,
+							message: 'Quantity can only consist of only digits'
+							}
+						}
+                    },
+                    v_others: {
+						validators: {
+							notEmpty: {
+								message: 'Others is required'
+							},regexp: {
+							regexp:/^[ A-Za-z0-9_@.,/!;:}{@#&`~"\\|^?$*)(_+-]*$/,
+							message:'Others wont allow <> [] = % '
+							}
+						}
+                    }
+                }
+            })
+        });
+    </script>
 </body>
 
 </html>

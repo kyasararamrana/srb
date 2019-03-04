@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SRB | <?php echo $pageTitle; ?> </title>
+    <title>SRB |
+        <?php echo $pageTitle; ?>
+    </title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <?php echo $links; ?>
@@ -51,42 +53,44 @@
                                 <div class="clearfix">&nbsp;</div>
                             </div>
                             <div class="box-body">
-                              <table id="example" class="table table-bordered table-striped">
-                                  <thead>
-                                      <tr>
-                                          <th>S.No</th>
-                                          <th>Bag Type</th>
-                                          <th>Bag Layout</th>
-                                          <th>Bag Size</th>
-                                          <th>Bag GSM</th>
-                                          <th>Bags per KG</th>
-                                          <th>Cost per Bag for Single Color</th>
-                                          <th>Cost per kg</th>
-                                      </tr>
-                                  </thead>
-                                  <tbody>
-                                    <?php if (count($price) > 0) { ?>
-                                      <?php $sno = 1; ?>
-                                      <?php foreach ($price as $p) { ?>
+                                <table id="example" class="table table-bordered table-striped">
+                                    <thead>
                                         <tr>
-                                            <td><?php echo $sno; ?></td>
-                                            <td><?php echo $p->bag_type; ?></td>
-                                            <td><?php echo $p->bag_layout; ?></td>
-                                            <td><?php echo $p->bag_size; ?></td>
-                                            <td><?php echo $p->bag_gsm; ?></td>
-                                            <td><?php echo $p->bags_per_kg; ?></td>
-                                            <td><?php echo $p->cost_per_bag; ?></td>
-                                            <td><?php echo $p->cost_per_kg; ?></td>
+                                            <th>S.No</th>
+                                            <th>Bag Type</th>
+                                            <th>Bag Size</th>
+                                            <th>GSM</th>
+                                            <th>Bags per KG</th>
+                                            <th>Cost per Bag for Single Color</th>
                                         </tr>
-                                      <?php $sno++; ?>
-                                      <?php } ?>
-                                    <?php } else { ?>
-                                      <tr>
-                                        <td colspan="6" class="text-center">No records found</td>
-                                      </tr>
-                                    <?php } ?>
-                                  </tbody>
-                              </table>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>xxxxx</td>
+                                            <td>xxxxx</td>
+                                            <td>xxxxx</td>
+                                            <td>xxxxx</td>
+                                            <td>xxxxx</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>xxxxx</td>
+                                            <td>xxxxx</td>
+                                            <td>xxxxx</td>
+                                            <td>xxxxx</td>
+                                            <td>xxxxx</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>xxxxx</td>
+                                            <td>xxxxx</td>
+                                            <td>xxxxx</td>
+                                            <td>xxxxx</td>
+                                            <td>xxxxx</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

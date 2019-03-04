@@ -57,7 +57,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Bag Size</label>
-                                            <select class="form-control" name="bag_size" id="bag_size" data-gsm="<?php echo (isset($price->bag_gsm)) ? $price->bag_gsm : '' ; ?>">
+                                            <select class="form-control" name="bag_size" id="bag_size">
                                                 <option value="">Select</option>
                                             </select>
                                         </div>
@@ -70,7 +70,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-3">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Handle Rate</label>
                                             <input type="text" class="form-control" name="handle_rate" id="handle_rate" value="<?php echo (isset($price->handle_rate)) ? $price->handle_rate : '' ; ?>">
@@ -93,7 +93,7 @@
                                         <label>Minimum Quantity</label>
                                         <input type="text" class="form-control" name="minimum_quantity" id="minimum_quantity" value="<?php echo (isset($price->minimum_quantity)) ? $price->minimum_quantity : '' ; ?>">
                                       </div>
-                                    </div> -->
+                                    </div>
                                     <div class="col-md-3">
                                       <div class="form-group">
                                         <label>Printing cost</label>
@@ -115,7 +115,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Cost per kg</label>
-                                            <input type="text" class="form-control" name="cost_per_kg" id="cost_per_kg" value="170" readonly>
+                                            <input type="text" class="form-control" name="cost_per_kg" id="cost_per_kg" value="<?php echo (isset($price->cost_per_kg)) ? $price->cost_per_kg : 0 ; ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="clearfix">&nbsp;</div>
@@ -175,7 +175,7 @@
             type:'post',
             data:{'bag_type':bag_type,'layout':layout},
             success:function(data){
-              $('#bag_layout').html(data).trigger('change');
+              $('#bag_layout').html(data);
             }
           });
         }).trigger('change');
@@ -189,30 +189,28 @@
             type:'post',
             data:{'bag_layout':bag_layout,'size':size},
             success:function(data){
-              $('#bag_size').html(data).trigger('change');
+              $('#bag_size').html(data);
             }
           });
-        });
+        }).trigger('change');
         //ajax call for bag size by bag layout
         $('#bag_size').on('change',function(){
          var bag_size = $(this).val();
-         var gsm = $(this).data('gsm');
          $('#bag_gsm').html('<option value="">loading...</option>');
          $.ajax({
            url:'<?php echo base_url('bag/get_baggsm_by_bagsize'); ?>',
            type:'post',
-           data:{'bag_size':bag_size,'gsm':gsm},
+           data:{'bag_size':bag_size},
            success:function(data){
-             $('#bag_gsm').html(data).trigger('change');
+             $('#bag_gsm').html(data);
            }
          });
-       });
+       }).trigger('change');
         //price calculation
         $('#printing_cost').on('keyup',function(){
           if ($('#bag_type').find('option:selected').text() == 'Dcut') {
             var bag_size = $('#bag_size').find('option:selected').text().split('*');
             var bag_gsm = $('#bag_gsm').find('option:selected').text();
-            //alert(bag_gsm);
             var printing_cost = $('#printing_cost').val();
             var handle_rate = $('#handle_rate').val();
             var zip_rate = $('#zip_rate').val();
@@ -223,7 +221,6 @@
             var cost_per_kg = 170;
             var width = bag_size[0];
             var length = bag_size[1];
-            //alert(width+''+length);
             var weight_of_bag_formula = (width * ((length * 2) + 5) * (parseInt(bag_gsm) + parseInt(additional_gsm))) / 1550;
             var weight_of_bag = weight_of_bag_formula;
             //no of bags per kg
@@ -236,10 +233,10 @@
             var final_cost_per_bag = cost_per_bag_value + (cost_per_bag_value * percentage) + (parseInt(printing_cost));
             $('#cost_per_bag').val(final_cost_per_bag.toFixed(2));
             //cost per kg
-            // cost_per_kg = cost_per_kg + (no_of_bags_per_kg * (parseInt(handle_rate) + parseInt(zip_rate) + parseInt(other_charges) + parseInt(minimum_quantity)));
-            // $('#cost_per_kg').val(cost_per_kg.toFixed(2));
+            cost_per_kg = cost_per_kg + (no_of_bags_per_kg * (parseInt(handle_rate) + parseInt(zip_rate) + parseInt(other_charges) + parseInt(minimum_quantity)));
+            $('#cost_per_kg').val(cost_per_kg.toFixed(2));
           }
-        });
+        }).trigger('keyup');
       });
     </script>
 </body>
