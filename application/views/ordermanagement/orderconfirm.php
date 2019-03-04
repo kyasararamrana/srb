@@ -51,58 +51,45 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>SRB00000012</td>
-                                            <td>Kasi</td>
-                                            <td>98xxxxxx20</td>
-                                            <td>D-cut</td>
-                                            <td>4,000</td>
-                                            <td class="valigntop">
-                                                <div class="btn-group">
-                                                    <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
-                                                        <i class="fa fa-angle-down"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu" role="menu">
-                                                        <li>
-                                                            <a href="<?php echo base_url('ordermanagement/orderdetails'); ?>"><i class="fa fa-eye"></i>View</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href=""><i class="fa fa-check"></i>Accept</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#"><i class="fa fa-close"></i>Reject</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </td>
+                                      <?php if (count($orders) > 0) { ?>
+                                        <?php $sno = 1; ?>
+                                        <?php foreach($orders as $order){ ?>
+                                          <tr>
+                                              <td><?php echo $sno; ?></td>
+                                              <td><?php
+                                                $str = date('Ymd').$order->id;
+                                                echo 'SRB'.str_pad($str,10,'0',STR_PAD_LEFT);
+                                              ?></td>
+                                              <td><?php echo $order->customer_name; ?></td>
+                                              <td><?php echo $order->mobile; ?></td>
+                                              <td><?php echo $order->bag_type; ?></td>
+                                              <td><?php echo $order->quantity; ?></td>
+                                              <td class="valigntop">
+                                                  <div class="btn-group">
+                                                      <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                                          <i class="fa fa-angle-down"></i>
+                                                      </button>
+                                                      <ul class="dropdown-menu" role="menu">
+                                                          <li>
+                                                              <a href="<?php echo base_url('order/orderdetails/'.$order->id); ?>"><i class="fa fa-eye"></i>View</a>
+                                                          </li>
+                                                          <li>
+                                                              <a href=""><i class="fa fa-check"></i>Accept</a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#"><i class="fa fa-close"></i>Reject</a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </td>
+                                          </tr>
+                                          <?php $sno++; ?>
+                                        <?php } ?>
+                                      <?php } else { ?>
+                                        <tr colspan="7" class="text-center">
+                                          <td >No records found</td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>SRB00000012</td>
-                                            <td>Mahesh</td>
-                                            <td>98xxxxxx20</td>
-                                            <td>D-cut</td>
-                                            <td>4,000</td>
-                                            <td class="valigntop">
-                                                <div class="btn-group">
-                                                    <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
-                                                        <i class="fa fa-angle-down"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu" role="menu">
-                                                        <li>
-                                                            <a href="<?php echo base_url('ordermanagement/orderdetails'); ?>"><i class="fa fa-eye"></i>View</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href=""><i class="fa fa-check"></i>Accept</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#"><i class="fa fa-close"></i>Reject</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                      <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
