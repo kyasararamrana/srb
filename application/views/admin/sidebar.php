@@ -318,7 +318,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="<?php echo base_url('handle/create'); ?>">Add Order Stock</a></li>
+              <li><a href="<?php echo base_url('handle/orderstock'); ?>">Add Order Stock</a></li>
               <li><a href="<?php echo base_url('handle/orderstocklist'); ?>">Order Stock List</a></li>
             </ul>
           </li>
