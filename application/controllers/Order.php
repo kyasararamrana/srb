@@ -8,6 +8,10 @@ class Order extends CI_Controller
   function __construct()
   {
     parent::__construct();
+    $this->load->library('form_validation');
+    $this->load->library('user_agent');
+    $this->load->model('Sales_Model');
+    $this->load->model('Work_Model');
     $this->load->model('Order_Model');
   }
   //order (view) - home
@@ -18,11 +22,8 @@ class Order extends CI_Controller
       $data = layouts($arg);
       $user_id = $this->session->userdata('id');
       if($user_id){
-        $data['orders'] = $this->Order_Model->get_order_by_user_id($user_id);
-    $this->load->library('form_validation');
-    $this->load->library('user_agent');
-    $this->load->model('Sales_Model');
-    $this->load->model('Work_Model');
+      $data['orders'] = $this->Order_Model->get_order_by_user_id($user_id);
+
   }
   //Order Confirmation
   public function orderconfirm()
@@ -74,7 +75,6 @@ class Order extends CI_Controller
     if($this->session->userdata('logged_in') == TRUE){
       $arg['pageTitle'] = 'Orders';
       $data = components($arg);
-<<<<<<< HEAD
       $data['works'] = $this->Work_Model->get_work();
       $this->load->view('order/works',$data);
     } else {
@@ -101,10 +101,8 @@ class Order extends CI_Controller
       $arg['pageTitle'] = 'Return Orders';
         $data = components($arg);
       $this->load->view('ordermanagement/return_bags',$data);
-=======
       $data['orders'] = $this->Order_Model->get_orders();
       $this->load->view('admin/orders',$data);
->>>>>>> 21f8d1f46a35a828da81ecd86a5169b3f22afcda
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('admin/login');
