@@ -202,6 +202,9 @@
         <li><a href="<?php echo base_url('order/orderstatus'); ?>">
           <i class="fa fa-shopping-cart"></i> <span>Orders Status List</span></a>
         </li>
+        <li><a href="<?php echo base_url('order/stocks'); ?>">
+          <i class="fa fa-shopping-cart"></i> <span>Stock List</span></a>
+        </li>
         <li class="treeview">
           <a href="#"><i class="fa fa-reply"></i> <span>Return Orders</span>
             <span class="pull-right-container">
