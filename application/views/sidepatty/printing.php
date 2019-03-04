@@ -38,23 +38,23 @@
                         <!-- Custom Tabs -->
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
-                                <li class="active">
+                                <li class="<?php if(isset($tab) && $tab==''){ echo "active"; } ?>">
                                     <a href="#tab_1" data-toggle="tab" aria-expanded="false">Add Printings Type</a>
                                 </li>
-                                <li class="">
+                                <li class="<?php if(isset($tab) && $tab==1){ echo "active"; } ?>">
                                     <a href="#tab_2" data-toggle="tab" aria-expanded="false">Printings Type List</a>
                                 </li>
-                                <li class="">
+                                <li class="<?php if(isset($tab) && $tab==2){ echo "active"; } ?>">
                                     <a href="#tab_3" data-toggle="tab" aria-expanded="false">Add Printing Color</a>
                                 </li>
-                                <li class="">
+                                <li class="<?php if(isset($tab) && $tab==3){ echo "active"; } ?>">
                                     <a href="#tab_4" data-toggle="tab" aria-expanded="false">Printing Color List</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
 
-                                <div class="tab-pane active" id="tab_1">
-                                    <form id="" name="" action="" method="">
+                                <div class="tab-pane <?php if(isset($tab) && $tab==''){ echo "active"; } ?>" id="tab_1">
+                                    <form id="add_print" name="add_print" action="<?php echo base_url('sidepattymodule/printaddpost'); ?>" method="POST">
                                         <div class="box-body">
                                             <div class="col-md-12">
                                                 <div class="table-responsive">
@@ -67,14 +67,9 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td>
-                                                                    <select name="sprinting" class="form-control">
-                                                                        <option value="0" selected disabled>Select</option>
-                                                                        <option value="1">Option name</option>
-                                                                        <option value="2">Option name</option>
-                                                                        <option value="3">Option name</option>
-                                                                    </select>
-                                                                </td>
+                                                                  <td class="form-group">
+																	<input type="text" name="p_type[]" id="p_color" placeholder="Enter Printing Type" class="form-control" />
+																</td>
                                                                 <td>&nbsp;</td>
                                                             </tr>
                                                         </tbody>
@@ -91,7 +86,7 @@
                                 </div>
                                 <!-- /.tab-pane -->
 
-                                <div class="tab-pane" id="tab_2">
+                                <div class="tab-pane <?php if(isset($tab) && $tab==1){ echo "active"; } ?>" id="tab_2">
                                     <div class="table-responsive">
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
@@ -102,38 +97,33 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+											<?php if(isset($p_type_list) && count($p_type_list)>0){ ?>
+											<?php $cnt=1;foreach($p_type_list as $lis){ ?>
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>xxxxx</td>
+                                                    <td><?php echo $cnt; ?></td>
+                                                    <td><?php echo isset($lis->p_type)?$lis->p_type:''; ?> </td>
                                                     <td>
-                                                        <a href="#" class="btn btn-info btn-sm">
+                                                        <a href="<?php echo base_url('sidepattymodule/editprint/'.base64_encode($lis->s_p_id)); ?>" class="btn btn-info btn-sm">
                                                             <i class="fa fa-edit"></i> Edit
                                                         </a>
-                                                        <a href="#" class="btn btn-danger btn-sm">
+                                                        <a href="<?php echo base_url('sidepattymodule/deleteprint/'.base64_encode($lis->s_p_id)); ?>" class="btn btn-danger btn-sm confirmation">
                                                             <i class="fa fa-trash"></i> Delete
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>xxxxx</td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-info btn-sm">
-                                                            <i class="fa fa-edit"></i> Edit
-                                                        </a>
-                                                        <a href="#" class="btn btn-danger btn-sm">
-                                                            <i class="fa fa-trash"></i> Delete
-                                                        </a>
-                                                    </td>
-                                                </tr>
+											<?php $cnt++;} ?>
+											<?php }else{ ?>
+											<div>NO data</div>
+											<?php } ?>
+                                                
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                                 <!-- /.tab-pane -->
                                 
-                                <div class="tab-pane" id="tab_3">
-                                    <form id="" name="" action="" method="">
+                                <div class="tab-pane <?php if(isset($tab) && $tab==2){ echo "active"; } ?>" id="tab_3">
+                                    <form id="add_color" name="add_color" action="<?php echo base_url('sidepattymodule/p_coloraddpost'); ?>" method="POST">
                                         <div class="box-body">
                                             <div class="col-md-12">
                                                 <div class="table-responsive">
@@ -147,12 +137,7 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>
-                                                                    <select name="sprintcolor" class="form-control">
-                                                                        <option value="0" selected disabled>Select</option>
-                                                                        <option value="1">Option name</option>
-                                                                        <option value="2">Option name</option>
-                                                                        <option value="3">Option name</option>
-                                                                    </select>
+																<input type="text" name="p_color[]" id="p_color" placeholder="Enter Printing Color" class="form-control" />
                                                                 </td>
                                                                 <td>&nbsp;</td>
                                                             </tr>
@@ -170,7 +155,7 @@
                                 </div>
                                 <!-- /.tab-pane -->
 
-                                <div class="tab-pane" id="tab_4">
+                                <div class="tab-pane <?php if(isset($tab) && $tab==3){ echo "active"; } ?>" id="tab_4">
                                     <div class="table-responsive">
                                         <table id="example2" class="table table-bordered table-striped">
                                             <thead>
@@ -180,31 +165,26 @@
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                              <tbody>
+											<?php if(isset($p_color_list) && count($p_color_list)>0){ ?>
+											<?php $cnt=1;foreach($p_color_list as $lis){ ?>
                                                 <tr>
-                                                    <td>1</td>
-                                                    <td>xxxxx</td>
+                                                    <td><?php echo $cnt; ?></td>
+                                                    <td><?php echo isset($lis->p_color)?$lis->p_color:''; ?> </td>
                                                     <td>
-                                                        <a href="#" class="btn btn-info btn-sm">
+                                                        <a href="<?php echo base_url('sidepattymodule/editcolor/'.base64_encode($lis->s_c_id)); ?>" class="btn btn-info btn-sm">
                                                             <i class="fa fa-edit"></i> Edit
                                                         </a>
-                                                        <a href="#" class="btn btn-danger btn-sm">
+                                                        <a href="<?php echo base_url('sidepattymodule/deletep_color/'.base64_encode($lis->s_c_id)); ?>" class="btn btn-danger btn-sm confirmation">
                                                             <i class="fa fa-trash"></i> Delete
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>xxxxx</td>
-                                                    <td>
-                                                        <a href="#" class="btn btn-info btn-sm">
-                                                            <i class="fa fa-edit"></i> Edit
-                                                        </a>
-                                                        <a href="#" class="btn btn-danger btn-sm">
-                                                            <i class="fa fa-trash"></i> Delete
-                                                        </a>
-                                                    </td>
-                                                </tr>
+											<?php $cnt++;} ?>
+											<?php }else{ ?>
+											<div>NO data</div>
+											<?php } ?>
+                                                
                                             </tbody>
                                         </table>
                                     </div>
@@ -248,7 +228,7 @@
                 var newRow = $("<tr>");
                 var cols = "";
 
-                cols += '<td><select class="form-control" name="sprinting' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><input type="text" name="p_type[]" id="sprinting' + counter + '" placeholder="Enter Printing Type" class="form-control" /></td>';
 
                 cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger"><i class="fa fa-trash"></i></button></td>';
                 newRow.append(cols);
@@ -271,7 +251,7 @@
                 var newRow = $("<tr>");
                 var cols = "";
 
-                cols += '<td><select class="form-control" name="sprintcolor' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><input type="text" name="p_color[]" id="p_color' + counter + '" placeholder="Enter Printing Color" class="form-control" /></td>';
 
                 cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger"><i class="fa fa-trash"></i></button></td>';
                 newRow.append(cols);

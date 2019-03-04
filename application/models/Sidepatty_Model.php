@@ -57,26 +57,48 @@ class Sidepatty_Model extends CI_Model
      return $this->db->update('ecom_stcok_orders',$data); 
   }
   // insert printing
-  public function save_print_insert($data){
-	   $this->db->insert('ecom_sidepatty_print',$data);
+  public function save_p_type_insert($data){
+	   $this->db->insert('ecom_sidepatty_p_type',$data);
+		return $this->db->insert_id();  
+  } 
+  // insert printing color
+  public function save_p_color_insert($data){
+	   $this->db->insert('ecom_sidepatty_p_color',$data);
 		return $this->db->insert_id();  
   }
   //list printing
-  public  function get_printing_list($pid){
-	 $this->db->select('p.s_p_id,p.p_type,p.p_color')->from('ecom_sidepatty_print as p');
+  public  function get_p_type_list($pid){
+	 $this->db->select('p.s_p_id,p.p_type')->from('ecom_sidepatty_p_type as p');
+	$this->db->where('p.p_status !=',2);
+	$this->db->where('p.p_created_by',$pid);
+	return $this->db->get()->result();  
+  } 
+  public  function get_p_color_list($pid){
+	 $this->db->select('p.s_c_id,p.p_color')->from('ecom_sidepatty_p_color as p');
 	$this->db->where('p.p_status !=',2);
 	$this->db->where('p.p_created_by',$pid);
 	return $this->db->get()->result();  
   }
-  //update
+  //update print_type
   public  function update_printing($s_p_id,$data){
 	$this->db->where('s_p_id',$s_p_id);
-     return $this->db->update('ecom_sidepatty_print',$data); 
+     return $this->db->update('ecom_sidepatty_p_type',$data); 
+  }
+  //update colors
+  public  function update_p_colors($s_p_id,$data){
+	$this->db->where('s_c_id',$s_p_id);
+     return $this->db->update('ecom_sidepatty_p_color',$data); 
   }
   //prinint details
   public  function get_printing_details($s_p_id){
-	 $this->db->select('p.s_p_id,p.p_type,p.p_color')->from('ecom_sidepatty_print as p');
+	 $this->db->select('p.s_p_id,p.p_type')->from('ecom_sidepatty_p_type as p');
 	$this->db->where('p.s_p_id',$s_p_id);
+	return $this->db->get()->row_array();  
+  } 
+  //prinint color details
+  public  function get_p_color_details($s_p_id){
+	 $this->db->select('p.s_c_id,p.p_color')->from('ecom_sidepatty_p_color as p');
+	$this->db->where('p.s_c_id',$s_p_id);
 	return $this->db->get()->row_array();  
   }
   //getting Types
@@ -114,7 +136,7 @@ class Sidepatty_Model extends CI_Model
   
   //getting printing type
   public  function get_print_type_list($l_id){
-	 $this->db->select('p.s_p_id,p.p_type')->from('ecom_sidepatty_print as p');
+	 $this->db->select('p.s_p_id,p.p_type')->from('ecom_sidepatty_p_type as p');
 	 $this->db->where('p.p_status',1);
 	 $this->db->group_by('p.p_type');
 	 $this->db->order_by('p.s_p_id','desc');
@@ -122,10 +144,10 @@ class Sidepatty_Model extends CI_Model
   }
   //getting printing color
   public  function get_print_color_list($l_id){
-	 $this->db->select('p.s_p_id,p.p_color')->from('ecom_sidepatty_print as p');
+	 $this->db->select('p.s_c_id,p.p_color')->from('ecom_sidepatty_p_color as p');
 	 $this->db->where('p.p_status',1);
 	 $this->db->group_by('p.p_color');
-	 $this->db->order_by('p.s_p_id','desc');
+	 $this->db->order_by('p.s_c_id','desc');
 	 return $this->db->get()->result_array(); 
   }
   //insert order stock

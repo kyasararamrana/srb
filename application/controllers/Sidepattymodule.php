@@ -105,7 +105,8 @@ class Sidepattymodule extends CI_Controller
         $data = components($arg);
 		$data['tab']=base64_decode($this->uri->segment(3));
 		$this->load->model('Sidepatty_Model');
-		$data['p_list']=$this->Sidepatty_Model->get_printing_list($this->session->userdata('id'));
+		$data['p_type_list']=$this->Sidepatty_Model->get_p_type_list($this->session->userdata('id'));
+		$data['p_color_list']=$this->Sidepatty_Model->get_p_color_list($this->session->userdata('id'));
 		//echo '<pre>';print_r($data);exit;
 		$this->load->view('sidepatty/printing',$data);
     } else {
@@ -122,6 +123,20 @@ class Sidepattymodule extends CI_Controller
 		$data['p_details']=$this->Sidepatty_Model->get_printing_details(base64_decode($this->uri->segment(3)));
 		//echo '<pre>';print_r($data);exit;
 		$this->load->view('sidepatty/editprinting',$data);
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('login');
+    }
+  }
+  public function editcolor()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      $arg['pageTitle'] = 'Edit Printing color';
+        $data = components($arg);
+		$this->load->model('Sidepatty_Model');
+		$data['p_details']=$this->Sidepatty_Model->get_p_color_details(base64_decode($this->uri->segment(3)));
+		//echo '<pre>';print_r($data);exit;
+		$this->load->view('sidepatty/editp_color',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
@@ -211,15 +226,14 @@ class Sidepattymodule extends CI_Controller
 			if ($this->session->userdata('logged_in') == TRUE) {
 				 $post=$this->input->post();
 				 //echo '<pre>';print_r($post);exit;
-			   $cnt=0;foreach($post['p_type'] as $li){
+				$cnt=0;foreach($post['p_type'] as $li){
 				   if($li!=''){
 				   $add=array(
 					   'p_type'=>isset($post['p_type'][$cnt])?$post['p_type'][$cnt]:'',
-					   'p_color'=>isset($post['p_color'][$cnt])?$post['p_color'][$cnt]:'',
 					   'p_created_by'=>$this->session->userdata('id'),
 				    );
 					$this->load->model('Sidepatty_Model');
-					$save=$this->Sidepatty_Model->save_print_insert($add);
+					$save=$this->Sidepatty_Model->save_p_type_insert($add);
 				   }
 				 $cnt++;}
 				 if(count($save)>0){
@@ -236,12 +250,40 @@ class Sidepattymodule extends CI_Controller
 			redirect('login');
 			}
   }
+  //add printing color
+   public  function p_coloraddpost(){
+			if ($this->session->userdata('logged_in') == TRUE) {
+				 $post=$this->input->post();
+				 //echo '<pre>';print_r($post);exit;
+				$cnt=0;foreach($post['p_color'] as $li){
+				   if($li!=''){
+				   $add=array(
+					   'p_color'=>isset($post['p_color'][$cnt])?$post['p_color'][$cnt]:'',
+					   'p_created_by'=>$this->session->userdata('id'),
+				    );
+					$this->load->model('Sidepatty_Model');
+					$save=$this->Sidepatty_Model->save_p_color_insert($add);
+				   }
+				 $cnt++;}
+				 if(count($save)>0){
+					 $this->session->set_flashdata('success','Stock added successfully');
+					  redirect('sidepattymodule/printing/'.base64_encode(3));
+				 }else{
+					$this->session->set_flashdata('error','Please try again');
+					redirect('sidepattymodule/printing/'.base64_encode(2));
+				 }
+				//echo '<pre>';print_r($post);exit;
+		  
+			} else {
+			$this->session->set_flashdata('error','Please login and try again');
+			redirect('login');
+			}
+  }
   public  function printeditpost(){
 			if ($this->session->userdata('logged_in') == TRUE) {
 				 $post=$this->input->post();
 				    $u_add=array(
 					   'p_type'=>isset($post['p_type'])?$post['p_type']:'',
-					   'p_color'=>isset($post['p_color'])?$post['p_color']:'',
 					   'p_created_at'=>date('Y-m-d H:i:s'),
 				    );
 					$this->load->model('Sidepatty_Model');
@@ -252,6 +294,27 @@ class Sidepattymodule extends CI_Controller
 					 }else{
 						$this->session->set_flashdata('error','Please try again');
 						redirect('sidepattymodule/printing/'.base64_encode(1));
+					 }
+				
+			}else{
+				$this->session->set_flashdata('error','Please login and try again');
+				redirect('login');
+			}
+  }public  function p_coloreditpost(){
+			if ($this->session->userdata('logged_in') == TRUE) {
+				 $post=$this->input->post();
+				    $u_add=array(
+					   'p_color'=>isset($post['p_color'])?$post['p_color']:'',
+					   'p_created_at'=>date('Y-m-d H:i:s'),
+				    );
+					$this->load->model('Sidepatty_Model');
+					$update=$this->Sidepatty_Model->update_p_colors($post['s_id'],$u_add);
+					 if(count($update)>0){
+						 $this->session->set_flashdata('success','Printing color updated successfully');
+						 redirect('sidepattymodule/printing/'.base64_encode(3));
+					 }else{
+						$this->session->set_flashdata('error','Please try again');
+						redirect('sidepattymodule/editcolor/'.base64_encode($post['s_id']));
 					 }
 				
 			}else{
@@ -273,6 +336,26 @@ class Sidepattymodule extends CI_Controller
 					 }else{
 						$this->session->set_flashdata('error','Please try again');
 						redirect('sidepattymodule/printing/'.base64_encode(1));
+					 }
+				
+			}else{
+				$this->session->set_flashdata('error','Please login and try again');
+				redirect('login');
+			}
+  }public  function deletep_color(){
+			if ($this->session->userdata('logged_in') == TRUE) {
+				    $u_add=array(
+					   'p_status'=>2,
+					   'p_created_at'=>date('Y-m-d H:i:s'),
+				    );
+					$this->load->model('Sidepatty_Model');
+					$update=$this->Sidepatty_Model->update_p_colors(base64_decode($this->uri->segment(3)),$u_add);
+					 if(count($update)>0){
+						 $this->session->set_flashdata('success','Printing deleted successfully');
+						 redirect('sidepattymodule/printing/'.base64_encode(3));
+					 }else{
+						$this->session->set_flashdata('error','Please try again');
+						redirect('sidepattymodule/printing/'.base64_encode(3));
 					 }
 				
 			}else{

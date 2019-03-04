@@ -40,15 +40,15 @@
                     <div class="col-md-12">
                         <div class="box box-success">
                             <!-- form start -->
-                            <form id="edit_print" name="edit_print" action="<?php echo base_url('sidepattymodule/printeditpost'); ?>" method="POST">
-							    <input type="hidden"  name="s_id" id="s_id" value="<?php echo isset($p_details['s_p_id'])?$p_details['s_p_id']:''; ?>">
+                            <form id="edit_print" name="edit_print" action="<?php echo base_url('sidepattymodule/p_coloreditpost'); ?>" method="POST">
+							    <input type="hidden"  name="s_id" id="s_id" value="<?php echo isset($p_details['s_c_id'])?$p_details['s_c_id']:''; ?>">
 
                                 <div class="box-body">
 								<div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Printing Type</label>
-                                            <input type="text" name="p_type" id="p_type" value="<?php echo isset($p_details['p_type'])?$p_details['p_type']:''; ?>" placeholder="Enter Type" class="form-control" />
+                                            <label>Printing Color</label>
+                                            <input type="text" name="p_color" id="p_color" value="<?php echo isset($p_details['p_color'])?$p_details['p_color']:''; ?>" placeholder="Enter Color" class="form-control" />
                                         </div>
                                     </div>
                                    
@@ -59,7 +59,7 @@
                                         <button type="submit" class="btn btn-primary">Save Changes</button>
                                     </div>
                                     <div class="col-md-6">
-                                        <a href="<?php echo base_url('sidepattymodule/printing/'.base64_encode(1)); ?>" class="btn btn-info pull-right"><i class="fa fa-arrow-left mr-5"></i>Back</a>
+                                        <a href="<?php echo base_url('sidepattymodule/printing/'.base64_encode(3)); ?>" class="btn btn-info pull-right"><i class="fa fa-arrow-left mr-5"></i>Back</a>
                                     </div>
                                 </div>
                             </form>
@@ -94,17 +94,7 @@
         $(document).ready(function() {
             $('#edit_print').bootstrapValidator({
                 fields: {
-                    p_type: {
-                        validators: {
-							notEmpty: {
-								message: 'Type is required'
-							},
-							regexp: {
-							regexp: /^[a-zA-Z0-9. ]+$/,
-							message: 'Type can only consist of alphanumeric, space and dot'
-							}
-						}
-                    },p_color: {
+                    p_color: {
                         validators: {
 							notEmpty: {
 								message: 'Color is required'
