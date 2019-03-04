@@ -41,7 +41,7 @@
                                     <thead>
                                         <tr>
                                             <th>S.No</th>
-                                            <th>Bag Type</th>
+                                            <th>Duty</th>
                                             <th>Machine Name</th>
                                             <th>Process</th>
                                             <th>Start Date</th>
@@ -51,58 +51,44 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                      <?php if (count($works) > 0) { ?>
+                                        <?php $sno = 1; ?>
+                                        <?php foreach ($works as $work) { ?>
+                                          <tr>
+                                              <td><?php echo $sno; ?></td>
+                                              <td><?php echo $work->duty; ?></td>
+                                              <td><?php echo $work->machine_name; ?></td>
+                                              <td><?php echo $work->process; ?></td>
+                                              <td>xxxxx</td>
+                                              <td>xxxxx</td>
+                                              <td>
+                                                  <a href="#" class="text-green">Completed</a>
+                                              </td>
+                                              <td class="valigntop">
+                                                  <div class="btn-group">
+                                                      <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
+                                                          <i class="fa fa-angle-down"></i>
+                                                      </button>
+                                                      <ul class="dropdown-menu" role="menu">
+                                                          <li>
+                                                              <a href=""><i class="fa fa-refresh"></i>Pending</a>
+                                                          </li>
+                                                          <li>
+                                                              <a href="#"><i class="fa fa-check-circle"></i>Completed</a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </td>
+                                          </tr>
+                                          <?php $sno++; ?>
+                                        <?php } ?>
+                                      <?php } else { ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>
-                                                <a href="#" class="text-green">Completed</a>
-                                            </td>
-                                            <td class="valigntop">
-                                                <div class="btn-group">
-                                                    <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
-                                                        <i class="fa fa-angle-down"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu" role="menu">
-                                                        <li>
-                                                            <a href=""><i class="fa fa-refresh"></i>Pending</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#"><i class="fa fa-check-circle"></i>Completed</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </td>
+                                          <td colspan="8" class="text-center">
+                                            No records found
+                                          </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>
-                                                <a href="#" class="text-orange">Pending</a>
-                                            </td>
-                                            <td class="valigntop">
-                                                <div class="btn-group">
-                                                    <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
-                                                        <i class="fa fa-angle-down"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu" role="menu">
-                                                        <li>
-                                                            <a href=""><i class="fa fa-refresh"></i>Pending</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#"><i class="fa fa-check-circle"></i>Completed</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                      <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

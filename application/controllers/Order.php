@@ -12,28 +12,30 @@ class Order extends CI_Controller
     parent::__construct();
     $this->load->library('form_validation');
     $this->load->library('user_agent');
+    $this->load->model('Sales_Model');
     $this->load->model('Work_Model');
-
   }
   //Order Confirmation
   public function orderconfirm()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Order Confirmation';
-        $data = components($arg);
-      $this->load->view('ordermanagement/orderconfirm',$data);
+      $data = components($arg);
+      $data['orders'] = $this->Sales_Model->get_order();
+      $this->load->view('order/orderconfirm',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
   //Order Details
-  public function orderdetails()
+  public function orderdetails($id='')
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Order Details';
-        $data = components($arg);
-      $this->load->view('ordermanagement/order_info',$data);
+      $data = components($arg);
+      $data['order'] = $this->Sales_Model->get_details_by_id($id);
+      $this->load->view('order/order_info',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
@@ -94,6 +96,7 @@ class Order extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Roll Management';
       $data = components($arg);
+      $data['works'] = $this->Work_Model->get_work();
       $this->load->view('order/works',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -105,8 +108,8 @@ class Order extends CI_Controller
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Orders Status';
-        $data = components($arg);
-      $this->load->view('ordermanagement/orders_status_list',$data);
+      $data = components($arg);
+      $this->load->view('order/orders_status_list',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');

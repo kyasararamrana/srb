@@ -16,6 +16,11 @@ class Work_Model extends CI_Model
   {
     return $this->db->insert($this->table, $post_data);
   }
+  //get working
+  public function get_work()
+  {
+    return $this->db->get($this->table)->result();
+  }
 
 }
 
