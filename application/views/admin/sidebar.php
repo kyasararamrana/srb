@@ -185,7 +185,7 @@
       <?php } ?>
       <!-- Order Management -->
       <?php if ($this->session->userdata('role') == 'Order') { ?>
-        <li><a href="<?php echo base_url('ordermanagement/orderconfirm'); ?>">
+        <li><a href="<?php echo base_url('order/orderconfirm'); ?>">
           <i class="fa fa-check-circle"></i> <span>Confirmation Orders</span></a>
         </li>
         <li class="treeview">
@@ -195,12 +195,15 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('ordermanagement/work'); ?>">Add Work</a></li>
-            <li><a href="<?php echo base_url('ordermanagement/works'); ?>">Works List</a></li>
+            <li><a href="<?php echo base_url('order/work'); ?>">Add Work</a></li>
+            <li><a href="<?php echo base_url('order/works'); ?>">Works List</a></li>
           </ul>
         </li>
-        <li><a href="<?php echo base_url('ordermanagement/orderstatus'); ?>">
+        <li><a href="<?php echo base_url('order/orderstatus'); ?>">
           <i class="fa fa-shopping-cart"></i> <span>Orders Status List</span></a>
+        </li>
+        <li><a href="<?php echo base_url('order/stocks'); ?>">
+          <i class="fa fa-shopping-cart"></i> <span>Stock List</span></a>
         </li>
         <li class="treeview">
           <a href="#"><i class="fa fa-reply"></i> <span>Return Orders</span>
@@ -209,8 +212,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('ordermanagement/return_bags'); ?>">Add Return Quantity</a></li>
-            <li><a href="<?php echo base_url('ordermanagement/return_bags_list'); ?>">Return Quantity List</a></li>
+            <li><a href="<?php echo base_url('order/return_bags'); ?>">Add Return Quantity</a></li>
+            <li><a href="<?php echo base_url('order/return_bags_list'); ?>">Return Quantity List</a></li>
           </ul>
         </li>
       <?php } ?>
@@ -336,7 +339,7 @@
               <li><a href="<?php echo base_url('sidepattymodule/addsidepatty'); ?>">Add Sidepatty</a></li>
               <li><a href="<?php echo base_url('sidepattymodule/sidepattylist'); ?>">Sidepatty List</a></li>
             </ul>
-          </li> 
+          </li>
 		  <li class="treeview">
             <a href="#"><i class="fa fa-cubes"></i> <span>Order Stock</span>
               <span class="pull-right-container">
@@ -348,7 +351,7 @@
               <li><a href="<?php echo base_url('sidepattymodule/orderstocklist'); ?>">Order Stock List</a></li>
             </ul>
           </li>
-        
+
           <li><a href="<?php echo base_url('sidepattymodule/printing'); ?>">
             <i class="fa fa-paint-brush"></i> <span>Printing</span></a>
           </li>

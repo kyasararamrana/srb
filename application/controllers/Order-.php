@@ -2,9 +2,7 @@
 /**
  *
  */
-defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Ordermanagement extends CI_Controller
+class Order extends CI_Controller
 {
 
   function __construct()
@@ -12,27 +10,42 @@ class Ordermanagement extends CI_Controller
     parent::__construct();
     $this->load->library('form_validation');
     $this->load->library('user_agent');
-    $this->load->model('Color_Model');
+    $this->load->model('Sales_Model');
+    $this->load->model('Work_Model');
+    $this->load->model('Order_Model');
+  }
+  //order (view) - home
+  public function index()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      $arg['pageTitle'] = 'Orders';
+      $data = layouts($arg);
+      $user_id = $this->session->userdata('id');
+      if($user_id){
+      $data['orders'] = $this->Order_Model->get_order_by_user_id($user_id);
+
   }
   //Order Confirmation
   public function orderconfirm()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Order Confirmation';
-        $data = components($arg);
-      $this->load->view('ordermanagement/orderconfirm',$data);
+      $data = components($arg);
+      $data['orders'] = $this->Sales_Model->get_order();
+      $this->load->view('order/orderconfirm',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
   }
   //Order Details
-  public function orderdetails()
+  public function orderdetails($id='')
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Order Details';
-        $data = components($arg);
-      $this->load->view('ordermanagement/order_info',$data);
+      $data = components($arg);
+      $data['order'] = $this->Sales_Model->get_details_by_id($id);
+      $this->load->view('order/order_info',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
@@ -42,21 +55,28 @@ class Ordermanagement extends CI_Controller
   public function work()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Roll Management';
+      if ($this->session->userdata('role') == 'Order') {
+        $arg['pageTitle'] = 'Roll Management';
         $data = components($arg);
-      $this->load->view('ordermanagement/work',$data);
+        $this->load->view('order/work',$data);
+      } else {
+        $this->session->set_flashdata('error','Sorry, you can\'t access');
+        redirect('admin');
+      }
+      $this->load->view('home/order',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
+      redirect('home/login');
     }
   }
-  //Machine Works List
-  public function works()
+  //order (view) - admin
+  public function orders()
   {
-    if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Roll Management';
-        $data = components($arg);
-      $this->load->view('ordermanagement/works',$data);
+    if($this->session->userdata('logged_in') == TRUE){
+      $arg['pageTitle'] = 'Orders';
+      $data = components($arg);
+      $data['works'] = $this->Work_Model->get_work();
+      $this->load->view('order/works',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
@@ -67,8 +87,8 @@ class Ordermanagement extends CI_Controller
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Orders Status';
-        $data = components($arg);
-      $this->load->view('ordermanagement/orders_status_list',$data);
+      $data = components($arg);
+      $this->load->view('order/orders_status_list',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
@@ -81,21 +101,14 @@ class Ordermanagement extends CI_Controller
       $arg['pageTitle'] = 'Return Orders';
         $data = components($arg);
       $this->load->view('ordermanagement/return_bags',$data);
+      $data['orders'] = $this->Order_Model->get_orders();
+      $this->load->view('admin/orders',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
+      redirect('admin/login');
     }
   }
-  //Return Bags List
-  public function return_bags_list()
-  {
-    if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Return Orders';
-        $data = components($arg);
-      $this->load->view('ordermanagement/return_bags_list',$data);
-    } else {
-      $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
-    }
-  }
+
 }
+
+?>
