@@ -1,40 +1,30 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SRB |
-        <?php echo $pageTitle; ?>
-    </title>
+    <title>SRB | <?php echo $pageTitle; ?> </title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <?php echo $links; ?>
 </head>
-
 <body class="hold-transition skin-green sidebar-mini">
     <div class="wrapper">
-
         <?php echo $header; ?>
         <?php echo $sidebar; ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1>
-                    Orders Status List
-                </h1>
+                <h1> Orders Status List </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
                     <li class="active">Orders Status List</li>
                 </ol>
             </section>
-
             <!-- Main content -->
             <section class="content container-fluid">
-
                 <div class="row">
-
                     <div class="col-md-12">
                         <div class="box box-success">
                             <div class="box-body">
@@ -52,78 +42,45 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                      <?php if (count($orders) > 0) { ?>
+                                        <?php $sno = 1; ?>
+                                        <?php foreach ($orders as $order) { ?>
+                                          <tr>
+                                              <td><?php echo $sno; ?></td>
+                                              <td>
+                                                <?php
+                                                  $str = date('Ymd').$order->id;
+                                                  echo 'SRB'.str_pad($str,10,'0',STR_PAD_LEFT);
+                                                ?>
+                                              </td>
+                                              <td><?php echo $order->customer_name; ?></td>
+                                              <td><?php echo $order->mobile; ?></td>
+                                              <td><?php echo $order->bag_type; ?></td>
+                                              <td><?php echo $order->quantity; ?></td>
+                                              <td><p class="text-aqua">Packed</p></td>
+                                              <td class="valigntop">
+                                                  <div class="btn-group">
+                                                      <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="true"> Actions
+                                                          <i class="fa fa-angle-down"></i>
+                                                      </button>
+                                                      <ul class="dropdown-menu" role="menu" style="right:0;left:auto;">
+                                                          <li>
+                                                              <a href=""><i class="fa fa-gift"></i>Packed</a>
+                                                          </li>
+                                                          <li>
+                                                              <a href=""><i class="fa fa-truck"></i>Ready for Delivery</a>
+                                                          </li>
+                                                      </ul>
+                                                  </div>
+                                              </td>
+                                          </tr>
+                                          <?php $sno++; ?>
+                                        <?php } ?>
+                                      <?php } else { ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>SRB00000012</td>
-                                            <td>Kasi</td>
-                                            <td>98xxxxxx20</td>
-                                            <td>D-cut</td>
-                                            <td>4,000</td>
-                                            <td><p class="text-aqua">Packed</p></td>
-                                            <td class="valigntop">
-                                                <div class="btn-group">
-                                                    <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="true"> Actions
-                                                        <i class="fa fa-angle-down"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu" role="menu" style="right:0;left:auto;">
-                                                        <li>
-                                                            <a href=""><i class="fa fa-gift"></i>Packed</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href=""><i class="fa fa-truck"></i>Ready for Delivery</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </td>
+                                          <td colspan="8" class="text-center">No records found</td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>SRB00000012</td>
-                                            <td>Mahesh</td>
-                                            <td>98xxxxxx20</td>
-                                            <td>D-cut</td>
-                                            <td>4,000</td>
-                                            <td><p class="text-green">Ready for Delivery</p></td>
-                                            <td class="valigntop">
-                                                <div class="btn-group">
-                                                    <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="true"> Actions
-                                                        <i class="fa fa-angle-down"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu" role="menu" style="right:0;left:auto;">
-                                                        <li>
-                                                            <a href=""><i class="fa fa-gift"></i>Packed</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href=""><i class="fa fa-truck"></i>Ready for Delivery</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>SRB00000012</td>
-                                            <td>Uma</td>
-                                            <td>98xxxxxx20</td>
-                                            <td>D-cut</td>
-                                            <td>4,000</td>
-                                            <td><p class="text-aqua">Packed</p></td>
-                                            <td class="valigntop">
-                                                <div class="btn-group">
-                                                    <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="true"> Actions
-                                                        <i class="fa fa-angle-down"></i>
-                                                    </button>
-                                                    <ul class="dropdown-menu" role="menu" style="right:0;left:auto;">
-                                                        <li>
-                                                            <a href=""><i class="fa fa-gift"></i>Packed</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href=""><i class="fa fa-truck"></i>Ready for Delivery</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                      <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -139,7 +96,7 @@
     </div>
     <!-- ./wrapper -->
     <?php echo $scripts; ?>
-    
+
     <script type="text/javascript">
         //datatables
         $(document).ready(function() {
