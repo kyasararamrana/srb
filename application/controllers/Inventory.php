@@ -22,7 +22,7 @@ class Inventory extends CI_Controller
       $data = components($arg);
 	  $this->load->model('Inventory_model');
 	  $data['o_list']=$this->Inventory_model->get_inventory_order_lists();
-	  echo '<pre>';print_r($data);exit;
+	  //echo '<pre>';print_r($data);exit;
       $this->load->view('inventory/orders_list',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');

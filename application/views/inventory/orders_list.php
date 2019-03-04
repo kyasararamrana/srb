@@ -49,23 +49,28 @@
                                             <th>GSM</th>
                                             <th>Quantity</th>
                                             <th>Cost</th>
-                                            <th>Advance</th>
                                             <th>Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+									<?php if(isset($o_list) && count($o_list)>0){ ?>
+									<?php $sno=1;foreach($o_list as $lis){ ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>SRB00000012</td>
-                                            <td>customer2</td>
-                                            <td>D-cut</td>
-                                            <td>11x60</td>
-                                            <td>70</td>
-                                            <td>250</td>
-                                            <td>4,000.00</td>
-                                            <td>2000.00</td>
-                                            <td>29-01-2019 10:33:13</td>
+                                            <td><?php echo $sno; ?></td>
+                                            <td>
+											  <?php
+												$str = date('Ymd').$lis->id;
+												echo 'SRB'.str_pad($str,10,'0',STR_PAD_LEFT);
+											  ?>
+											</td>
+                                            <td><?php echo $lis->customer_name; ?></td>
+                                            <td><?php echo $lis->bag_type; ?></td>
+                                            <td><?php echo $lis->bag_size; ?></td>
+                                            <td><?php echo $lis->bag_gsm; ?></td>
+                                            <td><?php echo $lis->quantity; ?></td>
+                                            <td><?php echo $lis->total_price; ?></td>
+                                            <td><?php echo $lis->created_on; ?></td>
                                             <td class="valigntop">
                                                 <div class="btn-group">
                                                     <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
@@ -88,6 +93,10 @@
                                                 </div>
                                             </td>
                                         </tr>
+									<?php $sno++;} ?>
+									<?php }else{ ?>
+									<div>NO data</div>
+									<?php } ?>
                                     </tbody>
                                 </table>
                             </div>
