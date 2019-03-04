@@ -85,7 +85,6 @@
                             <thead>
                                 <tr>
                                     <th>Select Vendor</th>
-                                    <th>Order Id</th>
                                     <th>Stock Name</th>
                                     <th>Size</th>
                                     <th>Thickness</th>
@@ -95,35 +94,46 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr id="stock_name_append0">
                                     <td>
-                                        <select name="vendor" class="form-control">
-                                            <option value="0" selected disabled>Select</option>
-                                            <option value="1">Option name</option>
-                                            <option value="2">Option name</option>
-                                            <option value="3">Option name</option>
+                                        <select name="v_id[]" id="v_id" onchange="get_allflags(this.value,'0')" class="form-control">
+                                            <option value="" >Select</option>
+											<?php if(isset($vendor_list) && count($vendor_list)>0){ ?>
+											<?php foreach($vendor_list as $lis){ ?>
+														<option value="<?php echo $lis['v_id']; ?>" ><?php echo $lis['v_name']; ?></option>
+											<?php } ?>
+											<?php } ?>
+                                        </select>
+                                    </td>
+									
+                                    <td>
+                                        <select name="s_name[]" id="s_name" class="form-control">
+                                            <option value="" >Select</option>
                                         </select>
                                     </td>
                                     <td>
-                                        <input type="text" name="orderid" placeholder="Order Id" class="form-control"/>
+                                        <select name="s_size[]" id="s_size" class="form-control">
+                                            <option value="" >Select</option>
+                                        </select>
                                     </td>
                                     <td>
-                                        <input type="text" name="sname" placeholder="Name" class="form-control"/>
+                                         <select name="s_thickness[]" id="s_thickness" class="form-control">
+                                            <option value="" >Select</option>
+                                        </select>
                                     </td>
                                     <td>
-                                        <input type="text" name="size" placeholder="Enter Size" class="form-control"/>
+                                          <select name="s_color[]" id="s_color" class="form-control">
+                                            <option value="" >Select</option>
+                                        </select>
                                     </td>
+									
                                     <td>
-                                        <input type="text" name="thickness" placeholder="Enter Thickness" class="form-control" />
+                                        <input type="text" name="pieces[]" placeholder="Enter Pieces" class="form-control" />
                                     </td>
-                                    <td>
-                                        <input type="text" name="color" placeholder="Enter Color" class="form-control" />
-                                    </td>
-                                    <td>
-                                        <input type="text" name="pieces" placeholder="Enter Pieces" class="form-control" />
-                                    </td>
+									
                                     <td>&nbsp;</td>
                                 </tr>
+							
                             </tbody>
                         </table>
                         <button type="button" class="btn btn-md" id="addRow0">Add Row</button>
@@ -542,6 +552,7 @@
     <?php echo $scripts; ?>
 
     <script type="text/javascript">
+	
         $(document).ready(function() {
             $('#editOrderForm').bootstrapValidator({
                 fields: {
@@ -626,25 +637,24 @@
     <!-- Material Section -->
     <script>
         $(document).ready(function() {
-            var counter = 0;
+            var counter = 1;
 
             $("#addRow0").on("click", function() {
-                var newRow = $("<tr>");
+                var newRow = $('<tr id="stock_name_append'+counter+'">');
                 var cols = "";
 
-                cols += '<td><select class="form-control" name="vendor' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><select name="v_id[]" id="v_id' + counter + '" onchange="get_allflags_di(this.value,'+counter+')" class="form-control"><option value="" >Select</option><?php if(isset($vendor_list) && count($vendor_list)>0){ ?><?php foreach($vendor_list as $lis){ ?><option value="<?php echo $lis['v_id']; ?>" ><?php echo $lis['v_name']; ?></option><?php } ?><?php } ?></select></td>';
 
-                cols += '<td><input type="text" class="form-control" placeholder="Order Id" name="orderid' + counter + '"/></td>';
                 
-                cols += '<td><input type="text" class="form-control" placeholder="Name" name="sname' + counter + '"/></td>';
+                cols += '<td><select name="s_name[]" id="s_name' + counter + '" class="form-control"><option value="" >Select</option></select></td>';
 
-                cols += '<td><input type="text" class="form-control" placeholder="Enter Size" name="size' + counter + '"/></td>';
+                cols += '<td><select name="s_size[]" id="s_size' + counter + '" class="form-control"> <option value="" >Select</option> </select></td>';
 
-                cols += '<td><input type="email" class="form-control" placeholder="Enter Thickness" name="thickness' + counter + '"/></td>';
+                cols += '<td><select name="s_thickness[]" id="s_thickness' + counter + '" class="form-control"> <option value="" >Select</option></select></td>';
 
-                cols += '<td><input type="text" class="form-control" placeholder="Enter Color" name="color' + counter + '"/></td>';
+                cols += '<td><select name="s_color[]" id="s_color' + counter + '" class="form-control"><option value="" >Select</option></select></td>';
                 
-                cols += '<td><input type="text" class="form-control" placeholder="Enter Pieces" name="pieces' + counter + '"/></td>';
+                cols += '<td><input type="text" name="pieces[]" id="pieces' + counter + '"  placeholder="Enter Pieces" class="form-control" /></td>';
 
                 cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger"><i class="fa fa-trash"></i></button></td>';
                 newRow.append(cols);
@@ -805,6 +815,30 @@
                 counter -= 1
             });
         });
+		
+		function get_allflags(id,tab){
+		 $.ajax({
+            url:'<?php echo base_url('inventory/get_vendor_data'); ?>',
+            type:'post',
+            data:{'v_id':id},
+            success:function(data){
+				$("#stock_name_append"+tab).empty();
+				$("#stock_name_append"+tab).append(data);
+            }
+          })
+	}
+	function get_allflags_di(id,tab){
+		 $.ajax({
+            url:'<?php echo base_url('inventory/get_vendor_data'); ?>',
+            type:'post',
+            data:{'v_id':id},
+            success:function(data){
+				alert("#stock_name_append"+tab);
+				$("#stock_name_append"+tab).empty();
+				$("#stock_name_append"+tab).append(data);
+            }
+          })
+	}
     </script>
 </body>
 

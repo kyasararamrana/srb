@@ -13,16 +13,15 @@ class Inventory extends CI_Controller
     $this->load->library('form_validation');
     $this->load->library('user_agent');
     $this->load->model('Admin_Model');
+	$this->load->model('Inventory_model');
   }
   //orders list
   public function orderslist()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Orders';
+      $arg['pageTitle'] = 'Inventory Orders';
       $data = components($arg);
-	  $this->load->model('Inventory_model');
-	  $data['o_list']=$this->Inventory_model->get_inventory_order_lists();
-	  //echo '<pre>';print_r($data);exit;
+	  $data['o_list']=$this->Inventory_model->get_inventory_order_lists();	  
       $this->load->view('inventory/orders_list',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -34,6 +33,8 @@ class Inventory extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Stocks';
       $data = components($arg);
+	  $data['vendor_list']=$this->Inventory_model->get_inventory_list();
+	  //echo '<pre>';print_r($data);exit;
       $this->load->view('inventory/assign_stock',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -431,6 +432,22 @@ class Inventory extends CI_Controller
       $this->session->set_flashdata('error','Please login and try again');
       redirect('admin/login');
     }
+  }
+  public  function get_vendor_data(){
+	 if ($this->session->userdata('logged_in') == TRUE) {
+		$post=$this->input->post();
+		$data['vendor_id']=$post['v_id'];
+		$data['vendor_list']=$this->Inventory_model->get_inventory_list();
+		$data['stock_name']=$this->Inventory_model->get_stock_name($post['v_id']);
+		$data['size_list']=$this->Inventory_model->get_stock_size($post['v_id']);
+		$data['think_list']=$this->Inventory_model->get_stock_thinkness($post['v_id']);
+		$data['color_list']=$this->Inventory_model->get_stock_color($post['v_id']);
+		$this->load->view('inventory/dynamic_material_section',$data);
+			 
+	 } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }		 
   }
 			
 }

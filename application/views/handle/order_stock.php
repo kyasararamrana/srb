@@ -38,78 +38,83 @@
                     <div class="col-md-12">
                         <div class="box box-success">
                             <!-- form start -->
-                            <form id="" name="" action="">
+                            <form id="add_stock" name="add_stock" action="<?php echo base_url('handle/addpost'); ?>" method="POST">
                                 <div class="box-body">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Stock Name</label>
-                                            <select name="sname" class="form-control">
-                                                <option value="0" selected disabled>Select</option>
-                                                <option value="1">Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
-                                            </select>
+                                           <input type="text" name="stock_name" id="stock_name" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Material Type</label>
-                                            <select name="mtype" class="form-control">
-                                                <option value="0" selected disabled>Select</option>
-                                                <option value="1">Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
+                                            <select name="mtype" id="mtype" class="form-control">
+                                                <option value="">Select</option>
+												<?php if(isset($material_type) && count($material_type)>0){ ?>
+													<?php foreach($material_type as $lis){ ?>
+													 <option value="<?php echo $lis['material']; ?>"><?php echo $lis['material']; ?></option>	
+													<?php } ?>
+												<?php } ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Type</label>
-                                            <select name="type" class="form-control">
-                                                <option value="0" selected disabled>Select</option>
-                                                <option value="1">Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
+                                            <select name="type"  id="type"class="form-control">
+                                               <option value="">Select</option>
+												<?php if(isset($type_list) && count($type_list)>0){ ?>
+													<?php foreach($type_list as $lis){ ?>
+													 <option value="<?php echo $lis['type']; ?>"><?php echo $lis['type']; ?></option>	
+													<?php } ?>
+												<?php } ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Size</label>
-                                            <select name="size" class="form-control">
-                                                <option value="0" selected disabled>Select</option>
-                                                <option value="1">Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
+                                            <select name="size" id="size" class="form-control">
+                                                <option value="">Select</option>
+												<?php if(isset($size_list) && count($size_list)>0){ ?>
+													<?php foreach($size_list as $lis){ ?>
+													 <option value="<?php echo $lis['size']; ?>"><?php echo $lis['size']; ?></option>	
+													<?php } ?>
+												<?php } ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Color</label>
-                                            <select name="color" class="form-control">
-                                                <option value="0" selected disabled>Select</option>
-                                                <option value="1">Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
+                                            <select name="color" id="color" class="form-control">
+                                                <option value="">Select</option>
+												<?php if(isset($color_list) && count($color_list)>0){ ?>
+													<?php foreach($color_list as $lis){ ?>
+													 <option value="<?php echo $lis['color']; ?>"><?php echo $lis['color']; ?></option>	
+													<?php } ?>
+												<?php } ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>GSM</label>
-                                            <select name="gsm" class="form-control">
-                                                <option value="0" selected disabled>Select</option>
-                                                <option value="1">Option name</option>
-                                                <option value="2">Option name</option>
-                                                <option value="3">Option name</option>
+                                            <select name="gsm" id="gsm" class="form-control">
+                                               <option value="">Select</option>
+												<?php if(isset($gsm_list) && count($gsm_list)>0){ ?>
+													<?php foreach($gsm_list as $lis){ ?>
+													 <option value="<?php echo $lis['gsm']; ?>"><?php echo $lis['gsm']; ?></option>	
+													<?php } ?>
+												<?php } ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Quantity</label>
-                                            <input type="text" class="form-control" name="quantity" id="" placeholder="Quantity">
+                                            <input type="text" class="form-control" name="quantity" id="quantity" placeholder="Quantity">
                                         </div>
                                     </div>
                                     <div class="clearfix">&nbsp;</div>
@@ -147,20 +152,60 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#addVendorForm').bootstrapValidator({
+            $('#add_stock').bootstrapValidator({
                 fields: {
-                    vname: {
+                    stock_name: {
                         validators: {
                             notEmpty: {
-                                message: 'Name is required'
+                                message: 'Stock Name is required'
+                            },regexp: {
+							regexp: /^[a-zA-Z0-9. ]+$/,
+							message: 'Stock Name can only consist of alphanumeric, space and dot'
+							}
+                        }
+                    },
+                    mtype: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Material Type is required'
                             }
                         }
                     },
-                    vnumber1: {
+					type: {
                         validators: {
                             notEmpty: {
-                                message: 'Number is required'
+                                message: 'Type is required'
                             }
+                        }
+                    },
+                    size: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Size is required'
+                            }
+                        }
+                    },
+                    color: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Color is required'
+                            }
+                        }
+                    },
+                    gsm: {
+                        validators: {
+                            notEmpty: {
+                                message: 'GSM is required'
+                            }
+                        }
+                    },quantity: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Quantity is required'
+                            },regexp: {
+								regexp:  /^[0-9]+$/,
+								message:'Quantity must be digits'
+								}
                         }
                     }
                 }

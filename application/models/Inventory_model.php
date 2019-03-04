@@ -19,7 +19,23 @@ class Inventory_model extends CI_Model
 	$this->db->where('s.status !=',2);
 	//$this->db->where('v.v_created_by',$id);
 	return $this->db->get()->result();	
-  } 
+  }
+  public function get_inventory_list(){
+	return $this->db->select('v_id,v_name')->from('ecom_vendors')->where('v_status',1)->get()->result_array();
+  }
+  // stock name list
+	public  function get_stock_name($v_id){
+		return $this->db->select('es.st_o_id,es.st_name')->from('ecom_stcok_orders as es')->where('es.st_v_id',$v_id)->where('es.st_status',1)->group_by('es.st_name')->get()->result_array();
+	}// stock size list
+	public  function get_stock_size($v_id){
+		return $this->db->select('es.st_o_id,es.st_size')->from('ecom_stcok_orders as es')->where('es.st_v_id',$v_id)->where('es.st_status',1)->group_by('es.st_size')->get()->result_array();
+	}// stock thickness list
+	public  function get_stock_thinkness($v_id){
+		return $this->db->select('es.st_o_id,es.st_thickness')->from('ecom_stcok_orders as es')->where('es.st_v_id',$v_id)->where('es.st_status',1)->group_by('es.st_thickness')->get()->result_array();
+	}// stock color list
+	public  function get_stock_color($v_id){
+		return $this->db->select('es.st_o_id,es.st_color')->from('ecom_stcok_orders as es')->where('es.st_v_id',$v_id)->where('es.st_status',1)->group_by('es.st_color')->get()->result_array();
+	}	
   
 }
 

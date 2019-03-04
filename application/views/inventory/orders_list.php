@@ -69,7 +69,7 @@
                                             <td><?php echo $lis->bag_size; ?></td>
                                             <td><?php echo $lis->bag_gsm; ?></td>
                                             <td><?php echo $lis->quantity; ?></td>
-                                            <td><?php echo $lis->total_price; ?></td>
+                                            <td><?php if($lis->total_price!=''){ echo number_format($lis->total_price,2); } ?></td>
                                             <td><?php echo $lis->created_on; ?></td>
                                             <td class="valigntop">
                                                 <div class="btn-group">
@@ -78,7 +78,7 @@
                                                     </button>
                                                     <ul class="dropdown-menu" role="menu" style="right:0;left:auto;">
                                                         <li>
-                                                            <a href="<?php echo base_url('inventory/assignstock'); ?>"><i class="fa fa-check"></i>Assign Stock</a>
+                                                            <a href="<?php echo base_url('inventory/assignstock/'.base64_encode($lis->id)); ?>"><i class="fa fa-check"></i>Assign Stock</a>
                                                         </li>
                                                         <li>
                                                             <a href=""><i class="fa fa-check-circle"></i>Ready for Printing</a>
