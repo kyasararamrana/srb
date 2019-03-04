@@ -8,7 +8,17 @@ class Order extends CI_Controller
   function __construct()
   {
     parent::__construct();
-<<<<<<< HEAD
+    $this->load->model('Order_Model');
+  }
+  //order (view) - home
+  public function index()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      $arg['pageTitle'] = 'Orders';
+      $data = layouts($arg);
+      $user_id = $this->session->userdata('id');
+      if($user_id){
+        $data['orders'] = $this->Order_Model->get_order_by_user_id($user_id);
     $this->load->library('form_validation');
     $this->load->library('user_agent');
     $this->load->model('Sales_Model');
@@ -51,19 +61,6 @@ class Order extends CI_Controller
       } else {
         $this->session->set_flashdata('error','Sorry, you can\'t access');
         redirect('admin');
-=======
-    $this->load->model('Order_Model');
-  }
-  //order (view) - home
-  public function index()
-  {
-    if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Orders';
-      $data = layouts($arg);
-      $user_id = $this->session->userdata('id');
-      if($user_id){
-        $data['orders'] = $this->Order_Model->get_order_by_user_id($user_id);
->>>>>>> 21f8d1f46a35a828da81ecd86a5169b3f22afcda
       }
       $this->load->view('home/order',$data);
     } else {
