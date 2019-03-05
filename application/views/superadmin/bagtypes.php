@@ -41,6 +41,9 @@
                         <th>Other charges</th>
                         <th>Printing charges</th>
                         <th>Block charges</th>
+                        <th>Additional GSM</th>
+                        <th>Percentage</th>
+                        <th>Cost Per kg</th>
                         <!-- <th>Action</th> -->
                       </tr>
                     </thead>
@@ -54,6 +57,9 @@
                             <td><?php echo $bagtype->other_charges; ?></td>
                             <td><?php echo $bagtype->printing_cost; ?></td>
                             <td><?php echo $bagtype->block_charges; ?></td>
+                            <td><?php echo $bagtype->additional_gsm; ?></td>
+                            <td><?php echo $bagtype->percentage; ?></td>
+                            <td><?php echo $bagtype->cost_per_kg; ?></td>
                             <!-- <td>
                             <a href="<?php echo base_url('superadmin/editrole/'.$bagtype->id); ?>" type="button" class="btn btn-info mr-10"><i class="fa fa-edit"></i></a>
                             <a href="<?php echo base_url('superadmin/delete/'.$bagtype->id); ?>" type="button" class="btn btn-danger mr-10 confirmation"><i class="fa fa-trash-o"></i></a>

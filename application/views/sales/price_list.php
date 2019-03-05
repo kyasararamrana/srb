@@ -58,6 +58,7 @@
                                         <tr>
                                             <th>S.No</th>
                                             <th>Bag Type</th>
+                                            <th>Bag Layout</th>
                                             <th>Bag Size</th>
                                             <th>GSM</th>
                                             <th>Bags per KG</th>
@@ -65,30 +66,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
+                                      <?php if (count($price) > 0) { ?>
+                                        <?php $sno = 1; ?>
+                                        <?php foreach ($price as $p) { ?>
+                                          <tr>
+                                          <td><?php echo $sno; ?></td>
+                                          <td><?php echo $p->bag_type; ?></td>
+                                          <td><?php echo $p->bag_layout; ?></td>
+                                          <td><?php echo $p->bag_size; ?></td>
+                                          <td><?php echo $p->bag_gsm; ?></td>
+                                          <td><?php echo $p->bags_per_kg; ?></td>
+                                          <td><?php echo $p->cost_per_bag; ?></td>
                                         </tr>
+                                          <?php $sno++; ?>
+                                        <?php } ?>
+                                      <?php } else { ?>
                                         <tr>
-                                            <td>2</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
+                                          <td colspan="6" class="text-center">No records found</td>
                                         </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                            <td>xxxxx</td>
-                                        </tr>
+                                      <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

@@ -471,6 +471,18 @@
                                                                         <input type="text" class="form-control" name="block_charges" id="block_charges">
                                                                     </div>
                                                                 </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Additional GSM</label>
+                                                                        <input type="text" class="form-control" name="additional_gsm" id="additional_gsm">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Percentage</label>
+                                                                        <input type="text" class="form-control" name="percentage" id="percentage">
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             <ul class="list-inline pull-right">
                                                                 <li>
@@ -752,10 +764,16 @@
                   $('#other_charges').val(data.other_charges);
                   $('#printing_cost').val(data.printing_cost);
                   $('#block_charges').val(data.block_charges);
+                  $('#additional_gsm').val(data.additional_gsm);
+                  $('#percentage').val(data.percentage);
+                  $('#cost_per_kg').val(data.cost_per_kg);
                 } else {
                   $('#other_charges').val('');
                   $('#printing_cost').val('');
                   $('#block_charges').val('');
+                  $('#additional_gsm').val('');
+                  $('#percentage').val('');
+                  $('#cost_per_kg').val('');
                 }
               }
             });
@@ -816,9 +834,9 @@
             var minimum_quantity = $('#minimum_quantity').val();
             var quantity_kg = $('#quantity_in_kgs').val();
             var quantity_per_kg = $('#quantity_per_kg').val();
-            var additional_gsm = 3;
-            var percentage = 0.45;
-            var cost_per_kg = 170;
+            var additional_gsm = $('#additional_gsm').val();
+            var percentage = $('#percentage').val();
+            var cost_per_kg = $('#cost_per_kg').val();
             var width = bag_size[0];
             var length = bag_size[1];
             var weight_of_bag_formula = (width * ((length * 2) + 5) * (parseInt(bag_gsm) + parseInt(additional_gsm))) / 1550;

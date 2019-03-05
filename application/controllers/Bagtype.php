@@ -61,6 +61,9 @@ class Bagtype extends CI_Controller
               'other_charges' => $post_data['othercharges'][$i],
               'printing_cost' => $post_data['printingcost'][$i],
               'block_charges' => $post_data['blockcharges'][$i],
+              'additional_gsm' => $post_data['additionalgsm'][$i],
+              'percentage' => $post_data['percentage'][$i],
+              'cost_per_kg' => $post_data['costperkg'][$i],
               'created_on' => date('Y-m-d H:i:s'),
               'created_by' => $this->session->userdata('id'),
               'status' => 1
