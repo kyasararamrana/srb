@@ -65,6 +65,11 @@ class Inventory_model extends CI_Model
 		$this->db->insert('inv_handle_section_order_item',$data);
 		return $this->db->insert_id();
 	}
+	public  function get_material_order_list(){
+	  $this->db->select('ms.i_or_id,ms.order_id,ms.m_v_id,ms.m_stcock_name,ms.m_size,ms.m_thinkness,ms.m_color,ms.m_quantity,ms.m_status,ms.m_created_at')->from('inv_material_section_order_item as ms');
+	  $this->db->where('ms.m_status !=',2);
+	  return $this->db->get()->result_array();	
+	}
   
 }
 

@@ -31,9 +31,9 @@ class Inventory extends CI_Controller
   public function materialorderlist()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Inventory Orders';
+      $arg['pageTitle'] = 'Inventory Material Orders';
       $data = components($arg);
-	  $data['o_list']=$this->Inventory_model->get_inventory_order_lists();	  
+	  $data['material_order_list']=$this->Inventory_model->get_material_order_list();	  
       $this->load->view('inventory/orders_list',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
