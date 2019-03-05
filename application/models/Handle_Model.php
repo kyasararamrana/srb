@@ -64,6 +64,14 @@ class Handle_Model extends CI_Model
 	 	$this->db->where('h_s_id',$h_s_id);
      return $this->db->update('ecom_handle_stock',$data);  
   }
+  
+  // handle order list
+  public  function get_h_order_list(){
+	  $this->db->select('hs.h_or_id,hsa.stock_name,hs.order_id,hs.h_material_type,hs.h_type,hs.h_size,hs.h_color,hs.h_gsm,hs.h_quantity,hs.h_status,hs.h_created_at')->from('inv_handle_section_order_item as hs');
+	  $this->db->join('ecom_handle_stock as hsa','hsa.h_s_id=hs.h_stcock_name','left');
+	  $this->db->where('hs.h_status !=',2);
+	  return $this->db->get()->result_array();
+  }
 
 }
 

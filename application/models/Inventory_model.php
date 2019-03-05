@@ -58,10 +58,12 @@ class Inventory_model extends CI_Model
 	}
 	//	insert material order 
 	public  function add_material_order($data){
-		return $this->db->insert('inv_material_section_order_item',$data)->insert_id();
+		$this->db->insert('inv_material_section_order_item',$data);
+		return $this->db->insert_id();
 	}//	insert handle order 
 	public  function add_handle_order($data){
-		return $this->db->insert('inv_handle_section_order_item',$data)->insert_id();
+		$this->db->insert('inv_handle_section_order_item',$data);
+		return $this->db->insert_id();
 	}
   
 }

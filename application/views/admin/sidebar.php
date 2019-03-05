@@ -297,7 +297,7 @@
         <!-- Handle Module -->
         <?php if ($this->session->userdata('role') == 'Handle') { ?>
           <li class="header">Handle Role Module</li>
-          <li><a href="<?php echo base_url('handlemodule/orderslist'); ?>">
+          <li><a href="<?php echo base_url('handle/orders'); ?>">
             <i class="fa fa-shopping-cart"></i> <span>Orders List</span></a>
           </li>
           <li class="treeview">

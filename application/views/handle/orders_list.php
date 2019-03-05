@@ -43,25 +43,29 @@
                                         <tr>
                                             <th>S.No</th>
                                             <th>Stock Name</th>
-                                            <th>Handle Material Type</th>
-                                            <th>Handle Type</th>
-                                            <th>Handle Size</th>
-                                            <th>Handle Color</th>
-                                            <th>Handle GSM</th>
+                                            <th>Material Type</th>
+                                            <th>Type</th>
+                                            <th>Size</th>
+                                            <th>Color</th>
+                                            <th>GSM</th>
                                             <th>Quantity</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+									<?php if(isset($handle_order_list) && count($handle_order_list)>0){ ?>
+									<?php $sno=1;foreach($handle_order_list as $lis){ ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>xxxxxxx</td>
-                                            <td>xxxxxxx</td>
-                                            <td>xxxxxxx</td>
-                                            <td>xxxxxxx</td>
-                                            <td>xxxxxxx</td>
-                                            <td>xxxxxxx</td>
-                                            <td>xxxxxxx</td>
+                                            <td><?php echo $sno; ?></td>
+                                            <td><?php echo isset($lis['stock_name'])?$lis['stock_name']:''; ?></td>
+                                            <td><?php echo isset($lis['h_material_type'])?$lis['h_material_type']:''; ?></td>
+                                            <td><?php echo isset($lis['h_type'])?$lis['h_type']:''; ?></td>
+                                            <td><?php echo isset($lis['h_size'])?$lis['h_size']:''; ?></td>
+                                            <td><?php echo isset($lis['h_color'])?$lis['h_color']:''; ?></td>
+                                            <td><?php echo isset($lis['h_gsm'])?$lis['h_gsm']:''; ?></td>
+                                            <td><?php echo isset($lis['h_quantity'])?$lis['h_quantity']:''; ?></td>
+                                            <td><?php if($lis['h_status']==0){ echo "Pending";}else if($lis['h_status']==1){ echo "Accept";}else if($lis['h_status']==2){ echo "reject"; } ?></td>
                                             <td class="valigntop">
                                                 <div class="btn-group">
                                                     <button class="btn btn-sm btn-info" type="button" data-toggle="dropdown" aria-expanded="false"> Actions
@@ -78,6 +82,10 @@
                                                 </div>
                                             </td>
                                         </tr>
+									<?php $sno++;} ?>
+									<?php }else{ ?>
+									<div>No data</div>
+									<?php } ?>
                                     </tbody>
                                 </table>
                             </div>

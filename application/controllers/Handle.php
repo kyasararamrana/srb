@@ -39,6 +39,8 @@ class Handle extends CI_Controller
       if ($this->session->userdata('role') == 'Handle') {
         $arg['pageTitle'] = 'Orders';
         $data = components($arg);
+		$data['handle_order_list']=$this->Handle_Model->get_h_order_list();
+		//echo '<pre>';print_r($data);exit;
         $this->load->view('handle/orders_list',$data);
       } else {
         $this->session->set_flashdata('error','Sorry, you can\'t access');

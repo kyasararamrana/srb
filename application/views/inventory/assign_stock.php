@@ -40,7 +40,8 @@
                         <div class="box box-success">
                             <!-- form start -->
                             <form role="form" action="<?php echo base_url('inventory/section_orders'); ?>" method="POST">
-                                <div class="box-body">
+                                <input type="hidden" name="order_id" id="order_id" value="<?php echo isset($order_id)?$order_id:''; ?>">
+								<div class="box-body">
                                     <div class="panel panel-default">
                                         <div class="panel-body">
                                             <div class="stepper">
