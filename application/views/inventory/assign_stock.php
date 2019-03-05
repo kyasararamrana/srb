@@ -73,6 +73,7 @@
                                                 </ul>
 
     <div class="tab-content">
+	
 	<form  action="<?php echo base_url('inventory/section_orders'); ?>" method="POST">
         <div class="tab-pane fade in active" role="tabpanel" id="stepper-step-0">
             <div class="row">
