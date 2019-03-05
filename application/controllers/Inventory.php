@@ -34,6 +34,7 @@ class Inventory extends CI_Controller
       $arg['pageTitle'] = 'Stocks';
       $data = components($arg);
 	  $data['vendor_list']=$this->Inventory_model->get_inventory_list();
+	  $data['handle_list']=$this->Inventory_model->get_handle_list();
 	  //echo '<pre>';print_r($data);exit;
       $this->load->view('inventory/assign_stock',$data);
     } else {
@@ -449,5 +450,24 @@ class Inventory extends CI_Controller
       redirect('admin/login');
     }		 
   }
+  public  function get_handle_data(){
+	 if ($this->session->userdata('logged_in') == TRUE) {
+		$post=$this->input->post();
+		$data['handle_id']=$post['h_s_id'];
+		$data['handle_list']=$this->Inventory_model->get_handle_list();
+		$data['mtype_name']=$this->Inventory_model->get_h_mtype_name($post['h_s_id']);
+		$data['type_list']=$this->Inventory_model->get_h_type_list($post['h_s_id']);
+		$data['size_list']=$this->Inventory_model->get_h_size_list($post['h_s_id']);
+		$data['color_list']=$this->Inventory_model->get_h_color_list($post['h_s_id']);
+		$data['gsm_list']=$this->Inventory_model->get_h_gsm_list($post['h_s_id']);
+		//echo '<pre>';print_r($data);exit;
+		$this->load->view('inventory/dynamic_handle_section',$data);
+			 
+	 } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }		 
+  }
+
 			
 }

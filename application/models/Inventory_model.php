@@ -35,6 +35,26 @@ class Inventory_model extends CI_Model
 	}// stock color list
 	public  function get_stock_color($v_id){
 		return $this->db->select('es.st_o_id,es.st_color')->from('ecom_stcok_orders as es')->where('es.st_v_id',$v_id)->where('es.st_status',1)->group_by('es.st_color')->get()->result_array();
+	}
+	// handle stock list
+	public function get_handle_list(){
+	return $this->db->select('h_s_id,stock_name')->from('ecom_handle_stock')->where('status',1)->get()->result_array();
+	}
+// handle-stock name list
+	public  function get_h_mtype_name($v_id){
+		return $this->db->select('eh.h_s_id,eh.mtype')->from('ecom_handle_stock as eh')->where('eh.h_s_id',$v_id)->where('eh.status',1)->group_by('eh.mtype')->get()->result_array();
+	}
+	public  function get_h_type_list($v_id){
+		return $this->db->select('eh.h_s_id,eh.type')->from('ecom_handle_stock as eh')->where('eh.h_s_id',$v_id)->where('eh.status',1)->group_by('eh.type')->get()->result_array();
+	}
+	public  function get_h_size_list($v_id){
+		return $this->db->select('eh.h_s_id,eh.size')->from('ecom_handle_stock as eh')->where('eh.h_s_id',$v_id)->where('eh.status',1)->group_by('eh.size')->get()->result_array();
+	}
+	public  function get_h_color_list($v_id){
+		return $this->db->select('eh.h_s_id,eh.color')->from('ecom_handle_stock as eh')->where('eh.h_s_id',$v_id)->where('eh.status',1)->group_by('eh.color')->get()->result_array();
+	}
+	public  function get_h_gsm_list($v_id){
+		return $this->db->select('eh.h_s_id,eh.gsm')->from('ecom_handle_stock as eh')->where('eh.h_s_id',$v_id)->where('eh.status',1)->group_by('eh.gsm')->get()->result_array();
 	}	
   
 }

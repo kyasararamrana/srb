@@ -71,8 +71,9 @@
                                                         </a>
                                                     </li>
                                                 </ul>
-<form role="form">
+
     <div class="tab-content">
+	<form  action="<?php echo base_url('inventory/section_orders'); ?>" method="POST">
         <div class="tab-pane fade in active" role="tabpanel" id="stepper-step-0">
             <div class="row">
                 <div class="col-md-12">
@@ -250,57 +251,44 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr id="h_stock_add0">
                                     <td>
-                                        <select name="hsname" class="form-control">
-                                            <option value="0" selected disabled>Select</option>
-                                            <option value="1">Option name</option>
-                                            <option value="2">Option name</option>
-                                            <option value="3">Option name</option>
+                                        <select name="h_stock_name[]" id="h_stock_name" onchange="get_h_list(this.value,'0');" class="form-control">
+                                            <option value="" >Select</option>
+											<?php if(isset($handle_list) && count($handle_list)>0){ ?>
+											<?php foreach($handle_list as $lis){ ?>
+													<option value="<?php echo $lis['h_s_id']; ?>" ><?php echo $lis['stock_name']; ?></option>
+											<?php } ?>
+											<?php } ?>
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="htype" class="form-control">
-                                            <option value="0" selected disabled>Select</option>
-                                            <option value="1">Option name</option>
-                                            <option value="2">Option name</option>
-                                            <option value="3">Option name</option>
+                                        <select name="h_s_type[]" id="h_s_type" class="form-control">
+                                            <option value="" >Select</option>
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="hmtype" class="form-control">
-                                            <option value="0" selected disabled>Select</option>
-                                            <option value="1">Option name</option>
-                                            <option value="2">Option name</option>
-                                            <option value="3">Option name</option>
+                                         <select name="h_m_type[]" id="h_m_type" class="form-control">
+                                            <option value="" >Select</option>
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="hsize" class="form-control">
-                                            <option value="0" selected disabled>Select</option>
-                                            <option value="1">Option name</option>
-                                            <option value="2">Option name</option>
-                                            <option value="3">Option name</option>
+                                         <select name="h_size[]" id="h_size" class="form-control">
+                                            <option value="" >Select</option>
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="hcolor" class="form-control">
-                                            <option value="0" selected disabled>Select</option>
-                                            <option value="1">Option name</option>
-                                            <option value="2">Option name</option>
-                                            <option value="3">Option name</option>
+                                        <select name="h_color[]" id="h_color" class="form-control">
+                                            <option value="" >Select</option>
                                         </select>
                                     </td>
                                     <td>
-                                        <select name="hgsm" class="form-control">
-                                            <option value="0" selected disabled>Select</option>
-                                            <option value="1">Option name</option>
-                                            <option value="2">Option name</option>
-                                            <option value="3">Option name</option>
+                                         <select name="h_gsm[]" id="h_gsm" class="form-control">
+                                            <option value="" >Select</option>
                                         </select>
                                     </td>
                                     <td>
-                                        <input type="text" name="hquantity" placeholder="Enter Quantity" class="form-control" />
+                                        <input type="text" name="h_qty[]" id="h_qty" placeholder="Enter Quantity" class="form-control" />
                                     </td>
                                     <td>&nbsp;</td>
                                 </tr>
@@ -524,12 +512,13 @@
                     <a class="btn btn-default prev-step">Previous</a>
                 </li>
                 <li>
-                    <a class="btn btn-primary next-step">Submit Order</a>
+                    <button type="submit" name="sub_order" class="btn btn-primary">Submit Order</button>
                 </li>
             </ul>
         </div>
+		</form>
     </div>
-</form>
+
                                             </div>
                                         </div>
                                     </div>
@@ -706,25 +695,25 @@
     <!-- Handle Section -->
     <script>
         $(document).ready(function() {
-            var counter = 0;
+            var counter = 1;
 
             $("#addRow2").on("click", function() {
-                var newRow = $("<tr>");
+                var newRow = $('<tr id="h_stock_add'+counter+'">');
                 var cols = "";
 
-                cols += '<td><select class="form-control" name="hsname' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><select name="h_stock_name[]" id="h_stock_name' + counter + '" onchange="get_h_list_di(this.value,'+counter+')" class="form-control"><option value="" >Select</option><?php if(isset($handle_list) && count($handle_list)>0){ ?><?php foreach($handle_list as $lis){ ?><option value="<?php echo $lis['h_s_id']; ?>"><?php echo $lis['stock_name']; ?></option><?php } ?><?php } ?></select></td>';
                 
-                cols += '<td><select class="form-control" name="htype' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><select name="h_s_type[]" id="h_s_type' + counter + '" class="form-control"><option value="" >Select</option></select></td>';
                 
-                cols += '<td><select class="form-control" name="hmtype' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><select name="h_m_type[]" id="h_m_type' + counter + '" class="form-control"> <option value="" >Select</option> </select></td>';
                 
-                cols += '<td><select class="form-control" name="hsize' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><select name="h_size[]" id="h_size' + counter + '" class="form-control"> <option value="" >Select</option></select></td>';
                 
-                cols += '<td><select class="form-control" name="hcolor' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><select name="h_color[]" id="h_color' + counter + '" class="form-control"><option value="" >Select</option></select></td>';
                 
-                cols += '<td><select class="form-control" name="hgsm' + counter + '"><option value="0" selected disabled>Select</option><option value="1">Option</option><option value="2">Option</option><option value="3">Option</option></select></td>';
+                cols += '<td><select name="h_gsm[]" id="h_gsm' + counter + '" class="form-control"><option value="" >Select</option></select></td>';
 
-                cols += '<td><input type="text" class="form-control" placeholder="Enter Quantity" name="hquantity' + counter + '"/></td>';
+                cols += '<td><input type="text" name="h_qty[]" id="h_qty' + counter + '"  placeholder="Enter Quantity" class="form-control" /></td>';
 
                 cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger"><i class="fa fa-trash"></i></button></td>';
                 newRow.append(cols);
@@ -833,12 +822,34 @@
             type:'post',
             data:{'v_id':id},
             success:function(data){
-				alert("#stock_name_append"+tab);
 				$("#stock_name_append"+tab).empty();
 				$("#stock_name_append"+tab).append(data);
             }
           })
 	}
+		  // handle list
+		  function get_h_list(id,tab){
+			$.ajax({
+            url:'<?php echo base_url('inventory/get_handle_data'); ?>',
+            type:'post',
+            data:{'h_s_id':id},
+            success:function(data){
+				$("#h_stock_add"+tab).empty();
+				$("#h_stock_add"+tab).append(data);
+            }
+          })
+		}
+		function get_h_list_di(id,tab){
+			$.ajax({
+            url:'<?php echo base_url('inventory/get_handle_data'); ?>',
+            type:'post',
+            data:{'h_s_id':id,'tab_id':tab},
+            success:function(data){
+				$("#h_stock_add"+tab).empty();
+				$("#h_stock_add"+tab).append(data);
+            }
+          })
+		}
     </script>
 </body>
 
