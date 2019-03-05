@@ -73,10 +73,10 @@
                                                     </button>
                                                     <ul class="dropdown-menu" role="menu" style="right:0;left:auto;">
                                                         <li>
-                                                            <a href=""><i class="fa fa-check-circle"></i>Accept Order</a>
+                                                            <a href="<?php echo base_url('handle/orderconfirmation/'.base64_encode($lis['h_or_id']).'/'.base64_encode(1));?>"><i class="fa fa-check-circle confirmation"></i>Accept Order</a>
                                                         </li>
                                                         <li>
-                                                            <a href=""><i class="fa fa-close"></i>Reject Order</a>
+                                                            <a href="<?php echo base_url('handle/orderconfirmation/'.base64_encode($lis['h_or_id']).'/'.base64_encode(2));?>"><i class="fa fa-close confirmation"></i>Reject Order</a>
                                                         </li>
                                                     </ul>
                                                 </div>

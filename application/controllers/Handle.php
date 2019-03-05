@@ -299,4 +299,45 @@ class Handle extends CI_Controller
       redirect('login');
     }
   }
+  public  function orderconfirmation(){
+	  if ($this->session->userdata('logged_in') == TRUE) {
+				    $order_id=base64_decode($this->uri->segment(3));
+				    $status=base64_decode($this->uri->segment(4));
+					$u_add=array(
+					   'h_status'=>isset($status)?$status:'',
+					   'h_updated_at'=>date('Y-m-d H:i:s'),
+				    );
+					$this->load->model('Sidepatty_Model');
+					$update=$this->Handle_Model->update_orders($order_id,$u_add);
+					
+					 if(count($update)>0){
+						 $h_detail=$this->Handle_Model->update_orders_details($order_id);
+						 if($status==1){
+							  $this->session->set_flashdata('success','Stock updated successfully');
+							 $str = date('Ymd').$h_detail['order_id'];
+							 $msg=' for SRB'.str_pad($str,10,'0',STR_PAD_LEFT).' handles stock available ';
+						 }else{
+							 	$str = date('Ymd').$h_detail['order_id'];
+								$msg=' for SRB'.str_pad($str,10,'0',STR_PAD_LEFT).' handles stock is not available and after getting stock we will inform you';
+							 $this->session->set_flashdata('success','Stock rejected successfully');
+						 }
+						$n_add=array(
+						'type'=>'Inventory',
+						'text'=>isset($msg)?$msg:'',
+						'created_at'=>date('Y-m-d H:i:s'),
+						'created_by'=>$this->session->userdata('id'),
+						);
+						$this->Handle_Model->insert_notification($n_add);
+						 
+						 redirect('handle/orders');
+					 }else{
+						$this->session->set_flashdata('error','Please try again');
+						redirect('handle/orders');
+					 }
+				
+			}else{
+				$this->session->set_flashdata('error','Please login and try again');
+				redirect('login');
+			}
+  }
 }
