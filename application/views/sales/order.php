@@ -68,9 +68,8 @@
                                                                         <label>Material Type</label>
                                                                         <select class="form-control" name="material_type">
                                                                           <option value="">Select</option>
-                                                                          <option value="1">Option</option>
-                                                                          <option value="2">Option</option>
-                                                                          <option value="3">Option</option>
+                                                                          <option value="1">Non woven</option>
+                                                                          <option value="2">Plastic</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -78,10 +77,9 @@
                                                                     <div class="form-group">
                                                                         <label>Quality</label>
                                                                         <select class="form-control" name="quality">
-                                                                            <option value="" selected disabled>Select</option>
-                                                                            <option value="1">Option</option>
-                                                                            <option value="2">Option</option>
-                                                                            <option value="3">Option</option>
+                                                                            <option value="">Select</option>
+                                                                            <option value="1">First quality</option>
+                                                                            <option value="2">Second quality</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
