@@ -33,9 +33,10 @@ class Inventory extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Inventory Material Orders';
       $data = components($arg);
-	  $data['material_order_list']=$this->Inventory_model->get_material_order_list();	  
-      $this->load->view('inventory/orders_list',$data);
-    } else {
+	  $data['material_order_list']=$this->Inventory_model->get_material_order_list();
+	  //echo '<pre>';print_r($data);exit;	  
+      $this->load->view('inventory/material_order_list',$data);
+		} else {
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
@@ -530,6 +531,46 @@ class Inventory extends CI_Controller
       $this->session->set_flashdata('error','Please login and try again');
       redirect('admin/login');
     }		  
+  }
+   public  function orderconfirmation(){
+	  if ($this->session->userdata('logged_in') == TRUE) {
+				    $order_id=base64_decode($this->uri->segment(3));
+				    $status=base64_decode($this->uri->segment(4));
+					$u_add=array(
+					   'm_status'=>isset($status)?$status:'',
+					   'm_updated_at'=>date('Y-m-d H:i:s'),
+				    );
+					$update=$this->Inventory_model->update_orders($order_id,$u_add);
+					
+					 if(count($update)>0){
+						 $m_detail=$this->Inventory_model->update_orders_details($order_id);
+						 if($status==1){
+							  $this->session->set_flashdata('success','Stock updated successfully');
+							 $str = date('Ymd').$m_detail['order_id'];
+							 $msg=' for SRB'.str_pad($str,10,'0',STR_PAD_LEFT).' handles stock available ';
+						 }else{
+							 	$str = date('Ymd').$m_detail['order_id'];
+								$msg=' for SRB'.str_pad($str,10,'0',STR_PAD_LEFT).' handles stock is not available and after getting stock we will inform you';
+							 $this->session->set_flashdata('success','Stock rejected successfully');
+						 }
+						$n_add=array(
+						'type'=>'Inventory',
+						'text'=>isset($msg)?$msg:'',
+						'created_at'=>date('Y-m-d H:i:s'),
+						'created_by'=>$this->session->userdata('id'),
+						);
+						$this->Inventory_model->insert_notification($n_add);
+						 
+						 redirect('inventory/materialorderlist');
+					 }else{
+						$this->session->set_flashdata('error','Please try again');
+						redirect('inventory/materialorderlist');
+					 }
+				
+			}else{
+				$this->session->set_flashdata('error','Please login and try again');
+				redirect('login');
+			}
   }
 
 			
