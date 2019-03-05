@@ -272,6 +272,9 @@
             <li><a href="<?php echo base_url('inventory/roles'); ?>">Roles List</a></li>
           </ul>
         </li>
+		 <li><a href="<?php echo base_url('inventory/materialorderlist'); ?>">
+          <i class="fa fa-shopping-cart"></i> <span>Stcok order List</span></a>
+        </li>
       <?php } ?>
         <!-- Zip Module -->
         <?php if ($this->session->userdata('role') == 'Zip') { ?>
