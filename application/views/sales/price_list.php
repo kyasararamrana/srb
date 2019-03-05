@@ -10,6 +10,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <?php echo $links; ?>
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.4/css/buttons.dataTables.min.css">
 </head>
 
 <body class="hold-transition skin-green sidebar-mini">
@@ -38,18 +39,31 @@
                             <br>
                             <div class="box-heading">
                                 <div class="col-md-3"></div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <select class="form-control" name="btype">
-                                            <option value="" selected disabled>Bag Type</option>
-                                            <option value="">Option 1</option>
-                                            <option value="">Option 2</option>
-                                        </select>
+                                <form class="" action="<?php echo base_url('sales/pricelist'); ?>" method="post">
+                                  <div class="col-md-4">
+                                      <div class="form-group">
+                                          <select class="form-control" name="bag_type">
+                                              <option value="">Select</option>
+                                              <?php if (count($bagtype) > 0) { ?>
+                                                <?php foreach ($bagtype as $b) { ?>
+                                                  <option value="<?php echo $b->id; ?>" <?php echo (isset($filter) && $filter == $b->id) ? 'selected' : '' ; ?>><?php echo $b->bag_type; ?></option>
+                                                <?php } ?>
+                                              <?php } else { ?>
+                                                <option value="">No options found</option>
+                                              <?php } ?>
+                                          </select>
+                                      </div>
                                     </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <button type="submit" class="btn btn-primary">Print</button>
-                                </div>
+                                    <div class="col-md-2">
+                                      <button type="submit" class="btn btn-primary" name="button">Filter</button>
+                                      <?php if (isset($filter) && !empty($filter)) { ?>
+                                        <a href="<?php echo base_url('sales/pricelist'); ?>" class="btn btn-warning" name="button">Clear</a>
+                                      <?php } ?>
+                                    </div>
+                                </form>
+                                <!-- <div class="col-md-2">
+                                    <button type="submit" class="btn btn-primary pull-left">Print</button>
+                                </div> -->
                                 <div class="clearfix">&nbsp;</div>
                             </div>
                             <div class="box-body">
@@ -99,7 +113,8 @@
     </div>
     <!-- ./wrapper -->
     <?php echo $scripts; ?>
-
+    <script src="https://cdn.datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.print.min.js"></script>
     <script type="text/javascript">
         //confirm message
         $(document).ready(function() {
@@ -109,10 +124,11 @@
         });
         //datatables
         $(document).ready(function() {
-            $('#example').DataTable();
+          $('#example').DataTable({
+            dom: 'Bfrtip',
+            buttons: ['print']
+          });
         });
     </script>
-
 </body>
-
 </html>
