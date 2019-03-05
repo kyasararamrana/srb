@@ -72,6 +72,19 @@ class Handle_Model extends CI_Model
 	  $this->db->where('hs.h_status !=',2);
 	  return $this->db->get()->result_array();
   }
+	public function update_orders($order_id,$data){
+		$this->db->where('h_or_id',$order_id);
+		return $this->db->update('inv_handle_section_order_item',$data);		
+	}
+	public  function update_orders_details($order_id){
+	  $this->db->select('hs.order_id')->from('inv_handle_section_order_item as hs');
+	  $this->db->where('hs.h_or_id',$order_id);
+	  return $this->db->get()->row_array();
+	}
+	public  function insert_notification($data){
+			$this->db->insert('notification_list',$data);
+	        return $this->db->insert_id();
+	}
 
 }
 

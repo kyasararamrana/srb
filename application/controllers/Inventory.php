@@ -27,6 +27,18 @@ class Inventory extends CI_Controller
       $this->session->set_flashdata('error','Please login and try again');
       redirect('login');
     }
+  } 
+  public function materialorderlist()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      $arg['pageTitle'] = 'Inventory Orders';
+      $data = components($arg);
+	  $data['o_list']=$this->Inventory_model->get_inventory_order_lists();	  
+      $this->load->view('inventory/orders_list',$data);
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('login');
+    }
   }
   public function assignstock()
   {
