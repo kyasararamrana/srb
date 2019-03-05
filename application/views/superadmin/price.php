@@ -57,7 +57,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Bag Size</label>
-                                            <select class="form-control" name="bag_size" id="bag_size">
+                                            <select class="form-control" name="bag_size" id="bag_size" data-gsm="<?php echo (isset($price->bag_gsm)) ? $price->bag_gsm : '' ; ?>">
                                                 <option value="">Select</option>
                                             </select>
                                         </div>
@@ -69,30 +69,6 @@
                                                 <option value="">Select</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label>Handle Rate</label>
-                                            <input type="text" class="form-control" name="handle_rate" id="handle_rate" value="<?php echo (isset($price->handle_rate)) ? $price->handle_rate : '' ; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label>Zip Rate</label>
-                                            <input type="text" class="form-control" name="zip_rate" id="zip_rate" value="<?php echo (isset($price->zip_rate)) ? $price->zip_rate : '' ; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label>Other Charges</label>
-                                            <input type="text" class="form-control" name="other_charges" id="other_charges" value="<?php echo (isset($price->other_charges)) ? $price->other_charges : '' ; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                      <div class="form-group">
-                                        <label>Minimum Quantity</label>
-                                        <input type="text" class="form-control" name="minimum_quantity" id="minimum_quantity" value="<?php echo (isset($price->minimum_quantity)) ? $price->minimum_quantity : '' ; ?>">
-                                      </div>
                                     </div>
                                     <div class="col-md-3">
                                       <div class="form-group">
@@ -175,10 +151,10 @@
             type:'post',
             data:{'bag_type':bag_type,'layout':layout},
             success:function(data){
-              $('#bag_layout').html(data);
+              $('#bag_layout').html(data).trigger('change');;
             }
           });
-        }).trigger('change');
+        });
         //ajax call for bag size by bag layout
         $('#bag_layout').on('change',function(){
           var bag_layout = $(this).val();
@@ -189,10 +165,10 @@
             type:'post',
             data:{'bag_layout':bag_layout,'size':size},
             success:function(data){
-              $('#bag_size').html(data);
+              $('#bag_size').html(data).trigger('change');;
             }
           });
-        }).trigger('change');
+        });
         //ajax call for bag size by bag layout
         $('#bag_size').on('change',function(){
          var bag_size = $(this).val();
@@ -202,10 +178,10 @@
            type:'post',
            data:{'bag_size':bag_size},
            success:function(data){
-             $('#bag_gsm').html(data);
+             $('#bag_gsm').html(data).trigger('change');;
            }
          });
-       }).trigger('change');
+       });
         //price calculation
         $('#printing_cost').on('keyup',function(){
           if ($('#bag_type').find('option:selected').text() == 'Dcut') {
@@ -236,7 +212,7 @@
             cost_per_kg = cost_per_kg + (no_of_bags_per_kg * (parseInt(handle_rate) + parseInt(zip_rate) + parseInt(other_charges) + parseInt(minimum_quantity)));
             $('#cost_per_kg').val(cost_per_kg.toFixed(2));
           }
-        }).trigger('keyup');
+        });
       });
     </script>
 </body>

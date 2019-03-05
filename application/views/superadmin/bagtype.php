@@ -3,9 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SRB |
-        <?php echo $pageTitle; ?>
-    </title>
+    <title>SRB | <?php echo $pageTitle; ?> </title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <?php echo $links; ?>
@@ -18,9 +16,7 @@
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1>
-                    Bag Type
-                </h1>
+                <h1> Bag Type </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
                     <li class="active">Bag Type</li>
@@ -46,24 +42,42 @@
                                                         <th>Printing Charges</th>
                                                         <th>&nbsp;</th>
                                                         <th>Block Charges</th>
+                                                        <th>&nbsp;</th>
+                                                        <th>Additional GSM</th>
+                                                        <th>&nbsp;</th>
+                                                        <th>Percentage</th>
+                                                        <th>&nbsp;</th>
+                                                        <th>Cost per kg</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td class="col-md-3">
+                                                        <td class="col-md-2">
                                                             <input type="text" name="bagtype[0]" placeholder="Bag Type" class="form-control" />
                                                         </td>
                                                         <td>&nbsp;</td>
-                                                        <td class="col-md-3">
+                                                        <td class="col-md-2">
                                                             <input type="text" name="othercharges[0]" placeholder="Other changes" class="form-control" />
                                                         </td>
                                                         <td>&nbsp;</td>
-                                                        <td class="col-md-3">
+                                                        <td class="col-md-2">
                                                             <input type="text" name="printingcost[0]" placeholder="Printing Charges" class="form-control" />
                                                         </td>
                                                         <td>&nbsp;</td>
-                                                        <td class="col-md-3">
+                                                        <td class="col-md-2">
                                                             <input type="text" name="blockcharges[0]" placeholder="Block Charges" class="form-control" />
+                                                        </td>
+                                                        <td>&nbsp;</td>
+                                                        <td class="col-md-2">
+                                                            <input type="text" name="additionalgsm[0]" placeholder="Additional GSM" class="form-control" />
+                                                        </td>
+                                                        <td>&nbsp;</td>
+                                                        <td class="col-md-1">
+                                                            <input type="text" name="percentage[0]" placeholder="Percen.." class="form-control" />
+                                                        </td>
+                                                        <td>&nbsp;</td>
+                                                        <td class="col-md-1">
+                                                            <input type="text" name="costperkg[0]" placeholder="" class="form-control" />
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -101,6 +115,12 @@
                 cols += '<td><input type="text" class="form-control" placeholder="Printing Charges" name="printingcost[' + counter + ']"/></td>';
                 cols += '<td>&nbsp;</td>';
                 cols += '<td><input type="text" class="form-control" placeholder="Block Charges" name="blockcharges[' + counter + ']"/></td>';
+                cols += '<td>&nbsp;</td>';
+                cols += '<td><input type="text" class="form-control" placeholder="Additional GSM" name="additionalgsm[' + counter + ']"/></td>';
+                cols += '<td>&nbsp;</td>';
+                cols += '<td><input type="text" class="form-control" placeholder="Percen.." name="percentage[' + counter + ']"/></td>';
+                cols += '<td>&nbsp;</td>';
+                cols += '<td><input type="text" class="form-control" placeholder="" name="costperkg[' + counter + ']"/></td>';
                 cols += '<td>&nbsp;</td>';
                 cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger"><i class="fa fa-trash"></i></button></td>';
                 newRow.append(cols);
