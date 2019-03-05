@@ -55,7 +55,14 @@ class Inventory_model extends CI_Model
 	}
 	public  function get_h_gsm_list($v_id){
 		return $this->db->select('eh.h_s_id,eh.gsm')->from('ecom_handle_stock as eh')->where('eh.h_s_id',$v_id)->where('eh.status',1)->group_by('eh.gsm')->get()->result_array();
-	}	
+	}
+	//	insert material order 
+	public  function add_material_order($data){
+		return $this->db->insert('inv_material_section_order_item',$data)->insert_id();
+	}//	insert handle order 
+	public  function add_handle_order($data){
+		return $this->db->insert('inv_handle_section_order_item',$data)->insert_id();
+	}
   
 }
 

@@ -468,6 +468,51 @@ class Inventory extends CI_Controller
       redirect('admin/login');
     }		 
   }
+  public  function section_orders(){
+	  if ($this->session->userdata('logged_in') == TRUE) {
+		  $post=$this->input->post();
+		   echo '<pre>';print_r($post);exit;
+		  if(isset($post['v_id']) && count($post['v_id'])>0){
+			  $cnt=0;foreach($post['v_id'] as $li){
+				  $m_add=array(
+				  'order_id'=>'',
+				  'customer_id'=>'',
+				  'm_v_id'=>isset($post['v_id'][$cnt])?$post['v_id'][$cnt]:'',
+				  'm_stcock_name'=>isset($post['s_name'][$cnt])?$post['s_name'][$cnt]:'',
+				  'm_size'=>isset($post['s_size'][$cnt])?$post['s_size'][$cnt]:'',
+				  'm_thinkness'=>isset($post['s_thickness'][$cnt])?$post['s_thickness'][$cnt]:'',
+				  'm_color'=>isset($post['s_color'][$cnt])?$post['s_color'][$cnt]:'',
+				  'm_quantity'=>isset($post['pieces'][$cnt])?$post['pieces'][$cnt]:'',
+				  'm_created_by'=>$this->session->userdata('id'),
+				  );
+				  $this->Inventory_model->add_material_order($m_add);
+			  $cnt++;
+			  }
+		  } 
+		  if(isset($post['h_stock_name']) && count($post['h_stock_name'])>0){
+			  $count=0;foreach($post['h_stock_name'] as $li){
+				  $h_add=array(
+				  'order_id'=>'',
+				  'customer_id'=>'',
+				  'h_stcock_name'=>isset($post['h_stock_name'][$count])?$post['v_id'][$count]:'',
+				  'h_material_type'=>isset($post['h_m_type'][$count])?$post['h_m_type'][$count]:'',
+				  'h_type'=>isset($post['h_s_type'][$count])?$post['h_s_type'][$count]:'',
+				  'h_size'=>isset($post['h_size'][$count])?$post['h_size'][$count]:'',
+				  'h_color'=>isset($post['h_color'][$count])?$post['h_color'][$count]:'',
+				  'h_gsm'=>isset($post['h_gsm'][$count])?$post['h_gsm'][$count]:'',
+				  'h_quantity'=>isset($post['h_qty'][$count])?$post['h_qty'][$count]:'',
+				  'm_created_by'=>$this->session->userdata('id'),
+				  );
+				  $this->Inventory_model->add_handle_order($h_add);
+			  $count++;
+			  }
+		  }
+		 
+	  } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }		  
+  }
 
 			
 }

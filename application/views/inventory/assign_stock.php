@@ -39,7 +39,7 @@
                     <div class="col-md-12">
                         <div class="box box-success">
                             <!-- form start -->
-                            <form method="post" id="" action="">
+                            <form role="form" action="<?php echo base_url('inventory/section_orders'); ?>" method="POST">
                                 <div class="box-body">
                                     <div class="panel panel-default">
                                         <div class="panel-body">
@@ -73,8 +73,6 @@
                                                 </ul>
 
     <div class="tab-content">
-	
-	<form  action="<?php echo base_url('inventory/section_orders'); ?>" method="POST">
         <div class="tab-pane fade in active" role="tabpanel" id="stepper-step-0">
             <div class="row">
                 <div class="col-md-12">
@@ -513,13 +511,12 @@
                     <a class="btn btn-default prev-step">Previous</a>
                 </li>
                 <li>
-                    <button type="submit" name="sub_order" class="btn btn-primary">Submit Order</button>
+                    <button type="submit" name="sub_order" class="btn btn-primary next-step">Submit Order</button>
                 </li>
             </ul>
         </div>
-		</form>
     </div>
-
+</form>
                                             </div>
                                         </div>
                                     </div>
