@@ -14,6 +14,7 @@ class Order extends CI_Controller
     $this->load->library('user_agent');
     $this->load->model('Sales_Model');
     $this->load->model('Work_Model');
+    $this->load->model('Handle_Model');
   }
   //Order Confirmation
   public function orderconfirm()
@@ -211,6 +212,24 @@ class Order extends CI_Controller
           $this->session->set_flashdata('error','Please try again');
           redirect($this->agent->referrer());
         }
+      } else {
+        $this->session->set_flashdata('error','Sorry,you can\'t access');
+        redirect('admin');
+      }
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
+  }
+  //stock list
+  public function stocks()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      if ($this->session->userdata('role') == 'Order') {
+        $arg['pageTitle'] = 'Stock';
+        $data = components($arg);
+        $data['stocks'] = $this->Handle_Model->get_hanlde_list();
+        $this->load->view('order/stocks',$data);
       } else {
         $this->session->set_flashdata('error','Sorry,you can\'t access');
         redirect('admin');
