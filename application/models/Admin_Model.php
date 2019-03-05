@@ -79,6 +79,20 @@ class Admin_Model extends CI_Model
   {
     $this->db->where('id',$post_id);
     return $this->db->update($this->table,$post_data);
+  } // for notification list
+  public  function get_notofocation($role){
+	  $this->db->select('n.n_id,n.type,n.text,n.created_at')->from('notification_list as n');
+	  $this->db->where('type',$role);
+	  $this->db->order_by('n.n_id','desc');
+	  return $this->db->get()->result_array();
+	  
+  }
+  public  function get_notofocation_unread($role){
+	  $this->db->select('COUNT(n.n_id) as cnt')->from('notification_list as n');
+	  $this->db->where('type',$role);
+	  $this->db->where('read_count',0);
+	  return $this->db->get()->row_array();
+	  
   }
 }
 
