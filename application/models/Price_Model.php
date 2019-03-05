@@ -17,7 +17,7 @@ class Price_Model extends CI_Model
     return $this->db->insert($this->table,$post_data);
   }
   //get price details
-  public function get_price()
+  public function get_price($bag_type='')
   {
     $this->db->select('p.*,t.bag_type as bag_type,l.bag_layout as bag_layout,s.bag_size as bag_size,g.bag_gsm as bag_gsm');
     $this->db->from($this->table.' p');
@@ -28,6 +28,9 @@ class Price_Model extends CI_Model
     $this->db->order_by('p.created_on','desc');
     $this->db->order_by('p.updated_on','desc');
     $this->db->where('p.status !=',0);
+    if (isset($bag_type) && !empty($bag_type)) {
+      $this->db->where('p.bag_type',$bag_type);
+    }
     return $this->db->get()->result();
   }
   //get price by id

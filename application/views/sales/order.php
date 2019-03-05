@@ -501,7 +501,7 @@
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <div class="form-group">
-                                                                        <label><input type="radio"  name="quantity" value="2"> Quantity (required no.of bags per kg)</label>
+                                                                        <label><input type="radio"  name="quantity" value="2"> Quantity (required no.of bags)</label>
                                                                         <!-- <input type="text" class="form-control" name="quantity"> -->
                                                                     </div>
                                                                 </div>
@@ -513,8 +513,8 @@
                                                                 </div>
                                                                 <div class="col-md-4" id="quantity_no_of_bags_per_kg_container" style="display:none">
                                                                     <div class="form-group">
-                                                                        <label>Quantity (required no.of bags per kg)</label>
-                                                                        <input type="text" class="form-control" name="quantity_per_kg" id="quantity_per_kg" placeholder="required no.of bags per kg">
+                                                                        <label>Quantity (required no.of bags)</label>
+                                                                        <input type="text" class="form-control" name="quantity_per_kg" id="quantity_per_kg" placeholder="required no.of bags">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-4">
@@ -854,10 +854,10 @@
             // $('#cost_per_kg').val(cost_per_kg.toFixed(2));
             //total bag cost
             if((quantity_per_kg != '') && (typeof quantity_per_kg !== "undefined")) {
-              var total_cost = final_cost_per_bag * parseInt(quantity_per_kg) * no_of_bags_per_kg;
+              var total_cost = final_cost_per_bag * parseInt(quantity_per_kg);
               $('#total_price').val(total_cost);
             } else if((quantity_kg != '') && (typeof quantity_kg !== "undefined")) {
-              var total_cost = final_cost_per_bag * parseInt(quantity_kg);
+              var total_cost = final_cost_per_bag * parseInt(quantity_kg) * no_of_bags_per_kg;
               $('#total_price').val(total_cost);
             }
           }
