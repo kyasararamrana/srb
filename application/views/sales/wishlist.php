@@ -69,7 +69,7 @@
                                             </button>
                                             <ul class="dropdown-menu" role="menu" style="right:0;left:auto;">
                                               <li>
-                                                <a href="<?php echo base_url('salesmanagement/wishlistItemView'); ?>"><i class="fa fa-eye"></i>View</a>
+                                                <a href="<?php echo base_url('sales/wishlistItemView/'.$wishlist->id); ?>"><i class="fa fa-eye"></i>View</a>
                                               </li>
                                               <li>
                                                 <a href="<?php echo base_url('salesmanagement/editWishlistItem'); ?>"><i class="fa fa-edit"></i>Edit</a>

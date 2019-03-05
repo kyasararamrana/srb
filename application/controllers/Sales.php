@@ -223,15 +223,21 @@ class Sales extends CI_Controller
     }
   }
   //Wishlist Item View
-  public function wishlistItemView()
+  public function wishlistItemView($id='')
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Wishlist';
+      if ($this->session->userdata('role') == 'Sales') {
+        $arg['pageTitle'] = 'Wishlist';
         $data = components($arg);
-      $this->load->view('sales/wishlist_item_view',$data);
+        $data['wishlist'] = $this->Sales_Wishlist_Model->get_wishlist_by_id($id);
+        $this->load->view('sales/wishlist_item_view',$data);
+      } else {
+        $this->session->set_flashdata('error','Sorry,you can\'t access');
+        redirect('admin');
+      }
     } else {
       $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
+      redirect('admin/login');
     }
   }
   //Edit Wishlist Item

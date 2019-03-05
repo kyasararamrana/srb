@@ -38,8 +38,12 @@
                                                 <td><b>Order ID</b></td>
                                                 <td>
                                                   <?php
-                                                    $str = date('Ymd').$order->id;
-                                                    echo 'SRB'.str_pad($str,10,'0',STR_PAD_LEFT);
+                                                    if (isset($order->id)) {
+                                                      $str = date('Ymd').$order->id;
+                                                      echo 'SRB'.str_pad($str,10,'0',STR_PAD_LEFT);
+                                                    } else {
+                                                      echo '';
+                                                    }
                                                   ?>
                                                 </td>
                                             </tr>
@@ -101,6 +105,10 @@
                                             <tr>
                                                 <td><b>Zip Code</b></td>
                                                 <td><?php echo (isset($order->zip_code)) ? $order->zip_code : '' ; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Transport via</b></td>
+                                                <td><?php echo (isset($order->transport_via)) ? $order->transport_via : '' ; ?></td>
                                             </tr>
                                         </table>
                                         <h4 class="mt-0 text-aqua">Charges</h4>

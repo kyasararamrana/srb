@@ -87,6 +87,19 @@ class Admin extends CI_Controller
       $this->session->set_flashdata('error','Please login and try again');
       redirect('admin/login');
     }
+  } 
+  //notifications
+  public function notifications()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      $arg['pageTitle'] = 'Profile';
+      $data = components($arg);
+      $data['profile'] = $this->Admin_Model->get_user_data();
+      $this->load->view('admin/notifications',$data);
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
   }
   //profile (edit - view)
   public function edit_profile()

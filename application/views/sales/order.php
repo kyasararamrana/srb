@@ -124,9 +124,8 @@
                                                                                 <option value="<?php echo $color->id; ?>"><?php echo $color->bag_color; ?></option>
                                                                               <?php } ?>
                                                                             <?php } else { ?>
-                                                                              // code...
+                                                                              <option value="">No records found</option>
                                                                             <?php } ?>
-                                                                            <option value="">Select</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -630,6 +629,12 @@
                                                                     <div class="form-group">
                                                                         <label>Zipcode</label>
                                                                         <input type="text" class="form-control" name="zip_code" placeholder="Enter Zipcode">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label>Transport via</label>
+                                                                        <input type="text" class="form-control" name="transport_via" placeholder="Transport Via">
                                                                     </div>
                                                                 </div>
                                                             </div>
