@@ -42,47 +42,23 @@
                             <div class="box-body">
                                 <div class="row">
                                 <div class="col-md-12">
+								<?php if(isset($notification) && count($notification)>0){ ?>
+								<?php foreach($notification as $lis){ ?>
 									<div class="alert  alert-dismissible" style="background-color:#ddd;">
 										   <div >
 												<h4 class="pull-left"><i class="icon fa fa-info"></i> Alert!</h4>
-												<span class="pull-right">Date :05-03-2019</span>
+												<span class="pull-right">Date :<?php echo isset($lis['created_at'])?$lis['created_at']:''; ?></span>
 											</div>
 											<div class="clearfix" style="border-bottom:1px solid #fff;">&nbsp;</div>
-										   <p style="margin-top:8px;"> Info alert preview. This alert is dismissable.</p>
+										   <p style="margin-top:8px;"> <?php echo isset($lis['text'])?$lis['text']:''; ?></p>
 									</div>
-									<div class="alert  alert-dismissible" style="background-color:#ddd;">
-										   <div >
-												<h4 class="pull-left"><i class="icon fa fa-info"></i> Alert!</h4>
-												<span class="pull-right">Date :05-03-2019</span>
-											</div>
-											<div class="clearfix" style="border-bottom:1px solid #fff;">&nbsp;</div>
-										   <p style="margin-top:8px;"> Info alert preview. This alert is dismissable.</p>
-									</div>
-									<div class="alert  alert-dismissible" style="background-color:#ddd;">
-										   <div >
-												<h4 class="pull-left"><i class="icon fa fa-info"></i> Alert!</h4>
-												<span class="pull-right">Date :05-03-2019</span>
-											</div>
-											<div class="clearfix" style="border-bottom:1px solid #fff;">&nbsp;</div>
-										   <p style="margin-top:8px;"> Info alert preview. This alert is dismissable.</p>
-									</div>
-									<div class="alert  alert-dismissible" style="background-color:#ddd;">
-										   <div >
-												<h4 class="pull-left"><i class="icon fa fa-info"></i> Alert!</h4>
-												<span class="pull-right">Date :05-03-2019</span>
-											</div>
-											<div class="clearfix" style="border-bottom:1px solid #fff;">&nbsp;</div>
-										   <p style="margin-top:8px;"> Info alert preview. This alert is dismissable.</p>
-									</div>
-									<div class="alert  alert-dismissible" style="background-color:#ddd;">
-										   <div >
-												<h4 class="pull-left"><i class="icon fa fa-info"></i> Alert!</h4>
-												<span class="pull-right">Date :05-03-2019</span>
-											</div>
-											<div class="clearfix" style="border-bottom:1px solid #fff;">&nbsp;</div>
-										   <p style="margin-top:8px;"> Info alert preview. This alert is dismissable.</p>
-									</div>
+								<?php } ?>
+								<?php }else{ ?>
+								<div>NO data</div>
+								<?php } ?>
+									
                                 </div>
+								
                                 </div>
                             </div>
                         </div>
@@ -104,4 +80,8 @@
 
 </body>
 
+	<script>
+	$('#unread_cnt').empty();
+	$('#unread_cnt').append('<?php echo isset($read_cnt['cnt'])?$read_cnt['cnt']:''; ?>');
+	</script>
 </html>

@@ -94,7 +94,16 @@ class Admin extends CI_Controller
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Profile';
       $data = components($arg);
-      $data['profile'] = $this->Admin_Model->get_user_data();
+	  $role = $this->session->userdata('role');
+	  $data['notification'] = $this->Admin_Model->get_notofocation($role);
+	  if(isset($data['notification']) && count($data['notification'])>0){
+	  foreach($data['notification'] as $li){
+		  $dat=array('read_count'=>1);
+		  $this->Admin_Model->update_notification($li['n_id'],$dat);
+		}
+	 }
+	  $data['read_cnt'] = $this->Admin_Model->get_notofocation_unread($role);
+
       $this->load->view('admin/notifications',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');

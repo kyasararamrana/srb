@@ -23,8 +23,8 @@
 				
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
               <i class="fa fa-bell-o"></i>
-			  <?php if(isset($read_cnt['cnt']) && count($read_cnt['cnt'])>0){ ?>
-              <span class="label label-warning"><?php echo isset($read_cnt['cnt'])?$read_cnt['cnt']:''; ?></span>
+			  <?php if(isset($read_cnt['cnt']) && $read_cnt['cnt']!=0){ ?>
+              <span class="label label-warning" id="unread_cnt"><?php echo isset($read_cnt['cnt'])?$read_cnt['cnt']:''; ?></span>
 			  <?php } ?>
             </a>
             <ul class="dropdown-menu">

@@ -94,6 +94,11 @@ class Admin_Model extends CI_Model
 	  return $this->db->get()->row_array();
 	  
   }
+  //update notification read count
+  public function update_notification($n_id,$data){
+	$this->db->where('n_id',$n_id);  
+	return $this->db->update('notification_list',$data);
+  }
 }
 
 ?>

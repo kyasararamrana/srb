@@ -547,10 +547,10 @@ class Inventory extends CI_Controller
 						 if($status==1){
 							  $this->session->set_flashdata('success','Stock updated successfully');
 							 $str = date('Ymd').$m_detail['order_id'];
-							 $msg=' for SRB'.str_pad($str,10,'0',STR_PAD_LEFT).' handles stock available ';
+							 $msg=' for SRB'.str_pad($str,10,'0',STR_PAD_LEFT).' material stock available ';
 						 }else{
 							 	$str = date('Ymd').$m_detail['order_id'];
-								$msg=' for SRB'.str_pad($str,10,'0',STR_PAD_LEFT).' handles stock is not available and after getting stock we will inform you';
+								$msg=' for SRB'.str_pad($str,10,'0',STR_PAD_LEFT).' material stock is not available and after getting stock we will inform you';
 							 $this->session->set_flashdata('success','Stock rejected successfully');
 						 }
 						$n_add=array(
