@@ -12,14 +12,21 @@ class Price extends CI_Controller
     $this->load->model('Bagtype_Model');
     $this->load->model('Price_Model');
   }
-  //
+  //price list (view)
   public function index()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       if ($this->session->userdata('role') == 'Superadmin') {
         $arg['pageTitle'] = 'Price';
         $data = components($arg);
-        $data['price'] = $this->Price_Model->get_price();
+        $bag_type = $this->input->post('bag_type');
+        $data['filter'] = $bag_type;
+        $data['bagtype'] = $this->Bagtype_Model->get_bagtype();
+        if (isset($bag_type) && !empty($bag_type)) {
+          $data['price'] = $this->Price_Model->get_price($bag_type);
+        } else {
+          $data['price'] = $this->Price_Model->get_price();
+        }
         $this->load->view('superadmin/prices',$data);
       } else {
         $this->session->set_flashdata('error','Sorry you can\'t access');

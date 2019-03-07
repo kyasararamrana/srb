@@ -10,7 +10,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <?php echo $links; ?>
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.4/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/buttons.dataTables.min.css'); ?>">
 </head>
 
 <body class="hold-transition skin-green sidebar-mini">
@@ -113,13 +113,13 @@
     </div>
     <!-- ./wrapper -->
     <?php echo $scripts; ?>
-    <script src="https://cdn.datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.print.min.js"></script>
+    <script src="<?php echo base_url('assets/js/dataTables.buttons.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/js/buttons.print.min.js'); ?>"></script>
     <script type="text/javascript">
         //confirm message
         $(document).ready(function() {
             $('.confirmation').on('click', function() {
-                return confirm('Are you sure of deleting color?');
+                return confirm('Are you sure of deleting Price?');
             });
         });
         //datatables
