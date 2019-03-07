@@ -844,7 +844,7 @@
             var length = bag_size[1];
             var weight_of_bag_formula = (width * ((length * 2) + 5) * (parseInt(bag_gsm) + parseInt(additional_gsm))) / 1550;
             var weight_of_bag = weight_of_bag_formula;
-            $('#weight_of_bag').val(weight_of_bag);
+            $('#weight_of_bag').val(weight_of_bag.toFixed(2));
             //no of bags per kg
             var no_of_bags_per_kg_formula = 1000/weight_of_bag;
             var no_of_bags_per_kg = no_of_bags_per_kg_formula;
@@ -860,10 +860,10 @@
             //total bag cost
             if((quantity_per_kg != '') && (typeof quantity_per_kg !== "undefined")) {
               var total_cost = final_cost_per_bag * parseInt(quantity_per_kg);
-              $('#total_price').val(total_cost);
+              $('#total_price').val(total_cost.toFixed(2));
             } else if((quantity_kg != '') && (typeof quantity_kg !== "undefined")) {
               var total_cost = final_cost_per_bag * parseInt(quantity_kg) * no_of_bags_per_kg;
-              $('#total_price').val(total_cost);
+              $('#total_price').val(total_cost.toFixed(2));
             }
           }
         }).trigger('keyup');

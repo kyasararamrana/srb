@@ -58,7 +58,6 @@
                                               <td><?php echo $order->bag_type; ?></td>
                                               <td><?php echo $order->quantity; ?></td>
                                               <td>
-                                                <p class="text-aqua">
                                                   <?php if ($order->status == 1) { ?>
                                                     <p class="text-success">  Active </p>
                                                   <?php } elseif ($order->status == 0) { ?>
@@ -68,7 +67,6 @@
                                                   <?php } elseif ($order->status == 3) { ?>
                                                     <p class="text-danger"> Rejected </p>
                                                   <?php } ?>
-                                                </p>
                                               </td>
                                               <td class="valigntop">
                                                   <div class="btn-group">

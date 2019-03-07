@@ -13,6 +13,7 @@ class Superadmin extends CI_Controller
     $this->load->library('form_validation');
     $this->load->library('user_agent');
     $this->load->model('Admin_Model');
+    $this->load->model('Sales_Model');
   }
   //add bags
   public function bag()
@@ -251,19 +252,26 @@ class Superadmin extends CI_Controller
   public function orderslist()
   {
     if ($this->session->userdata('logged_in') == TRUE) {
-      $arg['pageTitle'] = 'Orders';
-      $data = components($arg);
-      $this->load->view('superadmin/orders',$data);
+      if ($this->session->userdata('role') == 'Superadmin') {
+        $arg['pageTitle'] = 'Orders';
+        $data = components($arg);
+        $data['orders'] = $this->Sales_Model->get_order();
+        $this->load->view('superadmin/orders',$data);
+      } else {
+        $this->session->set_flashdata('error','Sorry,you can\'t access');
+        redirect('admin');
+      }
     } else {
       $this->session->set_flashdata('error','Please login and try again');
-      redirect('login');
+      redirect('admin/login');
     }
   }
-  public function orderdetails()
+  public function orderdetails($id='')
   {
     if ($this->session->userdata('logged_in') == TRUE) {
       $arg['pageTitle'] = 'Order Details';
       $data = components($arg);
+      $data['order'] = $this->Sales_Model->get_details_by_id($id);
       $this->load->view('superadmin/order_info',$data);
     } else {
       $this->session->set_flashdata('error','Please login and try again');
@@ -283,6 +291,33 @@ class Superadmin extends CI_Controller
     echo json_encode(array(
       'valid' => $isAvailable,
     ));
+  }
+  //payment and changing payment status
+  public function payments()
+  {
+    $post_data = $this->input->post();
+    if ($post_data) {
+      if ($post_data['total_price'] > $post_data['paid_amount']) {
+        $status = 'pending';
+      } elseif ($post_data['total_price'] <= $post_data['paid_amount']) {
+        $status = 'paid';
+      }
+      $post_id = $this->input->post('order_id');
+      $post_data = array(
+        'paid_amount' => $post_data['paid_amount'],
+        'payment_status' => $status,
+        'updated_on' => date('Y-m-d H:i:s'),
+        'updated_by' => $this->session->userdata('id')
+      );
+      if ($this->Sales_Model->update($post_data, $post_id)) {
+        $return['success'] = 'Payment details updated successfully';
+      } else {
+        $return['error'] = 'Please try again';
+      }
+    } else {
+      $return['error'] = 'Please try again';
+    }
+    echo json_encode($return);die();
   }
 
 }
