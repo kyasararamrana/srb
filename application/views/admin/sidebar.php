@@ -130,6 +130,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
+            <li><a href="<?php echo base_url('block/minimumqty'); ?>">Minimum Qty</a></li>
+            <li><a href="<?php echo base_url('block/min_qty_list'); ?>">Minimum Qty List</a></li>
+            <li><a href="<?php echo base_url('block/charges'); ?>">Block charges</a></li>
+            <li><a href="<?php echo base_url('block/lists'); ?>">Block charges List</a></li>
             <li><a href="<?php echo base_url('bagtype/create'); ?>">Add Bag Type</a></li>
             <li><a href="<?php echo base_url('bagtype'); ?>">Bag Type List</a></li>
             <li><a href="<?php echo base_url('baglayout/create'); ?>">Add Bag Layout</a></li>
