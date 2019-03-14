@@ -35,6 +35,19 @@ class Bagtype_Model extends CI_Model
     $this->db->select('other_charges,printing_cost,block_charges,additional_gsm,percentage,cost_per_kg');
     return $this->db->get_where($this->table, array('id' => $bag_type))->row();
   }
+  // material list
+  public function get_active_material(){
+	$this->db->select('i_m_id,material')->from('inv_material as im');
+	$this->db->where('im.status',1);
+	$this->db->order_by('im.i_m_id','desc');
+    return $this->db->get()->result_array();  
+  }
+  public function get_active_quality(){
+	$this->db->select('id,name')->from('ecom_quality');
+	$this->db->where('status',1);
+	$this->db->order_by('id','desc');
+    return $this->db->get()->result_array();  
+  }
 }
 
 ?>

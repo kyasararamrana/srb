@@ -130,6 +130,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
+		   <li><a href="<?php echo base_url('material'); ?>">Add Material</a></li>
+		   <li><a href="<?php echo base_url('material/lists'); ?>"> Material List</a></li>
+		   <li><a href="<?php echo base_url('quality/create'); ?>">Add Quality</a></li>
+            <li><a href="<?php echo base_url('quality'); ?>">Quality List</a></li>
             <li><a href="<?php echo base_url('block/minimumqty'); ?>">Minimum Qty</a></li>
             <li><a href="<?php echo base_url('block/min_qty_list'); ?>">Minimum Qty List</a></li>
             <li><a href="<?php echo base_url('block/charges'); ?>">Block charges</a></li>

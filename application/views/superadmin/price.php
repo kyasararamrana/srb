@@ -94,6 +94,36 @@
                                             <input type="text" class="form-control" name="cost_per_kg" id="cost_per_kg" value="<?php echo (isset($price->cost_per_kg)) ? $price->cost_per_kg : 0 ; ?>" readonly>
                                         </div>
                                     </div>
+									<div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Quality Type</label>
+                                            <select class="form-control" name="quality_type" id="quality_type" data-layout="<?php echo (isset($price->quality_type)) ? $price->quality_type : '' ; ?>">
+                                              <?php if (count($quality_type) > 0) { ?>
+                                                <option value="">Select</option>
+                                                <?php foreach ($quality_type as $list) { ?>
+                                                  <option value="<?php echo $list['id']; ?>" <?php echo (isset($price->quality_type) && $price->quality_type == $list['id']) ? 'selected' : '' ; ?>><?php echo $list['name']; ?></option>
+                                                <?php } ?>
+                                              <?php } else { ?>
+                                                <option value="">No records found</option>
+                                              <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+									<div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Material Type</label>
+                                            <select class="form-control" name="material_type" id="material_type" data-layout="<?php echo (isset($price->material_type)) ? $price->material_type : '' ; ?>">
+                                              <?php if (count($material_type) > 0) { ?>
+                                                <option value="">Select</option>
+                                                <?php foreach ($material_type as $list) { ?>
+                                                  <option value="<?php echo $list['i_m_id']; ?>" <?php echo (isset($price->material_type) && $price->material_type == $list['i_m_id']) ? 'selected' : '' ; ?>><?php echo $list['material']; ?></option>
+                                                <?php } ?>
+                                              <?php } else { ?>
+                                                <option value="">No records found</option>
+                                              <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="clearfix">&nbsp;</div>
                                     <div class="col-md-6">
                                         <?php if (isset($price->id)) { ?>

@@ -27,6 +27,7 @@ class Price extends CI_Controller
         } else {
           $data['price'] = $this->Price_Model->get_price();
         }
+		//echo '<pre>';print_r($data);exit;
         $this->load->view('superadmin/prices',$data);
       } else {
         $this->session->set_flashdata('error','Sorry you can\'t access');
@@ -45,6 +46,8 @@ class Price extends CI_Controller
         $arg['pageTitle'] = 'Price';
         $data = components($arg);
         $data['bagtype'] = $this->Bagtype_Model->get_active_bagtype();
+        $data['material_type'] = $this->Bagtype_Model->get_active_material();
+        $data['quality_type'] = $this->Bagtype_Model->get_active_quality();
         $this->load->view('superadmin/price',$data);
       } else {
         $this->session->set_flashdata('error','Sorry you can\'t access');
@@ -97,6 +100,8 @@ class Price extends CI_Controller
         $data = components($arg);
         $data['bagtype'] = $this->Bagtype_Model->get_active_bagtype();
         $data['price'] = $this->Price_Model->get_price_by_id($id);
+		$data['material_type'] = $this->Bagtype_Model->get_active_material();
+        $data['quality_type'] = $this->Bagtype_Model->get_active_quality();
         $this->load->view('superadmin/price',$data);
       } else {
         $this->session->set_flashdata('error','Sorry you can\'t access');
