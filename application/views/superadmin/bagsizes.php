@@ -37,6 +37,7 @@
                     <thead>
                       <tr>
                         <th>S.No</th>
+                        <th>Bag Type</th>
                         <th>Bag layout</th>
                         <th>Bag type</th>
                         <!-- <th>Action</th> -->
@@ -48,6 +49,7 @@
                         <?php foreach($bagsizes as $bagsize) { ?>
                           <tr>
                             <td><?php echo $sno; ?></td>
+                            <td><?php echo $bagsize->bag_type; ?></td>
                             <td><?php echo $bagsize->bag_layout; ?></td>
                             <td><?php echo $bagsize->bag_size; ?></td>
                             <!-- <td>

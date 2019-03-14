@@ -189,6 +189,45 @@ class Bag extends CI_Controller
       }
     }
   }
+  
+  // get cost for kg amount
+  public function get_bag_per_kg_amount()
+  {
+		$post=$this->input->post();
+		$details=$this->Baglayout_Model->get_bag_per_kg_amount($post['bag_type']);
+		//echo $this->db->last_query();exit;
+		if(count($details) > 0)
+				{
+				$data['msg']=1;
+				$data['amt']=$details['cost_per_kg'];
+				$data['percent']=$details['percentage'];
+				$data['gsm']=$details['additional_gsm'];
+				echo json_encode($data);exit;	
+				}else{
+					$data['msg']=2;
+					$data['amt']='';
+					$data['percent']='';
+					$data['gsm']='';
+					echo json_encode($data);exit;
+				}
+  } 
+  // get handle cost 
+  public function get_handle_cost()
+  {
+		$post=$this->input->post();
+		$details=$this->Baglayout_Model->get_handle_cost($post['handle_type']);
+		//echo $this->db->last_query();exit;
+		if(count($details) > 0)
+				{
+				$data['msg']=1;
+				$data['amt']=$details['material'];
+				echo json_encode($data);exit;	
+				}else{
+					$data['msg']=2;
+					$data['amt']='';
+					echo json_encode($data);exit;
+				}
+  }
   //getting bag size by bag layout (ajax call)
   public function get_bagsize_by_baglayout()
   {

@@ -37,6 +37,19 @@ class Baglayout_Model extends CI_Model
     $this->db->select('id,bag_layout');
     $this->db->order_by('bag_layout','asc');
     return $this->db->get_where($this->table,array('bag_type' => $bag_type))->result();
+  } 
+  public function get_bag_per_kg_amount($bag_type)
+  {
+    $this->db->select('id,cost_per_kg,percentage,additional_gsm')->from('ecom_bagtype');
+    $this->db->where('id',$bag_type);
+    return $this->db->get()->row_array();
+  }
+  //gaet handle cost
+  public function get_handle_cost($handletype)
+  {
+    $this->db->select('id,material')->from('ecom_handle');
+    $this->db->where('id',$handletype);
+    return $this->db->get()->row_array();
   }
   //get bag size by bag layout
   public function get_bagsize_by_baglayout($bag_layout='')

@@ -37,11 +37,7 @@
                                                     <tr>
                                                         <th>Bag Type</th>
                                                         <th>&nbsp;</th>
-                                                        <th>Other Charges</th>
-                                                        <th>&nbsp;</th>
                                                         <th>Printing Charges</th>
-                                                        <th>&nbsp;</th>
-                                                        <th>Block Charges</th>
                                                         <th>&nbsp;</th>
                                                         <th>Additional GSM</th>
                                                         <th>&nbsp;</th>
@@ -56,18 +52,12 @@
                                                             <input type="text" name="bagtype[0]" placeholder="Bag Type" class="form-control" />
                                                         </td>
                                                         <td>&nbsp;</td>
-                                                        <td class="col-md-2">
-                                                            <input type="text" name="othercharges[0]" placeholder="Other changes" class="form-control" />
-                                                        </td>
-                                                        <td>&nbsp;</td>
+                                                        
                                                         <td class="col-md-2">
                                                             <input type="text" name="printingcost[0]" placeholder="Printing Charges" class="form-control" />
                                                         </td>
                                                         <td>&nbsp;</td>
-                                                        <td class="col-md-2">
-                                                            <input type="text" name="blockcharges[0]" placeholder="Block Charges" class="form-control" />
-                                                        </td>
-                                                        <td>&nbsp;</td>
+                                                     
                                                         <td class="col-md-2">
                                                             <input type="text" name="additionalgsm[0]" placeholder="Additional GSM" class="form-control" />
                                                         </td>
@@ -110,11 +100,8 @@
                 var cols = "";
                 cols += '<td><input type="text" class="form-control" placeholder="Bag Type" name="bagtype[' + counter + ']"/></td>';
                 cols += '<td>&nbsp;</td>';
-                cols += '<td><input type="text" class="form-control" placeholder="Other Charges" name="othercharges[' + counter + ']"/></td>';
-                cols += '<td>&nbsp;</td>';
+               
                 cols += '<td><input type="text" class="form-control" placeholder="Printing Charges" name="printingcost[' + counter + ']"/></td>';
-                cols += '<td>&nbsp;</td>';
-                cols += '<td><input type="text" class="form-control" placeholder="Block Charges" name="blockcharges[' + counter + ']"/></td>';
                 cols += '<td>&nbsp;</td>';
                 cols += '<td><input type="text" class="form-control" placeholder="Additional GSM" name="additionalgsm[' + counter + ']"/></td>';
                 cols += '<td>&nbsp;</td>';

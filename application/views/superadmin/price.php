@@ -124,6 +124,53 @@
                                             </select>
                                         </div>
                                     </div>
+									<!--  sidepatty-->
+									<div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Size</label>
+                                            <select class="form-control" name="s_size" id="s_size" data-layout="<?php echo (isset($price->s_size)) ? $price->s_size : '' ; ?>">
+                                              <?php if (count($size_list) > 0) { ?>
+                                                <option value="">Select</option>
+                                                <?php foreach ($size_list as $list) { ?>
+                                                  <option value="<?php echo $list['s_id']; ?>" <?php echo (isset($price->s_size) && $price->s_size == $list['s_id']) ? 'selected' : '' ; ?>><?php echo $list['s_size']; ?></option>
+                                                <?php } ?>
+                                              <?php } else { ?>
+                                                <option value="">No records found</option>
+                                              <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+									<div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>GSM</label>
+                                            <select class="form-control" name="s_gsm" id="s_gsm" data-layout="<?php echo (isset($price->s_gsm)) ? $price->s_gsm : '' ; ?>">
+                                              <?php if (count($gsm_list) > 0) { ?>
+                                                <option value="">Select</option>
+                                                <?php foreach ($gsm_list as $list) { ?>
+                                                  <option value="<?php echo $list['s_id']; ?>" <?php echo (isset($price->s_gsm) && $price->s_gsm == $list['s_id']) ? 'selected' : '' ; ?>><?php echo $list['s_gsm']; ?></option>
+                                                <?php } ?>
+                                              <?php } else { ?>
+                                                <option value="">No records found</option>
+                                              <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+									<div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Handle Type</label>
+                                            <select class="form-control" name="handle_type" id="handle_type" data-layout="<?php echo (isset($price->handle_type)) ? $price->handle_type : '' ; ?>">
+                                              <?php if (count($handle_rate_cost) > 0) { ?>
+                                                <option value="">Select</option>
+                                                <?php foreach ($handle_rate_cost as $list) { ?>
+                                                  <option value="<?php echo $list['id']; ?>" <?php echo (isset($price->handle_type) && $price->handle_type == $list['id']) ? 'selected' : '' ; ?>><?php echo $list['type']; ?></option>
+                                                <?php } ?>
+                                              <?php } else { ?>
+                                                <option value="">No records found</option>
+                                              <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+									<!--  sidepatty-->
                                     <div class="clearfix">&nbsp;</div>
                                     <div class="col-md-6">
                                         <?php if (isset($price->id)) { ?>
@@ -133,6 +180,9 @@
                                     </div>
                                 </div>
                             </form>
+							<input type="hidden" name="percentage" id="percentage" value=""> 
+							<input type="hidden" name="additional_gsm" id="additional_gsm" value=""> 
+							<input type="hidden" name="handle_rate_cost" id="handle_rate_cost" value=""> 
                         </div>
                     </div>
                 </div>
@@ -185,6 +235,43 @@
             }
           });
         });
+		
+		$('#bag_type').on('change',function(){
+          var bag_type = $(this).val();
+          jQuery.ajax({
+   					url: "<?php echo base_url('bag/get_bag_per_kg_amount');?>",
+   					data: {
+   						bag_type: bag_type,
+   					},
+   					dataType: 'json',
+   					type: 'POST',
+   					success: function (data) {
+   						$('#cost_per_kg').empty();
+   						$('#additional_gsm').empty();
+   						$('#percentage').empty();
+   						$('#cost_per_kg').val(data.amt);
+   						$('#additional_gsm').val(data.gsm);
+   						$('#percentage').val(data.percent);
+   					}
+   				});
+        });
+		//handle cost purpose
+		$('#handle_type').on('change',function(){
+          var handle_type = $(this).val();
+          jQuery.ajax({
+   					url: "<?php echo base_url('bag/get_handle_cost');?>",
+   					data: {
+   						handle_type: handle_type,
+   					},
+   					dataType: 'json',
+   					type: 'POST',
+   					success: function (data) {
+   						$('#handle_rate_cost').empty();
+   						$('#handle_rate_cost').val(data.amt);
+   					}
+   				});
+        });
+		
         //ajax call for bag size by bag layout
         $('#bag_layout').on('change',function(){
           var bag_layout = $(this).val();
@@ -222,9 +309,9 @@
             var zip_rate = $('#zip_rate').val();
             var other_charges = $('#other_charges').val();
             var minimum_quantity = $('#minimum_quantity').val();
-            var additional_gsm = 3;
-            var percentage = 0.45;
-            var cost_per_kg = 170;
+            var additional_gsm = $('#additional_gsm').val();
+            var percentage = $('#percentage').val();
+            var cost_per_kg = $('#cost_per_kg').val();
             var width = bag_size[0];
             var length = bag_size[1];
             var weight_of_bag_formula = (width * ((length * 2) + 5) * (parseInt(bag_gsm) + parseInt(additional_gsm))) / 1550;
@@ -241,7 +328,56 @@
             //cost per kg
             cost_per_kg = cost_per_kg + (no_of_bags_per_kg * (parseInt(handle_rate) + parseInt(zip_rate) + parseInt(other_charges) + parseInt(minimum_quantity)));
             $('#cost_per_kg').val(cost_per_kg.toFixed(2));
-          }
+          }else if($('#bag_type').find('option:selected').text() == 'Handle') {
+				var bag_size = $('#bag_size').find('option:selected').text().split('*');
+				var width = bag_size[0];
+				var length = bag_size[1];
+				var bag_gsm = $('#bag_gsm').find('option:selected').text();
+				var additional_gsm = $('#additional_gsm').val();
+				var weight_of_bag_formula = (width * ((length * 2) + 3) * (parseInt(bag_gsm) + parseInt(additional_gsm))) / 1550;
+				var additon_handle_weight= 3.5+((2*(13*2*105))/1550);
+				var weight_of_bag=(weight_of_bag_formula+additon_handle_weight)
+				var no_of_bags_per_kg_formula = 1000/weight_of_bag;
+				
+				//cost of the bag
+				var cost_per_kg = $('#cost_per_kg').val();
+				var percentage = $('#percentage').val();
+				var printing_cost = $('#printing_cost').val();
+				var cost_per_bag_formula = ((weight_of_bag / 1000) * cost_per_kg);
+				var cost_per_bag_value = cost_per_bag_formula;
+				var handle_rate=$('#handle_rate_cost').val();
+				 var no_of_bags_per_kg = no_of_bags_per_kg_formula;
+				var final_cost_per_bag = cost_per_bag_value + (cost_per_bag_value * percentage) + (parseInt(printing_cost)) + (parseInt(handle_rate));
+				$('#bags_per_kg').val(no_of_bags_per_kg.toFixed(2));
+				$('#cost_per_bag').val(final_cost_per_bag.toFixed(2));
+			}else if($('#bag_type').find('option:selected').text() == 'Stitching bag') {
+				var bag_size = $('#bag_size').find('option:selected').text().split('*');
+				var width = bag_size[0];
+				var length = bag_size[1];
+				var sidepatty_bag_size = $('#s_size').val();		
+				var bag_gsm = $('#bag_gsm').find('option:selected').text();
+				var additional_gsm = $('#additional_gsm').val();
+				var sidepatty_gsm = $('#s_gsm').val();
+				var weight_of_bag_formula = (((length+1)*width)*2*(bag_gsm+additional_gsm))/1550;
+				var weight_of_sidepatty=((width +((length+1) * 2)) * (sidepatty_bag_size) * (sidepatty_gsm + additional_gsm))/1550;
+				var additon_handle_weight= 3.5+((2*(13*2*105))/1550);
+				var no_of_bags_per_kg_formula = (1000/(weight_of_bag_formula +weight_of_sidepatty + additon_handle_weight));
+				//console.log(weight_of_bag_formula);
+				//console.log(weight_of_sidepatty);
+				//console.log(additon_handle_weight);
+					//cost of the bag
+				var cost_per_kg = $('#cost_per_kg').val();
+				var percentage = $('#percentage').val();
+				var printing_cost = $('#printing_cost').val();
+				var cost_per_bag_formula = ((weight_of_bag_formula / 1000) * cost_per_kg);
+				var cost_per_bag_value = cost_per_bag_formula+((weight_of_sidepatty/1000)*cost_per_kg);
+				var handle_rate=$('#handle_rate_cost').val();
+				var final_cost_per_bag = cost_per_bag_value + (cost_per_bag_value * percentage) + (parseInt(printing_cost)) + (parseInt(handle_rate));
+				$('#bags_per_kg').val(no_of_bags_per_kg_formula.toFixed(2));
+				$('#cost_per_bag').val(final_cost_per_bag.toFixed(2));
+				
+				
+			}
         });
       });
     </script>

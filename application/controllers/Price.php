@@ -48,6 +48,9 @@ class Price extends CI_Controller
         $data['bagtype'] = $this->Bagtype_Model->get_active_bagtype();
         $data['material_type'] = $this->Bagtype_Model->get_active_material();
         $data['quality_type'] = $this->Bagtype_Model->get_active_quality();
+        $data['size_list'] = $this->Bagtype_Model->get_active_size_list();
+        $data['gsm_list'] = $this->Bagtype_Model->get_active_gsm_list();
+        $data['handle_rate_cost'] = $this->Bagtype_Model->get_active_handle_rate_cost();
         $this->load->view('superadmin/price',$data);
       } else {
         $this->session->set_flashdata('error','Sorry you can\'t access');
@@ -101,7 +104,10 @@ class Price extends CI_Controller
         $data['bagtype'] = $this->Bagtype_Model->get_active_bagtype();
         $data['price'] = $this->Price_Model->get_price_by_id($id);
 		$data['material_type'] = $this->Bagtype_Model->get_active_material();
-        $data['quality_type'] = $this->Bagtype_Model->get_active_quality();
+         $data['quality_type'] = $this->Bagtype_Model->get_active_quality();
+        $data['size_list'] = $this->Bagtype_Model->get_active_size_list();
+        $data['gsm_list'] = $this->Bagtype_Model->get_active_gsm_list();
+        $data['handle_rate_cost'] = $this->Bagtype_Model->get_active_handle_rate_cost();
         $this->load->view('superadmin/price',$data);
       } else {
         $this->session->set_flashdata('error','Sorry you can\'t access');

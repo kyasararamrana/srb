@@ -48,6 +48,24 @@ class Bagtype_Model extends CI_Model
 	$this->db->order_by('id','desc');
     return $this->db->get()->result_array();  
   }
+  public function get_active_size_list(){
+	$this->db->select('s_id,s_size')->from('ecom_sidepatt');
+	$this->db->where('s_status',1);
+	$this->db->order_by('s_id','desc');
+    return $this->db->get()->result_array();  
+  }
+  public function get_active_gsm_list(){
+	$this->db->select('s_id,s_gsm')->from('ecom_sidepatt');
+	$this->db->where('s_status',1);
+	$this->db->order_by('s_id','desc');
+    return $this->db->get()->result_array();  
+  } 
+  public function get_active_handle_rate_cost(){
+	$this->db->select('id,type,material')->from('ecom_handle');
+	$this->db->where('status',1);
+	$this->db->order_by('id','desc');
+    return $this->db->get()->result_array();  
+  }
 }
 
 ?>

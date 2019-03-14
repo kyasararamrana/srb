@@ -20,6 +20,7 @@ class Bagsize extends CI_Controller
         $arg['pageTitle'] = 'Bag Size';
         $data = components($arg);
         $data['bagsizes'] = $this->Bagsize_Model->get_bagsize();
+		//echo '<pre>';print_r($data);exit;
         $this->load->view('superadmin/bagsizes',$data);
       } else {
         $this->session->set_flashdata('error','Sorry, you can\'t access');
@@ -37,7 +38,9 @@ class Bagsize extends CI_Controller
       if ($this->session->userdata('role') == 'Superadmin') {
         $arg['pageTitle'] = 'Bag Size';
         $data = components($arg);
-        $data['baglayouts'] = $this->Baglayout_Model->get_active_baglayout();
+		$this->load->model('Block_Model');
+		$data['bags_list'] = $this->Block_Model->get_bags_list();
+		$data['baglayouts'] = $this->Baglayout_Model->get_active_baglayout();
         $this->load->view('superadmin/bagsize',$data);
       } else {
         $this->session->set_flashdata('error','Sorry, you can\'t access');
@@ -57,6 +60,7 @@ class Bagsize extends CI_Controller
         if ($post_data) {
           for ($i = 0; $i < count($post_data['bagsize']); $i++) {
             $post_array = array(
+              'bag_type' => $post_data['b_type'],
               'bag_layout' => $post_data['baglayout'],
               'bag_size' => $post_data['bagsize'][$i],
               'created_on' => date('Y-m-d H:i:s'),

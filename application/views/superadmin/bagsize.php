@@ -47,6 +47,21 @@
                                                   </select>
                                               </div>
                                           </div>
+										  <div class="row">
+                                          <div class="col-md-6">
+                                              <div class="form-group">
+                                                  <label>Bag type</label>
+                                                  <select name="b_type"  name="b_type" class="form-control" required>
+                                                    <option value="">Select</option>
+                                                    <?php if (count($bags_list) > 0) { ?>
+                                                      <?php foreach ($bags_list as $list) { ?>
+                                                        <option value="<?php echo $list['id']; ?>"><?php echo  $list['bag_type']; ?></option>
+                                                      <?php } ?>
+                                                    <?php } ?>
+                                                  </select>
+                                              </div>
+                                          </div>
+                                      </div>
                                       </div>
                                         <div class="table-responsive">
                                             <table id="myTable" class="table table-list">
