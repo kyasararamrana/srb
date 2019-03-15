@@ -66,6 +66,24 @@ class Bagtype_Model extends CI_Model
 	$this->db->order_by('id','desc');
     return $this->db->get()->result_array();  
   }
+	public  function get_active_stitching_type_list(){
+		$this->db->select('i_s_t_id,stitching_type')->from('inv_stitching_type');
+		$this->db->where('status',1);
+		$this->db->order_by('i_s_t_id','desc');
+		return $this->db->get()->result_array(); 
+	}
+	public  function get_active_printing_list(){
+		$this->db->select('id,printing_style')->from('ecom_printingstyle');
+		$this->db->where('status',1);
+		$this->db->order_by('id','desc');
+		return $this->db->get()->result_array(); 
+	}
+	public  function get_active_printingcolortype(){
+		$this->db->select('id,printing_color_type')->from('ecom_printingcolortype');
+		$this->db->where('status',1);
+		$this->db->order_by('id','desc');
+		return $this->db->get()->result_array(); 
+	}
 }
 
 ?>

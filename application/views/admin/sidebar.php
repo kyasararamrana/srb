@@ -130,6 +130,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
+		   <li><a href="<?php echo base_url('stitching'); ?>">Add Stitching type</a></li>
+		   <li><a href="<?php echo base_url('stitching/lists'); ?>">Stitching Type List</a></li>
 		   <li><a href="<?php echo base_url('material'); ?>">Add Material</a></li>
 		   <li><a href="<?php echo base_url('material/lists'); ?>"> Material List</a></li>
 		   <li><a href="<?php echo base_url('quality/create'); ?>">Add Quality</a></li>
@@ -171,7 +173,10 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url('price/create'); ?>">Add Price</a></li>
-            <li><a href="<?php echo base_url('price'); ?>">Prices List</a></li>
+            <li><a href="<?php echo base_url('price'); ?>">Prices List</a></li> 
+
+			<li><a href="<?php echo base_url('stitching/addprice'); ?>">Add Stitching  Price</a></li>
+            <li><a href="<?php echo base_url('stitching/pricelist'); ?>">Stitching  Prices List</a></li>
           </ul>
         </li>
         <li class="header">ROLES</li>
