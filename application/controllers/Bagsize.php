@@ -40,7 +40,7 @@ class Bagsize extends CI_Controller
         $data = components($arg);
 		$this->load->model('Block_Model');
 		$data['bags_list'] = $this->Block_Model->get_bags_list();
-		$data['baglayouts'] = $this->Baglayout_Model->get_active_baglayout();
+		//$data['baglayouts'] = $this->Baglayout_Model->get_active_baglayout();
         $this->load->view('superadmin/bagsize',$data);
       } else {
         $this->session->set_flashdata('error','Sorry, you can\'t access');

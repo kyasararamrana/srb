@@ -19,7 +19,7 @@ class Price_Model extends CI_Model
   //get price details
   public function get_price($bag_type='')
   {
-    $this->db->select('p.*,m.material,q.name as qname,t.bag_type as bag_type,l.bag_layout as bag_layout,s.bag_size as bag_size,g.bag_gsm as bag_gsm');
+    $this->db->select('p.*,sp.s_size,spt.s_gsm,ht.type as handle_type,m.material,q.name as qname,t.bag_type as bag_type,l.bag_layout as bag_layout,s.bag_size as bag_size,g.bag_gsm as bag_gsm');
     $this->db->from($this->table.' p');
     $this->db->join('ecom_bagtype t','p.bag_type = t.id','left');
     $this->db->join('ecom_baglayout l','p.bag_layout = l.id','left');
@@ -27,6 +27,9 @@ class Price_Model extends CI_Model
     $this->db->join('ecom_baggsm g','p.bag_gsm = g.id','left');
     $this->db->join('inv_material m','m.i_m_id = p.material_type','left');
     $this->db->join('ecom_quality q','q.id = p.quality_type','left');
+    $this->db->join('ecom_sidepatt  sp','sp.s_id = p.s_size','left');
+    $this->db->join('ecom_sidepatt  spt','spt.s_id = p.s_gsm','left');
+    $this->db->join('ecom_handle ht','ht.id = p.handle_type','left');
     $this->db->order_by('p.created_on','desc');
     $this->db->order_by('p.updated_on','desc');
     $this->db->where('p.status !=',0);

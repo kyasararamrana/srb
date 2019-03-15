@@ -373,6 +373,10 @@
 				var cost_per_bag_value = cost_per_bag_formula+((weight_of_sidepatty/1000)*cost_per_kg);
 				var handle_rate=$('#handle_rate_cost').val();
 				var final_cost_per_bag = cost_per_bag_value + (cost_per_bag_value * percentage) + (parseInt(printing_cost)) + (parseInt(handle_rate));
+				console.log(cost_per_bag_value);
+				console.log(percentage);
+				console.log(printing_cost);
+				console.log(handle_rate);
 				$('#bags_per_kg').val(no_of_bags_per_kg_formula.toFixed(2));
 				$('#cost_per_bag').val(final_cost_per_bag.toFixed(2));
 				

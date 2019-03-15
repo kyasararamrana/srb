@@ -34,24 +34,11 @@
                                 <div class="box-body">
                                     <div class="col-md-12">
                                       <div class="row">
-                                          <div class="col-md-6">
-                                              <div class="form-group">
-                                                  <label>Bag Layout</label>
-                                                  <select name="baglayout" class="form-control">
-                                                    <option value="">Select</option>
-                                                    <?php if (count($baglayouts) > 0) { ?>
-                                                      <?php foreach ($baglayouts as $baglayout) { ?>
-                                                        <option value="<?php echo $baglayout->id; ?>"><?php echo  $baglayout->bag_layout; ?></option>
-                                                      <?php } ?>
-                                                    <?php } ?>
-                                                  </select>
-                                              </div>
-                                          </div>
-										  <div class="row">
+									  
                                           <div class="col-md-6">
                                               <div class="form-group">
                                                   <label>Bag type</label>
-                                                  <select name="b_type"  name="b_type" class="form-control" required>
+                                                  <select name="b_type"  id="b_type" class="form-control" required>
                                                     <option value="">Select</option>
                                                     <?php if (count($bags_list) > 0) { ?>
                                                       <?php foreach ($bags_list as $list) { ?>
@@ -61,7 +48,20 @@
                                                   </select>
                                               </div>
                                           </div>
-                                      </div>
+                                          <div class="col-md-6">
+                                              <div class="form-group">
+                                                  <label>Bag Layout</label>
+                                                  <select name="baglayout" id="baglayout" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <?php if (isset($baglayouts) && count($baglayouts) > 0) { ?>
+                                                      <?php foreach ($baglayouts as $baglayout) { ?>
+                                                        <option value="<?php echo $baglayout->id; ?>"><?php echo  $baglayout->bag_layout; ?></option>
+                                                      <?php } ?>
+                                                    <?php } ?>
+                                                  </select>
+                                              </div>
+                                          </div>
+                                      
                                       </div>
                                         <div class="table-responsive">
                                             <table id="myTable" class="table table-list">
@@ -101,6 +101,19 @@
     <!-- ./wrapper -->
     <?php echo $scripts; ?>
     <script>
+	 $('#b_type').on('change',function(){
+          var b_type = $(this).val();
+          var layout = $(this).data('layout');
+          $('#baglayout').html('<option value="">loading...</option>');
+          $.ajax({
+            url:'<?php echo base_url('bag/get_baglayout_by_bagtype'); ?>',
+            type:'post',
+            data:{'bag_type':b_type,'layout':layout},
+            success:function(data){
+              $('#baglayout').html(data).trigger('change');;
+            }
+          });
+        });
         $(document).ready(function() {
             var counter = 1;
             $("#addRow").on("click", function() {
