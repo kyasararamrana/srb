@@ -70,16 +70,11 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                      <div class="form-group">
-                                        <label>Microns</label>
-                                        <input type="text" class="form-control" name="microns" id="microns" value="<?php echo (isset($price->microns)) ? $price->microns : '' ; ?>">
-                                      </div>
-                                    </div>
+                                    
 									<div class="col-md-3">
                                         <div class="form-group">
                                             <label>Quality Type</label>
-                                            <select class="form-control" name="quality_type" id="quality_type" data-layout="<?php echo (isset($price->quality_type)) ? $price->quality_type : '' ; ?>">
+                                            <select class="form-control" name="quality_type" id="quality_type" onchange="microns_display();" data-layout="<?php echo (isset($price->quality_type)) ? $price->quality_type : '' ; ?>">
                                               <?php if (count($quality_type) > 0) { ?>
                                                 <option value="">Select</option>
                                                 <?php foreach ($quality_type as $list) { ?>
@@ -90,6 +85,12 @@
                                               <?php } ?>
                                             </select>
                                         </div>
+                                    </div>
+									<div class="col-md-3" id="microns_ids" style="display:none;">
+                                      <div class="form-group">
+                                        <label>Microns</label>
+                                        <input type="text" class="form-control" name="microns" id="microns" value="<?php echo (isset($price->microns)) ? $price->microns : '' ; ?>" required>
+                                      </div>
                                     </div>
 									<div class="col-md-3">
                                         <div class="form-group">
@@ -202,6 +203,16 @@
     <!-- ./wrapper -->
     <?php echo $scripts; ?>
     <script type="text/javascript">
+	function microns_display(){
+		var text=$('#quality_type').find('option:selected').text();
+			if(text=='plastic'){
+				$('#microns_ids').show();
+			}else{
+				$('#microns_ids').hide();
+			}
+			
+		
+	}
       $(document).ready(function(){
         $('#priceForm').bootstrapValidator({
             fields: {

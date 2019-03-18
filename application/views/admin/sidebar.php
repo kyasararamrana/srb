@@ -243,6 +243,9 @@
         <li><a href="<?php echo base_url('sales/pricelist'); ?>">
           <i class="fa fa-money"></i> <span>Price List</span></a>
         </li>
+		<li><a href="<?php echo base_url('sales/stitchingpricelist'); ?>">
+          <i class="fa fa-money"></i> <span> Stitching Price List</span></a>
+        </li>
         <li><a href="<?php echo base_url('sales/wishlist'); ?>">
           <i class="fa fa-star"></i> <span>Wishlist</span></a>
         </li>

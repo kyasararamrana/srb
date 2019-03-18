@@ -204,6 +204,30 @@ class Sales extends CI_Controller
       redirect('admin/login');
     }
   }
+   public function stitchingpricelist()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      if ($this->session->userdata('role') == 'Sales') {
+        $arg['pageTitle'] = 'Price';
+        $data = components($arg);
+        $bag_type = $this->input->post('bag_type');
+        $data['filter'] = $bag_type;
+        $data['bagtype'] = $this->Bagtype_Model->get_bagtype();
+        if (isset($bag_type) && !empty($bag_type)) {
+          $data['price'] = $this->Price_Model->get_stitching_price($bag_type);
+        } else {
+          $data['price'] = $this->Price_Model->get_stitching_price();
+        }
+        $this->load->view('sales/stitchingpricelist',$data);
+      } else {
+        $this->session->set_flashdata('error','Sorry you can\'t access');
+        redirect('admin');
+      }
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
+  }
   //Wishlist
   public function wishlist()
   {
