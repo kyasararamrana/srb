@@ -203,6 +203,12 @@ class Stitching extends CI_Controller
           $data['price'] = $this->Price_Model->get_stitching_price();
         }
 		//echo '<pre>';print_r($data);exit;
+		//$data['material_type']=$this->Price_Model->get_price_material_type();
+		//$data['quality_type']=$this->Price_Model->get_price_quality_type();
+		//$data['size_list']=$this->Price_Model->get_price_size_list();
+		//$data['gsm_list']=$this->Price_Model->get_price_gsm_list();
+		//$data['bag_gsm_list']=$this->Price_Model->get_price_bag_gsm_list();
+		//echo '<pre>';print_r($data);exit;
         $this->load->view('superadmin/stitchingpricelist',$data);
       } else {
         $this->session->set_flashdata('error','Sorry you can\'t access');
@@ -213,25 +219,140 @@ class Stitching extends CI_Controller
       redirect('admin/login');
     }
   }
-	   public function stitchinginsert()
+	public function stitchinginsert()
 	{
     if ($this->session->userdata('logged_in') == TRUE) {
       if ($this->session->userdata('role') == 'Superadmin') {
         $post_data = $this->input->post();
-        if ($post_data) {
-          $addl_data = array(
-            'created_on' => date('Y-m-d H:i:s'),
-            'created_by' => $this->session->userdata('id'),
-            'status' => 1
-          );
-          $post_data = array_merge($post_data, $addl_data);
-          if ($this->Price_Model->insert($post_data)) {
+			//echo '<pre>';print_r($post_data);
+		$cnt=0;foreach($post_data['bag_type'] as $list){
+			$add=array(
+			'bag_type'=>isset($post_data['bag_type'])?$post_data['bag_type'][$cnt]:'',
+			'bag_layout'=>isset($post_data['bag_layout'])?$post_data['bag_layout'][$cnt]:'',
+			'bag_gsm'=>isset($post_data['bag_gsm'])?$post_data['bag_gsm'][$cnt]:'',
+			'bag_size'=>isset($post_data['s_size'])?$post_data['s_size'][$cnt]:'',
+			'fininshing_size'=>isset($post_data['fininshing_size'])?$post_data['fininshing_size'][$cnt]:'',
+			'price'=>isset($post_data['price'])?$post_data['price'][$cnt]:'',
+			'material_type'=>isset($post_data['material_type'])?$post_data['material_type']:'',
+			'quality_type'=>isset($post_data['quality_type'])?$post_data['quality_type']:'',
+			's_gsm'=>isset($post_data['s_gsm'])?$post_data['s_gsm']:'',
+			'stitching_type'=>isset($post_data['stitching_type'])?$post_data['stitching_type']:'',
+			'printing_style'=>isset($post_data['printing_style'])?$post_data['printing_style']:'',
+			'printing_color_type'=>isset($post_data['printing_color_type'])?$post_data['printing_color_type']:'',
+			'created_on'=>date('Y-m-d H:i:s'),
+			'created_by'=>$this->session->userdata('id'),
+			'status'=>1,
+			);
+			
+			//echo '<pre>';print_r($add);exit;
+
+			$save=$this->Price_Model->insert($add);
+			
+		$cnt++;}
+		 if (count($save)>0){
             $this->session->set_flashdata('success','Price details created successfully');
             redirect('stitching/pricelist');
-          } else {
+          }else{
             $this->session->set_flashdata('error','Please try again');
             redirect($this->agent->referrer());
           }
+        
+      } else {
+        $this->session->set_flashdata('error','Sorry you can\'t access');
+        redirect('admin');
+      }
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
+  }
+   //update
+  public function stitchingupdate()
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      if ($this->session->userdata('role') == 'Superadmin') {
+        $post_data = $this->input->post();
+        $post_id = $this->input->post('id');
+		//echo '<pre>';print_r($post_data);exit;
+        $cnt=0;foreach($post_data['bag_type'] as $list){
+			$add=array(
+			'bag_type'=>isset($post_data['bag_type'])?$post_data['bag_type'][$cnt]:'',
+			'bag_layout'=>isset($post_data['bag_layout'])?$post_data['bag_layout'][$cnt]:'',
+			'bag_gsm'=>isset($post_data['bag_gsm'])?$post_data['bag_gsm'][$cnt]:'',
+			'bag_size'=>isset($post_data['s_size'])?$post_data['s_size'][$cnt]:'',
+			'fininshing_size'=>isset($post_data['fininshing_size'])?$post_data['fininshing_size'][$cnt]:'',
+			'price'=>isset($post_data['price'])?$post_data['price'][$cnt]:'',
+			'material_type'=>isset($post_data['material_type'])?$post_data['material_type']:'',
+			'quality_type'=>isset($post_data['quality_type'])?$post_data['quality_type']:'',
+			's_gsm'=>isset($post_data['s_gsm'])?$post_data['s_gsm']:'',
+			'stitching_type'=>isset($post_data['stitching_type'])?$post_data['stitching_type']:'',
+			'printing_style'=>isset($post_data['printing_style'])?$post_data['printing_style']:'',
+			'printing_color_type'=>isset($post_data['printing_color_type'])?$post_data['printing_color_type']:'',
+			'updated_on'=>date('Y-m-d H:i:s'),
+			'updated_by'=>$this->session->userdata('id'),
+			);
+			
+			//echo '<pre>';print_r($add);exit;
+
+			$update=$this->Price_Model->update($add, $post_id);
+			
+		$cnt++;}
+		if (count($update)>0){
+            $this->session->set_flashdata('success','Price details updated successfully');
+            redirect('stitching/pricelist');
+          }else{
+            $this->session->set_flashdata('error','Please try again');
+            redirect($this->agent->referrer());
+          }
+		
+      } else {
+        $this->session->set_flashdata('error','Sorry you can\'t access');
+        redirect('admin');
+      }
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
+  }
+   //edit (view)
+  public function editprice($id='')
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      if ($this->session->userdata('role') == 'Superadmin') {
+        $arg['pageTitle'] = 'Edit Price';
+        $data = components($arg);
+		$data['price'] = $this->Price_Model->get_price_by_id($id);
+				//echo '<pre>';print_r($data);exit;
+
+		$data['bagtype'] = $this->Bagtype_Model->get_active_bagtype();
+		$data['material_type'] = $this->Bagtype_Model->get_active_material();
+		$data['quality_type'] = $this->Bagtype_Model->get_active_quality();
+		$data['size_list'] = $this->Bagtype_Model->get_active_size_list();
+		$data['gsm_list'] = $this->Bagtype_Model->get_active_gsm_list();
+		$data['handle_rate_cost'] = $this->Bagtype_Model->get_active_handle_rate_cost();
+		$data['stitching_type_list'] = $this->Bagtype_Model->get_active_stitching_type_list();
+		$data['printing_list'] = $this->Bagtype_Model->get_active_printing_list();
+		$data['printingcolortype'] = $this->Bagtype_Model->get_active_printingcolortype();
+		$this->load->view('superadmin/stitchingpriceedit',$data);
+      } else {
+        $this->session->set_flashdata('error','Sorry you can\'t access');
+        redirect('admin');
+      }
+    } else {
+      $this->session->set_flashdata('error','Please login and try again');
+      redirect('admin/login');
+    }
+  }
+  
+  //delete
+  public function deleteprice($id='')
+  {
+    if ($this->session->userdata('logged_in') == TRUE) {
+      if ($this->session->userdata('role') == 'Superadmin') {
+        $post_data = array( 'status' => 0 );
+        if ($this->Price_Model->update($post_data, $id)) {
+          $this->session->set_flashdata('success','Price details deleted successfully');
+          redirect('stitching/pricelist');
         } else {
           $this->session->set_flashdata('error','Please try again');
           redirect($this->agent->referrer());

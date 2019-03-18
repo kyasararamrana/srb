@@ -16,11 +16,11 @@
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1>Add Stitching Price</h1>
+                <h1>Edit Stitching Price</h1>
                 <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-                    <li>Bags</li>
-                    <li class="active">Add Stitching Price</li>
+                    <li><a href="<?php echo base_url('admin'); ?>"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+                    <li><a href="<?php echo base_url('stitching/pricelist'); ?>">Stitching Price</a></li>
+                    <li class="active">Edit Stitching Price</li>
                 </ol>
             </section>
             <!-- Main content -->
@@ -143,7 +143,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td class="col-md-2">
-                                                              <select class="form-control" name="bag_type[]" id="bag_type" onchange ="get_bag_layout(this.value,'0');" data-layout="<?php echo (isset($price->bag_layout)) ? $price->bag_layout : '' ; ?>">
+                                                              <select class="form-control" name="bag_type[]" id="bag_type" onchange ="get_bag_layout(this.value,'0');" data-layout="<?php echo (isset($price->bag_type)) ? $price->bag_type : '' ; ?>">
 																  <?php if (count($bagtype) > 0) { ?>
 																	<option value="">Select</option>
 																	<?php foreach ($bagtype as $type) { ?>
@@ -155,21 +155,21 @@
 																</select>
                                                         </td>
 														<td class="col-md-2">
-                                                               <select class="form-control bag_layout" name="bag_layout[]" id="bag_layout0" onchange="get_bag_gsm(this.value,'0');">
+                                                               <select class="form-control bag_layout" name="bag_layout[]" id="bag_layout0" onchange="get_bag_gsm(this.value,'0');" data-layout="<?php echo (isset($price->bag_layout)) ? $price->bag_layout : '' ; ?>">
 																<option value="">Select</option>
 															</select>
                                                         </td>
 														  <td class="col-md-2">
-                                                              <select class="form-control" name="bag_gsm[]" id="bag_gsm0" required>
+                                                              <select class="form-control" name="bag_gsm[]" id="bag_gsm0" data-layout="<?php echo (isset($price->bag_gsm)) ? $price->bag_gsm : '' ; ?>" required>
 																	<option value="">Select</option>
 																</select>
                                                         </td>
 														<td class="col-md-2">
-                                                               <select class="form-control" name="s_size[]" id="s_size" onchange="get_fininshing_size(this.value,'0');" data-layout="<?php echo (isset($price->s_size)) ? $price->s_size : '' ; ?>">
+                                                               <select class="form-control" name="s_size[]" id="s_size" onchange="get_fininshing_size(this.value,'0');" data-layout="<?php echo (isset($price->bag_size)) ? $price->bag_size : '' ; ?>">
 															  <?php if (count($size_list) > 0) { ?>
 																<option value="">Select</option>
 																<?php foreach ($size_list as $list) { ?>
-																  <option value="<?php echo $list['s_id']; ?>" <?php echo (isset($price->s_size) && $price->s_size == $list['s_id']) ? 'selected' : '' ; ?>><?php echo $list['s_size']; ?></option>
+																  <option value="<?php echo $list['s_id']; ?>" <?php echo (isset($price->bag_size) && $price->bag_size == $list['s_id']) ? 'selected' : '' ; ?>><?php echo $list['s_size']; ?></option>
 																<?php } ?>
 															  <?php } else { ?>
 																<option value="">No records found</option>
@@ -177,19 +177,18 @@
 															</select>
                                                         </td>
 														<td class="col-md-2">
-                                                            <select class="form-control" name="fininshing_size[]" id="fininshing_size0">
+                                                            <select class="form-control" name="fininshing_size[]" id="fininshing_size0" data-layout="<?php echo (isset($price->fininshing_size)) ? $price->fininshing_size : '' ; ?>">
 																<option value="">Select</option>
 															</select>
                                                         </td>
 														  <td class="col-md-2">
-                                                            <input type="text" name="price[]" placeholder="Enter Price" class="form-control" required>
+                                                            <input type="text" name="price[]" placeholder="Enter Price" class="form-control" value="<?php echo isset($price->price)?$price->price:''; ?>" required>
                                                         </td>
 														
 														
                                                     </tr>
                                                 </tbody>
                                             </table>
-                                            <button type="button" class="btn btn-md" id="addRow">Add Row</button>
                                         </div>
 									
 									
@@ -198,7 +197,7 @@
                                         <?php if (isset($price->id)) { ?>
                                           <input type="hidden" name="id" value="<?php echo (isset($price->id)) ? $price->id: '' ; ?>">
                                         <?php } ?>
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary">Update</button>
                                     </div>
                                 </div>
                             </form>
@@ -218,7 +217,26 @@
     <?php echo $scripts; ?>
       <script>
 	   //ajax call for bag layout by bag type
-      
+			var layout = $('#bag_layout0').data('layout');
+			$('#bag_layout0').html('<option value="">loading...</option>');
+			  $.ajax({
+				url:'<?php echo base_url('bag/get_baglayout_by_bagtype'); ?>',
+				type:'post',
+				data:{'bag_type':$('#bag_type').val(),'layout':layout},
+				success:function(data){
+				  $('#bag_layout0').html(data).trigger('change');
+				}
+			  });
+			  var layout1 = $('#fininshing_size0').data('layout');
+			  $('#fininshing_size0').html('<option value="">loading...</option>');
+			 $.ajax({
+			   url:'<?php echo base_url('bag/get_fininshing_size_by_sidepattywidth'); ?>',
+			   type:'post',
+			   data:{'sidepattywidth':$('#s_size').val(),'layout':layout1},
+			   success:function(data){
+				 $('#fininshing_size0').html(data).trigger('change');
+			   }
+			 });
 		function get_bag_layout(val,id){
 			  var layout = $(this).data('layout');
 			  $('#bag_layout'+id).html('<option value="">loading...</option>');
@@ -232,11 +250,12 @@
 			  });
 		}
 		function get_bag_gsm(val,id){
+			 var layout = $('#bag_gsm0').data('layout');
 			 $('#bag_gsm'+id).html('<option value="">loading...</option>');
 			 $.ajax({
 			   url:'<?php echo base_url('bag/get_baggsm_by_baglayout'); ?>',
 			   type:'post',
-			   data:{'bag_layout':val},
+			   data:{'bag_layout':val,'gsm':layout},
 			   success:function(data){
 				 $('#bag_gsm'+id).html(data).trigger('change');
 			   }
@@ -253,27 +272,7 @@
 			   }
 			 });
 		}
-        $(document).ready(function() {
-            var counter = 1;
-            $("#addRow").on("click", function() {
-                var newRow = $("<tr>");
-                var cols = "";
-                cols += '<td><select class="form-control" name="bag_type[]" id="bag_type' +counter +'" onchange ="get_bag_layout(this.value,'+counter+');" data-layout="<?php echo (isset($price->bag_layout)) ? $price->bag_layout : '' ; ?>"><?php if (count($bagtype) > 0) { ?><option value="">Select</option><?php foreach ($bagtype as $type) { ?><option value="<?php echo $type->id; ?>" <?php echo (isset($price->bag_type) && $price->bag_type == $type->id) ? 'selected' : '' ; ?>><?php echo $type->bag_type; ?></option><?php } ?> <?php } else { ?><option value="">No records found</option> <?php } ?></select></td>';
-                cols += '<td> <select class="form-control" name="bag_layout[]" id="bag_layout' +counter +'" onchange="get_bag_gsm(this.value,'+counter+');" required><option value="">Select</option></select></td>';
-                cols += '<td> <select class="form-control" name="bag_gsm[]" id="bag_gsm' +counter +'" ><option value="">Select</option></select></td>';
-                cols += '<td> <select class="form-control" name="s_size[]" id="s_size' +counter +'" onchange="get_fininshing_size(this.value,'+counter+');" data-layout="<?php echo (isset($price->s_size)) ? $price->s_size : '' ; ?>"><?php if (count($size_list) > 0) { ?><option value="">Select</option><?php foreach ($size_list as $list) { ?> <option value="<?php echo $list['s_id']; ?>" <?php echo (isset($price->s_size) && $price->s_size == $list['s_id']) ? 'selected' : '' ; ?>><?php echo $list['s_size']; ?></option><?php } ?> <?php } else { ?><option value="">No records found</option><?php } ?></select></td>';
-                cols += '<td><select class="form-control" name="fininshing_size[]" id="fininshing_size' +counter +'" ><option value="">Select</option>	</select></td>';
-                cols += '<td><input type="text" name="price[]" placeholder="Enter Price" class="form-control" required></td>';
-                cols += '<td><button type="button" class="ibtnDel btn btn-md btn-danger"><i class="fa fa-trash"></i></button></td>';
-                newRow.append(cols);
-                $("table.table-list").append(newRow);
-                counter++;
-            });
-            $("table.table-list").on("click", ".ibtnDel", function(event) {
-                $(this).closest("tr").remove();
-                counter -= 1
-            });
-        });
+        
     </script>
 </body>
 </html>

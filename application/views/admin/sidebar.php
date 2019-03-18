@@ -130,6 +130,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
+		   <li><a href="<?php echo base_url('finishing'); ?>">Add Finishing size</a></li>
+		   <li><a href="<?php echo base_url('finishing/lists'); ?>">Finishing size Lists</a></li>
 		   <li><a href="<?php echo base_url('stitching'); ?>">Add Stitching type</a></li>
 		   <li><a href="<?php echo base_url('stitching/lists'); ?>">Stitching Type List</a></li>
 		   <li><a href="<?php echo base_url('material'); ?>">Add Material</a></li>

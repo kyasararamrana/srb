@@ -275,6 +275,46 @@ class Bag extends CI_Controller
       echo json_encode($result);
     }
   }
+  
+  //getting bag gsm by bag size (ajax call)
+  public function get_baggsm_by_baglayout()
+  {
+    $bag_layout = $this->input->post('bag_layout');
+	$gsm = $this->input->post('gsm');
+    if ($bag_layout) {
+      $result = $this->Baggsm_Model->get_baggsm_by_baglayout($bag_layout);
+      if (count($result) > 0) {
+
+        echo '<option value="">Select</option>';
+        foreach($result as $res) {
+          $selected = (isset($gsm) && ($gsm == $res->id)) ? "selected":"";
+          echo '<option value="'.$res->id.'" '.$selected.'>'.$res->bag_gsm.'</option>';
+        }
+        exit(0);
+      } else {
+        echo '<option value="">No bag gsm found</option>';exit(0);
+      }
+    }
+  }
+  //getting fininshing size by sidepatty width (ajax call)
+  public function get_fininshing_size_by_sidepattywidth()
+  {
+    $sidepattywidth = $this->input->post('sidepattywidth');
+	$gsm = $this->input->post('layout');
+    if ($sidepattywidth) {
+      $result = $this->Baggsm_Model->get_fininshing_size_by_sidepattywidth($sidepattywidth);
+      if (count($result) > 0) {
+        echo '<option value="">Select</option>';
+        foreach($result as $res) {
+          $selected = (isset($gsm) && ($gsm == $res->i_f_s_id)) ? "selected":"";
+          echo '<option value="'.$res->i_f_s_id.'" '.$selected.'>'.$res->finishing_size.'</option>';
+        }
+        exit(0);
+      } else {
+        echo '<option value="">No Finishing size found</option>';exit(0);
+      }
+    }
+  }
 
 }
 
