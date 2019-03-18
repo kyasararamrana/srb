@@ -12,10 +12,10 @@
     <?php echo $links; ?>
     <link rel="stylesheet" href="<?php echo base_url('assets/css/buttons.dataTables.min.css'); ?>">
 	<style>
-tfoot {
-     display: table-header-group;
-}
-</style>
+		tfoot {
+			 display: table-header-group;
+		}
+	</style>
 </head>
 
 <body class="hold-transition skin-green sidebar-mini">
