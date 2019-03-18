@@ -72,27 +72,9 @@
                                     </div>
                                     <div class="col-md-3">
                                       <div class="form-group">
-                                        <label>Printing cost</label>
-                                        <input type="text" class="form-control" name="printing_cost" id="printing_cost" value="<?php echo (isset($price->printing_cost)) ? $price->printing_cost : '' ; ?>">
+                                        <label>Microns</label>
+                                        <input type="text" class="form-control" name="microns" id="microns" value="<?php echo (isset($price->microns)) ? $price->microns : '' ; ?>">
                                       </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label>Bags per KG</label>
-                                            <input type="text" class="form-control" name="bags_per_kg" id="bags_per_kg" value="<?php echo (isset($price->bags_per_kg)) ? $price->bags_per_kg : 0 ; ?>" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label>Cost per Bag for Single Color</label>
-                                            <input type="text" class="form-control" name="cost_per_bag" id="cost_per_bag" value="<?php echo (isset($price->cost_per_bag)) ? $price->cost_per_bag : 0 ; ?>" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label>Cost per kg</label>
-                                            <input type="text" class="form-control" name="cost_per_kg" id="cost_per_kg" value="<?php echo (isset($price->cost_per_kg)) ? $price->cost_per_kg : 0 ; ?>" readonly>
-                                        </div>
                                     </div>
 									<div class="col-md-3">
                                         <div class="form-group">
@@ -171,6 +153,31 @@
                                         </div>
                                     </div>
 									<!--  sidepatty-->
+									<div class="col-md-3">
+                                      <div class="form-group">
+                                        <label>Printing cost</label>
+                                        <input type="text" class="form-control" name="printing_cost" id="printing_cost" value="<?php echo (isset($price->printing_cost)) ? $price->printing_cost : '' ; ?>">
+                                      </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Bags per KG</label>
+                                            <input type="text" class="form-control" name="bags_per_kg" id="bags_per_kg" value="<?php echo (isset($price->bags_per_kg)) ? $price->bags_per_kg : 0 ; ?>" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Cost per Bag for Single Color</label>
+                                            <input type="text" class="form-control" name="cost_per_bag" id="cost_per_bag" value="<?php echo (isset($price->cost_per_bag)) ? $price->cost_per_bag : 0 ; ?>" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Cost per kg</label>
+                                            <input type="text" class="form-control" name="cost_per_kg" id="cost_per_kg" value="<?php echo (isset($price->cost_per_kg)) ? $price->cost_per_kg : 0 ; ?>" readonly>
+                                        </div>
+                                    </div>
+									
                                     <div class="clearfix">&nbsp;</div>
                                     <div class="col-md-6">
                                         <?php if (isset($price->id)) { ?>
@@ -301,7 +308,7 @@
        });
         //price calculation
         $('#printing_cost').on('keyup',function(){
-          if ($('#bag_type').find('option:selected').text() == 'Dcut') {
+          if ($('#bag_type').find('option:selected').text() == 'Dcut' && $('#quality_type').find('option:selected').text() == 'non woven') {
             var bag_size = $('#bag_size').find('option:selected').text().split('*');
             var bag_gsm = $('#bag_gsm').find('option:selected').text();
             var printing_cost = $('#printing_cost').val();
@@ -328,13 +335,65 @@
             //cost per kg
             cost_per_kg = cost_per_kg + (no_of_bags_per_kg * (parseInt(handle_rate) + parseInt(zip_rate) + parseInt(other_charges) + parseInt(minimum_quantity)));
             $('#cost_per_kg').val(cost_per_kg.toFixed(2));
-          }else if($('#bag_type').find('option:selected').text() == 'Handle') {
+          }else if ($('#bag_type').find('option:selected').text() == 'Dcut' && $('#quality_type').find('option:selected').text() == 'plastic') {
+            var bag_size = $('#bag_size').find('option:selected').text().split('*');
+            var bag_gsm = $('#bag_gsm').find('option:selected').text();
+            var printing_cost = $('#printing_cost').val();
+            var handle_rate = $('#handle_rate').val();
+            var zip_rate = $('#zip_rate').val();
+            var other_charges = $('#other_charges').val();
+            var minimum_quantity = $('#minimum_quantity').val();
+            var additional_gsm = $('#additional_gsm').val();
+            var percentage = $('#percentage').val();
+            var cost_per_kg = $('#cost_per_kg').val();
+            var microns = $('#microns').val();
+            var width = bag_size[0];
+            var length = bag_size[1];
+            var weight_of_bag_formula =(((length * width * microns * 4) / 3300) /1000);
+            var weight_of_bag = weight_of_bag_formula;
+            //no of bags per kg
+            var no_of_bags_per_kg_formula = 1000/weight_of_bag;
+            var no_of_bags_per_kg = no_of_bags_per_kg_formula;
+            $('#bags_per_kg').val(no_of_bags_per_kg.toFixed(2));
+            //cost of the bag
+            var cost_per_bag_formula = ((weight_of_bag / 1000) * cost_per_kg);
+            var cost_per_bag_value = cost_per_bag_formula;
+            var final_cost_per_bag = cost_per_bag_value + (cost_per_bag_value * percentage) + (parseInt(printing_cost));
+            $('#cost_per_bag').val(final_cost_per_bag.toFixed(2));
+            //cost per kg
+            cost_per_kg = cost_per_kg + (no_of_bags_per_kg * (parseInt(handle_rate) + parseInt(zip_rate) + parseInt(other_charges) + parseInt(minimum_quantity)));
+            $('#cost_per_kg').val(cost_per_kg.toFixed(2));
+			
+          }else if($('#bag_type').find('option:selected').text() == 'Handle' && $('#quality_type').find('option:selected').text() == 'non woven'){
 				var bag_size = $('#bag_size').find('option:selected').text().split('*');
 				var width = bag_size[0];
 				var length = bag_size[1];
 				var bag_gsm = $('#bag_gsm').find('option:selected').text();
 				var additional_gsm = $('#additional_gsm').val();
 				var weight_of_bag_formula = (width * ((length * 2) + 3) * (parseInt(bag_gsm) + parseInt(additional_gsm))) / 1550;
+				var additon_handle_weight= 3.5+((2*(13*2*105))/1550);
+				var weight_of_bag=(weight_of_bag_formula+additon_handle_weight)
+				var no_of_bags_per_kg_formula = 1000/weight_of_bag;
+				
+				//cost of the bag
+				var cost_per_kg = $('#cost_per_kg').val();
+				var percentage = $('#percentage').val();
+				var printing_cost = $('#printing_cost').val();
+				var cost_per_bag_formula = ((weight_of_bag / 1000) * cost_per_kg);
+				var cost_per_bag_value = cost_per_bag_formula;
+				var handle_rate=$('#handle_rate_cost').val();
+				 var no_of_bags_per_kg = no_of_bags_per_kg_formula;
+				var final_cost_per_bag = cost_per_bag_value + (cost_per_bag_value * percentage) + (parseInt(printing_cost)) + (parseInt(handle_rate));
+				$('#bags_per_kg').val(no_of_bags_per_kg.toFixed(2));
+				$('#cost_per_bag').val(final_cost_per_bag.toFixed(2));
+			}else if($('#bag_type').find('option:selected').text() == 'Handle' && $('#quality_type').find('option:selected').text() == 'plastic'){
+				var bag_size = $('#bag_size').find('option:selected').text().split('*');
+				var width = bag_size[0];
+				var length = bag_size[1];
+				var bag_gsm = $('#bag_gsm').find('option:selected').text();
+				 var microns = $('#microns').val();
+				var additional_gsm = $('#additional_gsm').val();
+				var weight_of_bag_formula = (((length * width * microns * 4)/3300)/1000);
 				var additon_handle_weight= 3.5+((2*(13*2*105))/1550);
 				var weight_of_bag=(weight_of_bag_formula+additon_handle_weight)
 				var no_of_bags_per_kg_formula = 1000/weight_of_bag;
