@@ -60,6 +60,7 @@
 											<th>Sidepatty width</th>
 											<th>Finishing size</th>
 											<th>Price</th>
+											<th>Action</th>
                                         </tr>
                                     </thead>
 									<tfoot>
@@ -74,6 +75,7 @@
 											 <th>&nbsp;</th>
 											 <th>&nbsp;</th>
 											<th>Bag GSM</th>
+											 <th>&nbsp;</th>
 											 <th>&nbsp;</th>
 											 <th>&nbsp;</th>
 											 <th>&nbsp;</th>
@@ -98,10 +100,10 @@
                                               <td><?php echo $p->sidesize; ?></td>
                                               <td><?php echo $p->finishing_size; ?></td>
                                               <td><?php echo $p->price; ?></td>
-                                              <!--<td>
-                                                  <a href="<?php echo base_url('stitching/editprice/'.$p->id); ?>" type="button" class="btn btn-info mr-10"><i class="fa fa-edit"></i></a>
-                                                  <a href="<?php echo base_url('stitching/deleteprice/'.$p->id); ?>" type="button" class="btn btn-danger mr-10 confirmation"><i class="fa fa-trash-o"></i></a>
-                                              </td>-->
+                                              <td>
+                                                  <a href="#" type="button" class="btn btn-info mr-10">Order Now</a>
+                                                 
+                                              </td>
                                           </tr>
                                         <?php $sno++; ?>
                                         <?php } ?>

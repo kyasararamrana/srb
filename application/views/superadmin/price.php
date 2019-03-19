@@ -86,7 +86,7 @@
                                             </select>
                                         </div>
                                     </div>
-									<div class="col-md-3" id="microns_ids" style="display:none;">
+									<div class="col-md-3" id="microns_ids" style="<?php if(isset($price->microns) && $price->microns!=''){ echo "";}else{ echo "display:none;"; } ?>">
                                       <div class="form-group">
                                         <label>Microns</label>
                                         <input type="text" class="form-control" name="microns" id="microns" value="<?php echo (isset($price->microns)) ? $price->microns : '' ; ?>" required>
@@ -108,36 +108,7 @@
                                         </div>
                                     </div>
 									<!--  sidepatty-->
-									<div class="col-md-3">
-                                        <div class="form-group">
-                                            <label>Size</label>
-                                            <select class="form-control" name="s_size" id="s_size" data-layout="<?php echo (isset($price->s_size)) ? $price->s_size : '' ; ?>">
-                                              <?php if (count($size_list) > 0) { ?>
-                                                <option value="">Select</option>
-                                                <?php foreach ($size_list as $list) { ?>
-                                                  <option value="<?php echo $list['s_id']; ?>" <?php echo (isset($price->s_size) && $price->s_size == $list['s_id']) ? 'selected' : '' ; ?>><?php echo $list['s_size']; ?></option>
-                                                <?php } ?>
-                                              <?php } else { ?>
-                                                <option value="">No records found</option>
-                                              <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-									<div class="col-md-3">
-                                        <div class="form-group">
-                                            <label>GSM</label>
-                                            <select class="form-control" name="s_gsm" id="s_gsm" data-layout="<?php echo (isset($price->s_gsm)) ? $price->s_gsm : '' ; ?>">
-                                              <?php if (count($gsm_list) > 0) { ?>
-                                                <option value="">Select</option>
-                                                <?php foreach ($gsm_list as $list) { ?>
-                                                  <option value="<?php echo $list['s_id']; ?>" <?php echo (isset($price->s_gsm) && $price->s_gsm == $list['s_id']) ? 'selected' : '' ; ?>><?php echo $list['s_gsm']; ?></option>
-                                                <?php } ?>
-                                              <?php } else { ?>
-                                                <option value="">No records found</option>
-                                              <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
+									
 									<div class="col-md-3">
                                         <div class="form-group">
                                             <label>Handle Type</label>
@@ -146,6 +117,21 @@
                                                 <option value="">Select</option>
                                                 <?php foreach ($handle_rate_cost as $list) { ?>
                                                   <option value="<?php echo $list['id']; ?>" <?php echo (isset($price->handle_type) && $price->handle_type == $list['id']) ? 'selected' : '' ; ?>><?php echo $list['type']; ?></option>
+                                                <?php } ?>
+                                              <?php } else { ?>
+                                                <option value="">No records found</option>
+                                              <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+									<div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>Printing Color</label>
+                                            <select class="form-control" name="printing_color_type" id="printing_color_type" data-layout="<?php echo (isset($price->printing_color_type)) ? $price->printing_color_type : '' ; ?>">
+                                              <?php if (count($printingcolortype) > 0) { ?>
+                                                <option value="">Select</option>
+                                                <?php foreach ($printingcolortype as $list) { ?>
+                                                  <option value="<?php echo $list['id']; ?>" <?php echo (isset($price->printing_color_type) && $price->printing_color_type == $list['id']) ? 'selected' : '' ; ?>><?php echo $list['printing_color_type']; ?></option>
                                                 <?php } ?>
                                               <?php } else { ?>
                                                 <option value="">No records found</option>
@@ -209,6 +195,7 @@
 				$('#microns_ids').show();
 			}else{
 				$('#microns_ids').hide();
+				$('#microns').val('');
 			}
 			
 		

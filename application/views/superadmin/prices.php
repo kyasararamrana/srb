@@ -71,8 +71,6 @@
                                             <th>S.No</th>
 											 <th>Material</th>
                                             <th>Quality</th>
-                                            <th>Size</th>
-                                            <th>GSM</th>
                                             <th>Handle Type</th>
                                             <th>Bag Type</th>
                                             <th>Bag Layout</th>
@@ -95,8 +93,6 @@
 											  
                                               <td><?php echo $p->material; ?></td>
                                               <td><?php echo $p->qname; ?></td>
-                                              <td><?php echo $p->s_size; ?></td>
-                                              <td><?php echo $p->s_gsm; ?></td>
                                               <td><?php echo $p->handle_type; ?></td>
                                               <td><?php echo $p->bag_type; ?></td>
                                               <td><?php echo $p->bag_layout; ?></td>

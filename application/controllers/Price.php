@@ -51,6 +51,8 @@ class Price extends CI_Controller
         $data['size_list'] = $this->Bagtype_Model->get_active_size_list();
         $data['gsm_list'] = $this->Bagtype_Model->get_active_gsm_list();
         $data['handle_rate_cost'] = $this->Bagtype_Model->get_active_handle_rate_cost();
+		$data['printingcolortype'] = $this->Bagtype_Model->get_active_printingcolortype();
+
         $this->load->view('superadmin/price',$data);
       } else {
         $this->session->set_flashdata('error','Sorry you can\'t access');
@@ -108,6 +110,8 @@ class Price extends CI_Controller
         $data['size_list'] = $this->Bagtype_Model->get_active_size_list();
         $data['gsm_list'] = $this->Bagtype_Model->get_active_gsm_list();
         $data['handle_rate_cost'] = $this->Bagtype_Model->get_active_handle_rate_cost();
+		$data['printingcolortype'] = $this->Bagtype_Model->get_active_printingcolortype();
+
         $this->load->view('superadmin/price',$data);
       } else {
         $this->session->set_flashdata('error','Sorry you can\'t access');
